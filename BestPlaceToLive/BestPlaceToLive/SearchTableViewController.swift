@@ -10,9 +10,19 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
 
+   //MARK: - Outlets
+    
+    @IBOutlet var searchCityBar: UISearchBar!
+    @IBOutlet var setPreferencesButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    //MARK: - Actions
+    @IBAction func setPreferencesTapped(_ sender: Any) {
+    }
+    
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {

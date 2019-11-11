@@ -9,7 +9,7 @@
         <!--Search-->
         <scene sceneID="6sk-NM-Bpg">
             <objects>
-                <tableViewController title="Search" id="Dtu-Uv-YSY" sceneMemberID="viewController">
+                <tableViewController title="Search" id="Dtu-Uv-YSY" customClass="SearchTableViewController" customModule="BestPlaceToLive" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="h1S-Qq-Tw0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -18,21 +18,33 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search City" translatesAutoresizingMaskIntoConstraints="NO" id="dKl-mK-66e">
+                                <searchBar contentMode="redraw" placeholder="Search City" translatesAutoresizingMaskIntoConstraints="NO" id="dKl-mK-66e">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="Dtu-Uv-YSY" id="wyH-eF-7nB"/>
+                                    </connections>
                                 </searchBar>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o86-Ub-qy0">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o86-Ub-qy0">
                                     <rect key="frame" x="124" y="71" width="166" height="41"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="Set Preferences">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="setPreferencesTapped:" destination="Dtu-Uv-YSY" eventType="touchUpInside" id="I1Q-cx-mdh"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="dKl-mK-66e" secondAttribute="trailing" id="Pgc-Ar-UNG"/>
+                                <constraint firstItem="o86-Ub-qy0" firstAttribute="top" secondItem="dKl-mK-66e" secondAttribute="bottom" constant="15" id="VCu-4w-CQE"/>
+                                <constraint firstItem="o86-Ub-qy0" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="124" id="X9N-9s-5U8"/>
+                                <constraint firstAttribute="bottom" secondItem="o86-Ub-qy0" secondAttribute="bottom" constant="11" id="Xr7-dT-eBm"/>
+                                <constraint firstItem="dKl-mK-66e" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" id="ds7-JK-lmK"/>
+                                <constraint firstAttribute="trailing" secondItem="o86-Ub-qy0" secondAttribute="trailing" constant="124" id="h8R-Dt-6UQ"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="191" id="ZeB-Yw-NhS">
@@ -92,6 +104,10 @@
                             <outlet property="delegate" destination="Dtu-Uv-YSY" id="ZpW-i2-Try"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchCityBar" destination="dKl-mK-66e" id="WTk-iS-b0X"/>
+                        <outlet property="setPreferencesButton" destination="o86-Ub-qy0" id="vGa-RD-Z9x"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcM-fp-yF4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -18,12 +18,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <searchBar contentMode="redraw" placeholder="Search City" translatesAutoresizingMaskIntoConstraints="NO" id="dKl-mK-66e">
+                                <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search City" translatesAutoresizingMaskIntoConstraints="NO" id="dKl-mK-66e">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o86-Ub-qy0">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o86-Ub-qy0">
                                     <rect key="frame" x="124" y="71" width="166" height="41"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="Set Preferences">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -31,14 +33,6 @@
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstItem="o86-Ub-qy0" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="124" id="2Qz-fu-3ty"/>
-                                <constraint firstAttribute="trailing" secondItem="o86-Ub-qy0" secondAttribute="trailing" constant="124" id="5x8-Wc-wMC"/>
-                                <constraint firstItem="dKl-mK-66e" firstAttribute="top" secondItem="ia7-B9-oHr" secondAttribute="top" id="7dm-tT-isT"/>
-                                <constraint firstItem="o86-Ub-qy0" firstAttribute="top" secondItem="dKl-mK-66e" secondAttribute="bottom" constant="15" id="Atq-3D-Udw"/>
-                                <constraint firstItem="dKl-mK-66e" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" id="MKX-XN-UR1"/>
-                                <constraint firstAttribute="trailing" secondItem="dKl-mK-66e" secondAttribute="trailing" id="WnU-tE-rV0"/>
-                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="191" id="ZeB-Yw-NhS">
@@ -49,15 +43,46 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoV-m2-OcM">
-                                            <rect key="frame" x="31" y="18" width="353" height="155"/>
+                                            <rect key="frame" x="31" y="18" width="352" height="155"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVF-Rb-MDE">
+                                                    <rect key="frame" x="8" y="8" width="242" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State and Zip" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLg-g8-zrg">
+                                                    <rect key="frame" x="8" y="42" width="178" height="74"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yWe-V2-DzU">
+                                                    <rect key="frame" x="194" y="42" width="151" height="107"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="yWe-V2-DzU" secondAttribute="bottom" constant="6" id="0Vx-Aj-Sz2"/>
+                                                <constraint firstItem="VLg-g8-zrg" firstAttribute="top" secondItem="EoV-m2-OcM" secondAttribute="top" constant="42" id="80G-8H-ykO"/>
+                                                <constraint firstItem="yWe-V2-DzU" firstAttribute="leading" secondItem="EoV-m2-OcM" secondAttribute="leading" constant="194" id="FkI-YY-SUL"/>
+                                                <constraint firstItem="nVF-Rb-MDE" firstAttribute="top" secondItem="EoV-m2-OcM" secondAttribute="top" constant="8" id="HXQ-Yl-lgw"/>
+                                                <constraint firstAttribute="bottom" secondItem="VLg-g8-zrg" secondAttribute="bottom" constant="39" id="LER-yk-aPc"/>
+                                                <constraint firstAttribute="trailing" secondItem="VLg-g8-zrg" secondAttribute="trailing" constant="166" id="LM2-QD-kSK"/>
+                                                <constraint firstItem="nVF-Rb-MDE" firstAttribute="leading" secondItem="EoV-m2-OcM" secondAttribute="leading" constant="8" id="jMa-2H-429"/>
+                                                <constraint firstAttribute="bottom" secondItem="nVF-Rb-MDE" secondAttribute="bottom" constant="123" id="kG7-17-zoV"/>
+                                                <constraint firstItem="VLg-g8-zrg" firstAttribute="leading" secondItem="EoV-m2-OcM" secondAttribute="leading" constant="8" id="ktS-DE-Auv"/>
+                                                <constraint firstAttribute="trailing" secondItem="yWe-V2-DzU" secondAttribute="trailing" constant="7" id="lMl-Em-5pr"/>
+                                                <constraint firstAttribute="trailing" secondItem="nVF-Rb-MDE" secondAttribute="trailing" constant="102" id="v3m-VT-daX"/>
+                                                <constraint firstItem="yWe-V2-DzU" firstAttribute="top" secondItem="EoV-m2-OcM" secondAttribute="top" constant="42" id="vKW-uC-liq"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="EoV-m2-OcM" secondAttribute="bottom" constant="7" id="35b-s0-ji2"/>
-                                        <constraint firstItem="EoV-m2-OcM" firstAttribute="top" secondItem="GrW-Mz-kEN" secondAttribute="topMargin" constant="7" id="ULa-ET-0OB"/>
-                                        <constraint firstItem="EoV-m2-OcM" firstAttribute="leading" secondItem="GrW-Mz-kEN" secondAttribute="leadingMargin" constant="11" id="plh-FW-V5a"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="EoV-m2-OcM" secondAttribute="trailing" constant="10" id="qEJ-Kc-KkD"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="EoV-m2-OcM" secondAttribute="bottom" constant="7" id="745-2O-qak"/>
+                                        <constraint firstItem="EoV-m2-OcM" firstAttribute="leading" secondItem="GrW-Mz-kEN" secondAttribute="leadingMargin" constant="11" id="HPx-5N-QJU"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="EoV-m2-OcM" secondAttribute="trailing" constant="11" id="Mna-1G-Uri"/>
+                                        <constraint firstItem="EoV-m2-OcM" firstAttribute="top" secondItem="GrW-Mz-kEN" secondAttribute="topMargin" constant="7" id="cdl-3V-wTR"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>

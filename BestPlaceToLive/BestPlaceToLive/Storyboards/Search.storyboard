@@ -47,7 +47,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="191" id="ZeB-Yw-NhS">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="191" id="ZeB-Yw-NhS" customClass="CityTableViewCell" customModule="BestPlaceToLive" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="151" width="414" height="191"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZeB-Yw-NhS" id="GrW-Mz-kEN">
@@ -97,6 +97,12 @@
                                         <constraint firstItem="EoV-m2-OcM" firstAttribute="top" secondItem="GrW-Mz-kEN" secondAttribute="topMargin" constant="7" id="cdl-3V-wTR"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cardView" destination="EoV-m2-OcM" id="2iP-qE-78e"/>
+                                    <outlet property="cityImageView" destination="yWe-V2-DzU" id="dbs-w6-7WK"/>
+                                    <outlet property="cityLabel" destination="nVF-Rb-MDE" id="nxB-WG-Yyh"/>
+                                    <outlet property="stateZipLabel" destination="VLg-g8-zrg" id="TgO-Ck-dEe"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

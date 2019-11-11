@@ -1,7 +1,64 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Search-->
+        <scene sceneID="6sk-NM-Bpg">
+            <objects>
+                <tableViewController title="Search" id="Dtu-Uv-YSY" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="h1S-Qq-Tw0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="ia7-B9-oHr">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" placeholder="Search City" translatesAutoresizingMaskIntoConstraints="NO" id="dKl-mK-66e">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o86-Ub-qy0">
+                                    <rect key="frame" x="124" y="71" width="166" height="41"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                    <state key="normal" title="Set Preferences">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="o86-Ub-qy0" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="124" id="2Qz-fu-3ty"/>
+                                <constraint firstAttribute="trailing" secondItem="o86-Ub-qy0" secondAttribute="trailing" constant="124" id="5x8-Wc-wMC"/>
+                                <constraint firstItem="dKl-mK-66e" firstAttribute="top" secondItem="ia7-B9-oHr" secondAttribute="top" id="7dm-tT-isT"/>
+                                <constraint firstItem="o86-Ub-qy0" firstAttribute="top" secondItem="dKl-mK-66e" secondAttribute="bottom" constant="15" id="Atq-3D-Udw"/>
+                                <constraint firstItem="dKl-mK-66e" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" id="MKX-XN-UR1"/>
+                                <constraint firstAttribute="trailing" secondItem="dKl-mK-66e" secondAttribute="trailing" id="WnU-tE-rV0"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="79" id="ZeB-Yw-NhS">
+                                <rect key="frame" x="0.0" y="151" width="414" height="79"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZeB-Yw-NhS" id="GrW-Mz-kEN">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Dtu-Uv-YSY" id="5dQ-AY-5uF"/>
+                            <outlet property="delegate" destination="Dtu-Uv-YSY" id="ZpW-i2-Try"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QcM-fp-yF4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-18.840579710144929" y="51.5625"/>
+        </scene>
+    </scenes>
 </document>

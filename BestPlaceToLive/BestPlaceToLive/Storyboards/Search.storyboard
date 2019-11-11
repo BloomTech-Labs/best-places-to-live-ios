@@ -41,12 +41,24 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="79" id="ZeB-Yw-NhS">
-                                <rect key="frame" x="0.0" y="151" width="414" height="79"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="191" id="ZeB-Yw-NhS">
+                                <rect key="frame" x="0.0" y="151" width="414" height="191"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZeB-Yw-NhS" id="GrW-Mz-kEN">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="191"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoV-m2-OcM">
+                                            <rect key="frame" x="31" y="18" width="353" height="155"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="EoV-m2-OcM" secondAttribute="bottom" constant="7" id="35b-s0-ji2"/>
+                                        <constraint firstItem="EoV-m2-OcM" firstAttribute="top" secondItem="GrW-Mz-kEN" secondAttribute="topMargin" constant="7" id="ULa-ET-0OB"/>
+                                        <constraint firstItem="EoV-m2-OcM" firstAttribute="leading" secondItem="GrW-Mz-kEN" secondAttribute="leadingMargin" constant="11" id="plh-FW-V5a"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="EoV-m2-OcM" secondAttribute="trailing" constant="10" id="qEJ-Kc-KkD"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

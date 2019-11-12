@@ -15,6 +15,9 @@
 		B514CB022379C31200146E13 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB012379C31200146E13 /* Explore.storyboard */; };
 		B514CB042379C57F00146E13 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB032379C57F00146E13 /* Search.storyboard */; };
 		B514CB062379C59000146E13 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB052379C59000146E13 /* Favorites.storyboard */; };
+		B514CB08237A05E400146E13 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB07237A05E300146E13 /* Login.storyboard */; };
+		B514CB0A237A1B6A00146E13 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB09237A1B6A00146E13 /* LoginVC.swift */; };
+		B514CB0C237A1C7F00146E13 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB0B237A1C7F00146E13 /* SignupVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		B514CB012379C31200146E13 /* Explore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		B514CB032379C57F00146E13 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		B514CB052379C59000146E13 /* Favorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
+		B514CB07237A05E300146E13 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		B514CB09237A1B6A00146E13 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		B514CB0B237A1C7F00146E13 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,8 @@
 		B514CAFB2379C2A800146E13 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B514CB09237A1B6A00146E13 /* LoginVC.swift */,
+				B514CB0B237A1C7F00146E13 /* SignupVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -125,6 +133,7 @@
 				B514CB012379C31200146E13 /* Explore.storyboard */,
 				B514CB032379C57F00146E13 /* Search.storyboard */,
 				B514CB052379C59000146E13 /* Favorites.storyboard */,
+				B514CB07237A05E300146E13 /* Login.storyboard */,
 				75963D8723769579002F1D37 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -197,6 +206,7 @@
 			files = (
 				B514CB022379C31200146E13 /* Explore.storyboard in Resources */,
 				75963D8923769579002F1D37 /* LaunchScreen.storyboard in Resources */,
+				B514CB08237A05E400146E13 /* Login.storyboard in Resources */,
 				B514CB062379C59000146E13 /* Favorites.storyboard in Resources */,
 				75963D8623769579002F1D37 /* Assets.xcassets in Resources */,
 				75963D8423769566002F1D37 /* Main.storyboard in Resources */,
@@ -211,8 +221,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B514CB0C237A1C7F00146E13 /* SignupVC.swift in Sources */,
 				75963D7D23769566002F1D37 /* AppDelegate.swift in Sources */,
 				75963D7F23769566002F1D37 /* SceneDelegate.swift in Sources */,
+				B514CB0A237A1B6A00146E13 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

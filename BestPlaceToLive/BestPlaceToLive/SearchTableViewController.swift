@@ -50,16 +50,22 @@ class SearchTableViewController: UITableViewController {
         activityView.startAnimating()
     }
     
+    private func showAlertForInvalidSearchQuery() {
+        let alert = UIAlertController(title: "Please Try Again", message: "Your search criteria is invalid", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel , handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension SearchTableViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //dismiss keyboard as soon as enter clicked
         showActivityIndicatory()
         guard let searchText = searchBar.text else {return}
         self.searchTitle.text = "Waiting for \(searchText)"
-        
-        
         //use if statement to check for improper strings, and check if the search parameter returns the right result. e.g if its a town, show a alert view ""typed word" is not a valid search query, please search using a city name.
     }
     

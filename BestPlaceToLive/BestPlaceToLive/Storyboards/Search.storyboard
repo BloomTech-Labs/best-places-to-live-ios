@@ -149,8 +149,8 @@
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Prefernces" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pv3-aC-Ugx">
-                                                <rect key="frame" x="90" y="30" width="234" height="36"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Preferences" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pv3-aC-Ugx">
+                                                <rect key="frame" x="85" y="30" width="244" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -175,6 +175,9 @@
                                                 <state key="normal" title="Done">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="doneButtonTapped:" destination="XBO-DX-pBe" eventType="touchUpInside" id="7UP-5c-Be3"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUW-eK-iNx">
                                                 <rect key="frame" x="228" y="228" width="151" height="39"/>
@@ -192,7 +195,7 @@
                                             <constraint firstItem="FUW-eK-iNx" firstAttribute="top" secondItem="baS-23-YjY" secondAttribute="bottom" constant="51" id="9Jw-9o-C2T"/>
                                             <constraint firstItem="x48-Ss-put" firstAttribute="top" secondItem="pv3-aC-Ugx" secondAttribute="bottom" constant="72" id="B9k-37-4lN"/>
                                             <constraint firstItem="x48-Ss-put" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="23" id="EQS-dP-sZF"/>
-                                            <constraint firstItem="pv3-aC-Ugx" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="90" id="EY8-Xn-yfh"/>
+                                            <constraint firstItem="pv3-aC-Ugx" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="85" id="EY8-Xn-yfh"/>
                                             <constraint firstItem="IlF-mG-CMZ" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="138" id="ING-le-JG4"/>
                                             <constraint firstAttribute="trailing" secondItem="Bzg-md-DDn" secondAttribute="trailing" constant="91" id="LF7-4a-kaR"/>
                                             <constraint firstItem="FUW-eK-iNx" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="228" id="Ovh-JH-TR8"/>
@@ -204,7 +207,7 @@
                                             <constraint firstItem="baS-23-YjY" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="228" id="bzs-Ol-APl"/>
                                             <constraint firstAttribute="trailing" secondItem="baS-23-YjY" secondAttribute="trailing" constant="23" id="cta-XC-G7B"/>
                                             <constraint firstItem="Bzg-md-DDn" firstAttribute="top" secondItem="IlF-mG-CMZ" secondAttribute="bottom" constant="169" id="eKY-ce-ScF"/>
-                                            <constraint firstAttribute="trailing" secondItem="pv3-aC-Ugx" secondAttribute="trailing" constant="90" id="emB-Fk-nzP"/>
+                                            <constraint firstAttribute="trailing" secondItem="pv3-aC-Ugx" secondAttribute="trailing" constant="85" id="emB-Fk-nzP"/>
                                             <constraint firstItem="IlF-mG-CMZ" firstAttribute="top" secondItem="pv3-aC-Ugx" secondAttribute="bottom" constant="223" id="oQK-DH-ZzQ"/>
                                             <constraint firstItem="IlF-mG-CMZ" firstAttribute="top" secondItem="FUW-eK-iNx" secondAttribute="bottom" constant="22" id="qbl-dR-XT8"/>
                                             <constraint firstAttribute="trailing" secondItem="x48-Ss-put" secondAttribute="trailing" constant="253" id="rVe-mK-b6W"/>

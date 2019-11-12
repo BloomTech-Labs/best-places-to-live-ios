@@ -119,31 +119,105 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcM-fp-yF4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="284" y="52"/>
+            <point key="canvasLocation" x="272" y="44"/>
         </scene>
-        <!--View Controller-->
+        <!--Select Preferences-->
         <scene sceneID="VCh-6O-w6N">
             <objects>
-                <viewController id="XBO-DX-pBe" sceneMemberID="viewController">
+                <viewController title="Select Preferences" id="XBO-DX-pBe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cjn-zO-99i">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="617"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cK6-c0-LIC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="617"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cy-yi-XC8">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="617"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baS-23-YjY">
+                                                <rect key="frame" x="228" y="138" width="163" height="39"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Factor">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x48-Ss-put">
+                                                <rect key="frame" x="23" y="138" width="138" height="39"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Factor">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Prefernces" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pv3-aC-Ugx">
+                                                <rect key="frame" x="90" y="30" width="234" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8J-YZ-3S8">
+                                                <rect key="frame" x="23" y="228" width="138" height="39"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Factor">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IlF-mG-CMZ">
+                                                <rect key="frame" x="138" y="289" width="138" height="39"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Factor">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzg-md-DDn">
+                                                <rect key="frame" x="91" y="497" width="232" height="30"/>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUW-eK-iNx">
+                                                <rect key="frame" x="228" y="228" width="151" height="39"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Factor">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="IlF-mG-CMZ" firstAttribute="top" secondItem="c8J-YZ-3S8" secondAttribute="bottom" constant="22" id="4c2-W3-5oI"/>
+                                            <constraint firstAttribute="trailing" secondItem="c8J-YZ-3S8" secondAttribute="trailing" constant="253" id="707-Iq-Hko"/>
+                                            <constraint firstItem="baS-23-YjY" firstAttribute="top" secondItem="pv3-aC-Ugx" secondAttribute="bottom" constant="72" id="8tR-3j-c8E"/>
+                                            <constraint firstItem="FUW-eK-iNx" firstAttribute="top" secondItem="baS-23-YjY" secondAttribute="bottom" constant="51" id="9Jw-9o-C2T"/>
+                                            <constraint firstItem="x48-Ss-put" firstAttribute="top" secondItem="pv3-aC-Ugx" secondAttribute="bottom" constant="72" id="B9k-37-4lN"/>
+                                            <constraint firstItem="x48-Ss-put" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="23" id="EQS-dP-sZF"/>
+                                            <constraint firstItem="pv3-aC-Ugx" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="90" id="EY8-Xn-yfh"/>
+                                            <constraint firstItem="IlF-mG-CMZ" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="138" id="ING-le-JG4"/>
+                                            <constraint firstAttribute="trailing" secondItem="Bzg-md-DDn" secondAttribute="trailing" constant="91" id="LF7-4a-kaR"/>
+                                            <constraint firstItem="FUW-eK-iNx" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="228" id="Ovh-JH-TR8"/>
+                                            <constraint firstAttribute="trailing" secondItem="FUW-eK-iNx" secondAttribute="trailing" constant="35" id="Pkz-7M-C6m"/>
+                                            <constraint firstAttribute="trailing" secondItem="IlF-mG-CMZ" secondAttribute="trailing" constant="138" id="VKT-Ha-xWX"/>
+                                            <constraint firstItem="c8J-YZ-3S8" firstAttribute="top" secondItem="x48-Ss-put" secondAttribute="bottom" constant="51" id="VdN-Ha-mL0"/>
+                                            <constraint firstItem="Bzg-md-DDn" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="91" id="ZZI-tz-vEo"/>
+                                            <constraint firstItem="c8J-YZ-3S8" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="23" id="bzc-G1-ERQ"/>
+                                            <constraint firstItem="baS-23-YjY" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="228" id="bzs-Ol-APl"/>
+                                            <constraint firstAttribute="trailing" secondItem="baS-23-YjY" secondAttribute="trailing" constant="23" id="cta-XC-G7B"/>
+                                            <constraint firstItem="Bzg-md-DDn" firstAttribute="top" secondItem="IlF-mG-CMZ" secondAttribute="bottom" constant="169" id="eKY-ce-ScF"/>
+                                            <constraint firstAttribute="trailing" secondItem="pv3-aC-Ugx" secondAttribute="trailing" constant="90" id="emB-Fk-nzP"/>
+                                            <constraint firstItem="IlF-mG-CMZ" firstAttribute="top" secondItem="pv3-aC-Ugx" secondAttribute="bottom" constant="223" id="oQK-DH-ZzQ"/>
+                                            <constraint firstItem="IlF-mG-CMZ" firstAttribute="top" secondItem="FUW-eK-iNx" secondAttribute="bottom" constant="22" id="qbl-dR-XT8"/>
+                                            <constraint firstAttribute="trailing" secondItem="x48-Ss-put" secondAttribute="trailing" constant="253" id="rVe-mK-b6W"/>
+                                            <constraint firstItem="pv3-aC-Ugx" firstAttribute="top" secondItem="0cy-yi-XC8" secondAttribute="top" constant="30" id="sMG-UI-yQ2"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="0cy-yi-XC8" firstAttribute="width" secondItem="cK6-c0-LIC" secondAttribute="width" id="8CB-lO-3PP"/>
-                                    <constraint firstAttribute="bottom" secondItem="0cy-yi-XC8" secondAttribute="bottom" id="J76-kr-WsJ"/>
-                                    <constraint firstItem="0cy-yi-XC8" firstAttribute="height" secondItem="cK6-c0-LIC" secondAttribute="height" id="M54-Vb-Fr6"/>
-                                    <constraint firstAttribute="trailing" secondItem="0cy-yi-XC8" secondAttribute="trailing" id="W4H-pp-mfK"/>
-                                    <constraint firstItem="0cy-yi-XC8" firstAttribute="leading" secondItem="cK6-c0-LIC" secondAttribute="leading" id="eP6-h9-AXm"/>
-                                    <constraint firstItem="0cy-yi-XC8" firstAttribute="top" secondItem="cK6-c0-LIC" secondAttribute="top" id="rMc-3U-5QA"/>
+                                    <constraint firstItem="0cy-yi-XC8" firstAttribute="leading" secondItem="cK6-c0-LIC" secondAttribute="leading" id="3ts-f4-OaU"/>
+                                    <constraint firstAttribute="bottom" secondItem="0cy-yi-XC8" secondAttribute="bottom" id="6A8-Ki-OeX"/>
+                                    <constraint firstItem="0cy-yi-XC8" firstAttribute="height" secondItem="cK6-c0-LIC" secondAttribute="height" id="DKG-ML-gZY"/>
+                                    <constraint firstItem="0cy-yi-XC8" firstAttribute="width" secondItem="cK6-c0-LIC" secondAttribute="width" id="WiD-HS-BWh"/>
+                                    <constraint firstItem="0cy-yi-XC8" firstAttribute="top" secondItem="cK6-c0-LIC" secondAttribute="top" id="hmx-NJ-PxK"/>
+                                    <constraint firstAttribute="trailing" secondItem="0cy-yi-XC8" secondAttribute="trailing" id="xSO-P1-8Ah"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="blq-vW-1eA"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="7pB-ww-mHg"/>
@@ -151,18 +225,18 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="cK6-c0-LIC" firstAttribute="leading" secondItem="d60-G2-F0p" secondAttribute="leading" id="AK9-89-PJP"/>
-                            <constraint firstItem="cK6-c0-LIC" firstAttribute="trailing" secondItem="d60-G2-F0p" secondAttribute="trailing" id="R0V-z3-UlE"/>
-                            <constraint firstAttribute="bottom" secondItem="cK6-c0-LIC" secondAttribute="bottom" id="nOZ-uh-WID"/>
-                            <constraint firstItem="cK6-c0-LIC" firstAttribute="top" secondItem="Cjn-zO-99i" secondAttribute="top" id="xI9-dq-hNp"/>
+                            <constraint firstItem="cK6-c0-LIC" firstAttribute="bottom" secondItem="d60-G2-F0p" secondAttribute="bottom" id="OhJ-Js-lkY"/>
+                            <constraint firstItem="cK6-c0-LIC" firstAttribute="leading" secondItem="d60-G2-F0p" secondAttribute="leading" id="Yv8-th-a8e"/>
+                            <constraint firstItem="cK6-c0-LIC" firstAttribute="top" secondItem="Cjn-zO-99i" secondAttribute="top" id="kvo-V9-4iS"/>
+                            <constraint firstItem="cK6-c0-LIC" firstAttribute="trailing" secondItem="d60-G2-F0p" secondAttribute="trailing" id="rlz-Ln-C9s"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d60-G2-F0p"/>
                     </view>
-                    <size key="freeformSize" width="414" height="896"/>
+                    <size key="freeformSize" width="414" height="617"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87S-R2-1Xn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1021.7391304347827" y="51.5625"/>
+            <point key="canvasLocation" x="1015.9420289855074" y="44.53125"/>
         </scene>
     </scenes>
 </document>

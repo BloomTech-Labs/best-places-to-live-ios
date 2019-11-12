@@ -19,15 +19,15 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="198"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <searchBar contentMode="redraw" placeholder="Search City" translatesAutoresizingMaskIntoConstraints="NO" id="dKl-mK-66e">
-                                    <rect key="frame" x="0.0" y="75" width="414" height="56"/>
+                                <searchBar contentMode="redraw" verticalCompressionResistancePriority="751" placeholder="Search City" translatesAutoresizingMaskIntoConstraints="NO" id="dKl-mK-66e">
+                                    <rect key="frame" x="0.0" y="87.5" width="414" height="56"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
                                         <outlet property="delegate" destination="Dtu-Uv-YSY" id="wyH-eF-7nB"/>
                                     </connections>
                                 </searchBar>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o86-Ub-qy0">
-                                    <rect key="frame" x="124" y="146" width="166" height="41"/>
+                                    <rect key="frame" x="124" y="158.5" width="166" height="28.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="Set Preferences">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,17 +37,17 @@
                                         <segue destination="XBO-DX-pBe" kind="presentation" modalPresentationStyle="overCurrentContext" id="t5O-a4-5oq"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Your Ideal City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNW-WA-r1m">
-                                    <rect key="frame" x="110" y="14" width="194" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Find Your Ideal City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNW-WA-r1m">
+                                    <rect key="frame" x="50" y="14" width="314" height="33.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="FNW-WA-r1m" secondAttribute="trailing" constant="110" id="DQa-vR-btD"/>
-                                <constraint firstItem="FNW-WA-r1m" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="110" id="E0B-W8-YTY"/>
+                                <constraint firstAttribute="trailing" secondItem="FNW-WA-r1m" secondAttribute="trailing" constant="50" id="DQa-vR-btD"/>
+                                <constraint firstItem="FNW-WA-r1m" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="50" id="E0B-W8-YTY"/>
                                 <constraint firstAttribute="trailing" secondItem="dKl-mK-66e" secondAttribute="trailing" id="Pgc-Ar-UNG"/>
                                 <constraint firstItem="o86-Ub-qy0" firstAttribute="top" secondItem="dKl-mK-66e" secondAttribute="bottom" constant="15" id="VCu-4w-CQE"/>
                                 <constraint firstItem="o86-Ub-qy0" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="124" id="X9N-9s-5U8"/>

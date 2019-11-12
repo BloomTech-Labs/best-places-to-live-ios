@@ -15,6 +15,7 @@
 		B514CB022379C31200146E13 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB012379C31200146E13 /* Explore.storyboard */; };
 		B514CB042379C57F00146E13 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB032379C57F00146E13 /* Search.storyboard */; };
 		B514CB062379C59000146E13 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB052379C59000146E13 /* Favorites.storyboard */; };
+		EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6D911F237B4C0500106211 /* PreferencesViewController.swift */; };
 		EF9198D22379EA5600133535 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9198D12379EA5600133535 /* SearchTableViewController.swift */; };
 		EF9198D42379FE7200133535 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9198D32379FE7200133535 /* CityTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		B514CB012379C31200146E13 /* Explore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		B514CB032379C57F00146E13 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		B514CB052379C59000146E13 /* Favorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
+		EF6D911F237B4C0500106211 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesViewController.swift; path = BestPlaceToLive/PreferencesViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF9198D12379EA5600133535 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTableViewController.swift; path = BestPlaceToLive/SearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF9198D32379FE7200133535 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CityTableViewCell.swift; path = BestPlaceToLive/CityTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				EF9198D12379EA5600133535 /* SearchTableViewController.swift */,
+				EF6D911F237B4C0500106211 /* PreferencesViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */,
 				75963D7D23769566002F1D37 /* AppDelegate.swift in Sources */,
 				EF9198D22379EA5600133535 /* SearchTableViewController.swift in Sources */,
 				EF9198D42379FE7200133535 /* CityTableViewCell.swift in Sources */,

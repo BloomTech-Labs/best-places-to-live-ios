@@ -147,41 +147,41 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="617"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baS-23-YjY">
-                                                <rect key="frame" x="228" y="138" width="163" height="39"/>
+                                                <rect key="frame" x="228" y="178" width="163" height="39"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="Factor">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x48-Ss-put">
-                                                <rect key="frame" x="23" y="138" width="138" height="39"/>
+                                                <rect key="frame" x="23" y="178" width="138" height="39"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="Factor">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Preferences" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pv3-aC-Ugx">
-                                                <rect key="frame" x="85" y="30" width="244" height="36"/>
+                                                <rect key="frame" x="85" y="70" width="244" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8J-YZ-3S8">
-                                                <rect key="frame" x="23" y="228" width="138" height="39"/>
+                                                <rect key="frame" x="23" y="268" width="138" height="39"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="Factor">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IlF-mG-CMZ">
-                                                <rect key="frame" x="138" y="289" width="138" height="39"/>
+                                                <rect key="frame" x="138" y="329" width="138" height="39"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="Factor">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzg-md-DDn">
-                                                <rect key="frame" x="91" y="497" width="232" height="41"/>
+                                                <rect key="frame" x="91" y="537" width="232" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <state key="normal" title="Done">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -191,7 +191,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUW-eK-iNx">
-                                                <rect key="frame" x="228" y="228" width="151" height="39"/>
+                                                <rect key="frame" x="228" y="268" width="151" height="39"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="Factor">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -209,6 +209,7 @@
                                             <constraint firstItem="pv3-aC-Ugx" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="85" id="EY8-Xn-yfh"/>
                                             <constraint firstItem="IlF-mG-CMZ" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="138" id="ING-le-JG4"/>
                                             <constraint firstAttribute="trailing" secondItem="Bzg-md-DDn" secondAttribute="trailing" constant="91" id="LF7-4a-kaR"/>
+                                            <constraint firstAttribute="bottom" secondItem="Bzg-md-DDn" secondAttribute="bottom" constant="39" id="MZQ-gB-zRh"/>
                                             <constraint firstItem="FUW-eK-iNx" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="228" id="Ovh-JH-TR8"/>
                                             <constraint firstAttribute="trailing" secondItem="FUW-eK-iNx" secondAttribute="trailing" constant="35" id="Pkz-7M-C6m"/>
                                             <constraint firstAttribute="trailing" secondItem="IlF-mG-CMZ" secondAttribute="trailing" constant="138" id="VKT-Ha-xWX"/>
@@ -222,7 +223,7 @@
                                             <constraint firstItem="IlF-mG-CMZ" firstAttribute="top" secondItem="pv3-aC-Ugx" secondAttribute="bottom" constant="223" id="oQK-DH-ZzQ"/>
                                             <constraint firstItem="IlF-mG-CMZ" firstAttribute="top" secondItem="FUW-eK-iNx" secondAttribute="bottom" constant="22" id="qbl-dR-XT8"/>
                                             <constraint firstAttribute="trailing" secondItem="x48-Ss-put" secondAttribute="trailing" constant="253" id="rVe-mK-b6W"/>
-                                            <constraint firstItem="pv3-aC-Ugx" firstAttribute="top" secondItem="0cy-yi-XC8" secondAttribute="top" constant="30" id="sMG-UI-yQ2"/>
+                                            <constraint firstItem="pv3-aC-Ugx" firstAttribute="top" secondItem="0cy-yi-XC8" secondAttribute="top" constant="70" id="sMG-UI-yQ2"/>
                                         </constraints>
                                     </view>
                                 </subviews>

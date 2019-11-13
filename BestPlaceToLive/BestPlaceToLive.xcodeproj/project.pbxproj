@@ -19,6 +19,9 @@
 		B514CB11237B0A8600146E13 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB10237B0A8600146E13 /* SettingsController.swift */; };
 		B514CB13237B0D8600146E13 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB12237B0D8600146E13 /* LoginRequest.swift */; };
 		B514CB15237B0D9900146E13 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB14237B0D9900146E13 /* Login.swift */; };
+		B514CB17237B696D00146E13 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB16237B696D00146E13 /* APIController.swift */; };
+		B514CB19237B6D1600146E13 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB18237B6D1600146E13 /* City.swift */; };
+		B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB1A237B73EC00146E13 /* CityBreakdown.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		B514CB10237B0A8600146E13 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B514CB12237B0D8600146E13 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		B514CB14237B0D9900146E13 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		B514CB16237B696D00146E13 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		B514CB18237B6D1600146E13 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = City.swift; path = BestPlaceToLive/Networking/City.swift; sourceTree = SOURCE_ROOT; };
+		B514CB1A237B73EC00146E13 /* CityBreakdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CityBreakdown.swift; path = BestPlaceToLive/Networking/CityBreakdown.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,8 @@
 			children = (
 				B514CB12237B0D8600146E13 /* LoginRequest.swift */,
 				B514CB14237B0D9900146E13 /* Login.swift */,
+				B514CB18237B6D1600146E13 /* City.swift */,
+				B514CB1A237B73EC00146E13 /* CityBreakdown.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -144,6 +152,7 @@
 		B514CB002379C2A900146E13 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				B514CB16237B696D00146E13 /* APIController.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -233,6 +242,9 @@
 				75963D7D23769566002F1D37 /* AppDelegate.swift in Sources */,
 				75963D7F23769566002F1D37 /* SceneDelegate.swift in Sources */,
 				B514CB13237B0D8600146E13 /* LoginRequest.swift in Sources */,
+				B514CB19237B6D1600146E13 /* City.swift in Sources */,
+				B514CB17237B696D00146E13 /* APIController.swift in Sources */,
+				B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

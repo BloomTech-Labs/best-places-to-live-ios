@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+class MockDataLoader: NetworkDataLoader {
+	var data: Data?
+	var error: NetworkError?
+	
+	func loadData(from request: URL, completion: @escaping (Data?, Error?) -> Void) {
+		DispatchQueue.global().async {
+			completion(self.data, self.error)
+		}
+	}
+	
+	func loadData(from request: URLRequest, completion: @escaping (Data?, Error?) -> Void) {
+		DispatchQueue.global().async {
+			completion(self.data, self.error)
+		}
+	}
+}

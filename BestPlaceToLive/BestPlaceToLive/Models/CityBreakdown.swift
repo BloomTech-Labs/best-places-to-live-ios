@@ -9,13 +9,15 @@
 import Foundation
 
 struct CityBreakdown: Codable {
+	
+	let id: String
 	let airPollutionTelescore: Double
-	let airportHubIndexDetail: Int
+	let airportHubIndexDetail: Double
 	let airportHubTelescore: Double
-	let apartmentRentLarge: Int
-	let apartmentRentMedium: Int
-	let apartmentRentSmall: Int
-	let avgCommuteTime: Int
+	let apartmentRentLarge: Double
+	let apartmentRentMedium: Double
+	let apartmentRentSmall: Double
+	let avgCommuteTime: Double
 	let avgCommuteTimeScore: String
 	let businessFreedom: Double
 	let businessFreedomTelescore: Double
@@ -23,66 +25,66 @@ struct CityBreakdown: Codable {
 	let companyProfitTaxRate: Double
 	let companyProfitTaxRateTelescore: Double
 	let consumerPriceIndexTelescore: Double
-	let corruptionFreedom: Int
+	let corruptionFreedom: Double
 	let corruptionFreedomTelescore: Double
 	let costApples: Double
 	let costBread: Double
 	let costCappuccino: Double
-	let costCinema: Int
-	let costFitnessClub: Int
+	let costCinema: Double
+	let costFitnessClub: Double
 	let costImportBeer: Double
-	let costOfLiving: Int
-	let costPublicTransport: Int
-	let costRestaurantMeal: Int
+	let costOfLiving: String?
+	let costPublicTransport: Double
+	let costRestaurantMeal: Double
 	let costTaxi: Double
 	let country: String
-	let coworkingSpacesTelescore: Int
+	let coworkingSpacesTelescore: Double
 	let crimeRateTelescore: Double
 	let cultureArtGalleriesTelescore: Double
-	let cultureArtGalleriesVenueCount: Int
-	let cultureCinemasVenueCount: Int
+	let cultureArtGalleriesVenueCount: Double
+	let cultureCinemasVenueCount: Double
 	let cultureCinemaTelescore: Double
 	let cultureComedyClubsTelescore: Double
-	let cultureComedyClubsVenueCount: Int
-	let cultureConcertsTelescore: Int
-	let cultureConcertsVenueCount: Int
+	let cultureComedyClubsVenueCount: Double
+	let cultureConcertsTelescore: Double
+	let cultureConcertsVenueCount: Double
 	let cultureHistoricalSitesTelescore: Double
-	let cultureHistoricalSitesVenueCount: Int
+	let cultureHistoricalSitesVenueCount: Double
 	let cultureMuseumsTelescore: Double
-	let cultureMuseumsVenueCount: Int
+	let cultureMuseumsVenueCount: Double
 	let culturePerformingArtsTelescore: Double
-	let culturePerformingArtsVenueCount: Int
+	let culturePerformingArtsVenueCount: Double
 	let cultureSportsTelescore: Double
-	let cultureSportsVenueCount: Int
+	let cultureSportsVenueCount: Double
 	let cultureZoosTelescore: Double
-	let cultureZoosVenueCount: Int
+	let cultureZoosVenueCount: Double
 	let currencyUrbanArea: String
-	let currencyUrbanAreaExchangeRate: Int
+	let currencyUrbanAreaExchangeRate: Double
 	let drinkingWaterQualityTelescore: Double
 	let elderlyPeople: Double
-	let elevation: Int
-	let elevationHills: Int
-	let elevationMountains: Int
+	let elevation: Double
+	let elevationHills: Double
+	let elevationMountains: Double
 	let elevationPeaks: Double
 	let elevationPeaksTelescore: Double
-	let employerSocialTaxesCapSocSec: Int
+	let employerSocialTaxesCapSocSec: Double
 	let employerSocialTaxesOther: Double
 	let employerSocialTaxesSocSec: Double
-	let englishSkillsDetail: Int
-	let englishSkillsTelescore: Int
-	let eventsCount: Int
-	let eventsLast12Months: Int
-	let eventsTelescore: Int
+	let englishSkillsDetail: Double
+	let englishSkillsTelescore: Double
+	let eventsCount: Double
+	let eventsLast12Months: Double
+	let eventsTelescore: Double
 	let fullName: String
-	let funderbeamTotalStartups: Int
-	let funderbeamVentureCapitalTelescore: Int
-	let fundingAcceleratorNames: String
-	let fundingAcceleratorsDetail: Int
+	let funderbeamTotalStartups: Double
+	let funderbeamVentureCapitalTelescore: Double
+	let fundingAcceleratorNames: String?
+	let fundingAcceleratorsDetail: Double?
 	let gdpGrowthRate: Double
 	let gdpGrowthRateTelescore: Double
 	let gdpPerCapita: Double
 	let gdpPerCapitaTelescore: Double
-	let geonameId: Int
+	let geonameId: Double
 	let gradeBusinessFreedom: String
 	let gradeCommute: String
 	let gradeCostOfLiving: String
@@ -110,11 +112,10 @@ struct CityBreakdown: Codable {
 	let healthcareLifeExpectancy: Double
 	let healthcareLifeExpectancyTelescore: Double
 	let healthcareQualityTelescore: Double
-	let humanCitiesPageUrls: Double
-	let id: Int
+	let humanCitiesPageUrls: String
 	let incomeTaxTelescore: Double
 	let laborRestrictions: Double
-	let laborRestrictionsTelescore: Int
+	let laborRestrictionsTelescore: Double
 	let lgbtDetailAdoption: String
 	let lgbtDetailAgeOfConsent: String
 	let lgbtDetailChangingGender: String
@@ -128,18 +129,18 @@ struct CityBreakdown: Codable {
 	let lgbtIndex: Double
 	let lgbtIndexTelescore: Double
 	let lifeExpectancy: Double
-	let location: Double
+	let location: [Double]
 	let medianAge: Double
-	let meetupsDetailTotalEvents: Int
-	let meetupsGroups: Int
-	let meetupsMembers: Int
-	let meetupsTelescore: Int
+	let meetupsDetailTotalEvents: Double
+	let meetupsGroups: Double
+	let meetupsMembers: Double
+	let meetupsTelescore: Double
 	let name: String
 	let networkDownload: Double
 	let networkDownloadTelescore: Double
 	let networkUpload: Double
 	let networkUploadTelescore: Double
-	let photo: Double
+	let photo: String
 	let pisaDetailHappiness: Double
 	let pisaDetailMathHighPerformers: Double
 	let pisaDetailMathLowPerformers: Double
@@ -150,16 +151,16 @@ struct CityBreakdown: Codable {
 	let pisaDetailScienceHighPerformers: Double
 	let pisaDetailScienceLowPerformers: Double
 	let pisaDetailScienceMeanScores: Double
-	let pisaMathsRanking: Int
-	let pisaRanking: Int
+	let pisaMathsRanking: Double
+	let pisaRanking: Double
 	let pisaRankingTelescore: Double
-	let pisaReadingRanking: Int
-	let pisaScienceRanking: Int
-	let population: Int
+	let pisaReadingRanking: Double
+	let pisaScienceRanking: Double
+	let population: Double
 	let populationSize: Double
 	let populationUaCenterDensity: Double
 	let populationUaDensity: Double
-	let qualityOfUniversitiesTelescore: Int
+	let qualityOfUniversitiesTelescore: Double?
 	let rentIndexTelescore: Double
 	let restaurantPriceIndex: Double
 	let scoreBusinessFreedom: Double
@@ -180,42 +181,42 @@ struct CityBreakdown: Codable {
 	let scoreTotal: Double
 	let scoreTravelConnectivity: Double
 	let scoreVentureCapital: Double
-	let seasideAccessTelescore: Int
-	let seasideSeaside: Int
+	let seasideAccessTelescore: Double
+	let seasideSeaside: Double?
 	let shortName: String
 	let spokenLanguages: String
-	let startupClimateInvestors: Int
-	let startupClimateNewStartups: Int
-	let startupClimateNewStartupsTelescore: Int
+	let startupClimateInvestors: Double
+	let startupClimateNewStartups: Double
+	let startupClimateNewStartupsTelescore: Double
 	let startupClimateSceneTelescore: Double
-	let startupClimateStartupsTelescore: Int
-	let startupJobsAvailable: Int
-	let startupJobsAvailableTelescore: Int
-	let startupSalaries: Int
-	let startupSalariesDetail: Int
-	let state: Int
+	let startupClimateStartupsTelescore: Double
+	let startupJobsAvailable: Double
+	let startupJobsAvailableTelescore: Double
+	let startupSalaries: Double
+	let startupSalariesDetail: Double
+	let state: String
 	let taxVat: Double
-	let timeOverheadCompanyTaxes: Int
+	let timeOverheadCompanyTaxes: Double
 	let timeToOpenBusiness: Double
 	let timeToOpenBusinessTelescore: Double
 	let timeZone: String
 	let toleranceTowardsMinoritiesTelescore: Double
 	let trafficIndexTelescore: Double
-	let trainTransportTelescore: Double
+	let traDoubleransportTelescore: Double
 	let unemploymentRate: Double
-	let universitiesBestRankedName: String
-	let universitiesBestRankedRank: Int
+	let universitiesBestRankedName: String?
+	let universitiesBestRankedRank: Double?
 	let urbanGreeneryTelescore: Double
 	let weatherAvDayLength: Double
-	let weatherAverageHigh: Double
-	let weatherAverageLow: Double
-	let weatherAvNumberClearDays: Int
-	let weatherAvNumberRainyDays: Int
-	let weatherAvPercentChanceClearSkies: Double
-	let weatherAvPossibilitySunshine: Double
-	let weatherSunshineAmount: Double
+	let weatherAverageHigh: String
+	let weatherAverageLow: String
+	let weatherAvNumberClearDays: Double?
+	let weatherAvNumberRainyDays: Double
+	let weatherAvPercentChanceClearSkies: Double?
+	let weatherAvPossibilitySunshine: Double?
+	let weatherSunshineAmount: String
 	let weatherType: String
-	let workfromCoworkingSpacesCount: Int
+	let workfromCoworkingSpacesCount: Double
 	
 	enum CodingKeys: String, CodingKey {
 		case id = "_id"
@@ -235,13 +236,13 @@ struct CityBreakdown: Codable {
 		case consumerPriceIndexTelescore = "consumer-price-index-telescore"
 		case corruptionFreedom = "corruption-freedom"
 		case corruptionFreedomTelescore = "corruption-freedom-telescore"
-		case costOfLiving = "cost_of_living"
 		case costApples = "cost-apples"
 		case costBread = "cost-bread"
 		case costCappuccino = "cost-cappuccino"
 		case costCinema = "cost-cinema"
 		case costFitnessClub = "cost-fitness-club"
 		case costImportBeer = "cost-import-beer"
+		case costOfLiving = "cost_of_living"
 		case costPublicTransport = "cost-public-transport"
 		case costRestaurantMeal = "cost-restaurant-meal"
 		case costTaxi = "cost-taxi"
@@ -410,7 +411,7 @@ struct CityBreakdown: Codable {
 		case timeToOpenBusinessTelescore = "time-to-open-business-telescore"
 		case toleranceTowardsMinoritiesTelescore = "tolerance-towards-minorities-telescore"
 		case trafficIndexTelescore = "traffic-index-telescore"
-		case trainTransportTelescore = "train-transport-telescore"
+		case traDoubleransportTelescore = "train-transport-telescore"
 		case unemploymentRate = "unemployment-rate"
 		case universitiesBestRankedName = "universities-best-ranked-name"
 		case universitiesBestRankedRank = "universities-best-ranked-rank"

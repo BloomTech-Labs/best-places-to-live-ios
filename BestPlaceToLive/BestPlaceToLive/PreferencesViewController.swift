@@ -41,7 +41,20 @@ class PreferencesViewController: UIViewController {
          factor4Button.layer.borderWidth = 2
          factor5Button.layer.borderWidth = 2
         
-        factor1Button.layer.borderColor = UIColor(red: 127.0/255.0, green: 198.0/255.0, blue: 164.0/255.0, alpha: 1).cgColor
+        factor1Button.backgroundColor = .white
+        factor2Button.backgroundColor = .white
+        factor3Button.backgroundColor = .white
+        factor4Button.backgroundColor = .white
+        factor5Button.backgroundColor = .white
+        
+        savePreferencesButton.layer.cornerRadius = 10
+        savePreferencesButton.backgroundColor = .white
+        savePreferencesButton.layer.borderWidth = 2
+        
+        exploreButton.layer.cornerRadius = 10
+        exploreButton.backgroundColor = .white
+        exploreButton.layer.borderWidth = 2
+        
     }
     
 }

@@ -11,7 +11,7 @@
         <scene sceneID="6sk-NM-Bpg">
             <objects>
                 <tableViewController title="Search" id="Dtu-Uv-YSY" customClass="SearchTableViewController" customModule="BestPlaceToLive" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="h1S-Qq-Tw0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="h1S-Qq-Tw0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -27,7 +27,7 @@
                                     </connections>
                                 </searchBar>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o86-Ub-qy0">
-                                    <rect key="frame" x="124" y="158.5" width="166" height="28.5"/>
+                                    <rect key="frame" x="100" y="153.5" width="214" height="34.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="Set Preferences">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -44,16 +44,16 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="FNW-WA-r1m" secondAttribute="trailing" constant="50" id="DQa-vR-btD"/>
                                 <constraint firstItem="FNW-WA-r1m" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="50" id="E0B-W8-YTY"/>
                                 <constraint firstAttribute="trailing" secondItem="dKl-mK-66e" secondAttribute="trailing" id="Pgc-Ar-UNG"/>
-                                <constraint firstItem="o86-Ub-qy0" firstAttribute="top" secondItem="dKl-mK-66e" secondAttribute="bottom" constant="15" id="VCu-4w-CQE"/>
-                                <constraint firstItem="o86-Ub-qy0" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="124" id="X9N-9s-5U8"/>
-                                <constraint firstAttribute="bottom" secondItem="o86-Ub-qy0" secondAttribute="bottom" constant="11" id="Xr7-dT-eBm"/>
+                                <constraint firstItem="o86-Ub-qy0" firstAttribute="top" secondItem="dKl-mK-66e" secondAttribute="bottom" constant="10" id="VCu-4w-CQE"/>
+                                <constraint firstItem="o86-Ub-qy0" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="100" id="X9N-9s-5U8"/>
+                                <constraint firstAttribute="bottom" secondItem="o86-Ub-qy0" secondAttribute="bottom" constant="10" id="Xr7-dT-eBm"/>
                                 <constraint firstItem="dKl-mK-66e" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" id="ds7-JK-lmK"/>
-                                <constraint firstAttribute="trailing" secondItem="o86-Ub-qy0" secondAttribute="trailing" constant="124" id="h8R-Dt-6UQ"/>
+                                <constraint firstAttribute="trailing" secondItem="o86-Ub-qy0" secondAttribute="trailing" constant="100" id="h8R-Dt-6UQ"/>
                                 <constraint firstItem="dKl-mK-66e" firstAttribute="top" secondItem="FNW-WA-r1m" secondAttribute="bottom" constant="40" id="hfo-9K-OLt"/>
                                 <constraint firstItem="FNW-WA-r1m" firstAttribute="top" secondItem="ia7-B9-oHr" secondAttribute="top" constant="14" id="noA-LB-PGC"/>
                             </constraints>
@@ -130,7 +130,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcM-fp-yF4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="252" y="44"/>
+            <point key="canvasLocation" x="250.72463768115944" y="43.526785714285715"/>
         </scene>
         <!--Select Preferences-->
         <scene sceneID="VCh-6O-w6N">

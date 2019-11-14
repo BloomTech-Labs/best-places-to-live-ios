@@ -27,16 +27,17 @@ class SearchTableViewController: UITableViewController {
     
 
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityTableViewCell else {return UITableViewCell()}
+        cell.cardView.layer.cornerRadius = 10
+        cell.cityLabel.text = "New York"
+        cell.stateZipLabel.text = "NY"
+        cell.cardView.layer.borderWidth = 2
         return cell
     }
 
@@ -59,8 +60,9 @@ class SearchTableViewController: UITableViewController {
     }
     
     private func setupUI() {
-        setPreferencesButton.backgroundColor = .lightGray
+        setPreferencesButton.backgroundColor = .white
         setPreferencesButton.layer.cornerRadius = 10.0
+        setPreferencesButton.layer.borderWidth = 2
         
     }
     

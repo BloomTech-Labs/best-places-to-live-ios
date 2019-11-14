@@ -26,6 +26,7 @@
 		B5A4962E237CBC5A00F0EE9C /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962D237CBC5A00F0EE9C /* MockDataLoader.swift */; };
 		B5A49630237CBC9000F0EE9C /* TestJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962F237CBC9000F0EE9C /* TestJson.swift */; };
 		B5A49638237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A49637237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift */; };
+		B5FDAF01237DDF2A00C18BFF /* RegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */; };
 		EF577FBE237E0B15000C62B3 /* CityCellDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */; };
 		EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6D911F237B4C0500106211 /* PreferencesViewController.swift */; };
 		EF9198D22379EA5600133535 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9198D12379EA5600133535 /* SearchTableViewController.swift */; };
@@ -65,6 +66,7 @@
 		B5A49635237CBDBE00F0EE9C /* BestPlaceToLiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BestPlaceToLiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A49637237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestPlaceToLiveTests.swift; sourceTree = "<group>"; };
 		B5A49639237CBDBE00F0EE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequest.swift; sourceTree = "<group>"; };
 		EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CityCellDetail.storyboard; sourceTree = "<group>"; };
 		EF6D911F237B4C0500106211 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesViewController.swift; path = BestPlaceToLive/PreferencesViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF9198D12379EA5600133535 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTableViewController.swift; path = BestPlaceToLive/SearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -134,6 +136,7 @@
 		B514CAFA2379C2A700146E13 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */,
 				B514CB12237B0D8600146E13 /* LoginRequest.swift */,
 				B514CB14237B0D9900146E13 /* Login.swift */,
 				B514CB18237B6D1600146E13 /* City.swift */,
@@ -321,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5FDAF01237DDF2A00C18BFF /* RegistrationRequest.swift in Sources */,
 				EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */,
 				B514CB11237B0A8600146E13 /* SettingsController.swift in Sources */,
 				B514CB15237B0D9900146E13 /* Login.swift in Sources */,

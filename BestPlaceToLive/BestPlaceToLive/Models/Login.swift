@@ -9,13 +9,15 @@
 import Foundation
 
 struct Login: Codable {
+	
+	let id: String
+	let name: String
+	let email: String
+	let location: String?
+	let token: String
+	
 	enum CodingKeys: String, CodingKey {
 		case id = "_id"
-		case token
-		case username
+		case name, email, location, token
 	}
-	
-	let id: Int
-	let username: String
-	let token: String
 }

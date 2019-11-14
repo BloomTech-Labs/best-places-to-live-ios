@@ -16,7 +16,7 @@ class SettingsController {
 	private let keychain = Keychain(service: "com.bradleyyin.BestPlaceToLive")
 	
 	private let tokenKey = "token_key"
-	private let usernameKey = "username_key"
+	private let emailKey = "username_key"
 	private let userPasswordKey = "user_password_key"
 	private let userImgKey = "user_img_key"
 	private let saveProfileKey = "save_profile_key"
@@ -61,16 +61,16 @@ class SettingsController {
 	
 	private(set) var userCredentials: LoginRequest? {
 		get {
-			guard let username = keychain[usernameKey], let password = keychain[userPasswordKey] else { return nil }
-			return LoginRequest(username: username, password: password)
+			guard let email = keychain[emailKey], let password = keychain[userPasswordKey] else { return nil }
+			return LoginRequest(email: email, password: password)
 		}
 		set {
 			guard let newValue = newValue else {
-				keychain[usernameKey] = nil
+				keychain[emailKey] = nil
 				keychain[userPasswordKey] = nil
 				return
 			}
-			keychain[usernameKey] = newValue.username
+			keychain[emailKey] = newValue.email
 			keychain[userPasswordKey] = newValue.password
 		}
 	}

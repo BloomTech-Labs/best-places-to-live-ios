@@ -191,11 +191,15 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPc-Q6-fv4">
+                                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPc-Q6-fv4">
                                                 <rect key="frame" x="140" y="492.5" width="134" height="216"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="216" id="BFg-yS-S0Z"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="XBO-DX-pBe" id="tai-FW-o6u"/>
+                                                    <outlet property="delegate" destination="XBO-DX-pBe" id="lj0-f2-MS2"/>
+                                                </connections>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance From Current City:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fx9-LY-yAd">
                                                 <rect key="frame" x="35" y="472" width="259" height="20.5"/>
@@ -229,8 +233,12 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <pickerView contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kzw-cH-kBT">
+                                            <pickerView tag="2" contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kzw-cH-kBT">
                                                 <rect key="frame" x="140" y="759" width="134" height="216"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="XBO-DX-pBe" id="Zdl-DW-7SE"/>
+                                                    <outlet property="delegate" destination="XBO-DX-pBe" id="QHe-ca-cct"/>
+                                                </connections>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzg-md-DDn">
                                                 <rect key="frame" x="100" y="1066" width="214" height="41"/>

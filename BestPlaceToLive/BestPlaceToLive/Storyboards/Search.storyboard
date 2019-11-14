@@ -85,7 +85,7 @@
                                                     <rect key="frame" x="194" y="42" width="151" height="107"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="yWe-V2-DzU" secondAttribute="bottom" constant="6" id="0Vx-Aj-Sz2"/>
                                                 <constraint firstItem="VLg-g8-zrg" firstAttribute="top" secondItem="EoV-m2-OcM" secondAttribute="top" constant="42" id="80G-8H-ykO"/>
@@ -206,7 +206,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance From Current City:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Huz-mc-282">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size of CIty:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Huz-mc-282">
                                                 <rect key="frame" x="35" y="738.5" width="213" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -312,6 +312,17 @@
                         <viewLayoutGuide key="safeArea" id="d60-G2-F0p"/>
                     </view>
                     <size key="freeformSize" width="414" height="1160"/>
+                    <connections>
+                        <outlet property="distanceFromCityPicker" destination="vPc-Q6-fv4" id="wX0-Xn-NtW"/>
+                        <outlet property="exploreButton" destination="Bzg-md-DDn" id="ch8-QD-69m"/>
+                        <outlet property="factor1Button" destination="x48-Ss-put" id="AXn-4x-3Qf"/>
+                        <outlet property="factor2Button" destination="baS-23-YjY" id="bGi-At-gnO"/>
+                        <outlet property="factor3Button" destination="c8J-YZ-3S8" id="1Vn-Ai-drf"/>
+                        <outlet property="factor4Button" destination="FUW-eK-iNx" id="lfw-0f-DKz"/>
+                        <outlet property="factor5Button" destination="IlF-mG-CMZ" id="ic1-py-Kyt"/>
+                        <outlet property="savePreferencesButton" destination="080-Tu-rdj" id="Olp-iY-GPu"/>
+                        <outlet property="sizeOfCityPicker" destination="Kzw-cH-kBT" id="1gl-0H-DiY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87S-R2-1Xn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

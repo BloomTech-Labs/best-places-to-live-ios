@@ -10,6 +10,16 @@ import UIKit
 
 class PreferencesViewController: UIViewController {
 
+    @IBOutlet var factor1Button: UIButton!
+    @IBOutlet var factor2Button: UIButton!
+    @IBOutlet var factor3Button: UIButton!
+    @IBOutlet var factor4Button: UIButton!
+    @IBOutlet var factor5Button: UIButton!
+    @IBOutlet var exploreButton: UIButton!
+    @IBOutlet var savePreferencesButton: UIButton!
+    @IBOutlet var distanceFromCityPicker: UIPickerView!
+    @IBOutlet var sizeOfCityPicker: UIPickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

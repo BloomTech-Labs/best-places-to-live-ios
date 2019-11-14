@@ -18,6 +18,7 @@ class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
     }
     
     //MARK: - Actions
@@ -55,6 +56,12 @@ class SearchTableViewController: UITableViewController {
         let action = UIAlertAction(title: "Ok", style: .cancel , handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func setupUI() {
+        setPreferencesButton.backgroundColor = .lightGray
+        setPreferencesButton.layer.cornerRadius = 10.0
+        
     }
     
 }

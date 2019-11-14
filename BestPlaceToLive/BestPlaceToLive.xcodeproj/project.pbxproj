@@ -15,9 +15,6 @@
 		B514CB022379C31200146E13 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB012379C31200146E13 /* Explore.storyboard */; };
 		B514CB042379C57F00146E13 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB032379C57F00146E13 /* Search.storyboard */; };
 		B514CB062379C59000146E13 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB052379C59000146E13 /* Favorites.storyboard */; };
-		EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6D911F237B4C0500106211 /* PreferencesViewController.swift */; };
-		EF9198D22379EA5600133535 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9198D12379EA5600133535 /* SearchTableViewController.swift */; };
-		EF9198D42379FE7200133535 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9198D32379FE7200133535 /* CityTableViewCell.swift */; };
 		B514CB0F237B098F00146E13 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = B514CB0E237B098F00146E13 /* KeychainAccess */; };
 		B514CB11237B0A8600146E13 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB10237B0A8600146E13 /* SettingsController.swift */; };
 		B514CB13237B0D8600146E13 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB12237B0D8600146E13 /* LoginRequest.swift */; };
@@ -29,6 +26,10 @@
 		B5A4962E237CBC5A00F0EE9C /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962D237CBC5A00F0EE9C /* MockDataLoader.swift */; };
 		B5A49630237CBC9000F0EE9C /* TestJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962F237CBC9000F0EE9C /* TestJson.swift */; };
 		B5A49638237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A49637237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift */; };
+		EF577FBE237E0B15000C62B3 /* CityCellDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */; };
+		EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6D911F237B4C0500106211 /* PreferencesViewController.swift */; };
+		EF9198D22379EA5600133535 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9198D12379EA5600133535 /* SearchTableViewController.swift */; };
+		EF9198D42379FE7200133535 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9198D32379FE7200133535 /* CityTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,9 +53,6 @@
 		B514CB012379C31200146E13 /* Explore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		B514CB032379C57F00146E13 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		B514CB052379C59000146E13 /* Favorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
-		EF6D911F237B4C0500106211 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesViewController.swift; path = BestPlaceToLive/PreferencesViewController.swift; sourceTree = SOURCE_ROOT; };
-		EF9198D12379EA5600133535 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTableViewController.swift; path = BestPlaceToLive/SearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		EF9198D32379FE7200133535 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CityTableViewCell.swift; path = BestPlaceToLive/CityTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		B514CB10237B0A8600146E13 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B514CB12237B0D8600146E13 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		B514CB14237B0D9900146E13 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -67,6 +65,10 @@
 		B5A49635237CBDBE00F0EE9C /* BestPlaceToLiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BestPlaceToLiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A49637237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestPlaceToLiveTests.swift; sourceTree = "<group>"; };
 		B5A49639237CBDBE00F0EE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CityCellDetail.storyboard; sourceTree = "<group>"; };
+		EF6D911F237B4C0500106211 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesViewController.swift; path = BestPlaceToLive/PreferencesViewController.swift; sourceTree = SOURCE_ROOT; };
+		EF9198D12379EA5600133535 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTableViewController.swift; path = BestPlaceToLive/SearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		EF9198D32379FE7200133535 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CityTableViewCell.swift; path = BestPlaceToLive/CityTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				B514CB012379C31200146E13 /* Explore.storyboard */,
 				B514CB032379C57F00146E13 /* Search.storyboard */,
 				B514CB052379C59000146E13 /* Favorites.storyboard */,
+				EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */,
 				75963D8723769579002F1D37 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -299,6 +302,7 @@
 				B514CB062379C59000146E13 /* Favorites.storyboard in Resources */,
 				75963D8623769579002F1D37 /* Assets.xcassets in Resources */,
 				75963D8423769566002F1D37 /* Main.storyboard in Resources */,
+				EF577FBE237E0B15000C62B3 /* CityCellDetail.storyboard in Resources */,
 				B514CB042379C57F00146E13 /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -114,6 +114,7 @@
                                     <outlet property="cityImageView" destination="yWe-V2-DzU" id="dbs-w6-7WK"/>
                                     <outlet property="cityLabel" destination="nVF-Rb-MDE" id="nxB-WG-Yyh"/>
                                     <outlet property="stateZipLabel" destination="VLg-g8-zrg" id="TgO-Ck-dEe"/>
+                                    <segue destination="BlO-O5-rNu" kind="show" id="1lb-eD-nQ2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -131,6 +132,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcM-fp-yF4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="250.72463768115944" y="43.526785714285715"/>
+        </scene>
+        <!--CityCellDetail-->
+        <scene sceneID="a0d-t8-xva">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CityCellDetail" id="BlO-O5-rNu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Etb-9n-S1n"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OH6-dq-b0V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042" y="149"/>
         </scene>
         <!--Select Preferences-->
         <scene sceneID="VCh-6O-w6N">
@@ -270,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87S-R2-1Xn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1015.9420289855074" y="44.196428571428569"/>
+            <point key="canvasLocation" x="1062" y="-330"/>
         </scene>
     </scenes>
 </document>

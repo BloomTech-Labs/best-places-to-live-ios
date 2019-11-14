@@ -17,8 +17,6 @@ class PreferencesViewController: UIViewController {
     @IBOutlet var factor5Button: UIButton!
     @IBOutlet var exploreButton: UIButton!
     @IBOutlet var savePreferencesButton: UIButton!
-    @IBOutlet var distanceFromCityPicker: UIPickerView!
-    @IBOutlet var sizeOfCityPicker: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +52,3 @@ class PreferencesViewController: UIViewController {
     }
     
 }
-
-
-//distance from current city tag = 1
-//size of city tag = 2

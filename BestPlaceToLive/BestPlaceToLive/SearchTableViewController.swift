@@ -9,42 +9,55 @@
 import UIKit
 
 class SearchTableViewController: UITableViewController {
-
-    @IBOutlet var searchTitle: UILabel!
-    //MARK: - Outlets
     
+    
+    //MARK: - Outlets
+    @IBOutlet var searchTitle: UILabel!
     @IBOutlet var searchCityBar: UISearchBar!
     @IBOutlet var setPreferencesButton: UIButton!
+    let apiController = APIController()
+    var topTenCities: [CityBreakdown] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        apiController.getTopTenBreakdown { cities in
+            do {
+                let returnedCities = try cities.get()
+                self.topTenCities = returnedCities
+            } catch {
+                NSLog("Error getting top ten cities")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     //MARK: - Actions
     @IBAction func setPreferencesTapped(_ sender: Any) {
     }
     
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return topTenCities.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityTableViewCell else {return UITableViewCell()}
         cell.cardView.layer.cornerRadius = 10
-        cell.cityLabel.text = "New York"
-        cell.stateZipLabel.text = "NY"
-        cell.cardView.layer.borderWidth = 2
+        let city = topTenCities[indexPath.row]
+        cell.cityLabel.text = city.fullName
+        cell.stateZipLabel.text = city.state
         return cell
     }
-
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
-
+    
     private func showActivityIndicatory() {
         let activityView = UIActivityIndicatorView(style: .large)
         activityView.center = self.view.center

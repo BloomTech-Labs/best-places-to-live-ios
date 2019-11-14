@@ -15,6 +15,9 @@
 		B514CB022379C31200146E13 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB012379C31200146E13 /* Explore.storyboard */; };
 		B514CB042379C57F00146E13 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB032379C57F00146E13 /* Search.storyboard */; };
 		B514CB062379C59000146E13 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB052379C59000146E13 /* Favorites.storyboard */; };
+		B514CB08237A05E400146E13 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB07237A05E300146E13 /* Login.storyboard */; };
+		B514CB0A237A1B6A00146E13 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB09237A1B6A00146E13 /* LoginVC.swift */; };
+		B514CB0C237A1C7F00146E13 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB0B237A1C7F00146E13 /* SignupVC.swift */; };
 		B514CB0F237B098F00146E13 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = B514CB0E237B098F00146E13 /* KeychainAccess */; };
 		B514CB11237B0A8600146E13 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB10237B0A8600146E13 /* SettingsController.swift */; };
 		B514CB13237B0D8600146E13 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB12237B0D8600146E13 /* LoginRequest.swift */; };
@@ -26,9 +29,7 @@
 		B5A4962E237CBC5A00F0EE9C /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962D237CBC5A00F0EE9C /* MockDataLoader.swift */; };
 		B5A49630237CBC9000F0EE9C /* TestJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962F237CBC9000F0EE9C /* TestJson.swift */; };
 		B5A49638237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A49637237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift */; };
-		B514CB08237A05E400146E13 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B514CB07237A05E300146E13 /* Login.storyboard */; };
-		B514CB0A237A1B6A00146E13 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB09237A1B6A00146E13 /* LoginVC.swift */; };
-		B514CB0C237A1C7F00146E13 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB0B237A1C7F00146E13 /* SignupVC.swift */; };
+		B5FDAEFF237DD5F400C18BFF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAEFE237DD5F400C18BFF /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,9 @@
 		B514CB012379C31200146E13 /* Explore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		B514CB032379C57F00146E13 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		B514CB052379C59000146E13 /* Favorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
+		B514CB07237A05E300146E13 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		B514CB09237A1B6A00146E13 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		B514CB0B237A1C7F00146E13 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		B514CB10237B0A8600146E13 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B514CB12237B0D8600146E13 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		B514CB14237B0D9900146E13 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -64,9 +68,7 @@
 		B5A49635237CBDBE00F0EE9C /* BestPlaceToLiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BestPlaceToLiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A49637237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestPlaceToLiveTests.swift; sourceTree = "<group>"; };
 		B5A49639237CBDBE00F0EE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B514CB07237A05E300146E13 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		B514CB09237A1B6A00146E13 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		B514CB0B237A1C7F00146E13 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		B5FDAEFE237DD5F400C18BFF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				B514CB10237B0A8600146E13 /* SettingsController.swift */,
+				B5FDAEFE237DD5F400C18BFF /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				B514CB17237B696D00146E13 /* APIController.swift in Sources */,
 				B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */,
 				B514CB0A237A1B6A00146E13 /* LoginVC.swift in Sources */,
+				B5FDAEFF237DD5F400C18BFF /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

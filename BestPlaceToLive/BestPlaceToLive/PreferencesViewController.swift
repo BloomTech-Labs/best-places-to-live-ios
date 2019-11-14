@@ -22,10 +22,26 @@ class PreferencesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
     }
+    
     @IBAction func doneButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+   
+    private func setupUI() {
+        factor1Button.layer.cornerRadius = 10
+        factor2Button.layer.cornerRadius = 10
+        factor3Button.layer.cornerRadius = 10
+        factor4Button.layer.cornerRadius = 10
+        factor5Button.layer.cornerRadius = 10
+         factor1Button.layer.borderWidth = 2
+         factor2Button.layer.borderWidth = 2
+         factor3Button.layer.borderWidth = 2
+         factor4Button.layer.borderWidth = 2
+         factor5Button.layer.borderWidth = 2
+        
+        factor1Button.layer.borderColor = UIColor(red: 127.0/255.0, green: 198.0/255.0, blue: 164.0/255.0, alpha: 1).cgColor
     }
     
 }

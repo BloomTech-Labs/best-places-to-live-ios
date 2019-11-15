@@ -37,27 +37,27 @@ class SettingsController {
 	
 	private(set) var loggedInUser: Login?
 	
-	var userProfileImg: UIImage? {
-		get {
-			if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
-				return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent("profilePic.png").path)
-			}
-			print("No profile image data found.")
-			return UIImage(named: "Profile_Pic")
-		}
-		set {
-			if let newImage = newValue, let data = newImage.jpegData(compressionQuality: 1) ?? newImage.pngData() {
-				if let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL {
-					do {
-						try data.write(to: directory.appendingPathComponent("profilePic.png")!)
-					} catch {
-						print(error.localizedDescription)
-					}
-				}
-			}
-			
-		}
-	}
+//	var userProfileImg: UIImage? {
+//		get {
+//			if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+//				return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent("profilePic.png").path)
+//			}
+//			print("No profile image data found.")
+//			return UIImage(named: "Profile_Pic")
+//		}
+//		set {
+//			if let newImage = newValue, let data = newImage.jpegData(compressionQuality: 1) ?? newImage.pngData() {
+//				if let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL {
+//					do {
+//						try data.write(to: directory.appendingPathComponent("profilePic.png")!)
+//					} catch {
+//						print(error.localizedDescription)
+//					}
+//				}
+//			}
+//
+//		}
+//	}
 	
 	private(set) var userCredentials: LoginRequest? {
 		get {
@@ -72,21 +72,6 @@ class SettingsController {
 			}
 			keychain[emailKey] = newValue.email
 			keychain[userPasswordKey] = newValue.password
-		}
-	}
-	
-	var isSaveCredentials: Bool {
-		get {
-			guard let isSaved = defaults.value(forKey: saveProfileKey) as? Bool else {
-				
-				return false }
-			return isSaved
-		}
-		set {
-			if !newValue {
-				userCredentials = nil
-			}
-			defaults.set(newValue, forKey: saveProfileKey)
 		}
 	}
 	
@@ -107,6 +92,21 @@ class SettingsController {
 		}
 	}
 	
+	var isSaveCredentials: Bool {
+		get {
+			guard let isSaved = defaults.value(forKey: saveProfileKey) as? Bool else {
+				
+				return false }
+			return isSaved
+		}
+		set {
+			if !newValue {
+				userCredentials = nil
+			}
+			defaults.set(newValue, forKey: saveProfileKey)
+		}
+	}
+	
 	func persist(credentials: LoginRequest) {
 		if isSaveCredentials {
 			userCredentials = credentials
@@ -116,5 +116,11 @@ class SettingsController {
 	func loginProcedure(_ user: Login) {
 		loggedInUser = user
 		userToken = user.token
+	}
+	
+	func logoutProcedure() {
+		loggedInUser = nil
+		userToken = nil
+		isSaveCredentials = false
 	}
 }

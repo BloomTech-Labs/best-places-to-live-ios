@@ -32,6 +32,10 @@
 		B5FDAEFF237DD5F400C18BFF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAEFE237DD5F400C18BFF /* Extensions.swift */; };
 		B5FDAF01237DDF2A00C18BFF /* RegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */; };
 		B5FDAF03237DF67400C18BFF /* SettingsControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF02237DF67400C18BFF /* SettingsControllerTests.swift */; };
+		B5FDAF07237F16CB00C18BFF /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5FDAF06237F16CB00C18BFF /* Profile.storyboard */; };
+		B5FDAF09237F1A8100C18BFF /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF08237F1A8100C18BFF /* ProfileVC.swift */; };
+		B5FDAF0B237F1F6E00C18BFF /* LoginRouterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0A237F1F6D00C18BFF /* LoginRouterVC.swift */; };
+		B5FDAF0D237F425E00C18BFF /* LoginOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		B5FDAEFE237DD5F400C18BFF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequest.swift; sourceTree = "<group>"; };
 		B5FDAF02237DF67400C18BFF /* SettingsControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsControllerTests.swift; sourceTree = "<group>"; };
+		B5FDAF06237F16CB00C18BFF /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		B5FDAF08237F1A8100C18BFF /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		B5FDAF0A237F1F6D00C18BFF /* LoginRouterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterVC.swift; sourceTree = "<group>"; };
+		B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOptionsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,8 +158,11 @@
 		B514CAFB2379C2A800146E13 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5FDAF0A237F1F6D00C18BFF /* LoginRouterVC.swift */,
+				B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */,
 				B514CB09237A1B6A00146E13 /* LoginVC.swift */,
 				B514CB0B237A1C7F00146E13 /* SignupVC.swift */,
+				B5FDAF08237F1A8100C18BFF /* ProfileVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -190,6 +201,7 @@
 				B514CB012379C31200146E13 /* Explore.storyboard */,
 				B514CB032379C57F00146E13 /* Search.storyboard */,
 				B514CB052379C59000146E13 /* Favorites.storyboard */,
+				B5FDAF06237F16CB00C18BFF /* Profile.storyboard */,
 				B514CB07237A05E300146E13 /* Login.storyboard */,
 				75963D8723769579002F1D37 /* LaunchScreen.storyboard */,
 			);
@@ -305,6 +317,7 @@
 			files = (
 				B514CB022379C31200146E13 /* Explore.storyboard in Resources */,
 				75963D8923769579002F1D37 /* LaunchScreen.storyboard in Resources */,
+				B5FDAF07237F16CB00C18BFF /* Profile.storyboard in Resources */,
 				B514CB08237A05E400146E13 /* Login.storyboard in Resources */,
 				B514CB062379C59000146E13 /* Favorites.storyboard in Resources */,
 				75963D8623769579002F1D37 /* Assets.xcassets in Resources */,
@@ -339,7 +352,10 @@
 				B514CB19237B6D1600146E13 /* City.swift in Sources */,
 				B5A49630237CBC9000F0EE9C /* TestJson.swift in Sources */,
 				B514CB17237B696D00146E13 /* APIController.swift in Sources */,
+				B5FDAF09237F1A8100C18BFF /* ProfileVC.swift in Sources */,
 				B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */,
+				B5FDAF0B237F1F6E00C18BFF /* LoginRouterVC.swift in Sources */,
+				B5FDAF0D237F425E00C18BFF /* LoginOptionsVC.swift in Sources */,
 				B514CB0A237A1B6A00146E13 /* LoginVC.swift in Sources */,
 				B5FDAEFF237DD5F400C18BFF /* Extensions.swift in Sources */,
 			);

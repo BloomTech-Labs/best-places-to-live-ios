@@ -30,6 +30,22 @@ class SignupVC: UIViewController {
 	// MARK: IBActions
 	
 	@IBAction func signupBtnTapped(_ sender: Any) {
+		guard
+			let name = nameTextField.optionalText,
+			let email = emailTextField.optionalText,
+			let password = passwordTextField.optionalText
+		else { return }
+		
+		APIController.shared.registerNewUser(name: name, email: email, password: password) { (result) in
+			switch result {
+			case .success(let user):
+				SettingsController.shared.loginProcedure(user)
+			case .failure(let error):
+				print(error)
+			}	
+		}
+		
+		#warning("Navigate to proper screen when signing up")
 	}
 	
 	// MARK: Helpers

@@ -10,15 +10,15 @@ import UIKit
 
 class LoginVC: UIViewController {
 
-	// MARK: - IBOutlets
+	// MARK: IBOutlets
 	
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	
-	// MARK: - Properties
+	// MARK: Properties
 	
 	
-	// MARK: - Life Cycle
+	// MARK: Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -26,12 +26,27 @@ class LoginVC: UIViewController {
 		
 	}
 	
-	// MARK: - IBActions
+	// MARK: IBActions
 	
 	@IBAction func loginBtnTapped(_ sender: Any) {
+		guard
+			let email = emailTextField.optionalText,
+			let password = passwordTextField.optionalText
+		else { return }
+		
+		APIController.shared.login(email: email, password: password) { (result) in
+			switch result {
+			case .success(let user):
+				SettingsController.shared.loginProcedure(user)
+			case .failure(let error):
+				print(error)
+			}			
+		}
+		
+		#warning("Navigate to proper screen when logging in")
 	}
 	
-	// MARK: - Helpers
+	// MARK: Helpers
 	
 	
 }

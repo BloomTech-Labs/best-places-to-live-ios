@@ -1,0 +1,22 @@
+//
+//  CitySearch+Convenience.swift
+//  BestPlaceToLive
+//
+//  Created by Luqmaan Khan on 11/15/19.
+//  Copyright © 2019 bradleyyin. All rights reserved.
+//
+
+import Foundation
+import CoreData
+
+
+extension CitySearch {
+    
+    convenience init(id: UUID, cityName: String, cityPhoto: String, filters: NSArray, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        self.init(context: context)
+        self.id = id
+        self.cityName = cityName
+        self.cityPhoto = cityPhoto
+        self.filters = filters
+    }
+}

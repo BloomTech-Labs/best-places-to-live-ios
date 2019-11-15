@@ -11,7 +11,15 @@ import UIKit
 class ExploreViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBarButton: UIButton!
+    @IBOutlet weak var mostPopularButton: UIButton!
+    @IBOutlet weak var topButton: UIButton!
+    @IBOutlet weak var bestButton: UIButton!
+    @IBOutlet weak var explreLabel: UILabel!
+    @IBOutlet weak var popularCitiesLabel: UILabel!
+    @IBOutlet weak var exoloreCollectionView: UICollectionView!
+    @IBOutlet weak var popularCollectionView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

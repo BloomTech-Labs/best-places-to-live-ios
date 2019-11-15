@@ -82,20 +82,31 @@
                                 <rect key="frame" x="20" y="399.5" width="394" height="183.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0iM-sy-DRl">
-                                    <size key="itemSize" width="126" height="119"/>
+                                    <size key="itemSize" width="153" height="152"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="elD-59-qa1">
-                                        <rect key="frame" x="0.0" y="32.5" width="126" height="119"/>
+                                        <rect key="frame" x="0.0" y="16" width="153" height="152"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="65C-yy-Wq8">
-                                            <rect key="frame" x="0.0" y="0.0" width="126" height="119"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="153" height="152"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FgX-CE-0yR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="153" height="152"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="FgX-CE-0yR" firstAttribute="leading" secondItem="65C-yy-Wq8" secondAttribute="leading" id="8Fq-RN-h3l"/>
+                                                <constraint firstAttribute="bottom" secondItem="FgX-CE-0yR" secondAttribute="bottom" id="EBx-PT-JGu"/>
+                                                <constraint firstItem="FgX-CE-0yR" firstAttribute="top" secondItem="65C-yy-Wq8" secondAttribute="top" id="W7m-bT-NGz"/>
+                                                <constraint firstAttribute="trailing" secondItem="FgX-CE-0yR" secondAttribute="trailing" id="cWe-To-Rbo"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="126" height="119"/>
+                                        <size key="customSize" width="153" height="152"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -103,20 +114,31 @@
                                 <rect key="frame" x="20" y="648.5" width="394" height="183.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mOe-fu-h1u">
-                                    <size key="itemSize" width="126" height="119"/>
+                                    <size key="itemSize" width="152" height="153"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1du-EL-TmI">
-                                        <rect key="frame" x="0.0" y="32.5" width="126" height="119"/>
+                                        <rect key="frame" x="0.0" y="15.5" width="152" height="153"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="L5d-dZ-A8p">
-                                            <rect key="frame" x="0.0" y="0.0" width="126" height="119"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="152" height="153"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kbj-mi-gSx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="152" height="153"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="kbj-mi-gSx" secondAttribute="bottom" id="0Ca-z0-Rl9"/>
+                                                <constraint firstAttribute="trailing" secondItem="kbj-mi-gSx" secondAttribute="trailing" id="aEa-FR-aOt"/>
+                                                <constraint firstItem="kbj-mi-gSx" firstAttribute="top" secondItem="L5d-dZ-A8p" secondAttribute="top" id="lMq-n5-btb"/>
+                                                <constraint firstItem="kbj-mi-gSx" firstAttribute="leading" secondItem="L5d-dZ-A8p" secondAttribute="leading" id="t9Q-Zs-pto"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="126" height="119"/>
+                                        <size key="customSize" width="152" height="153"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -153,7 +175,15 @@
                         <viewLayoutGuide key="safeArea" id="Z3r-xc-lo5"/>
                     </view>
                     <connections>
+                        <outlet property="bestButton" destination="zSw-2c-9Hh" id="Zz6-u4-vSI"/>
+                        <outlet property="exoloreCollectionView" destination="VfO-Kf-UNf" id="cYa-Zs-enu"/>
+                        <outlet property="explreLabel" destination="vbv-My-Cr3" id="wK8-9d-TgH"/>
                         <outlet property="imageView" destination="aag-B7-Mll" id="LMy-IM-A66"/>
+                        <outlet property="mostPopularButton" destination="orP-fW-jU0" id="vIT-tK-16Z"/>
+                        <outlet property="popularCitiesLabel" destination="S0r-w4-Fcz" id="G0C-vl-AOH"/>
+                        <outlet property="popularCollectionView" destination="Dho-s4-B0Q" id="Hh5-0I-5ti"/>
+                        <outlet property="searchBarButton" destination="2Fi-h6-91x" id="Unl-gs-bxr"/>
+                        <outlet property="topButton" destination="oAj-gQ-q3B" id="p72-UG-b3G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaM-0x-QTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

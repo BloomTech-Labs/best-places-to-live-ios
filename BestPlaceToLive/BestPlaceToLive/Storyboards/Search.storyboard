@@ -69,14 +69,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoV-m2-OcM">
                                             <rect key="frame" x="31" y="18" width="352" height="155"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVF-Rb-MDE">
-                                                    <rect key="frame" x="8" y="8" width="242" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State and Zip" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLg-g8-zrg">
-                                                    <rect key="frame" x="8" y="42" width="178" height="74"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVF-Rb-MDE">
+                                                    <rect key="frame" x="8" y="8" width="224" height="145"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -88,16 +82,12 @@
                                             <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="yWe-V2-DzU" secondAttribute="bottom" constant="6" id="0Vx-Aj-Sz2"/>
-                                                <constraint firstItem="VLg-g8-zrg" firstAttribute="top" secondItem="EoV-m2-OcM" secondAttribute="top" constant="42" id="80G-8H-ykO"/>
                                                 <constraint firstItem="yWe-V2-DzU" firstAttribute="leading" secondItem="EoV-m2-OcM" secondAttribute="leading" constant="194" id="FkI-YY-SUL"/>
                                                 <constraint firstItem="nVF-Rb-MDE" firstAttribute="top" secondItem="EoV-m2-OcM" secondAttribute="top" constant="8" id="HXQ-Yl-lgw"/>
-                                                <constraint firstAttribute="bottom" secondItem="VLg-g8-zrg" secondAttribute="bottom" constant="39" id="LER-yk-aPc"/>
-                                                <constraint firstAttribute="trailing" secondItem="VLg-g8-zrg" secondAttribute="trailing" constant="166" id="LM2-QD-kSK"/>
                                                 <constraint firstItem="nVF-Rb-MDE" firstAttribute="leading" secondItem="EoV-m2-OcM" secondAttribute="leading" constant="8" id="jMa-2H-429"/>
-                                                <constraint firstAttribute="bottom" secondItem="nVF-Rb-MDE" secondAttribute="bottom" constant="123" id="kG7-17-zoV"/>
-                                                <constraint firstItem="VLg-g8-zrg" firstAttribute="leading" secondItem="EoV-m2-OcM" secondAttribute="leading" constant="8" id="ktS-DE-Auv"/>
+                                                <constraint firstAttribute="bottom" secondItem="nVF-Rb-MDE" secondAttribute="bottom" constant="2" id="kG7-17-zoV"/>
                                                 <constraint firstAttribute="trailing" secondItem="yWe-V2-DzU" secondAttribute="trailing" constant="7" id="lMl-Em-5pr"/>
-                                                <constraint firstAttribute="trailing" secondItem="nVF-Rb-MDE" secondAttribute="trailing" constant="102" id="v3m-VT-daX"/>
+                                                <constraint firstAttribute="trailing" secondItem="nVF-Rb-MDE" secondAttribute="trailing" constant="120" id="v3m-VT-daX"/>
                                                 <constraint firstItem="yWe-V2-DzU" firstAttribute="top" secondItem="EoV-m2-OcM" secondAttribute="top" constant="42" id="vKW-uC-liq"/>
                                             </constraints>
                                         </view>
@@ -113,7 +103,6 @@
                                     <outlet property="cardView" destination="EoV-m2-OcM" id="2iP-qE-78e"/>
                                     <outlet property="cityImageView" destination="yWe-V2-DzU" id="dbs-w6-7WK"/>
                                     <outlet property="cityLabel" destination="nVF-Rb-MDE" id="nxB-WG-Yyh"/>
-                                    <outlet property="stateZipLabel" destination="VLg-g8-zrg" id="TgO-Ck-dEe"/>
                                     <segue destination="BlO-O5-rNu" kind="show" id="1lb-eD-nQ2"/>
                                 </connections>
                             </tableViewCell>

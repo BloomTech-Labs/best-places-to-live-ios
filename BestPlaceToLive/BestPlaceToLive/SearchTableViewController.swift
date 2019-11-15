@@ -50,7 +50,6 @@ class SearchTableViewController: UITableViewController {
         cell.cardView.layer.cornerRadius = 10
         let city = topTenCities[indexPath.row]
         cell.cityLabel.text = city.fullName
-        cell.stateZipLabel.text = city.state
         return cell
     }
     

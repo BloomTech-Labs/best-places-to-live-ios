@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class CoreDataController {
     
@@ -39,5 +40,18 @@ class CoreDataController {
         saveToPersistentStore()
     }
     
+    func fetchSingleCitySearchFromPersistence(identifier: String, context: NSManagedObjectContext) -> CitySearch? {
+        let fetchRequest: NSFetchRequest<CitySearch> = CitySearch.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+        var result: CitySearch? = nil
+        context.performAndWait {
+            do {
+                result = try context.fetch(fetchRequest).first
+            } catch {
+                NSLog("Error retreiving single city search from coredata: \(error)")
+            }
+        }
+        return result
+    }
 }
 

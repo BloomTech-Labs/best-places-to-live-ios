@@ -33,6 +33,7 @@
 		EF73E84F237F1AE9003FB17E /* NomadsLand.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF73E84D237F1AE9003FB17E /* NomadsLand.xcdatamodeld */; };
 		EF73E851237F1C31003FB17E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73E850237F1C31003FB17E /* CoreDataStack.swift */; };
 		EF73E853237F1D44003FB17E /* CitySearch+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73E852237F1D44003FB17E /* CitySearch+Convenience.swift */; };
+		EF73E855237F35D0003FB17E /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73E854237F35D0003FB17E /* CoreDataTests.swift */; };
 		EF9198D22379EA5600133535 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9198D12379EA5600133535 /* SearchTableViewController.swift */; };
 		EF9198D42379FE7200133535 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9198D32379FE7200133535 /* CityTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		EF73E84E237F1AE9003FB17E /* NomadsLand.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NomadsLand.xcdatamodel; sourceTree = "<group>"; };
 		EF73E850237F1C31003FB17E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		EF73E852237F1D44003FB17E /* CitySearch+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CitySearch+Convenience.swift"; sourceTree = "<group>"; };
+		EF73E854237F35D0003FB17E /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		EF9198D12379EA5600133535 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTableViewController.swift; path = BestPlaceToLive/SearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF9198D32379FE7200133535 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CityTableViewCell.swift; path = BestPlaceToLive/CityTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				B5A49637237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift */,
+				EF73E854237F35D0003FB17E /* CoreDataTests.swift */,
 				B5A49639237CBDBE00F0EE9C /* Info.plist */,
 			);
 			path = BestPlaceToLiveTests;
@@ -362,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF73E855237F35D0003FB17E /* CoreDataTests.swift in Sources */,
 				B5A49638237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

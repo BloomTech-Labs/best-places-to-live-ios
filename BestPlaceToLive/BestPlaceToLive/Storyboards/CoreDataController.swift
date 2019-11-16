@@ -10,9 +10,15 @@ import Foundation
 import CoreData
 
 class CoreDataController {
+   
+    var moc: NSManagedObjectContext
+    static var shared = CoreDataController()
+    
+    init(context: NSManagedObjectContext? = CoreDataStack.shared.mainContext) {
+        self.moc = context!
+    }
     
     func saveToPersistentStore() {
-        let moc = CoreDataStack.shared.mainContext
         do {
             try moc.save()
         }
@@ -22,18 +28,17 @@ class CoreDataController {
         }
     }
     
-    func addCitySearch(id: UUID, cityName: String, filters: NSArray? = nil, cityPhoto: String? = nil) {
-        _ = CitySearch(id: id, cityName: cityName, cityPhoto: cityPhoto ?? "", filters: filters ?? NSArray())
+    func addCitySearch(id: String, cityName: String, filters: [String], cityPhoto: String?) {
+        _ = CitySearch(id: id, cityName: cityName, cityPhoto: cityPhoto ?? "", filters: filters )
         saveToPersistentStore()
     }
     
     func deleteCitySearch(citySearch: CitySearch) {
-        let moc = CoreDataStack.shared.mainContext
         moc.delete(citySearch)
         saveToPersistentStore()
     }
     
-    func updateCitySearch(citySearch: CitySearch, cityName: String, filters: NSArray? = nil, cityPhoto: String? = nil) {
+    func updateCitySearch(citySearch: CitySearch, cityName: String, filters: [String], cityPhoto: String? = nil) {
         citySearch.cityName = cityName
         citySearch.filters = filters
         citySearch.cityPhoto = cityPhoto
@@ -42,15 +47,15 @@ class CoreDataController {
     
     func fetchSingleCitySearchFromPersistence(identifier: String, context: NSManagedObjectContext) -> CitySearch? {
         let fetchRequest: NSFetchRequest<CitySearch> = CitySearch.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", identifier)
         var result: CitySearch? = nil
-        context.performAndWait {
+     //   context.performAndWait {
             do {
                 result = try context.fetch(fetchRequest).first
             } catch {
                 NSLog("Error retreiving single city search from coredata: \(error)")
             }
-        }
+     //   }
         return result
     }
 }

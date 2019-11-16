@@ -3,8 +3,8 @@
     <entity name="CitySearch" representedClassName="CitySearch" syncable="YES" codeGenerationType="class">
         <attribute name="cityName" attributeType="String"/>
         <attribute name="cityPhoto" optional="YES" attributeType="String"/>
-        <attribute name="filters" optional="YES" attributeType="Transformable" customClassName="[String]"/>
-        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="filters" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="id" attributeType="String"/>
     </entity>
     <elements>
         <element name="CitySearch" positionX="-63" positionY="-18" width="128" height="103"/>

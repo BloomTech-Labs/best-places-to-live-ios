@@ -1,5 +1,5 @@
 //
-//  BestPlaceToLiveTests.swift
+//  NetworkingTests.swift
 //  BestPlaceToLiveTests
 //
 //  Created by Jeffrey Santana on 11/13/19.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import BestPlaceToLive
 
-class BestPlaceToLiveTests: XCTestCase {
+class NetworkingTests: XCTestCase {
 	
 	var controller: APIController!
 

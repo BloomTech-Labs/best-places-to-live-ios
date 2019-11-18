@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		755E33502379EA1B00FAF3D6 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E334F2379EA1B00FAF3D6 /* ExploreViewController.swift */; };
+		755E3352237E098E00FAF3D6 /* ExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E3351237E098E00FAF3D6 /* ExploreCollectionViewCell.swift */; };
+		755E3354237E09A500FAF3D6 /* PopularCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E3353237E09A500FAF3D6 /* PopularCollectionViewCell.swift */; };
+		755E3356237F1A9600FAF3D6 /* CityDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755E3355237F1A9600FAF3D6 /* CityDetails.storyboard */; };
 		75963D7D23769566002F1D37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75963D7C23769566002F1D37 /* AppDelegate.swift */; };
 		75963D7F23769566002F1D37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75963D7E23769566002F1D37 /* SceneDelegate.swift */; };
 		75963D8423769566002F1D37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75963D8223769566002F1D37 /* Main.storyboard */; };
@@ -40,6 +44,11 @@
 		B5FDAF0D237F425E00C18BFF /* LoginOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */; };
 		EF577FBE237E0B15000C62B3 /* CityCellDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */; };
 		EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6D911F237B4C0500106211 /* PreferencesViewController.swift */; };
+		EF73E84C237F18D1003FB17E /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73E84B237F18D1003FB17E /* CoreDataController.swift */; };
+		EF73E84F237F1AE9003FB17E /* NomadsLand.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF73E84D237F1AE9003FB17E /* NomadsLand.xcdatamodeld */; };
+		EF73E851237F1C31003FB17E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73E850237F1C31003FB17E /* CoreDataStack.swift */; };
+		EF73E853237F1D44003FB17E /* CitySearch+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73E852237F1D44003FB17E /* CitySearch+Convenience.swift */; };
+		EF73E855237F35D0003FB17E /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73E854237F35D0003FB17E /* CoreDataTests.swift */; };
 		EF9198D22379EA5600133535 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9198D12379EA5600133535 /* SearchTableViewController.swift */; };
 		EF9198D42379FE7200133535 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9198D32379FE7200133535 /* CityTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +64,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		755E334F2379EA1B00FAF3D6 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = SOURCE_ROOT; };
+		755E3351237E098E00FAF3D6 /* ExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		755E3353237E09A500FAF3D6 /* PopularCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		755E3355237F1A9600FAF3D6 /* CityDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CityDetails.storyboard; sourceTree = "<group>"; };
 		75963D7923769566002F1D37 /* BestPlaceToLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestPlaceToLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75963D7C23769566002F1D37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75963D7E23769566002F1D37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +104,11 @@
 		B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOptionsVC.swift; sourceTree = "<group>"; };
 		EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CityCellDetail.storyboard; sourceTree = "<group>"; };
 		EF6D911F237B4C0500106211 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesViewController.swift; path = BestPlaceToLive/PreferencesViewController.swift; sourceTree = SOURCE_ROOT; };
+		EF73E84B237F18D1003FB17E /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataController.swift; path = BestPlaceToLive/Storyboards/CoreDataController.swift; sourceTree = SOURCE_ROOT; };
+		EF73E84E237F1AE9003FB17E /* NomadsLand.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NomadsLand.xcdatamodel; sourceTree = "<group>"; };
+		EF73E850237F1C31003FB17E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		EF73E852237F1D44003FB17E /* CitySearch+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CitySearch+Convenience.swift"; sourceTree = "<group>"; };
+		EF73E854237F35D0003FB17E /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		EF9198D12379EA5600133535 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTableViewController.swift; path = BestPlaceToLive/SearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF9198D32379FE7200133535 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CityTableViewCell.swift; path = BestPlaceToLive/CityTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -151,6 +169,7 @@
 		B514CAF92379C2A700146E13 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EF73E84B237F18D1003FB17E /* CoreDataController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -163,6 +182,9 @@
 				B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */,
 				B514CB14237B0D9900146E13 /* Login.swift */,
 				B514CB18237B6D1600146E13 /* City.swift */,
+				EF73E84D237F1AE9003FB17E /* NomadsLand.xcdatamodeld */,
+				EF73E850237F1C31003FB17E /* CoreDataStack.swift */,
+				EF73E852237F1D44003FB17E /* CitySearch+Convenience.swift */,
 				B514CB1A237B73EC00146E13 /* CityBreakdown.swift */,
 			);
 			path = Models;
@@ -178,6 +200,7 @@
 				B5FDAF08237F1A8100C18BFF /* ProfileVC.swift */,
 				EF9198D12379EA5600133535 /* SearchTableViewController.swift */,
 				EF6D911F237B4C0500106211 /* PreferencesViewController.swift */,
+				755E334F2379EA1B00FAF3D6 /* ExploreViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -206,6 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				EF9198D32379FE7200133535 /* CityTableViewCell.swift */,
+				755E3351237E098E00FAF3D6 /* ExploreCollectionViewCell.swift */,
+				755E3353237E09A500FAF3D6 /* PopularCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +246,7 @@
 				B514CB07237A05E300146E13 /* Login.storyboard */,
 				EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */,
 				75963D8723769579002F1D37 /* LaunchScreen.storyboard */,
+				755E3355237F1A9600FAF3D6 /* CityDetails.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -239,6 +265,8 @@
 		B5A49636237CBDBE00F0EE9C /* BestPlaceToLiveTests */ = {
 			isa = PBXGroup;
 			children = (
+				B5A49637237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift */,
+				EF73E854237F35D0003FB17E /* CoreDataTests.swift */,
 				B5A49637237CBDBE00F0EE9C /* NetworkingTests.swift */,
 				B5FDAF02237DF67400C18BFF /* SettingsControllerTests.swift */,
 				B5A49639237CBDBE00F0EE9C /* Info.plist */,
@@ -333,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				755E3356237F1A9600FAF3D6 /* CityDetails.storyboard in Resources */,
 				B514CB022379C31200146E13 /* Explore.storyboard in Resources */,
 				75963D8923769579002F1D37 /* LaunchScreen.storyboard in Resources */,
 				B5FDAF07237F16CB00C18BFF /* Profile.storyboard in Resources */,
@@ -362,6 +391,8 @@
 				B5FDAF01237DDF2A00C18BFF /* RegistrationRequest.swift in Sources */,
 				EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */,
 				B514CB11237B0A8600146E13 /* SettingsController.swift in Sources */,
+				EF73E851237F1C31003FB17E /* CoreDataStack.swift in Sources */,
+				EF73E853237F1D44003FB17E /* CitySearch+Convenience.swift in Sources */,
 				B514CB15237B0D9900146E13 /* Login.swift in Sources */,
 				B5A4962E237CBC5A00F0EE9C /* MockDataLoader.swift in Sources */,
 				B514CB0C237A1C7F00146E13 /* SignupVC.swift in Sources */,
@@ -369,8 +400,11 @@
 				B5FDAF0F237F931400C18BFF /* CityAPIController.swift in Sources */,
 				EF9198D22379EA5600133535 /* SearchTableViewController.swift in Sources */,
 				EF9198D42379FE7200133535 /* CityTableViewCell.swift in Sources */,
+				755E3354237E09A500FAF3D6 /* PopularCollectionViewCell.swift in Sources */,
 				75963D7F23769566002F1D37 /* SceneDelegate.swift in Sources */,
+				755E33502379EA1B00FAF3D6 /* ExploreViewController.swift in Sources */,
 				B5A4962C237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift in Sources */,
+				EF73E84C237F18D1003FB17E /* CoreDataController.swift in Sources */,
 				B514CB13237B0D8600146E13 /* LoginRequest.swift in Sources */,
 				B514CB19237B6D1600146E13 /* City.swift in Sources */,
 				B5FDAF11237F982200C18BFF /* CityBreakdownRequest.swift in Sources */,
@@ -379,10 +413,12 @@
 				B514CB17237B696D00146E13 /* APIController.swift in Sources */,
 				B5FDAF09237F1A8100C18BFF /* ProfileVC.swift in Sources */,
 				B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */,
+				EF73E84F237F1AE9003FB17E /* NomadsLand.xcdatamodeld in Sources */,
 				B5FDAF0B237F1F6E00C18BFF /* LoginRouterVC.swift in Sources */,
 				B5FDAF0D237F425E00C18BFF /* LoginOptionsVC.swift in Sources */,
 				B514CB0A237A1B6A00146E13 /* LoginVC.swift in Sources */,
 				B5FDAEFF237DD5F400C18BFF /* Extensions.swift in Sources */,
+				755E3352237E098E00FAF3D6 /* ExploreCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +426,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF73E855237F35D0003FB17E /* CoreDataTests.swift in Sources */,
+				B5A49638237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift in Sources */,
 				B5FDAF03237DF67400C18BFF /* SettingsControllerTests.swift in Sources */,
 				B5A49638237CBDBE00F0EE9C /* NetworkingTests.swift in Sources */,
 			);
@@ -667,6 +705,19 @@
 			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		EF73E84D237F1AE9003FB17E /* NomadsLand.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EF73E84E237F1AE9003FB17E /* NomadsLand.xcdatamodel */,
+			);
+			currentVersion = EF73E84E237F1AE9003FB17E /* NomadsLand.xcdatamodel */;
+			path = NomadsLand.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 75963D7123769565002F1D37 /* Project object */;
 }

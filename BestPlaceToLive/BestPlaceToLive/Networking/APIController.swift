@@ -41,6 +41,7 @@ class APIController {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("users/register") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
+		requestURL.httpMethod = HTTPMethod.post.rawValue
 		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		
 		do {
@@ -85,6 +86,7 @@ class APIController {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("users/login") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
+		requestURL.httpMethod = HTTPMethod.post.rawValue
 		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		
 		do {

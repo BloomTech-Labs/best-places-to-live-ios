@@ -22,7 +22,7 @@
 		B514CB11237B0A8600146E13 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB10237B0A8600146E13 /* SettingsController.swift */; };
 		B514CB13237B0D8600146E13 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB12237B0D8600146E13 /* LoginRequest.swift */; };
 		B514CB15237B0D9900146E13 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB14237B0D9900146E13 /* Login.swift */; };
-		B514CB17237B696D00146E13 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB16237B696D00146E13 /* APIController.swift */; };
+		B514CB17237B696D00146E13 /* UserAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB16237B696D00146E13 /* UserAPIController.swift */; };
 		B514CB19237B6D1600146E13 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB18237B6D1600146E13 /* City.swift */; };
 		B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB1A237B73EC00146E13 /* CityBreakdown.swift */; };
 		B5A4962C237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962B237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift */; };
@@ -31,6 +31,8 @@
 		B5A49638237CBDBE00F0EE9C /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A49637237CBDBE00F0EE9C /* NetworkingTests.swift */; };
 		B5FDAEFF237DD5F400C18BFF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAEFE237DD5F400C18BFF /* Extensions.swift */; };
 		B5FDAF01237DDF2A00C18BFF /* RegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */; };
+		B5FDAF0F237F931400C18BFF /* CityAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0E237F931400C18BFF /* CityAPIController.swift */; };
+		B5FDAF11237F982200C18BFF /* CityBreakdownRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */; };
 		B5FDAF03237DF67400C18BFF /* SettingsControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF02237DF67400C18BFF /* SettingsControllerTests.swift */; };
 		B5FDAF07237F16CB00C18BFF /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5FDAF06237F16CB00C18BFF /* Profile.storyboard */; };
 		B5FDAF09237F1A8100C18BFF /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF08237F1A8100C18BFF /* ProfileVC.swift */; };
@@ -74,7 +76,7 @@
 		B514CB10237B0A8600146E13 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B514CB12237B0D8600146E13 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		B514CB14237B0D9900146E13 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		B514CB16237B696D00146E13 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		B514CB16237B696D00146E13 /* UserAPIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIController.swift; sourceTree = "<group>"; };
 		B514CB18237B6D1600146E13 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = City.swift; path = BestPlaceToLive/Models/City.swift; sourceTree = SOURCE_ROOT; };
 		B514CB1A237B73EC00146E13 /* CityBreakdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CityBreakdown.swift; path = BestPlaceToLive/Models/CityBreakdown.swift; sourceTree = SOURCE_ROOT; };
 		B5A4962B237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkDataLoader.swift"; sourceTree = "<group>"; };
@@ -85,6 +87,8 @@
 		B5A49639237CBDBE00F0EE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5FDAEFE237DD5F400C18BFF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequest.swift; sourceTree = "<group>"; };
+		B5FDAF0E237F931400C18BFF /* CityAPIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAPIController.swift; sourceTree = "<group>"; };
+		B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBreakdownRequest.swift; sourceTree = "<group>"; };
 		B5FDAF02237DF67400C18BFF /* SettingsControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsControllerTests.swift; sourceTree = "<group>"; };
 		B5FDAF06237F16CB00C18BFF /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		B5FDAF08237F1A8100C18BFF /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 			children = (
 				B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */,
 				B514CB12237B0D8600146E13 /* LoginRequest.swift */,
+				B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */,
 				B514CB14237B0D9900146E13 /* Login.swift */,
 				B514CB18237B6D1600146E13 /* City.swift */,
 				EF73E84D237F1AE9003FB17E /* NomadsLand.xcdatamodeld */,
@@ -237,7 +242,8 @@
 		B514CB002379C2A900146E13 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				B514CB16237B696D00146E13 /* APIController.swift */,
+				B514CB16237B696D00146E13 /* UserAPIController.swift */,
+				B5FDAF0E237F931400C18BFF /* CityAPIController.swift */,
 				B5A4962B237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift */,
 				B5A4962D237CBC5A00F0EE9C /* MockDataLoader.swift */,
 			);
@@ -378,6 +384,7 @@
 				B5A4962E237CBC5A00F0EE9C /* MockDataLoader.swift in Sources */,
 				B514CB0C237A1C7F00146E13 /* SignupVC.swift in Sources */,
 				75963D7D23769566002F1D37 /* AppDelegate.swift in Sources */,
+				B5FDAF0F237F931400C18BFF /* CityAPIController.swift in Sources */,
 				EF9198D22379EA5600133535 /* SearchTableViewController.swift in Sources */,
 				EF9198D42379FE7200133535 /* CityTableViewCell.swift in Sources */,
 				75963D7F23769566002F1D37 /* SceneDelegate.swift in Sources */,
@@ -385,7 +392,9 @@
 				EF73E84C237F18D1003FB17E /* CoreDataController.swift in Sources */,
 				B514CB13237B0D8600146E13 /* LoginRequest.swift in Sources */,
 				B514CB19237B6D1600146E13 /* City.swift in Sources */,
+				B5FDAF11237F982200C18BFF /* CityBreakdownRequest.swift in Sources */,
 				B5A49630237CBC9000F0EE9C /* TestJson.swift in Sources */,
+				B514CB17237B696D00146E13 /* UserAPIController.swift in Sources */,
 				B514CB17237B696D00146E13 /* APIController.swift in Sources */,
 				B5FDAF09237F1A8100C18BFF /* ProfileVC.swift in Sources */,
 				B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */,

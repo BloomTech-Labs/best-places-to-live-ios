@@ -17,7 +17,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="1CN-fv-abK" kind="relationship" relationship="viewControllers" id="LHB-qv-zBa"/>
+                        <segue destination="ygD-dX-vua" kind="relationship" relationship="viewControllers" id="oWo-dD-b27"/>
+                        <segue destination="mRl-oV-gSz" kind="relationship" relationship="viewControllers" id="JoW-S1-CSk"/>
+                        <segue destination="gX1-mX-8aM" kind="relationship" relationship="viewControllers" id="zeb-9e-ZiV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xry-hQ-Lao" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -34,6 +36,16 @@
             </objects>
             <point key="canvasLocation" x="-225" y="380"/>
         </scene>
+        <!--Search-->
+        <scene sceneID="Xbr-cC-1kh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" id="mRl-oV-gSz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="pJR-ER-zsZ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="17z-As-xwp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="216" y="380"/>
+        </scene>
         <!--Favorites-->
         <scene sceneID="6qS-J4-oez">
             <objects>
@@ -42,25 +54,11 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hlm-80-Jh8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216" y="380"/>
-        </scene>
-        <!--Profile-->
-        <scene sceneID="q6u-WS-BDX">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="35b-gA-kv5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationController id="1CN-fv-abK" customClass="LoginRouterVC" customModule="BestPlaceToLive" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="2pg-9W-i9R"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eAp-Tx-98p">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="855" y="695"/>
+            <point key="canvasLocation" x="658" y="380"/>
         </scene>
     </scenes>
     <resources>
-        <image name="person" catalog="system" width="64" height="58"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="safari" catalog="system" width="64" height="60"/>
         <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>

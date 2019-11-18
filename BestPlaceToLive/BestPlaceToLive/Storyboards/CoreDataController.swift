@@ -49,13 +49,11 @@ class CoreDataController {
         let fetchRequest: NSFetchRequest<CitySearch> = CitySearch.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", identifier)
         var result: CitySearch? = nil
-     //   context.performAndWait {
             do {
                 result = try context.fetch(fetchRequest).first
             } catch {
                 NSLog("Error retreiving single city search from coredata: \(error)")
             }
-     //   }
         return result
     }
 }

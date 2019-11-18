@@ -15,13 +15,12 @@ class SearchTableViewController: UITableViewController {
     @IBOutlet var searchTitle: UILabel!
     @IBOutlet var searchCityBar: UISearchBar!
     @IBOutlet var setPreferencesButton: UIButton!
-    let apiController = APIController()
     var topTenCities: [CityBreakdown] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        apiController.getTopTenBreakdown { cities in
+		CityAPIController.shared.getTopTenBreakdown { cities in
             do {
                 let returnedCities = try cities.get()
                 self.topTenCities = returnedCities

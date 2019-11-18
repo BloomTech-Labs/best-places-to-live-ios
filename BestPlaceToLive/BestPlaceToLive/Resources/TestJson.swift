@@ -45,6 +45,31 @@ var cities = """
 }
 """.data(using: .utf8)
 
+var citiesDetails = """
+{
+  "data": [
+    {
+      "full_name": "Chevy Chase Village, Maryland, United States",
+      "air-pollution-telescore": 0.7277,
+      "airport-hub-index-detail": 104,
+      "cost-cinema": 12,
+      "cost_of_living": null,
+      "country": "United States",
+      "gun-death-rate": 16.2881
+    },
+    {
+      "full_name": "Queenland, Maryland, United States",
+      "air-pollution-telescore": 0.7277,
+      "airport-hub-index-detail": 104,
+      "cost-cinema": 12,
+      "cost_of_living": null,
+      "country": "United States",
+      "gun-death-rate": 16.2881
+    }
+  ]
+}
+""".data(using: .utf8)
+
 var topTenDetails = """
 {
   "cities": [

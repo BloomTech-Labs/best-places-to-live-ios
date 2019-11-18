@@ -1,5 +1,5 @@
 //
-//  BestPlaceToLiveTests.swift
+//  NetworkingTests.swift
 //  BestPlaceToLiveTests
 //
 //  Created by Jeffrey Santana on 11/13/19.
@@ -9,21 +9,20 @@
 import XCTest
 @testable import BestPlaceToLive
 
-class BestPlaceToLiveTests: XCTestCase {
+class NetworkingTests: XCTestCase {
 	
-	var controller: APIController!
-
-    override func setUp() {
-		controller = APIController()
-    }
+	var userController: UserAPIController!
+	var cityController: CityAPIController!
+	
+	//MARK: - City Tests
 	
 	func testGetAllCities() {
 		let didFinish = expectation(description: "BPTL_API")
 		let mockLoader = MockDataLoader()
 		mockLoader.data = cities
-		controller = APIController(networkLoader: mockLoader)
+		cityController = CityAPIController(networkLoader: mockLoader)
 		
-		controller.getAllCities { (results) in
+		cityController.getAllCities { (results) in
 			let cities = try? results.get()
 			
 			XCTAssertEqual(cities?[0].name, "Fresno, CA")
@@ -37,9 +36,9 @@ class BestPlaceToLiveTests: XCTestCase {
 		let didFinish = expectation(description: "BPTL_API")
 		let mockLoader = MockDataLoader()
 		mockLoader.data = topTenDetails
-		controller = APIController(networkLoader: mockLoader)
+		cityController = CityAPIController(networkLoader: mockLoader)
 		
-		controller.getTopTenBreakdown { (results) in
+		cityController.getTopTenBreakdown { (results) in
 			let cities = try? results.get()
 			
 			XCTAssertEqual(cities?.count, 10)
@@ -49,13 +48,31 @@ class BestPlaceToLiveTests: XCTestCase {
 		wait(for: [didFinish], timeout: 5)
 	}
 	
+	func testCitiesBreakDown() {
+		let didFinish = expectation(description: "BPTL_API")
+		let mockLoader = MockDataLoader()
+		mockLoader.data = citiesDetails
+		cityController = CityAPIController(networkLoader: mockLoader)
+		
+		cityController.getCityBreakdown(by: ["5dc9f97b2a65b6af02025ded", "5dc9f97b2a65b6af02025df0"], completion: { (results) in
+			let cities = try? results.get()
+			
+			XCTAssertEqual(cities?.count, 2)
+			didFinish.fulfill()
+		})
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
+	//MARK: - User Tests
+	
 	func testRegistration() {
 		let didFinish = expectation(description: "BPTL_API")
 		let mockLoader = MockDataLoader()
 		mockLoader.data = login
-		controller = APIController(networkLoader: mockLoader)
+		userController = UserAPIController(networkLoader: mockLoader)
 		
-		controller.registerNewUser(name: "Jack Ryan", email: "jryan@cia.com", password: "123456") { (results) in
+		userController.registerNewUser(name: "Jack Ryan", email: "jryan@cia.com", password: "123456") { (results) in
 			let user = try? results.get()
 			
 			XCTAssertEqual(user?.name, "Jack Ryan")
@@ -69,9 +86,9 @@ class BestPlaceToLiveTests: XCTestCase {
 		let didFinish = expectation(description: "BPTL_API")
 		let mockLoader = MockDataLoader()
 		mockLoader.data = login
-		controller = APIController(networkLoader: mockLoader)
+		userController = UserAPIController(networkLoader: mockLoader)
 		
-		controller.login(email: "jryan@cia.com", password: "123456") { (results) in
+		userController.login(email: "jryan@cia.com", password: "123456") { (results) in
 			let user = try? results.get()
 			
 			XCTAssertEqual(user?.name, "Jack Ryan")

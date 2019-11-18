@@ -13,12 +13,12 @@ class NetworkingTests: XCTestCase {
 	
 	var userController: UserAPIController!
 	var cityController: CityAPIController!
+	let mockLoader = MockDataLoader()
 	
 	//MARK: - City Tests
 	
 	func testGetAllCities() {
 		let didFinish = expectation(description: "BPTL_API")
-		let mockLoader = MockDataLoader()
 		mockLoader.data = cities
 		cityController = CityAPIController(networkLoader: mockLoader)
 		
@@ -34,7 +34,6 @@ class NetworkingTests: XCTestCase {
 	
 	func testTopTenBreakDown() {
 		let didFinish = expectation(description: "BPTL_API")
-		let mockLoader = MockDataLoader()
 		mockLoader.data = topTenDetails
 		cityController = CityAPIController(networkLoader: mockLoader)
 		
@@ -50,7 +49,6 @@ class NetworkingTests: XCTestCase {
 	
 	func testCitiesBreakDown() {
 		let didFinish = expectation(description: "BPTL_API")
-		let mockLoader = MockDataLoader()
 		mockLoader.data = citiesDetails
 		cityController = CityAPIController(networkLoader: mockLoader)
 		
@@ -64,11 +62,40 @@ class NetworkingTests: XCTestCase {
 		wait(for: [didFinish], timeout: 5)
 	}
 	
+	func testCitiesBreakDownfromLocation() {
+		let didFinish = expectation(description: "BPTL_API")
+		mockLoader.data = citiesByLocation
+		cityController = CityAPIController(networkLoader: mockLoader)
+		
+		cityController.getCityBreakdownAt(lat: "32", long: "30", zoom: "5", limit: "10", rand: "20", completion: { (results) in
+			let cities = try? results.get()
+			
+			XCTAssertEqual(cities?.compactMap({$0.state}), ["New Mexico", "New Mexico"])
+			didFinish.fulfill()
+		})
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
+	func testCitiesBreakDownfromSearch() {
+		let didFinish = expectation(description: "BPTL_API")
+		mockLoader.data = citiesBySearchTerm
+		cityController = CityAPIController(networkLoader: mockLoader)
+		
+		cityController.getCitiesBreakdown(relatedTo: "Hialeh", completion: { (results) in
+			let cities = try? results.get()
+			
+			XCTAssertEqual(cities?.compactMap({$0.state}), ["Florida","Florida"])
+			didFinish.fulfill()
+		})
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
 	//MARK: - User Tests
 	
 	func testRegistration() {
 		let didFinish = expectation(description: "BPTL_API")
-		let mockLoader = MockDataLoader()
 		mockLoader.data = login
 		userController = UserAPIController(networkLoader: mockLoader)
 		
@@ -84,7 +111,6 @@ class NetworkingTests: XCTestCase {
 	
 	func testLogin() {
 		let didFinish = expectation(description: "BPTL_API")
-		let mockLoader = MockDataLoader()
 		mockLoader.data = login
 		userController = UserAPIController(networkLoader: mockLoader)
 		

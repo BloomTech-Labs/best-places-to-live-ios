@@ -1,5 +1,5 @@
 //
-//  BestPlaceToLiveTests.swift
+//  NetworkingTests.swift
 //  BestPlaceToLiveTests
 //
 //  Created by Jeffrey Santana on 11/13/19.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import BestPlaceToLive
 
-class BestPlaceToLiveTests: XCTestCase {
+class NetworkingTests: XCTestCase {
 	
 	var controller: APIController!
 
@@ -55,12 +55,26 @@ class BestPlaceToLiveTests: XCTestCase {
 		mockLoader.data = login
 		controller = APIController(networkLoader: mockLoader)
 		
-		let user = Login(id: "123", name: "Jack Ryan", email: "jryan@cia.com", location: "Washington, DC", token: "abc")
-		
-		controller.register(user: user) { (results) in
-			let cities = try? results.get()
+		controller.registerNewUser(name: "Jack Ryan", email: "jryan@cia.com", password: "123456") { (results) in
+			let user = try? results.get()
 			
-			XCTAssertEqual(cities?.name, "Jack Ryan")
+			XCTAssertEqual(user?.name, "Jack Ryan")
+			didFinish.fulfill()
+		}
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
+	func testLogin() {
+		let didFinish = expectation(description: "BPTL_API")
+		let mockLoader = MockDataLoader()
+		mockLoader.data = login
+		controller = APIController(networkLoader: mockLoader)
+		
+		controller.login(email: "jryan@cia.com", password: "123456") { (results) in
+			let user = try? results.get()
+			
+			XCTAssertEqual(user?.name, "Jack Ryan")
 			didFinish.fulfill()
 		}
 		

@@ -37,15 +37,17 @@ class APIController {
 	
 	// MARK: - Create
 	
-	func register(user: Login, completion: @escaping (Result<Login, NetworkError>) -> Void) {
+	func registerNewUser(name: String, email: String, password: String, completion: @escaping (Result<Login, NetworkError>) -> Void) {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("users/register") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
+		requestURL.httpMethod = HTTPMethod.post.rawValue
 		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		
 		do {
+			let newUser = RegistrationRequest(name: name, email: email, password: password, location: "Lambda, CA")
 			let encoder = JSONEncoder()
-			let data = try encoder.encode(user)
+			let data = try encoder.encode(newUser)
 			
 			requestURL.httpBody = data
 		} catch  {
@@ -80,13 +82,15 @@ class APIController {
 	
 	// MARK: - Read
 	
-	func login(credentials: LoginRequest, completion: @escaping (Result<Login, NetworkError>) -> Void) {
+	func login(email: String, password: String, completion: @escaping (Result<Login, NetworkError>) -> Void) {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("users/login") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
+		requestURL.httpMethod = HTTPMethod.post.rawValue
 		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		
 		do {
+			let credentials = LoginRequest(email: email, password: password)
 			let encoder = JSONEncoder()
 			let data = try encoder.encode(credentials)
 			

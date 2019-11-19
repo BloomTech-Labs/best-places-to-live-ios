@@ -95,6 +95,7 @@ extension SearchTableViewController: UISearchBarDelegate {
                 self.cities = (city)
                 DispatchQueue.main.async {
                     activityView.stopAnimating()
+                     self.searchTitle.text = "Find Your Ideal City"
                     self.tableView.reloadData()
                 }
             }

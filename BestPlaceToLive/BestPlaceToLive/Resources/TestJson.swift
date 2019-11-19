@@ -8,9 +8,9 @@
 
 import Foundation
 
-//MARK: - USER
+// MARK: - USER
 
-//MARK: /login
+// MARK: /login
 
 var login = """
 {
@@ -22,9 +22,26 @@ var login = """
 }
 """.data(using: .utf8)
 
-//MARK: - CITY
+// MARK: /profile
 
-//MARK: /(by id)
+var profile = """
+{
+  "_id": "123",
+  "name": "Jack Ryan",
+  "email": "jryan@cia.com",
+  "cities": [
+    {
+      "_id": "5dc9f97b2a65b6af02025ded",
+      "name": "Chevy Chase Village, MD",
+      "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.christiesrealestate.com%2Fsales%2Fdetail%2F170-l-77837-1712071307495480%2Fchevy-chase-village-chevy-chase-md-20815&psig=AOvVaw3kh0smV2FeGYZXmukDSapt&ust=1573850441054000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJC4m_bH6uUCFQAAAAAdAAAAABAD"
+    }
+  ]
+}
+""".data(using: .utf8)
+
+// MARK: - CITY
+
+// MARK: /(by id)
 
 var citiesDetails = """
 {
@@ -480,7 +497,7 @@ var citiesBySearchTerm = """
 }
 """.data(using: .utf8)
 
-//MARK: /(by location)
+// MARK: /(by location)
 
 var citiesByLocation = """
 {
@@ -911,7 +928,7 @@ var citiesByLocation = """
 }
 """.data(using: .utf8)
 
-//MARK: /all
+// MARK: /all
 
 var cities = """
 {
@@ -940,7 +957,7 @@ var cities = """
 }
 """.data(using: .utf8)
 
-//MARK: /topten-score_total
+// MARK: /topten-score_total
 
 var topTenDetails = """
 {

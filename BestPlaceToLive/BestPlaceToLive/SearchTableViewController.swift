@@ -87,6 +87,7 @@ extension SearchTableViewController: UISearchBarDelegate {
             case .failure(let error):
                 DispatchQueue.main.async {
                     activityView.stopAnimating()
+                    self.searchTitle.text = "Find Your Ideal City"
                      self.showAlertForInvalidSearchQuery()
                 }
             case .success(let city):

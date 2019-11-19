@@ -29,7 +29,7 @@ class CityAPIController {
 		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		
 		do {
-			let searchRequest = SearchRequest(sesarchTerm: searchTerm)
+			let searchRequest = SearchRequest(searchTerm: searchTerm)
 			let encoder = JSONEncoder()
 			let data = try encoder.encode(searchRequest)
 			

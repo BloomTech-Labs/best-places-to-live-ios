@@ -21,14 +21,20 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var popularCollectionView: UICollectionView!
     
     let apiController = APIController()
+    var topTenCities: [CityBreakdown] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
         loadTopTen()
+        setupViews()
 
         // Do any additional setup after loading the view.
+    }
+    private func setupViews() {
+        popularCollectionView.delegate = self
+        popularCollectionView.dataSource = self
     }
     private func setupButton() {
         searchBarButton.backgroundColor = .white
@@ -44,10 +50,17 @@ class ExploreViewController: UIViewController {
         apiController.getTopTenBreakdown { (result) in
             switch result {
             case .success:
-                let cities = try! result.get()
-                for city in cities {
-                    print(city.name)
+                do {
+                    self.topTenCities = try result.get()
+                    DispatchQueue.main.async {
+                        self.popularCollectionView.reloadData()
+                        print("reload")
+                    }
+                    
+                } catch {
+                    fatalError("cannot load top 10")
                 }
+                
             default:
                 break
             }
@@ -66,4 +79,35 @@ class ExploreViewController: UIViewController {
     }
     */
 
+}
+extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == self.popularCollectionView {
+            return topTenCities.count
+        }
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == self.popularCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopTenCell", for: indexPath) as? PopularCollectionViewCell else { fatalError("cannot make TopTenCell") }
+            let city = topTenCities[indexPath.item]
+            cell.cityNameLabel.text = city.name
+//            let imageURL = URL(string: city.photo)!
+//            print(imageURL)
+//            if let imageData = try? Data(contentsOf: imageURL) {
+//                cell.imageView.image = UIImage(data: imageData)
+//            }
+            
+            
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: popularCollectionView.bounds.height)
+    }
+    
+    
 }

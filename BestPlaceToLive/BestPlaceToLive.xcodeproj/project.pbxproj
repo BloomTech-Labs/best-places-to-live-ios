@@ -35,13 +35,14 @@
 		B5A49638237CBDBE00F0EE9C /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A49637237CBDBE00F0EE9C /* NetworkingTests.swift */; };
 		B5FDAEFF237DD5F400C18BFF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAEFE237DD5F400C18BFF /* Extensions.swift */; };
 		B5FDAF01237DDF2A00C18BFF /* RegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */; };
-		B5FDAF0F237F931400C18BFF /* CityAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0E237F931400C18BFF /* CityAPIController.swift */; };
-		B5FDAF11237F982200C18BFF /* CityBreakdownRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */; };
 		B5FDAF03237DF67400C18BFF /* SettingsControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF02237DF67400C18BFF /* SettingsControllerTests.swift */; };
 		B5FDAF07237F16CB00C18BFF /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5FDAF06237F16CB00C18BFF /* Profile.storyboard */; };
 		B5FDAF09237F1A8100C18BFF /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF08237F1A8100C18BFF /* ProfileVC.swift */; };
 		B5FDAF0B237F1F6E00C18BFF /* LoginRouterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0A237F1F6D00C18BFF /* LoginRouterVC.swift */; };
 		B5FDAF0D237F425E00C18BFF /* LoginOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */; };
+		B5FDAF0F237F931400C18BFF /* CityAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0E237F931400C18BFF /* CityAPIController.swift */; };
+		B5FDAF11237F982200C18BFF /* CityBreakdownRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */; };
+		B5FDAF1B2384450000C18BFF /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF1A2384450000C18BFF /* SearchRequest.swift */; };
 		EF577FBE237E0B15000C62B3 /* CityCellDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */; };
 		EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6D911F237B4C0500106211 /* PreferencesViewController.swift */; };
 		EF73E84C237F18D1003FB17E /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73E84B237F18D1003FB17E /* CoreDataController.swift */; };
@@ -95,13 +96,14 @@
 		B5A49639237CBDBE00F0EE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5FDAEFE237DD5F400C18BFF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequest.swift; sourceTree = "<group>"; };
-		B5FDAF0E237F931400C18BFF /* CityAPIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAPIController.swift; sourceTree = "<group>"; };
-		B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBreakdownRequest.swift; sourceTree = "<group>"; };
 		B5FDAF02237DF67400C18BFF /* SettingsControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsControllerTests.swift; sourceTree = "<group>"; };
 		B5FDAF06237F16CB00C18BFF /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		B5FDAF08237F1A8100C18BFF /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		B5FDAF0A237F1F6D00C18BFF /* LoginRouterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterVC.swift; sourceTree = "<group>"; };
 		B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOptionsVC.swift; sourceTree = "<group>"; };
+		B5FDAF0E237F931400C18BFF /* CityAPIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAPIController.swift; sourceTree = "<group>"; };
+		B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBreakdownRequest.swift; sourceTree = "<group>"; };
+		B5FDAF1A2384450000C18BFF /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CityCellDetail.storyboard; sourceTree = "<group>"; };
 		EF6D911F237B4C0500106211 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesViewController.swift; path = BestPlaceToLive/PreferencesViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF73E84B237F18D1003FB17E /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataController.swift; path = BestPlaceToLive/Storyboards/CoreDataController.swift; sourceTree = SOURCE_ROOT; };
@@ -177,14 +179,11 @@
 		B514CAFA2379C2A700146E13 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */,
-				B514CB12237B0D8600146E13 /* LoginRequest.swift */,
-				B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */,
+				B5FDAF13238359C400C18BFF /* Requests */,
+				EF73E84D237F1AE9003FB17E /* NomadsLand.xcdatamodeld */,
+				EF73E852237F1D44003FB17E /* CitySearch+Convenience.swift */,
 				B514CB14237B0D9900146E13 /* Login.swift */,
 				B514CB18237B6D1600146E13 /* City.swift */,
-				EF73E84D237F1AE9003FB17E /* NomadsLand.xcdatamodeld */,
-				EF73E850237F1C31003FB17E /* CoreDataStack.swift */,
-				EF73E852237F1D44003FB17E /* CitySearch+Convenience.swift */,
 				B514CB1A237B73EC00146E13 /* CityBreakdown.swift */,
 			);
 			path = Models;
@@ -209,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				B514CB10237B0A8600146E13 /* SettingsController.swift */,
+				EF73E850237F1C31003FB17E /* CoreDataStack.swift */,
 				B5FDAEFE237DD5F400C18BFF /* Extensions.swift */,
 			);
 			path = Helpers;
@@ -265,13 +265,23 @@
 		B5A49636237CBDBE00F0EE9C /* BestPlaceToLiveTests */ = {
 			isa = PBXGroup;
 			children = (
-				B5A49637237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift */,
 				EF73E854237F35D0003FB17E /* CoreDataTests.swift */,
 				B5A49637237CBDBE00F0EE9C /* NetworkingTests.swift */,
 				B5FDAF02237DF67400C18BFF /* SettingsControllerTests.swift */,
 				B5A49639237CBDBE00F0EE9C /* Info.plist */,
 			);
 			path = BestPlaceToLiveTests;
+			sourceTree = "<group>";
+		};
+		B5FDAF13238359C400C18BFF /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */,
+				B514CB12237B0D8600146E13 /* LoginRequest.swift */,
+				B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */,
+				B5FDAF1A2384450000C18BFF /* SearchRequest.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,11 +416,12 @@
 				B5A4962C237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift in Sources */,
 				EF73E84C237F18D1003FB17E /* CoreDataController.swift in Sources */,
 				B514CB13237B0D8600146E13 /* LoginRequest.swift in Sources */,
+				B5FDAF1B2384450000C18BFF /* SearchRequest.swift in Sources */,
 				B514CB19237B6D1600146E13 /* City.swift in Sources */,
 				B5FDAF11237F982200C18BFF /* CityBreakdownRequest.swift in Sources */,
 				B5A49630237CBC9000F0EE9C /* TestJson.swift in Sources */,
 				B514CB17237B696D00146E13 /* UserAPIController.swift in Sources */,
-				B514CB17237B696D00146E13 /* APIController.swift in Sources */,
+				B514CB17237B696D00146E13 /* UserAPIController.swift in Sources */,
 				B5FDAF09237F1A8100C18BFF /* ProfileVC.swift in Sources */,
 				B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */,
 				EF73E84F237F1AE9003FB17E /* NomadsLand.xcdatamodeld in Sources */,
@@ -427,7 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF73E855237F35D0003FB17E /* CoreDataTests.swift in Sources */,
-				B5A49638237CBDBE00F0EE9C /* BestPlaceToLiveTests.swift in Sources */,
+				B5A49638237CBDBE00F0EE9C /* NetworkingTests.swift in Sources */,
 				B5FDAF03237DF67400C18BFF /* SettingsControllerTests.swift in Sources */,
 				B5A49638237CBDBE00F0EE9C /* NetworkingTests.swift in Sources */,
 			);

@@ -28,6 +28,16 @@ class CityAPIController {
 		requestURL.httpMethod = HTTPMethod.post.rawValue
 		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		
+		do {
+			let searchRequest = SearchRequest(sesarchTerm: searchTerm)
+			let encoder = JSONEncoder()
+			let data = try encoder.encode(searchRequest)
+			
+			requestURL.httpBody = data
+		} catch  {
+			completion(.failure(.notEncoding))
+		}
+		
 		networkLoader.loadData(from: requestURL) { (data, error) in
 			if let error = error {
 				NSLog("Error creating user: \(error)")

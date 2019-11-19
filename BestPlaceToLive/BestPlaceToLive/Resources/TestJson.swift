@@ -51,6 +51,8 @@ var citiesDetails = """
 }
 """.data(using: .utf8)
 
+// MARK: /search
+
 var citiesBySearchTerm = """
 {
   "cities": [

@@ -34,7 +34,7 @@ class LoginVC: UIViewController {
 			let password = passwordTextField.optionalText
 		else { return }
 		
-		APIController.shared.login(email: email, password: password) { (result) in
+		UserAPIController.shared.login(email: email, password: password) { (result) in
 			switch result {
 			case .success(let user):
 				SettingsController.shared.loginProcedure(user)

@@ -1,34 +1,18 @@
 //
-//  APIController.swift
+//  CityAPIController.swift
 //  BestPlaceToLive
 //
-//  Created by Jeffrey Santana on 11/12/19.
+//  Created by Jeffrey Santana on 11/15/19.
 //  Copyright © 2019 bradleyyin. All rights reserved.
 //
 
 import Foundation
 
-enum NetworkError: Error {
-	case badURL
-	case noToken
-	case noData
-	case notDecoding
-	case notEncoding
-	case other(Error)
-}
-
-enum HTTPMethod: String {
-	case get = "GET"
-	case put = "PUT"
-	case post = "POST"
-	case delete = "DELETE"
-}
-
-class APIController {
+class CityAPIController {
 	
-	static let shared = APIController()
+	static let shared = CityAPIController()
 	
-	private let baseURLString = "https://bestplacesbe-test.herokuapp.com"
+	private let baseURLString = "https://bestplacesbe-test.herokuapp.com/city"
 	private var networkLoader: NetworkDataLoader
 	
 	init(networkLoader loader: NetworkDataLoader = URLSession.shared) {
@@ -37,17 +21,17 @@ class APIController {
 	
 	// MARK: - Create
 	
-	func registerNewUser(name: String, email: String, password: String, completion: @escaping (Result<Login, NetworkError>) -> Void) {
-		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("users/register") else { return }
+	func getCitiesBreakdown(relatedTo searchTerm: String, completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
+		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("search") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
 		requestURL.httpMethod = HTTPMethod.post.rawValue
 		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		
 		do {
-			let newUser = RegistrationRequest(name: name, email: email, password: password, location: "Lambda, CA")
+			let searchRequest = SearchRequest(sesarchTerm: searchTerm)
 			let encoder = JSONEncoder()
-			let data = try encoder.encode(newUser)
+			let data = try encoder.encode(searchRequest)
 			
 			requestURL.httpBody = data
 		} catch  {
@@ -69,11 +53,105 @@ class APIController {
 			
 			do {
 				let decoder = JSONDecoder()
-				decoder.keyDecodingStrategy = .convertFromSnakeCase
+				let citiesDict = try decoder.decode([String:[CityBreakdown]].self, from: data)
 				
-				let loginDetails = try decoder.decode(Login.self, from: data)
+				if let cities = citiesDict.values.first {
+					completion(.success(cities))
+				}
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
+	func getCityBreakdownAt(lat: String, long: String, zoom: String, limit: String, rand: String, completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
+		var cityURLComponents = URLComponents(string: baseURLString)
+		cityURLComponents?.queryItems = [
+			URLQueryItem(name: "lat", value: lat),
+			URLQueryItem(name: "lng", value: long),
+			URLQueryItem(name: "zoom", value: zoom),
+			URLQueryItem(name: "limit", value: limit),
+			URLQueryItem(name: "rand", value: rand)
+		]
+		
+		guard let cityURL = cityURLComponents?.url else { return }
+		var requestURL = URLRequest(url: cityURL)
+		
+		requestURL.httpMethod = HTTPMethod.post.rawValue
+		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				let citiesDict = try decoder.decode([String:[CityBreakdown]].self, from: data)
 				
-				completion(.success(loginDetails))
+				if let cities = citiesDict.values.first {
+					completion(.success(cities))
+				}
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
+	func getCityBreakdown(by cityIds: [String], completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
+		guard let cityURL = URL(string: baseURLString) else { return }
+		var requestURL = URLRequest(url: cityURL)
+		
+		requestURL.httpMethod = HTTPMethod.post.rawValue
+		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+				
+//		do {
+//			let cityModel = [
+//				"full_name": "",
+//				"air-pollution-telescore": "",
+//				"airport-hub-index-detail": "",
+//				"cost-cinema": "",
+//				"cost_of_living": "",
+//				"country": "",
+//				"gun-death-rate": ""
+//			]
+//			let cityRequest = CitBreakdownRequest(ids: cityIds, model: cityModel)
+//			let encoder = JSONEncoder()
+//			let data = try encoder.encode(cityRequest)
+//			
+//			requestURL.httpBody = data
+//		} catch  {
+//			completion(.failure(.notEncoding))
+//		}
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				let citiesDict = try decoder.decode([String:[CityBreakdown]].self, from: data)
+				
+				if let cities = citiesDict.values.first {
+					completion(.success(cities))
+				}
 			} catch {
 				completion(.failure(.notDecoding))
 			}
@@ -82,51 +160,8 @@ class APIController {
 	
 	// MARK: - Read
 	
-	func login(email: String, password: String, completion: @escaping (Result<Login, NetworkError>) -> Void) {
-		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("users/login") else { return }
-		var requestURL = URLRequest(url: cityURL)
-		
-		requestURL.httpMethod = HTTPMethod.post.rawValue
-		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
-		
-		do {
-			let credentials = LoginRequest(email: email, password: password)
-			let encoder = JSONEncoder()
-			let data = try encoder.encode(credentials)
-			
-			requestURL.httpBody = data
-		} catch  {
-			completion(.failure(.notEncoding))
-		}
-		
-		networkLoader.loadData(from: requestURL) { (data, error) in
-			if let error = error {
-				NSLog("Error creating user: \(error)")
-				completion(.failure(.other(error)))
-				return
-			}
-			
-			guard let data = data else {
-				NSLog("No data was returned")
-				completion(.failure(.noData))
-				return
-			}
-			
-			do {
-				let decoder = JSONDecoder()
-				decoder.keyDecodingStrategy = .convertFromSnakeCase
-				
-				let loginDetails = try decoder.decode(Login.self, from: data)
-				
-				completion(.success(loginDetails))
-			} catch {
-				completion(.failure(.notDecoding))
-			}
-		}
-	}
-	
 	func getAllCities(completion: @escaping (Result<[City], NetworkError>) -> Void) {
-		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("city/all") else { return }
+		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("all") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
 		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -160,7 +195,7 @@ class APIController {
 	}
 	
 	func getTopTenBreakdown(completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
-		guard let topTenURL = URL(string: baseURLString)?.appendingPathComponent("city/topten-score_total") else { return }
+		guard let topTenURL = URL(string: baseURLString)?.appendingPathComponent("topten-score_total") else { return }
 		
 		networkLoader.loadData(from: topTenURL) { (data, error) in
 			if let error = error {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WaO-Co-dEX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="llb-JQ-DTq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,6 +32,9 @@
                                 <state key="normal" title=" Search Bar">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="VhD-gN-BTu" kind="show" id="VeL-KO-S6k"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TRM-Mv-Fjb">
                                 <rect key="frame" x="20" y="325" width="374" height="100"/>
@@ -77,7 +80,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VfO-Kf-UNf">
-                                <rect key="frame" x="20" y="490.5" width="394" height="138"/>
+                                <rect key="frame" x="20" y="490.5" width="394" height="113.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0iM-sy-DRl">
                                     <size key="itemSize" width="153" height="152"/>
@@ -87,7 +90,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="elD-59-qa1" customClass="ExploreCollectionViewCell" customModule="BestPlaceToLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-7" width="153" height="152"/>
+                                        <rect key="frame" x="0.0" y="-19.5" width="153" height="152"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="65C-yy-Wq8">
                                             <rect key="frame" x="0.0" y="0.0" width="153" height="152"/>
@@ -130,7 +133,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dho-s4-B0Q">
-                                <rect key="frame" x="20" y="694" width="394" height="138"/>
+                                <rect key="frame" x="20" y="669.5" width="394" height="113.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mOe-fu-h1u">
                                     <size key="itemSize" width="152" height="153"/>
@@ -176,7 +179,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular Cities:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0r-w4-Fcz">
-                                <rect key="frame" x="20" y="658.5" width="110.5" height="20.5"/>
+                                <rect key="frame" x="20" y="634" width="110.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -209,6 +212,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z3r-xc-lo5"/>
                     </view>
+                    <navigationItem key="navigationItem" id="5fW-v8-59N"/>
                     <connections>
                         <outlet property="bestButton" destination="zSw-2c-9Hh" id="Zz6-u4-vSI"/>
                         <outlet property="exoloreCollectionView" destination="VfO-Kf-UNf" id="cYa-Zs-enu"/>
@@ -222,6 +226,36 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaM-0x-QTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1218.840579710145" y="-347.54464285714283"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="702-mt-9ks">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" id="VhD-gN-BTu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="pm2-4h-p86"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fIm-Hf-lxX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1922" y="-348"/>
+        </scene>
+        <!--Explore-->
+        <scene sceneID="bqU-vX-Haw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="llb-JQ-DTq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Explore" image="map" catalog="system" id="Kyy-dU-Bdv"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AUk-sP-zEc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WaO-Co-dEX" kind="relationship" relationship="rootViewController" id="agQ-JR-M9I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3qD-kJ-oIi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="308.69565217391306" y="-347.54464285714283"/>
         </scene>
@@ -237,6 +271,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="map" catalog="system" width="64" height="56"/>
         <image name="sunsetCity" width="925" height="617"/>
     </resources>
 </document>

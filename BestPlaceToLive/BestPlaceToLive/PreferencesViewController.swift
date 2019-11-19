@@ -15,6 +15,7 @@ class PreferencesViewController: UIViewController {
     @IBOutlet var factor3Button: UIButton!
     @IBOutlet var factor4Button: UIButton!
     @IBOutlet var factor5Button: UIButton!
+    @IBOutlet var factor6Button: UIButton!
     @IBOutlet var exploreButton: UIButton!
     @IBOutlet var savePreferencesButton: UIButton!
     

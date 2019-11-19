@@ -144,7 +144,7 @@
                                 <rect key="frame" x="0.0" y="127" width="414" height="642"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="OTN-VK-VUM">
-                                        <rect key="frame" x="250" y="189" width="129" height="130"/>
+                                        <rect key="frame" x="250" y="189" width="129" height="221"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baS-23-YjY">
                                                 <rect key="frame" x="0.0" y="0.0" width="129" height="39"/>
@@ -155,6 +155,13 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUW-eK-iNx">
                                                 <rect key="frame" x="0.0" y="91" width="129" height="39"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Factor">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqU-ZE-XUC">
+                                                <rect key="frame" x="0.0" y="182" width="129" height="39"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="Factor">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -265,6 +272,7 @@
                         <outlet property="factor3Button" destination="c8J-YZ-3S8" id="1Vn-Ai-drf"/>
                         <outlet property="factor4Button" destination="FUW-eK-iNx" id="lfw-0f-DKz"/>
                         <outlet property="factor5Button" destination="IlF-mG-CMZ" id="ic1-py-Kyt"/>
+                        <outlet property="factor6Button" destination="ZqU-ZE-XUC" id="gdY-kV-zhH"/>
                         <outlet property="savePreferencesButton" destination="080-Tu-rdj" id="Olp-iY-GPu"/>
                     </connections>
                 </viewController>

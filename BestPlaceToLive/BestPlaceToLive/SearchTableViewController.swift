@@ -91,10 +91,10 @@ extension SearchTableViewController: UISearchBarDelegate {
                      self.showAlertForInvalidSearchQuery()
                 }
             case .success(let city):
-                activityView.stopAnimating()
                 self.cities = nil
                 self.cities = (city)
                 DispatchQueue.main.async {
+                    activityView.stopAnimating()
                     self.tableView.reloadData()
                 }
             }

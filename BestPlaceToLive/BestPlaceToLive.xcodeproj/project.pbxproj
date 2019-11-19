@@ -42,6 +42,7 @@
 		B5FDAF0D237F425E00C18BFF /* LoginOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */; };
 		B5FDAF0F237F931400C18BFF /* CityAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0E237F931400C18BFF /* CityAPIController.swift */; };
 		B5FDAF11237F982200C18BFF /* CityBreakdownRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */; };
+		B5FDAF1B2384450000C18BFF /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF1A2384450000C18BFF /* SearchRequest.swift */; };
 		EF577FBE237E0B15000C62B3 /* CityCellDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */; };
 		EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6D911F237B4C0500106211 /* PreferencesViewController.swift */; };
 		EF73E84C237F18D1003FB17E /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73E84B237F18D1003FB17E /* CoreDataController.swift */; };
@@ -102,6 +103,7 @@
 		B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOptionsVC.swift; sourceTree = "<group>"; };
 		B5FDAF0E237F931400C18BFF /* CityAPIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAPIController.swift; sourceTree = "<group>"; };
 		B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBreakdownRequest.swift; sourceTree = "<group>"; };
+		B5FDAF1A2384450000C18BFF /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CityCellDetail.storyboard; sourceTree = "<group>"; };
 		EF6D911F237B4C0500106211 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesViewController.swift; path = BestPlaceToLive/PreferencesViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF73E84B237F18D1003FB17E /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataController.swift; path = BestPlaceToLive/Storyboards/CoreDataController.swift; sourceTree = SOURCE_ROOT; };
@@ -277,6 +279,7 @@
 				B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */,
 				B514CB12237B0D8600146E13 /* LoginRequest.swift */,
 				B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */,
+				B5FDAF1A2384450000C18BFF /* SearchRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				B5A4962C237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift in Sources */,
 				EF73E84C237F18D1003FB17E /* CoreDataController.swift in Sources */,
 				B514CB13237B0D8600146E13 /* LoginRequest.swift in Sources */,
+				B5FDAF1B2384450000C18BFF /* SearchRequest.swift in Sources */,
 				B514CB19237B6D1600146E13 /* City.swift in Sources */,
 				B5FDAF11237F982200C18BFF /* CityBreakdownRequest.swift in Sources */,
 				B5A49630237CBC9000F0EE9C /* TestJson.swift in Sources */,

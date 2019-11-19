@@ -170,6 +170,7 @@
                                         <connections>
                                             <outlet property="cityNameLabel" destination="ZzD-Nx-hYw" id="tkZ-pY-uK7"/>
                                             <outlet property="imageView" destination="kbj-mi-gSx" id="nY6-dQ-RFd"/>
+                                            <segue destination="s8r-Xg-I0c" kind="show" identifier="TopTenToDetailSegue" id="dP0-60-768"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -223,6 +224,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaM-0x-QTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="308.69565217391306" y="-347.54464285714283"/>
+        </scene>
+        <!--CityDetails-->
+        <scene sceneID="hpZ-yE-hKN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CityDetails" id="s8r-Xg-I0c" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="IxI-AS-8eW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QxG-xL-rpn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="879" y="-200"/>
         </scene>
     </scenes>
     <resources>

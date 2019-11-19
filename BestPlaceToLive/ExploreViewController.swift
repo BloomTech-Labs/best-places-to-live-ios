@@ -20,10 +20,13 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var exoloreCollectionView: UICollectionView!
     @IBOutlet weak var popularCollectionView: UICollectionView!
     
+    let apiController = APIController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
+        loadTopTen()
 
         // Do any additional setup after loading the view.
     }
@@ -36,6 +39,21 @@ class ExploreViewController: UIViewController {
         searchBarButton.layer.shadowRadius = 5
         searchBarButton.layer.masksToBounds = false
     }
+    
+    private func loadTopTen() {
+        apiController.getTopTenBreakdown { (result) in
+            switch result {
+            case .success:
+                let cities = try! result.get()
+                for city in cities {
+                    print(city.name)
+                }
+            default:
+                break
+            }
+        }
+    }
+    
     
 
     /*

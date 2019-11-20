@@ -224,9 +224,9 @@ class CityAPIController {
 		requestURL.httpMethod = HTTPMethod.post.rawValue
 		
 		do {
-			let filters = FilterRequest(filters: filters)
+			let filtersRequest = FilterRequest(filters: filters)
 			let encoder = JSONEncoder()
-			let data = try encoder.encode(filters)
+			let data = try encoder.encode(filtersRequest)
 			
 			requestURL.httpBody = data
 		} catch  {

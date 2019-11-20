@@ -101,7 +101,7 @@ class NetworkingTests: XCTestCase {
 		cityController.getFilteredCities(filters: [.scoreOutdoors], completion: { (results) in
 			let cities = try? results.get()
 			
-			XCTAssertEqual(cities?[0].name, "Boulder, CO")
+			XCTAssertEqual(cities?[0].name, "Denver, CO")
 			didFinish.fulfill()
 		})
 		

@@ -68,6 +68,34 @@ var citiesDetails = """
 }
 """.data(using: .utf8)
 
+// MARK: /../api
+
+var filteredCities = """
+[
+{
+  "id": "9xj65423r4mz6gs6up59",
+  "name": "Denver, CO",
+  "photoMobile": "https://d13k13wj6adfdf.cloudfront.net/urban_areas/denver-655725fd8b.jpg",
+  "photoWeb": "https://d13k13wj6adfdf.cloudfront.net/urban_areas/denver_web-9726d88300.jpg",
+  "population": 682545.0
+},
+{
+  "id": "9xj6n2x8xnwc79tzh65z",
+  "name": "Aurora, CO",
+  "photoMobile": null,
+  "photoWeb": null,
+  "population": 359407.0
+},
+{
+  "id": "9xj69u41rcg180dcq75v",
+  "name": "Westminster, CO",
+  "photoMobile": null,
+  "photoWeb": null,
+  "population": 113130.0
+}
+]
+""".data(using: .utf8)
+
 // MARK: /search
 
 var citiesBySearchTerm = """

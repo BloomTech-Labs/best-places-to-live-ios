@@ -53,7 +53,7 @@ class NetworkingTests: XCTestCase {
 		mockLoader.data = citiesDetails
 		cityController = CityAPIController(networkLoader: mockLoader)
 		
-		cityController.getCityBreakdown(by: ["5dc9f97b2a65b6af02025ded", "5dc9f97b2a65b6af02025df0"], completion: { (results) in
+		cityController.getCityBreakdown(by: ["5dc9f97b2a65b6af02025ded", "5dc9f97b2a65b6af02025df0"], customModel: nil, completion: { (results) in
 			let cities = try? results.get()
 			
 			XCTAssertEqual(cities?.count, 2)
@@ -87,6 +87,21 @@ class NetworkingTests: XCTestCase {
 			let cities = try? results.get()
 			
 			XCTAssertEqual(cities?.compactMap({$0.state}), ["Florida","Florida"])
+			didFinish.fulfill()
+		})
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
+	func testGetFilteredCities() {
+		let didFinish = expectation(description: "BPTL_API")
+		mockLoader.data = filteredCities
+		cityController = CityAPIController(networkLoader: mockLoader)
+		
+		cityController.getFilteredCities(filters: [.scoreOutdoors], completion: { (results) in
+			let cities = try? results.get()
+			
+			XCTAssertEqual(cities?[0].name, "Denver, CO")
 			didFinish.fulfill()
 		})
 		

@@ -18,13 +18,14 @@ class SignupVC: UIViewController {
 	
 	// MARK: Properties
 	
+	let settingsController = SettingsController.shared
 	
 	// MARK: Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		
+		settingsController.isSaveCredentials = true
 	}
 	
 	// MARK: IBActions
@@ -39,7 +40,8 @@ class SignupVC: UIViewController {
 		UserAPIController.shared.registerNewUser(name: name, email: email, password: password) { (result) in
 			switch result {
 			case .success(let user):
-				SettingsController.shared.loginProcedure(user)
+				self.settingsController.persistcredentials(email, password)
+				self.settingsController.loginProcedure(user)
 			case .failure(let error):
 				print(error)
 			}	

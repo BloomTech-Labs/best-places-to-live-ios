@@ -94,9 +94,7 @@ class SettingsController {
 	
 	var isSaveCredentials: Bool {
 		get {
-			guard let isSaved = defaults.value(forKey: saveProfileKey) as? Bool else {
-				
-				return false }
+			guard let isSaved = defaults.value(forKey: saveProfileKey) as? Bool else { return false }
 			return isSaved
 		}
 		set {
@@ -107,9 +105,9 @@ class SettingsController {
 		}
 	}
 	
-	func persist(credentials: LoginRequest) {
+	func persistcredentials(_ email: String, _ password: String) {
 		if isSaveCredentials {
-			userCredentials = credentials
+			userCredentials = LoginRequest(email: email, password: password)
 		}
 	}
 	

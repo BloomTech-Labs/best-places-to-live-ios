@@ -53,7 +53,7 @@ class NetworkingTests: XCTestCase {
 		mockLoader.data = citiesDetails
 		cityController = CityAPIController(networkLoader: mockLoader)
 		
-		cityController.getCityBreakdown(by: ["5dc9f97b2a65b6af02025ded", "5dc9f97b2a65b6af02025df0"], completion: { (results) in
+		cityController.getCityBreakdown(by: ["5dc9f97b2a65b6af02025ded", "5dc9f97b2a65b6af02025df0"], customModel: nil, completion: { (results) in
 			let cities = try? results.get()
 			
 			XCTAssertEqual(cities?.count, 2)

@@ -106,31 +106,22 @@ class CityAPIController {
 		}
 	}
 	
-	func getCityBreakdown(by cityIds: [String], completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
+	func getCityBreakdown(by cityIds: [String], customModel: [Breakdown]?, completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
 		guard let cityURL = URL(string: baseURLString) else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
 		requestURL.httpMethod = HTTPMethod.post.rawValue
 		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
 				
-//		do {
-//			let cityModel = [
-//				"full_name": "",
-//				"air-pollution-telescore": "",
-//				"airport-hub-index-detail": "",
-//				"cost-cinema": "",
-//				"cost_of_living": "",
-//				"country": "",
-//				"gun-death-rate": ""
-//			]
-//			let cityRequest = CitBreakdownRequest(ids: cityIds, model: cityModel)
-//			let encoder = JSONEncoder()
-//			let data = try encoder.encode(cityRequest)
-//			
-//			requestURL.httpBody = data
-//		} catch  {
-//			completion(.failure(.notEncoding))
-//		}
+		do {
+			let cityRequest = CitBreakdownRequest(cityIds: cityIds, customModel: customModel)
+			let encoder = JSONEncoder()
+			let data = try encoder.encode(cityRequest)
+			
+			requestURL.httpBody = data
+		} catch  {
+			completion(.failure(.notEncoding))
+		}
 		
 		networkLoader.loadData(from: requestURL) { (data, error) in
 			if let error = error {

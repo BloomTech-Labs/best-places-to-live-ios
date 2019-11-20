@@ -101,6 +101,10 @@ class PreferencesViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? SearchTableViewController else {return }
+    }
+    
     private func setupUI() {
         factor1Button.layer.cornerRadius = 10
         factor2Button.layer.cornerRadius = 10

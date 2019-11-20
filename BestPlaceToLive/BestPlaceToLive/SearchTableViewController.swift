@@ -16,9 +16,12 @@ class SearchTableViewController: UITableViewController {
     @IBOutlet var searchCityBar: UISearchBar!
     @IBOutlet var setPreferencesButton: UIButton!
     var cities: [CityBreakdown]? = []
+    //put selected filters here
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //refactor switch on whether the filters are empty or not, if not empty call it with the filters otherwise show the top ten
         setupUI()
 		CityAPIController.shared.getTopTenBreakdown { cities in
             do {
@@ -56,6 +59,7 @@ class SearchTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
     
+    @IBAction func unwindToSearch(_: UIStoryboardSegue) {}
     
     private func showAlertForInvalidSearchQuery() {
         let alert = UIAlertController(title: "Please Try Again", message: "Your search criteria is invalid", preferredStyle: .alert)

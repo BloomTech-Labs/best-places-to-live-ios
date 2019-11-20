@@ -260,6 +260,7 @@
                                         </state>
                                         <connections>
                                             <action selector="doneButtonTapped:" destination="XBO-DX-pBe" eventType="touchUpInside" id="7UP-5c-Be3"/>
+                                            <segue destination="Vzf-yW-VeM" kind="unwind" unwindAction="unwindToSearch:" id="9xv-Bo-cCc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -307,6 +308,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87S-R2-1Xn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Vzf-yW-VeM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1062" y="-330"/>
         </scene>

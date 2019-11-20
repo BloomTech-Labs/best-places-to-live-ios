@@ -12,5 +12,5 @@ struct RegistrationRequest: Codable {
 	let name: String
 	let email: String
 	let password: String
-	let location: String?
+	let location: String
 }

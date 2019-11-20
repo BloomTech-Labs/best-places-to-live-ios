@@ -42,6 +42,9 @@
 		B5FDAF0D237F425E00C18BFF /* LoginOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */; };
 		B5FDAF0F237F931400C18BFF /* CityAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0E237F931400C18BFF /* CityAPIController.swift */; };
 		B5FDAF11237F982200C18BFF /* CityBreakdownRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */; };
+		B5FDAF1523835B3C00C18BFF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF1423835B3C00C18BFF /* Profile.swift */; };
+		B5FDAF172383643500C18BFF /* ProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF162383643500C18BFF /* ProfileRequest.swift */; };
+		B5FDAF192383669100C18BFF /* ProfileCityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF182383669100C18BFF /* ProfileCityRequest.swift */; };
 		B5FDAF1B2384450000C18BFF /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF1A2384450000C18BFF /* SearchRequest.swift */; };
 		EF577FBE237E0B15000C62B3 /* CityCellDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */; };
 		EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6D911F237B4C0500106211 /* PreferencesViewController.swift */; };
@@ -103,6 +106,9 @@
 		B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOptionsVC.swift; sourceTree = "<group>"; };
 		B5FDAF0E237F931400C18BFF /* CityAPIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAPIController.swift; sourceTree = "<group>"; };
 		B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBreakdownRequest.swift; sourceTree = "<group>"; };
+		B5FDAF1423835B3C00C18BFF /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		B5FDAF162383643500C18BFF /* ProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequest.swift; sourceTree = "<group>"; };
+		B5FDAF182383669100C18BFF /* ProfileCityRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCityRequest.swift; sourceTree = "<group>"; };
 		B5FDAF1A2384450000C18BFF /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CityCellDetail.storyboard; sourceTree = "<group>"; };
 		EF6D911F237B4C0500106211 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesViewController.swift; path = BestPlaceToLive/PreferencesViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -185,6 +191,7 @@
 				B514CB14237B0D9900146E13 /* Login.swift */,
 				B514CB18237B6D1600146E13 /* City.swift */,
 				B514CB1A237B73EC00146E13 /* CityBreakdown.swift */,
+				B5FDAF1423835B3C00C18BFF /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,8 +284,10 @@
 			isa = PBXGroup;
 			children = (
 				B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */,
+				B5FDAF162383643500C18BFF /* ProfileRequest.swift */,
 				B514CB12237B0D8600146E13 /* LoginRequest.swift */,
 				B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */,
+				B5FDAF182383669100C18BFF /* ProfileCityRequest.swift */,
 				B5FDAF1A2384450000C18BFF /* SearchRequest.swift */,
 			);
 			path = Requests;
@@ -424,9 +433,12 @@
 				B514CB17237B696D00146E13 /* UserAPIController.swift in Sources */,
 				B5FDAF09237F1A8100C18BFF /* ProfileVC.swift in Sources */,
 				B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */,
+				B5FDAF1523835B3C00C18BFF /* Profile.swift in Sources */,
 				EF73E84F237F1AE9003FB17E /* NomadsLand.xcdatamodeld in Sources */,
 				B5FDAF0B237F1F6E00C18BFF /* LoginRouterVC.swift in Sources */,
 				B5FDAF0D237F425E00C18BFF /* LoginOptionsVC.swift in Sources */,
+				B5FDAF172383643500C18BFF /* ProfileRequest.swift in Sources */,
+				B5FDAF192383669100C18BFF /* ProfileCityRequest.swift in Sources */,
 				B514CB0A237A1B6A00146E13 /* LoginVC.swift in Sources */,
 				B5FDAEFF237DD5F400C18BFF /* Extensions.swift in Sources */,
 				755E3352237E098E00FAF3D6 /* ExploreCollectionViewCell.swift in Sources */,

@@ -14,6 +14,7 @@ class NetworkingTests: XCTestCase {
 	var userController: UserAPIController!
 	var cityController: CityAPIController!
 	let mockLoader = MockDataLoader()
+	let user = Login(id: "123", name: "Jack Ryan", email: "jryan@cia.com", location: "Washington, DC", token: "abc")
 	
 	//MARK: - City Tests
 	
@@ -120,6 +121,38 @@ class NetworkingTests: XCTestCase {
 			XCTAssertEqual(user?.name, "Jack Ryan")
 			didFinish.fulfill()
 		}
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
+	func testGetProfile() {
+		let didFinish = expectation(description: "BPTL_API")
+		mockLoader.data = profile
+		userController = UserAPIController(networkLoader: mockLoader)
+		SettingsController.shared.loginProcedure(user)
+		
+		userController.getProfile { (results) in
+			let profile = try? results.get()
+			
+			XCTAssertEqual(profile?.name, "Jack Ryan")
+			didFinish.fulfill()
+		}
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
+	func testSaveCity() {
+		let didFinish = expectation(description: "BPTL_API")
+		mockLoader.data = profile
+		userController = UserAPIController(networkLoader: mockLoader)
+		SettingsController.shared.loginProcedure(user)
+		
+		userController.saveCityBy(id: "123", name: "Brooklyn, NY", photo: "abc", completion: { (results) in
+			let profile = try? results.get()
+			
+			XCTAssertEqual(profile?.name, "Jack Ryan")
+			didFinish.fulfill()
+		})
 		
 		wait(for: [didFinish], timeout: 5)
 	}

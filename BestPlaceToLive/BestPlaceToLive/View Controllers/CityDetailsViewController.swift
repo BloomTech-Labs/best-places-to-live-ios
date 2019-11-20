@@ -7,13 +7,22 @@
 //
 
 import UIKit
+import MapKit
 
 class CityDetailsViewController: UIViewController {
-    var city: City?
+    
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var cityPhotoImageView: UIImageView!
+    
+    
+    var city: CityBreakdown?
     let coreDataController = CoreDataController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
 
         // Do any additional setup after loading the view.
     }
@@ -21,6 +30,15 @@ class CityDetailsViewController: UIViewController {
     private func updateViews() {
         guard let city = city else { return }
         //update views here
+        cityNameLabel.text = city.name
+        if let location = city.location {
+            let annotaton = MKPointAnnotation()
+            annotaton.coordinate = CLLocationCoordinate2D(latitude: location[1], longitude: location[0])
+            let span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+            let region = MKCoordinateRegion(center: annotaton.coordinate, span: span)
+            self.mapView.setRegion(region, animated: true)
+            mapView.addAnnotation(annotaton)
+        }
     }
     
     private func checkIfCityIsSaved() {

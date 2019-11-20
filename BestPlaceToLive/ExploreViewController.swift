@@ -20,7 +20,7 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var exoloreCollectionView: UICollectionView!
     @IBOutlet weak var popularCollectionView: UICollectionView!
     
-    let apiController = APIController()
+    let apiController = CityAPIController()
     var topTenCities: [CityBreakdown] = []
     
     
@@ -73,11 +73,13 @@ class ExploreViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "TopTenToDetailSegue" {
-//            guard let detailVC = segue.destination as? 
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TopTenToDetailSegue" {
+            guard let detailVC = segue.destination as? CityDetailsViewController, let indexPath = popularCollectionView.indexPathsForSelectedItems?.first else { return }
+            detailVC.city = topTenCities[indexPath.item]
+            
+        }
+    }
     
 
 }

@@ -11,4 +11,12 @@ import Foundation
 struct CitBreakdownRequest: Encodable {
 	let ids: [String]
 	let model: [String: String]?
+	
+	init(cityIds: [String], customModel: [Breakdown]?) {
+		var newModel: [String: String]?
+		customModel?.forEach({ newModel?[$0.rawValue] = "" })
+		
+		ids = cityIds
+		model = newModel
+	}
 }

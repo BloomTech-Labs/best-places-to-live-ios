@@ -34,6 +34,9 @@
                                     <constraint firstAttribute="width" constant="28" id="CAe-nX-J5s"/>
                                 </constraints>
                                 <state key="normal" image="suit.heart" catalog="system"/>
+                                <connections>
+                                    <action selector="likeButtonTapped:" destination="EHl-Q9-hqd" eventType="touchUpInside" id="nvN-f0-n5L"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

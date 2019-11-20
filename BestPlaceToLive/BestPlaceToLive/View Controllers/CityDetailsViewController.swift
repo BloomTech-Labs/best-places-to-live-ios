@@ -19,10 +19,14 @@ class CityDetailsViewController: UIViewController {
     
     var city: CityBreakdown?
     let coreDataController = CoreDataController()
+    var cityIsSaved = false
+    var citySearch: CitySearch?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        likeButton.isUserInteractionEnabled = false
         updateViews()
+        checkIfCityIsSaved()
 
         // Do any additional setup after loading the view.
     }
@@ -43,9 +47,32 @@ class CityDetailsViewController: UIViewController {
     
     private func checkIfCityIsSaved() {
         guard let cityID = city?.id else { return }
-        
+        if let savedCity = coreDataController.fetchSingleCitySearchFromPersistence(identifier: cityID) {
+            citySearch = savedCity
+            //cityIsSaved = true
+            likeButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+        } else {
+            //cityIsSaved = false
+            likeButton.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+        }
+        likeButton.isUserInteractionEnabled = true
         
     }
+    
+    @IBAction func likeButtonTapped(_ sender: Any) {
+        guard let city = city, let id = city.id, let name = city.name else { return }
+        if let citySearch = citySearch {
+            coreDataController.deleteCitySearch(citySearch: citySearch)
+            self.citySearch = nil
+            likeButton.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+            //cityIsSaved.toggle()
+        } else {
+            citySearch = coreDataController.addCitySearch(id: id, cityName: name, cityPhoto: city.photo, group: Group(name: "test"))
+            likeButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+            //cityIsSaved.toggle()
+        }
+    }
+    
     
 
     /*

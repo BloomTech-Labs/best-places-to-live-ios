@@ -1,23 +1,22 @@
 //
-//  Login.swift
+//  Profile.swift
 //  BestPlaceToLive
 //
-//  Created by Jeffrey Santana on 11/12/19.
+//  Created by Jeffrey Santana on 11/18/19.
 //  Copyright © 2019 bradleyyin. All rights reserved.
 //
 
 import Foundation
 
-struct Login: Codable {
+struct Profile: Decodable {
 	
 	let id: String
 	let name: String
 	let email: String
-	let location: String?
-	let token: String
+	let cities: [City]
 	
 	enum CodingKeys: String, CodingKey {
 		case id = "_id"
-		case name, email, location, token
+		case name, email, cities
 	}
 }

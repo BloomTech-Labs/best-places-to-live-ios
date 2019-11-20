@@ -1,5 +1,5 @@
 //
-//  Login.swift
+//  City.swift
 //  BestPlaceToLive
 //
 //  Created by Jeffrey Santana on 11/12/19.
@@ -8,16 +8,13 @@
 
 import Foundation
 
-struct Login: Codable {
-	
+struct City: Decodable {
 	let id: String
 	let name: String
-	let email: String
-	let location: String?
-	let token: String
+	let photo: String?
 	
 	enum CodingKeys: String, CodingKey {
 		case id = "_id"
-		case name, email, location, token
+		case name, photo
 	}
 }

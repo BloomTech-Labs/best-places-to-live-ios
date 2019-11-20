@@ -38,7 +38,6 @@
 		B5FDAF03237DF67400C18BFF /* SettingsControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF02237DF67400C18BFF /* SettingsControllerTests.swift */; };
 		B5FDAF07237F16CB00C18BFF /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5FDAF06237F16CB00C18BFF /* Profile.storyboard */; };
 		B5FDAF09237F1A8100C18BFF /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF08237F1A8100C18BFF /* ProfileVC.swift */; };
-		B5FDAF0B237F1F6E00C18BFF /* LoginRouterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0A237F1F6D00C18BFF /* LoginRouterVC.swift */; };
 		B5FDAF0D237F425E00C18BFF /* LoginOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */; };
 		B5FDAF0F237F931400C18BFF /* CityAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF0E237F931400C18BFF /* CityAPIController.swift */; };
 		B5FDAF11237F982200C18BFF /* CityBreakdownRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */; };
@@ -102,7 +101,6 @@
 		B5FDAF02237DF67400C18BFF /* SettingsControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsControllerTests.swift; sourceTree = "<group>"; };
 		B5FDAF06237F16CB00C18BFF /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		B5FDAF08237F1A8100C18BFF /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
-		B5FDAF0A237F1F6D00C18BFF /* LoginRouterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterVC.swift; sourceTree = "<group>"; };
 		B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOptionsVC.swift; sourceTree = "<group>"; };
 		B5FDAF0E237F931400C18BFF /* CityAPIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAPIController.swift; sourceTree = "<group>"; };
 		B5FDAF10237F982200C18BFF /* CityBreakdownRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBreakdownRequest.swift; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 		B514CAFB2379C2A800146E13 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5FDAF0A237F1F6D00C18BFF /* LoginRouterVC.swift */,
 				B5FDAF0C237F425E00C18BFF /* LoginOptionsVC.swift */,
 				B514CB09237A1B6A00146E13 /* LoginVC.swift */,
 				B514CB0B237A1C7F00146E13 /* SignupVC.swift */,
@@ -435,7 +432,6 @@
 				B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */,
 				B5FDAF1523835B3C00C18BFF /* Profile.swift in Sources */,
 				EF73E84F237F1AE9003FB17E /* NomadsLand.xcdatamodeld in Sources */,
-				B5FDAF0B237F1F6E00C18BFF /* LoginRouterVC.swift in Sources */,
 				B5FDAF0D237F425E00C18BFF /* LoginOptionsVC.swift in Sources */,
 				B5FDAF172383643500C18BFF /* ProfileRequest.swift in Sources */,
 				B5FDAF192383669100C18BFF /* ProfileCityRequest.swift in Sources */,

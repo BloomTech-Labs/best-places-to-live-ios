@@ -38,15 +38,28 @@ class LoginVC: UIViewController {
 			switch result {
 			case .success(let user):
 				SettingsController.shared.loginProcedure(user)
+				DispatchQueue.main.async {
+					self.segueToProfileVC()
+				}
 			case .failure(let error):
 				print(error)
 			}			
 		}
-		
-		#warning("Navigate to proper screen when logging in")
 	}
 	
 	// MARK: Helpers
+	
+	private func segueToProfileVC() {
+		if SettingsController.shared.loggedInUser != nil {
+			let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+			
+			if let initialVC = storyboard.instantiateInitialViewController() as? UINavigationController {
+					guard let optionsVC = initialVC.viewControllers.first as? ProfileVC else { return }
+				
+				navigationController?.viewControllers = [optionsVC]
+			}
+		}
+	}
 	
 	
 }

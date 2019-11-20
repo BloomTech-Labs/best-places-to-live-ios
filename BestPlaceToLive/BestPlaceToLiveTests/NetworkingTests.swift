@@ -14,6 +14,7 @@ class NetworkingTests: XCTestCase {
 	var userController: UserAPIController!
 	var cityController: CityAPIController!
 	let mockLoader = MockDataLoader()
+	let user = Login(id: "123", name: "Jack Ryan", email: "jryan@cia.com", location: "Washington, DC", token: "abc")
 	
 	//MARK: - City Tests
 	
@@ -52,7 +53,7 @@ class NetworkingTests: XCTestCase {
 		mockLoader.data = citiesDetails
 		cityController = CityAPIController(networkLoader: mockLoader)
 		
-		cityController.getCityBreakdown(by: ["5dc9f97b2a65b6af02025ded", "5dc9f97b2a65b6af02025df0"], completion: { (results) in
+		cityController.getCityBreakdown(by: ["5dc9f97b2a65b6af02025ded", "5dc9f97b2a65b6af02025df0"], customModel: nil, completion: { (results) in
 			let cities = try? results.get()
 			
 			XCTAssertEqual(cities?.count, 2)
@@ -92,6 +93,21 @@ class NetworkingTests: XCTestCase {
 		wait(for: [didFinish], timeout: 5)
 	}
 	
+	func testGetFilteredCities() {
+		let didFinish = expectation(description: "BPTL_API")
+		mockLoader.data = filteredCities
+		cityController = CityAPIController(networkLoader: mockLoader)
+		
+		cityController.getFilteredCities(filters: [.scoreOutdoors], completion: { (results) in
+			let cities = try? results.get()
+			
+			XCTAssertEqual(cities?[0].name, "Denver, CO")
+			didFinish.fulfill()
+		})
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
 	//MARK: - User Tests
 	
 	func testRegistration() {
@@ -120,6 +136,38 @@ class NetworkingTests: XCTestCase {
 			XCTAssertEqual(user?.name, "Jack Ryan")
 			didFinish.fulfill()
 		}
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
+	func testGetProfile() {
+		let didFinish = expectation(description: "BPTL_API")
+		mockLoader.data = profile
+		userController = UserAPIController(networkLoader: mockLoader)
+		SettingsController.shared.loginProcedure(user)
+		
+		userController.getProfile { (results) in
+			let profile = try? results.get()
+			
+			XCTAssertEqual(profile?.name, "Jack Ryan")
+			didFinish.fulfill()
+		}
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
+	func testSaveCity() {
+		let didFinish = expectation(description: "BPTL_API")
+		mockLoader.data = profile
+		userController = UserAPIController(networkLoader: mockLoader)
+		SettingsController.shared.loginProcedure(user)
+		
+		userController.saveCityBy(id: "123", name: "Brooklyn, NY", photo: "abc", completion: { (results) in
+			let profile = try? results.get()
+			
+			XCTAssertEqual(profile?.name, "Jack Ryan")
+			didFinish.fulfill()
+		})
 		
 		wait(for: [didFinish], timeout: 5)
 	}

@@ -221,6 +221,8 @@ class CityAPIController {
 		else { return }
 		var requestURL = URLRequest(url: filterSearchURL)
 		
+		requestURL.httpMethod = HTTPMethod.post.rawValue
+		
 		do {
 			let filters = FilterRequest(filters: filters)
 			let encoder = JSONEncoder()

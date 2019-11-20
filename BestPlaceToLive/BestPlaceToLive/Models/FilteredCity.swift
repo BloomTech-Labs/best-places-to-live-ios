@@ -9,6 +9,7 @@
 import Foundation
 
 struct FilteredCity: Decodable {
+	let id: String
 	let name: String
 	let photoMobile: String?
 	let population: Double

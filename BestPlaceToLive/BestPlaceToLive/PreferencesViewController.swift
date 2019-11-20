@@ -19,6 +19,8 @@ class PreferencesViewController: UIViewController {
     @IBOutlet var exploreButton: UIButton!
     @IBOutlet var savePreferencesButton: UIButton!
     
+    //array of breakdown or whatever the method call takes
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -26,6 +28,77 @@ class PreferencesViewController: UIViewController {
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func factor1Tapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        switch sender.isSelected {
+        case true:
+            sender.backgroundColor = .yellow
+            //add the filter type to the array which corresponds to this
+        default:
+            sender.backgroundColor = .white
+            //remove the filter type from the array
+        }
+    }
+    
+    @IBAction func factor2Tapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        switch sender.isSelected {
+        case true:
+            sender.backgroundColor = .yellow
+            //add the filter type to the array which corresponds to this
+        default:
+            sender.backgroundColor = .white
+            //remove the filter type from the array
+        }
+    }
+    
+    @IBAction func factor3Tapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        switch sender.isSelected {
+        case true:
+            sender.backgroundColor = .yellow
+            //add the filter type to the array which corresponds to this
+        default:
+            sender.backgroundColor = .white
+            //remove the filter type from the array
+        }
+    }
+    @IBAction func factor4Tapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        switch sender.isSelected {
+        case true:
+            sender.backgroundColor = .yellow
+            //add the filter type to the array which corresponds to this
+        default:
+            sender.backgroundColor = .white
+            //remove the filter type from the array
+        }
+    }
+    
+    @IBAction func factor5Tapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        switch sender.isSelected {
+        case true:
+            sender.backgroundColor = .yellow
+            //add the filter type to the array which corresponds to this
+        default:
+            sender.backgroundColor = .white
+            //remove the filter type from the array
+        }
+    }
+    
+    @IBAction func factor6Tapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        switch sender.isSelected {
+        case true:
+            sender.backgroundColor = .yellow
+            //add the filter type to the array which corresponds to this
+        default:
+            sender.backgroundColor = .white
+            //remove the filter type from the array
+        }
     }
     
     private func setupUI() {

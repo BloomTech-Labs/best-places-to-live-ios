@@ -68,6 +68,31 @@ var citiesDetails = """
 }
 """.data(using: .utf8)
 
+// MARK: /../api
+
+var filteredCities = """
+[
+{
+  "name": "Boulder, CO",
+  "photoMobile": "https://d13k13wj6adfdf.cloudfront.net/urban_areas/boulder-75be72cfaf.jpg",
+  "photoWeb": "https://d13k13wj6adfdf.cloudfront.net/urban_areas/boulder_web-3765374a2b.jpg",
+  "population": 107349.0
+},
+{
+  "name": "Colorado Springs, CO",
+  "photoMobile": "https://d13k13wj6adfdf.cloudfront.net/urban_areas/colorado-springs-ccf32e73d2.jpg",
+  "photoWeb": "https://d13k13wj6adfdf.cloudfront.net/urban_areas/colorado-springs_web-a8228d2190.jpg",
+  "population": 456568.0
+},
+{
+  "name": "Denver, CO",
+  "photoMobile": "https://d13k13wj6adfdf.cloudfront.net/urban_areas/denver-655725fd8b.jpg",
+  "photoWeb": "https://d13k13wj6adfdf.cloudfront.net/urban_areas/denver_web-9726d88300.jpg",
+  "population": 682545.0
+}
+]
+""".data(using: .utf8)
+
 // MARK: /search
 
 var citiesBySearchTerm = """

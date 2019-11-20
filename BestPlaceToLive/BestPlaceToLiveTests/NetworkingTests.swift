@@ -93,6 +93,21 @@ class NetworkingTests: XCTestCase {
 		wait(for: [didFinish], timeout: 5)
 	}
 	
+	func testGetFilteredCities() {
+		let didFinish = expectation(description: "BPTL_API")
+		mockLoader.data = filteredCities
+		cityController = CityAPIController(networkLoader: mockLoader)
+		
+		cityController.getFilteredCities(filters: [.scoreOutdoors], completion: { (results) in
+			let cities = try? results.get()
+			
+			XCTAssertEqual(cities?[0].name, "Boulder, CO")
+			didFinish.fulfill()
+		})
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
 	//MARK: - User Tests
 	
 	func testRegistration() {

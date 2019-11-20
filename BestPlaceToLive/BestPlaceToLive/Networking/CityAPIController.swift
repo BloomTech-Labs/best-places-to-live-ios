@@ -224,6 +224,45 @@ class CityAPIController {
 		}
 	}
 	
+	func getFilteredCities(filters: [Breakdown], completion: @escaping (Result<[FilteredCity], NetworkError>) -> Void) {
+		guard
+			let filterSearchURL = URL(string: "https://bestplacesbe-test.herokuapp.com")?.appendingPathComponent("api")
+		else { return }
+		var requestURL = URLRequest(url: filterSearchURL)
+		
+		do {
+			let filters = FilterRequest(filters: filters)
+			let encoder = JSONEncoder()
+			let data = try encoder.encode(filters)
+			
+			requestURL.httpBody = data
+		} catch  {
+			completion(.failure(.notEncoding))
+		}
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				let cities = try decoder.decode([FilteredCity].self, from: data)
+					
+				completion(.success(cities))
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
 	
 	// MARK: - Update
 	

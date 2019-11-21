@@ -38,9 +38,7 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
                     }
                 }
             }
-        }
-    
-    
+    }
     
     //MARK: - Actions
     @IBAction func setPreferencesTapped(_ sender: Any) {
@@ -96,7 +94,8 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
         setPreferencesButton.layer.borderWidth = 2
         setPreferencesButton.layer.shadowRadius = 5
         setPreferencesButton.layer.shadowOffset = CGSize(width: 5, height: 5)
-        
+        setPreferencesButton.layer.shadowColor = UIColor.black.cgColor
+        setPreferencesButton.layer.shadowOpacity = 1.0
     }
     
 }

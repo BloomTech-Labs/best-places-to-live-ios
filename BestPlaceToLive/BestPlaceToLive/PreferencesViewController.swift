@@ -22,7 +22,7 @@ class PreferencesViewController: UIViewController {
     @IBOutlet var exploreButton: UIButton!
     
     var selectedFilters: [Breakdown] = []
-    var filtersDelegate: SelectedFiltersDelegate?
+    var filtersDelegate: SelectedFiltersDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +30,8 @@ class PreferencesViewController: UIViewController {
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
-        if filtersDelegate != nil {
             filtersDelegate?.userEnteredFilters(filters: selectedFilters)
-        }
+        
         self.dismiss(animated: true, completion: nil)
     }
     

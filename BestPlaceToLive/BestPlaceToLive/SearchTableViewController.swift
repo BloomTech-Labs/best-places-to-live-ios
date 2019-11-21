@@ -18,11 +18,10 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
     var selectedFilters: [Breakdown]?
     var delegate: SelectedFiltersDelegate?
     
-    
     override func viewDidLoad() {
         setupUI()
     }
-    
+
     func userEnteredFilters(filters: [Breakdown]) {
         print("\(filters)")
         CityAPIController.shared.getFilteredCities(filters: filters ) { result in
@@ -42,13 +41,12 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
     
     //MARK: - Actions
     @IBAction func setPreferencesTapped(_ sender: Any) {
+        self.searchCityBar.text = ""
         self.selectedFilters = nil
         self.cities = nil
     }
     
-    
     // MARK: - Table view data source
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectFilters" {
             guard let destVC = segue.destination as? PreferencesViewController else {return}
@@ -67,8 +65,7 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityTableViewCell else {return UITableViewCell()}
-        cell.cardView.layer.cornerRadius = 10
-        
+        cell.cardView.layer.cornerRadius = 1
         if let filteredCities = filteredCities {
             let filteredCity = filteredCities[indexPath.row]
             cell.cityLabel.text = filteredCity.name
@@ -79,7 +76,6 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
             return cell
         }
     }
-    
     
     private func showAlertForInvalidSearchQuery() {
         let alert = UIAlertController(title: "Please Try Again", message: "Your search criteria is invalid", preferredStyle: .alert)
@@ -103,6 +99,7 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
 extension SearchTableViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.filteredCities = nil
         let activityView = UIActivityIndicatorView(style: .large)
         activityView.center = self.view.center
         self.view.addSubview(activityView)
@@ -128,6 +125,4 @@ extension SearchTableViewController: UISearchBarDelegate {
             }
         }
     }
-    
-    
 }

@@ -217,7 +217,7 @@ class CityAPIController {
 	
 	func getFilteredCities(filters: [Breakdown], completion: @escaping (Result<[FilteredCity], NetworkError>) -> Void) {
 		guard
-			let filterSearchURL = URL(string: "https://bestplacesbe-test.herokuapp.com")?.appendingPathComponent("api")
+			let filterSearchURL = URL(string: "https://best-places-api.herokuapp.com")?.appendingPathComponent("api")
 		else { return }
 		var requestURL = URLRequest(url: filterSearchURL)
 		

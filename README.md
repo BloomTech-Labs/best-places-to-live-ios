@@ -1,9 +1,9 @@
 
 # Best Places to Live
 
-1️⃣ You can find the deployed project at [LiveInTheBestPlace.com](https://www.liveinthebestplace.com/).
+You can find the deployed project at [LiveInTheBestPlace.com](https://www.liveinthebestplace.com/).
 
-## 4️⃣ Contributors
+## Contributors
 
 |                                       [Student 1](https://github.com/)                                        |                                       [Student 2](https://github.com/)                                        |                                       [Student 3](https://github.com/)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
@@ -23,8 +23,6 @@
 
 ## Project Overview
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
-
 1️⃣ [Trello Board](https://trello.com/b/Ff6i9yiF/best-places-to-live)
 
 1️⃣ [Product Canvas](https://www.notion.so/Best-Places-to-Live-57d6b61b6248443484edaf4d8e0e9092)
@@ -36,20 +34,6 @@ Moving is an inevitable part of life that most people will experience. Often, th
 <p align="center">
 <img src="/Screenshots/explore.png" width="230"  title="Explore">
 </p>
-
-### Features
-
--    Feature 1
--    Feature 2
--    Feature 3
--    Feature 4
--    Feature 5
-
-### Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
 
 ## Requirements
 

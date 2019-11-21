@@ -7,6 +7,9 @@
 //
 
 import UIKit
+protocol SelectedFiltersDelegate {
+    func userEnteredFilters(filters: [Breakdown])
+}
 
 class PreferencesViewController: UIViewController {
     
@@ -17,9 +20,9 @@ class PreferencesViewController: UIViewController {
     @IBOutlet var factor5Button: UIButton!
     @IBOutlet var factor6Button: UIButton!
     @IBOutlet var exploreButton: UIButton!
-    @IBOutlet var savePreferencesButton: UIButton!
     
-    //array of breakdown or whatever the method call takes
+    var selectedFilters: [Breakdown] = []
+    var filtersDelegate: SelectedFiltersDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,9 @@ class PreferencesViewController: UIViewController {
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
+        if filtersDelegate != nil {
+            filtersDelegate?.userEnteredFilters(filters: selectedFilters)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -35,10 +41,10 @@ class PreferencesViewController: UIViewController {
         switch sender.isSelected {
         case true:
             sender.backgroundColor = .yellow
-            //add the filter type to the array which corresponds to this
+            selectedFilters.append(.costOfLiving)
         default:
             sender.backgroundColor = .white
-            //remove the filter type from the array
+            selectedFilters.removeAll {$0 == .costOfLiving}
         }
     }
     
@@ -47,10 +53,10 @@ class PreferencesViewController: UIViewController {
         switch sender.isSelected {
         case true:
             sender.backgroundColor = .yellow
-            //add the filter type to the array which corresponds to this
+            selectedFilters.append(.scoreSafety)
         default:
             sender.backgroundColor = .white
-            //remove the filter type from the array
+            selectedFilters.removeAll {$0 == .scoreSafety}
         }
     }
     
@@ -59,10 +65,10 @@ class PreferencesViewController: UIViewController {
         switch sender.isSelected {
         case true:
             sender.backgroundColor = .yellow
-            //add the filter type to the array which corresponds to this
+            selectedFilters.append(.scoreEducation)
         default:
             sender.backgroundColor = .white
-            //remove the filter type from the array
+            selectedFilters.removeAll {$0 == .scoreEducation}
         }
     }
     @IBAction func factor4Tapped(_ sender: UIButton) {
@@ -70,10 +76,10 @@ class PreferencesViewController: UIViewController {
         switch sender.isSelected {
         case true:
             sender.backgroundColor = .yellow
-            //add the filter type to the array which corresponds to this
+            selectedFilters.append(.scoreLeisureAndCulture)
         default:
             sender.backgroundColor = .white
-            //remove the filter type from the array
+            selectedFilters.removeAll {$0 == .scoreLeisureAndCulture}
         }
     }
     
@@ -82,10 +88,10 @@ class PreferencesViewController: UIViewController {
         switch sender.isSelected {
         case true:
             sender.backgroundColor = .yellow
-            //add the filter type to the array which corresponds to this
+            selectedFilters.append(.scoreOutdoors)
         default:
             sender.backgroundColor = .white
-            //remove the filter type from the array
+            selectedFilters.removeAll {$0 == .scoreOutdoors}
         }
     }
     
@@ -94,15 +100,11 @@ class PreferencesViewController: UIViewController {
         switch sender.isSelected {
         case true:
             sender.backgroundColor = .yellow
-            //add the filter type to the array which corresponds to this
+            selectedFilters.append(.scoreCommute)
         default:
             sender.backgroundColor = .white
-            //remove the filter type from the array
+            selectedFilters.removeAll {$0 == .scoreCommute}
         }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destinationVC = segue.destination as? SearchTableViewController else {return }
     }
     
     private func setupUI() {
@@ -124,9 +126,6 @@ class PreferencesViewController: UIViewController {
         factor4Button.backgroundColor = .white
         factor5Button.backgroundColor = .white
         factor6Button.backgroundColor = .white
-        savePreferencesButton.layer.cornerRadius = 10
-        savePreferencesButton.backgroundColor = .white
-        savePreferencesButton.layer.borderWidth = 2
         exploreButton.layer.cornerRadius = 10
         exploreButton.backgroundColor = .white
         exploreButton.layer.borderWidth = 2

@@ -41,7 +41,10 @@
 1️⃣ [UX Design files](https://www.figma.com/file/1qnSbpXmic6GoI90zjZyt9/Labs18_Best-Places-to-Live-Ryan-Lee-Martin-Campbell?node-id=1005%3A2)
 
 Moving is an inevitable part of life that most people will experience. Often, there's buyer's remorse after the fact for one reason or another. With Let's Move Homie, we strive to get you as much information about a potential place to live in a quick, user friendly manner. Whether you want to look up a specific location you have in mind, or just want to scroll across a map and see how certain cities rank compared to others, Let's Move Homie is here to help.
-![](header.png)
+
+<p align="center">
+<img src="/Screenshots/explore.png" width="230"  title="Explore">
+</p>
 
 ### Features
 
@@ -51,30 +54,6 @@ Moving is an inevitable part of life that most people will experience. Often, th
 -    Feature 4
 -    Feature 5
 
-### Authentication API here
-
-🚫Replace text below with a description of the API
-
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
-
-### Payment API here
-
-🚫Replace text below with a description of the API
-
-This is the way you take out your frustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
-
-### Misc API here
-
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-### Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
 ### Misc API here
 
 🚫Replace text below with a description of the API
@@ -83,11 +62,8 @@ Volunteering your time; it pays you and your whole community fantastic dividends
 
 ## Requirements
 
-🚫 These are examples, make sure this matches your project's requirements
-
--   iOS 8.0+
--   Xcode 7.3
--   Cocoa Pods
+-   iOS 13.1+
+-   Xcode 11.2.1
 
 ## Contributing
 

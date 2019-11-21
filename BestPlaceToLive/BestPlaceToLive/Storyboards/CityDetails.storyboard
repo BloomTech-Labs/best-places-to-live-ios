@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EHl-Q9-hqd">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -7,20 +7,70 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--City Details View Controller-->
         <scene sceneID="Lad-t4-O7B">
             <objects>
-                <viewController id="EHl-Q9-hqd" sceneMemberID="viewController">
+                <viewController id="EHl-Q9-hqd" customClass="CityDetailsViewController" customModule="BestPlaceToLive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6oq-Ww-Ybs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CityName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVJ-rw-pfk">
+                                <rect key="frame" x="50" y="64" width="314" height="48"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XcC-KM-dTs">
+                                <rect key="frame" x="38" y="165" width="338" height="316.5"/>
+                            </mapView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aerial-architecture-blue-sky-buildings-466685 1" translatesAutoresizingMaskIntoConstraints="NO" id="DAq-Dg-M29">
+                                <rect key="frame" x="38" y="505.5" width="338" height="316.5"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itM-ja-243">
+                                <rect key="frame" x="193" y="120" width="28" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="ApD-Xd-XfF"/>
+                                    <constraint firstAttribute="width" constant="28" id="CAe-nX-J5s"/>
+                                </constraints>
+                                <state key="normal" image="suit.heart" catalog="system"/>
+                                <connections>
+                                    <action selector="likeButtonTapped:" destination="EHl-Q9-hqd" eventType="touchUpInside" id="nvN-f0-n5L"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="FVJ-rw-pfk" firstAttribute="top" secondItem="XGC-BS-ZUU" secondAttribute="top" constant="20" id="8CS-7b-6r0"/>
+                            <constraint firstItem="DAq-Dg-M29" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="38" id="9K4-6w-P14"/>
+                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="DAq-Dg-M29" secondAttribute="trailing" constant="38" id="9pt-yd-SKT"/>
+                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="XcC-KM-dTs" secondAttribute="trailing" constant="38" id="BO1-c0-SSQ"/>
+                            <constraint firstItem="DAq-Dg-M29" firstAttribute="height" secondItem="XcC-KM-dTs" secondAttribute="height" id="BkJ-rk-wt5"/>
+                            <constraint firstItem="XcC-KM-dTs" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="38" id="FVt-7s-EU3"/>
+                            <constraint firstItem="DAq-Dg-M29" firstAttribute="top" secondItem="XcC-KM-dTs" secondAttribute="bottom" constant="24" id="IP2-Nd-aRM"/>
+                            <constraint firstItem="itM-ja-243" firstAttribute="centerX" secondItem="6oq-Ww-Ybs" secondAttribute="centerX" id="KMT-WO-Vwk"/>
+                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="FVJ-rw-pfk" secondAttribute="trailing" constant="50" id="KYe-EZ-cGS"/>
+                            <constraint firstItem="FVJ-rw-pfk" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="50" id="VVz-Cl-mAA"/>
+                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="bottom" secondItem="DAq-Dg-M29" secondAttribute="bottom" constant="40" id="cen-at-UHG"/>
+                            <constraint firstItem="XcC-KM-dTs" firstAttribute="top" secondItem="itM-ja-243" secondAttribute="bottom" constant="20" id="khf-BT-SQC"/>
+                            <constraint firstItem="itM-ja-243" firstAttribute="top" secondItem="FVJ-rw-pfk" secondAttribute="bottom" constant="8" id="s6w-b3-gkT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="XGC-BS-ZUU"/>
                     </view>
+                    <connections>
+                        <outlet property="cityNameLabel" destination="FVJ-rw-pfk" id="gEV-ry-egB"/>
+                        <outlet property="cityPhotoImageView" destination="DAq-Dg-M29" id="M3Q-B4-rec"/>
+                        <outlet property="likeButton" destination="itM-ja-243" id="ytw-d3-5Tr"/>
+                        <outlet property="mapView" destination="XcC-KM-dTs" id="a7y-EL-n8F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KEp-a5-OyK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="151" y="169"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="aerial-architecture-blue-sky-buildings-466685 1" width="943" height="585"/>
+        <image name="suit.heart" catalog="system" width="64" height="54"/>
+    </resources>
 </document>

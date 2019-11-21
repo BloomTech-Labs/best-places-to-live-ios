@@ -35,6 +35,7 @@ class ExploreViewController: UIViewController {
     private func setupViews() {
         popularCollectionView.delegate = self
         popularCollectionView.dataSource = self
+        self.navigationController?.isNavigationBarHidden = true
     }
     private func setupButton() {
         searchBarButton.backgroundColor = .white
@@ -45,6 +46,7 @@ class ExploreViewController: UIViewController {
         searchBarButton.layer.shadowRadius = 5
         searchBarButton.layer.masksToBounds = false
     }
+    
     
     private func loadTopTen() {
         apiController.getTopTenBreakdown { (result) in

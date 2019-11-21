@@ -29,13 +29,16 @@ class ExploreViewController: UIViewController {
         setupButton()
         loadTopTen()
         setupViews()
-
-        // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         self.navigationController?.isNavigationBarHidden = true
+    }
+    
     private func setupViews() {
         popularCollectionView.delegate = self
         popularCollectionView.dataSource = self
-        self.navigationController?.isNavigationBarHidden = true
     }
     private func setupButton() {
         searchBarButton.backgroundColor = .white

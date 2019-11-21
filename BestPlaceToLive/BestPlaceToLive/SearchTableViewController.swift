@@ -20,6 +20,7 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
     
     override func viewDidLoad() {
         setupUI()
+        self.navigationController?.isNavigationBarHidden = false
     }
 
     func userEnteredFilters(filters: [Breakdown]) {
@@ -51,6 +52,13 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
         if segue.identifier == "SelectFilters" {
             guard let destVC = segue.destination as? PreferencesViewController else {return}
             destVC.filtersDelegate = self
+        }
+        if segue.identifier == "ShowCity" {
+            guard let cityDetailsVC = segue.destination as? CityDetailsViewController, let indexPath = tableView.indexPathForSelectedRow else {return}
+            let filteredCity = filteredCities?[indexPath.row]
+            let city = cities?[indexPath.row]
+            cityDetailsVC.filteredCity = filteredCity
+            cityDetailsVC.city = city
         }
     }
     

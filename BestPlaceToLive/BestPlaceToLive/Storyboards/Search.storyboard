@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dtu-Uv-YSY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dtu-Uv-YSY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -104,7 +104,7 @@
                                     <outlet property="cardView" destination="EoV-m2-OcM" id="2iP-qE-78e"/>
                                     <outlet property="cityImageView" destination="yWe-V2-DzU" id="dbs-w6-7WK"/>
                                     <outlet property="cityLabel" destination="nVF-Rb-MDE" id="nxB-WG-Yyh"/>
-                                    <segue destination="BlO-O5-rNu" kind="show" id="1lb-eD-nQ2"/>
+                                    <segue destination="BlO-O5-rNu" kind="show" identifier="ShowCity" id="1lb-eD-nQ2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -125,10 +125,10 @@
             </objects>
             <point key="canvasLocation" x="250.72463768115944" y="43.526785714285715"/>
         </scene>
-        <!--CityCellDetail-->
+        <!--CityDetails-->
         <scene sceneID="a0d-t8-xva">
             <objects>
-                <viewControllerPlaceholder storyboardName="CityCellDetail" id="BlO-O5-rNu" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="CityDetails" id="BlO-O5-rNu" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Etb-9n-S1n"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OH6-dq-b0V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

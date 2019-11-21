@@ -28,9 +28,11 @@ class CoreDataController {
         }
     }
     
-    func addCitySearch(id: String, cityName: String, filters: [String], cityPhoto: String?) {
-        _ = CitySearch(id: id, cityName: cityName, cityPhoto: cityPhoto ?? "", filters: filters )
+    func addCitySearch(id: String, cityName: String, cityPhoto: String?, group: Group) -> CitySearch {
+        let citySearch = CitySearch(id: id, cityName: cityName, cityPhoto: cityPhoto ?? "", parentGroup: group)
+        
         saveToPersistentStore()
+        return citySearch
     }
     
     func deleteCitySearch(citySearch: CitySearch) {
@@ -40,20 +42,21 @@ class CoreDataController {
     
     func updateCitySearch(citySearch: CitySearch, cityName: String, filters: [String], cityPhoto: String? = nil) {
         citySearch.cityName = cityName
-        citySearch.filters = filters
         citySearch.cityPhoto = cityPhoto
         saveToPersistentStore()
     }
     
-    func fetchSingleCitySearchFromPersistence(identifier: String, context: NSManagedObjectContext) -> CitySearch? {
+    func fetchSingleCitySearchFromPersistence(identifier: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> CitySearch? {
         let fetchRequest: NSFetchRequest<CitySearch> = CitySearch.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", identifier)
         var result: CitySearch? = nil
+        context.performAndWait {
             do {
                 result = try context.fetch(fetchRequest).first
             } catch {
                 NSLog("Error retreiving single city search from coredata: \(error)")
             }
+        }
         return result
     }
 }

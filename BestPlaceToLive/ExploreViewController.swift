@@ -101,12 +101,14 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopTenCell", for: indexPath) as? PopularCollectionViewCell else { fatalError("cannot make TopTenCell") }
             let city = topTenCities[indexPath.item]
             cell.cityNameLabel.text = city.name
-            let imageURL = URL(string: city.secureURL!)!
-            if let imageData = try? Data(contentsOf: imageURL) {
-                cell.imageView.image = UIImage(data: imageData)
-                cell.collectionViewHeight = collectionView.bounds.height
-                print(collectionView.bounds.height)
+            if let imageURL = URL(string: city.secureURL ?? "") {
+                if let imageData = try? Data(contentsOf: imageURL) {
+                    cell.imageView.image = UIImage(data: imageData)
+                    cell.collectionViewHeight = collectionView.bounds.height
+                    print(collectionView.bounds.height)
+                }
             }
+            
             
             
             return cell

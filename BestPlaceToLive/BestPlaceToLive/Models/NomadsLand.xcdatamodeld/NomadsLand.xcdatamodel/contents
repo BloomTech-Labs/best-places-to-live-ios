@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CitySearch" representedClassName="CitySearch" syncable="YES" codeGenerationType="class">
+        <attribute name="cityName" attributeType="String"/>
+        <attribute name="cityPhoto" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
+        <relationship name="parentGroup" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="cities" inverseEntity="Group"/>
+    </entity>
+    <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="cities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CitySearch" inverseName="parentGroup" inverseEntity="CitySearch"/>
+    </entity>
+    <elements>
+        <element name="CitySearch" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Group" positionX="-63" positionY="9" width="128" height="73"/>
+    </elements>
+</model>

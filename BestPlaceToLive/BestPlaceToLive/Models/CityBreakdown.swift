@@ -182,6 +182,7 @@ struct CityBreakdown: Codable {
 	let scoreTravelConnectivity: Double?
 	let scoreVentureCapital: Double?
 	let seasideAccessTelescore: Double?
+    let secureURL: String?
 	let seasideSeaside: Double?
 	let shortName: String?
 	let spokenLanguages: String?
@@ -391,6 +392,7 @@ struct CityBreakdown: Codable {
 		case scoreTravelConnectivity = "score_travel_connectivity"
 		case scoreVentureCapital = "score_venture_capital"
 		case seasideAccessTelescore = "seaside-access-telescore"
+        case secureURL = "secure_url"
 		case seasideSeaside = "seaside-seaside"
 		case shortName = "short_name"
 		case spokenLanguages = "spoken-languages"

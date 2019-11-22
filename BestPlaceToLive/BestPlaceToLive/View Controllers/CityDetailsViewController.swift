@@ -25,6 +25,7 @@ class CityDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         likeButton.isUserInteractionEnabled = false
+        self.navigationController?.isNavigationBarHidden = false
         updateViews()
         checkIfCityIsSaved()
 

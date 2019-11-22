@@ -29,7 +29,7 @@ class CityAPIController {
 		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		
 		do {
-			let searchRequest = SearchRequest(sesarchTerm: searchTerm)
+			let searchRequest = SearchRequest(searchTerm: searchTerm)
 			let encoder = JSONEncoder()
 			let data = try encoder.encode(searchRequest)
 			
@@ -217,7 +217,7 @@ class CityAPIController {
 	
 	func getFilteredCities(filters: [Breakdown], completion: @escaping (Result<[FilteredCity], NetworkError>) -> Void) {
 		guard
-			let filterSearchURL = URL(string: "https://bestplacesbe-test.herokuapp.com")?.appendingPathComponent("api")
+			let filterSearchURL = URL(string: "https://best-places-api.herokuapp.com")?.appendingPathComponent("api")
 		else { return }
 		var requestURL = URLRequest(url: filterSearchURL)
 		

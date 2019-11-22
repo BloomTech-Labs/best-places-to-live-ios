@@ -102,9 +102,10 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
             let city = topTenCities[indexPath.item]
             cell.cityNameLabel.text = city.name
             let imageURL = URL(string: city.secureURL!)!
-            print(imageURL)
             if let imageData = try? Data(contentsOf: imageURL) {
                 cell.imageView.image = UIImage(data: imageData)
+                cell.collectionViewHeight = collectionView.bounds.height
+                print(collectionView.bounds.height)
             }
             
             
@@ -114,7 +115,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: popularCollectionView.bounds.height)
+        return CGSize(width: 200, height: popularCollectionView.bounds.height)
     }
     
     

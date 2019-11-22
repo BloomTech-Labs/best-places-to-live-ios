@@ -11,5 +11,14 @@ import UIKit
 class PopularCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    var collectionViewHeight: CGFloat = 0.0 {
+        didSet {
+            adjustImageViewHeight()
+        }
+    }
+    private func adjustImageViewHeight() {
+        imageViewHeightConstraint.constant = collectionViewHeight
+    }
     
 }

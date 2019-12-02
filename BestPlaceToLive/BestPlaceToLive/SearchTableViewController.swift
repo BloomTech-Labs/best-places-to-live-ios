@@ -79,8 +79,8 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
             cell.cityLabel.text = filteredCity.name
             return cell
         } else {
-            let city = cities?[indexPath.row]
-            cell.cityLabel.text = city?.fullName
+            guard let city = cities?[indexPath.row], let cityName = city.shortName, let state = city.state  else {return UITableViewCell()}
+            cell.cityLabel.text = "\(cityName), \(state)"
             return cell
         }
     }

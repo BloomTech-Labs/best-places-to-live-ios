@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>388986638160-bdo9bnibaq80lek7pq2gae0mi1q76dr5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.388986638160-bdo9bnibaq80lek7pq2gae0mi1q76dr5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBM5d_LjNpq7tRwu5JTRG030-M5rRzGeNk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>388986638160</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bradleyyin.BestPlaceToLive</string>
+	<key>PROJECT_ID</key>
+	<string>best-place-to-live-259116</string>
+	<key>STORAGE_BUCKET</key>
+	<string>best-place-to-live-259116.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:388986638160:ios:f8c9f54f7f62d494752655</string>
+	<key>DATABASE_URL</key>
+	<string>https://best-place-to-live-259116.firebaseio.com</string>
+</dict>
+</plist>

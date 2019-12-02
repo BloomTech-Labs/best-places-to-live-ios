@@ -44,6 +44,12 @@ class CityDetailsViewController: UIViewController {
                 self.mapView.setRegion(region, animated: true)
                 mapView.addAnnotation(annotaton)
             }
+            if let imageURL = URL(string: city.secureURL ?? "") {
+                if let imageData = try? Data(contentsOf: imageURL) {
+                    cityPhotoImageView.image = UIImage(data: imageData)
+                }
+            }
+            
         }
         if let filteredCity = filteredCity {
             CityAPIController.shared.getCityBreakdown(by: [filteredCity.id], customModel: nil) { result in
@@ -63,6 +69,11 @@ class CityDetailsViewController: UIViewController {
                                 let region = MKCoordinateRegion(center: annotaton.coordinate, span: span)
                                 self.mapView.setRegion(region, animated: true)
                                 self.mapView.addAnnotation(annotaton)
+                            }
+                            if let imageURL = URL(string: city.secureURL ?? "") {
+                                if let imageData = try? Data(contentsOf: imageURL) {
+                                    self.cityPhotoImageView.image = UIImage(data: imageData)
+                                }
                             }
                         }
                     }

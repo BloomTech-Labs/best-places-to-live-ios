@@ -189,6 +189,48 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vq-L0-HpS">
+                                <rect key="frame" x="8" y="88" width="211" height="57.5"/>
+                                <string key="text">Your next adventure 
+awaits...</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkT-iA-u02">
+                                <rect key="frame" x="266.5" y="155.5" width="127.5" height="96.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Live in the 
+Best Place:</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="24" name="SFProText-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+IAo
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" metaFont="system" size="24"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Discover Your 
+Next Hometown</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="18" name=".SFNS-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -200,9 +242,12 @@
                             <constraint firstItem="aag-B7-Mll" firstAttribute="top" secondItem="CLy-D3-mMJ" secondAttribute="top" id="Itp-u7-tqT"/>
                             <constraint firstItem="Z3r-xc-lo5" firstAttribute="bottom" secondItem="Dho-s4-B0Q" secondAttribute="bottom" constant="30" id="J6a-MM-LzY"/>
                             <constraint firstItem="vbv-My-Cr3" firstAttribute="leading" secondItem="TRM-Mv-Fjb" secondAttribute="leading" id="L9d-PF-gVv"/>
+                            <constraint firstItem="8Vq-L0-HpS" firstAttribute="leading" secondItem="Z3r-xc-lo5" secondAttribute="leading" constant="8" id="NgQ-9o-FBW"/>
                             <constraint firstItem="2Fi-h6-91x" firstAttribute="leading" secondItem="Z3r-xc-lo5" secondAttribute="leading" constant="50" id="Nul-Sg-T5S"/>
                             <constraint firstItem="aag-B7-Mll" firstAttribute="leading" secondItem="Z3r-xc-lo5" secondAttribute="leading" id="OEz-Ie-4wE"/>
+                            <constraint firstItem="8Vq-L0-HpS" firstAttribute="top" secondItem="Z3r-xc-lo5" secondAttribute="top" id="Rpk-2U-c4k"/>
                             <constraint firstItem="Dho-s4-B0Q" firstAttribute="height" secondItem="VfO-Kf-UNf" secondAttribute="height" id="SWU-dN-f5C"/>
+                            <constraint firstItem="Z3r-xc-lo5" firstAttribute="trailing" secondItem="BkT-iA-u02" secondAttribute="trailing" constant="20" id="Waa-8a-LRO"/>
                             <constraint firstItem="vbv-My-Cr3" firstAttribute="top" secondItem="TRM-Mv-Fjb" secondAttribute="bottom" constant="30" id="aJg-nY-F9R"/>
                             <constraint firstItem="TRM-Mv-Fjb" firstAttribute="top" secondItem="2Fi-h6-91x" secondAttribute="bottom" constant="10" id="bJH-3Z-VSB"/>
                             <constraint firstItem="Z3r-xc-lo5" firstAttribute="trailing" secondItem="aag-B7-Mll" secondAttribute="trailing" id="eRO-Iz-AEu"/>
@@ -210,6 +255,7 @@
                             <constraint firstItem="S0r-w4-Fcz" firstAttribute="top" secondItem="VfO-Kf-UNf" secondAttribute="bottom" constant="30" id="gqR-YD-YfT"/>
                             <constraint firstItem="Dho-s4-B0Q" firstAttribute="leading" secondItem="TRM-Mv-Fjb" secondAttribute="leading" id="hQH-L4-U8z"/>
                             <constraint firstItem="VfO-Kf-UNf" firstAttribute="top" secondItem="vbv-My-Cr3" secondAttribute="bottom" constant="15" id="jOg-nt-avw"/>
+                            <constraint firstItem="2Fi-h6-91x" firstAttribute="top" secondItem="BkT-iA-u02" secondAttribute="bottom" constant="20" id="kQr-6P-tSJ"/>
                             <constraint firstItem="Z3r-xc-lo5" firstAttribute="trailing" secondItem="VfO-Kf-UNf" secondAttribute="trailing" id="ujh-fc-jj4"/>
                             <constraint firstItem="TRM-Mv-Fjb" firstAttribute="leading" secondItem="Z3r-xc-lo5" secondAttribute="leading" constant="20" id="xQh-GR-Rel"/>
                             <constraint firstItem="Z3r-xc-lo5" firstAttribute="trailing" secondItem="Dho-s4-B0Q" secondAttribute="trailing" id="yCF-aO-vPR"/>
@@ -223,6 +269,7 @@
                         <outlet property="exoloreCollectionView" destination="VfO-Kf-UNf" id="cYa-Zs-enu"/>
                         <outlet property="explreLabel" destination="vbv-My-Cr3" id="wK8-9d-TgH"/>
                         <outlet property="imageView" destination="aag-B7-Mll" id="LMy-IM-A66"/>
+                        <outlet property="liveInLabel" destination="BkT-iA-u02" id="lS2-T3-EsC"/>
                         <outlet property="mostPopularButton" destination="orP-fW-jU0" id="vIT-tK-16Z"/>
                         <outlet property="popularCitiesLabel" destination="S0r-w4-Fcz" id="G0C-vl-AOH"/>
                         <outlet property="popularCollectionView" destination="Dho-s4-B0Q" id="Hh5-0I-5ti"/>

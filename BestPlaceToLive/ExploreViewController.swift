@@ -19,6 +19,7 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var popularCitiesLabel: UILabel!
     @IBOutlet weak var exoloreCollectionView: UICollectionView!
     @IBOutlet weak var popularCollectionView: UICollectionView!
+    @IBOutlet weak var liveInLabel: UILabel!
     
     let apiController = CityAPIController()
     var topTenCities: [CityBreakdown] = []
@@ -39,6 +40,7 @@ class ExploreViewController: UIViewController {
     private func setupViews() {
         popularCollectionView.delegate = self
         popularCollectionView.dataSource = self
+        liveInLabel.textColor = .white
     }
     private func setupButton() {
         searchBarButton.backgroundColor = .white

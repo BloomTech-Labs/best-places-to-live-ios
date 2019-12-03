@@ -27,14 +27,15 @@
                                     </connections>
                                 </searchBar>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o86-Ub-qy0">
-                                    <rect key="frame" x="100" y="153.5" width="214" height="34.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                    <state key="normal" title="Set Preferences">
+                                    <rect key="frame" x="10" y="153.5" width="394" height="34.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                    <state key="normal" title="Generate Cities Based on Preferences">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
                                         <action selector="setPreferencesTapped:" destination="Dtu-Uv-YSY" eventType="touchUpInside" id="I1Q-cx-mdh"/>
-                                        <segue destination="XBO-DX-pBe" kind="presentation" modalPresentationStyle="overCurrentContext" id="t5O-a4-5oq"/>
+                                        <segue destination="Mz8-iw-0fd" kind="presentation" identifier="SelectFilters" id="9Vn-w3-3td"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Find Your Ideal City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNW-WA-r1m">
@@ -50,10 +51,10 @@
                                 <constraint firstItem="FNW-WA-r1m" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="50" id="E0B-W8-YTY"/>
                                 <constraint firstAttribute="trailing" secondItem="dKl-mK-66e" secondAttribute="trailing" id="Pgc-Ar-UNG"/>
                                 <constraint firstItem="o86-Ub-qy0" firstAttribute="top" secondItem="dKl-mK-66e" secondAttribute="bottom" constant="10" id="VCu-4w-CQE"/>
-                                <constraint firstItem="o86-Ub-qy0" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="100" id="X9N-9s-5U8"/>
+                                <constraint firstItem="o86-Ub-qy0" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="10" id="X9N-9s-5U8"/>
                                 <constraint firstAttribute="bottom" secondItem="o86-Ub-qy0" secondAttribute="bottom" constant="10" id="Xr7-dT-eBm"/>
                                 <constraint firstItem="dKl-mK-66e" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" id="ds7-JK-lmK"/>
-                                <constraint firstAttribute="trailing" secondItem="o86-Ub-qy0" secondAttribute="trailing" constant="100" id="h8R-Dt-6UQ"/>
+                                <constraint firstAttribute="trailing" secondItem="o86-Ub-qy0" secondAttribute="trailing" constant="10" id="h8R-Dt-6UQ"/>
                                 <constraint firstItem="dKl-mK-66e" firstAttribute="top" secondItem="FNW-WA-r1m" secondAttribute="bottom" constant="40" id="hfo-9K-OLt"/>
                                 <constraint firstItem="FNW-WA-r1m" firstAttribute="top" secondItem="ia7-B9-oHr" secondAttribute="top" constant="14" id="noA-LB-PGC"/>
                             </constraints>
@@ -69,14 +70,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoV-m2-OcM">
                                             <rect key="frame" x="31" y="18" width="352" height="155"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVF-Rb-MDE">
-                                                    <rect key="frame" x="8" y="8" width="242" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State and Zip" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLg-g8-zrg">
-                                                    <rect key="frame" x="8" y="42" width="178" height="74"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVF-Rb-MDE">
+                                                    <rect key="frame" x="8" y="8" width="224" height="145"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -88,16 +83,12 @@
                                             <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="yWe-V2-DzU" secondAttribute="bottom" constant="6" id="0Vx-Aj-Sz2"/>
-                                                <constraint firstItem="VLg-g8-zrg" firstAttribute="top" secondItem="EoV-m2-OcM" secondAttribute="top" constant="42" id="80G-8H-ykO"/>
                                                 <constraint firstItem="yWe-V2-DzU" firstAttribute="leading" secondItem="EoV-m2-OcM" secondAttribute="leading" constant="194" id="FkI-YY-SUL"/>
                                                 <constraint firstItem="nVF-Rb-MDE" firstAttribute="top" secondItem="EoV-m2-OcM" secondAttribute="top" constant="8" id="HXQ-Yl-lgw"/>
-                                                <constraint firstAttribute="bottom" secondItem="VLg-g8-zrg" secondAttribute="bottom" constant="39" id="LER-yk-aPc"/>
-                                                <constraint firstAttribute="trailing" secondItem="VLg-g8-zrg" secondAttribute="trailing" constant="166" id="LM2-QD-kSK"/>
                                                 <constraint firstItem="nVF-Rb-MDE" firstAttribute="leading" secondItem="EoV-m2-OcM" secondAttribute="leading" constant="8" id="jMa-2H-429"/>
-                                                <constraint firstAttribute="bottom" secondItem="nVF-Rb-MDE" secondAttribute="bottom" constant="123" id="kG7-17-zoV"/>
-                                                <constraint firstItem="VLg-g8-zrg" firstAttribute="leading" secondItem="EoV-m2-OcM" secondAttribute="leading" constant="8" id="ktS-DE-Auv"/>
+                                                <constraint firstAttribute="bottom" secondItem="nVF-Rb-MDE" secondAttribute="bottom" constant="2" id="kG7-17-zoV"/>
                                                 <constraint firstAttribute="trailing" secondItem="yWe-V2-DzU" secondAttribute="trailing" constant="7" id="lMl-Em-5pr"/>
-                                                <constraint firstAttribute="trailing" secondItem="nVF-Rb-MDE" secondAttribute="trailing" constant="102" id="v3m-VT-daX"/>
+                                                <constraint firstAttribute="trailing" secondItem="nVF-Rb-MDE" secondAttribute="trailing" constant="120" id="v3m-VT-daX"/>
                                                 <constraint firstItem="yWe-V2-DzU" firstAttribute="top" secondItem="EoV-m2-OcM" secondAttribute="top" constant="42" id="vKW-uC-liq"/>
                                             </constraints>
                                         </view>
@@ -113,8 +104,7 @@
                                     <outlet property="cardView" destination="EoV-m2-OcM" id="2iP-qE-78e"/>
                                     <outlet property="cityImageView" destination="yWe-V2-DzU" id="dbs-w6-7WK"/>
                                     <outlet property="cityLabel" destination="nVF-Rb-MDE" id="nxB-WG-Yyh"/>
-                                    <outlet property="stateZipLabel" destination="VLg-g8-zrg" id="TgO-Ck-dEe"/>
-                                    <segue destination="BlO-O5-rNu" kind="show" id="1lb-eD-nQ2"/>
+                                    <segue destination="BlO-O5-rNu" kind="show" identifier="ShowCity" id="1lb-eD-nQ2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -123,6 +113,8 @@
                             <outlet property="delegate" destination="Dtu-Uv-YSY" id="ZpW-i2-Try"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="qKn-Uu-AJC"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchCityBar" destination="dKl-mK-66e" id="WTk-iS-b0X"/>
                         <outlet property="searchTitle" destination="FNW-WA-r1m" id="Sen-ld-5RQ"/>
@@ -133,82 +125,119 @@
             </objects>
             <point key="canvasLocation" x="250.72463768115944" y="43.526785714285715"/>
         </scene>
-        <!--CityCellDetail-->
+        <!--CityDetails-->
         <scene sceneID="a0d-t8-xva">
             <objects>
-                <viewControllerPlaceholder storyboardName="CityCellDetail" id="BlO-O5-rNu" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="CityDetails" id="BlO-O5-rNu" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Etb-9n-S1n"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OH6-dq-b0V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042" y="149"/>
         </scene>
-        <!--Select Preferences-->
-        <scene sceneID="VCh-6O-w6N">
+        <!--Preferences View Controller-->
+        <scene sceneID="3Qs-vR-4uc">
             <objects>
-                <viewController title="Select Preferences" modalPresentationStyle="overCurrentContext" id="XBO-DX-pBe" customClass="PreferencesViewController" customModule="BestPlaceToLive" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Cjn-zO-99i">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <viewController id="Mz8-iw-0fd" customClass="PreferencesViewController" customModule="BestPlaceToLive" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c0v-QW-TPJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cy-yi-XC8">
-                                <rect key="frame" x="0.0" y="127" width="414" height="642"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4E1-gH-uxQ">
+                                <rect key="frame" x="0.0" y="-44" width="414" height="886"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="OTN-VK-VUM">
-                                        <rect key="frame" x="250" y="189" width="129" height="130"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="yFV-Co-Wr1">
+                                        <rect key="frame" x="250" y="351" width="129" height="221"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baS-23-YjY">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVn-bM-SpI">
                                                 <rect key="frame" x="0.0" y="0.0" width="129" height="39"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <state key="normal" title="Factor">
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Safety">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="factor2Tapped:" destination="Mz8-iw-0fd" eventType="touchUpInside" id="Qf0-mp-uFt"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUW-eK-iNx">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKl-EV-P5H">
                                                 <rect key="frame" x="0.0" y="91" width="129" height="39"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <state key="normal" title="Factor">
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Leisure">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="factor4Tapped:" destination="Mz8-iw-0fd" eventType="touchUpInside" id="rse-Ez-5dI"/>
+                                                </connections>
                                             </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="Qnn-Hv-rfm">
-                                        <rect key="frame" x="35" y="189" width="129" height="221"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x48-Ss-put">
-                                                <rect key="frame" x="0.0" y="0.0" width="129" height="39"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <state key="normal" title="Factor">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8J-YZ-3S8">
-                                                <rect key="frame" x="0.0" y="91" width="129" height="39"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <state key="normal" title="Factor">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IlF-mG-CMZ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23p-uI-cfL">
                                                 <rect key="frame" x="0.0" y="182" width="129" height="39"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <state key="normal" title="Factor">
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Commute">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="factor6Tapped:" destination="Mz8-iw-0fd" eventType="touchUpInside" id="PSZ-nC-nzX"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Dke-11-vHW">
-                                        <rect key="frame" x="3" y="60" width="408" height="111"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="bZa-TV-SG9">
+                                        <rect key="frame" x="35" y="351" width="129" height="221"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refine Your Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pv3-aC-Ugx">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9L-Yv-1vg">
+                                                <rect key="frame" x="0.0" y="0.0" width="129" height="39"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Living Cost">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="factor1Tapped:" destination="Mz8-iw-0fd" eventType="touchUpInside" id="p9i-8z-OxB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ox6-EK-cdV">
+                                                <rect key="frame" x="0.0" y="91" width="129" height="39"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Education">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="factor3Tapped:" destination="Mz8-iw-0fd" eventType="touchUpInside" id="YMQ-ag-39G"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irQ-GX-ceE">
+                                                <rect key="frame" x="0.0" y="182" width="129" height="39"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Outdoors">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="factor5Tapped:" destination="Mz8-iw-0fd" eventType="touchUpInside" id="wpn-ml-C6Z"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="5rv-2o-YXM">
+                                        <rect key="frame" x="3" y="120" width="408" height="111"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refine Your Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbN-PF-DvF">
                                                 <rect key="frame" x="82.5" y="0.0" width="243.5" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find the city tailored to your unique needs, personality, and lifestyle." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4g-kn-kv0">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find the city tailored to your unique needs, personality, and lifestyle." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywv-hZ-MSa">
                                                 <rect key="frame" x="30" y="68" width="348.5" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -216,72 +245,59 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="080-Tu-rdj">
-                                        <rect key="frame" x="35" y="515" width="344" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="Save Preferences">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="doneButtonTapped:" destination="XBO-DX-pBe" eventType="touchUpInside" id="iA1-op-wpM"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzg-md-DDn">
-                                        <rect key="frame" x="35" y="564" width="344" height="41"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgB-Pj-pfU">
+                                        <rect key="frame" x="35" y="730" width="344" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Explore">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="doneButtonTapped:" destination="XBO-DX-pBe" eventType="touchUpInside" id="7UP-5c-Be3"/>
+                                            <action selector="doneButtonTapped:" destination="Mz8-iw-0fd" eventType="touchUpInside" id="tZD-kb-imd"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Dke-11-vHW" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="3" id="4HC-FZ-iP9"/>
-                                    <constraint firstAttribute="trailing" secondItem="OTN-VK-VUM" secondAttribute="trailing" constant="35" id="6Tj-Jm-oTW"/>
-                                    <constraint firstItem="Qnn-Hv-rfm" firstAttribute="top" secondItem="Dke-11-vHW" secondAttribute="bottom" constant="18" id="7V8-vf-hRu"/>
-                                    <constraint firstAttribute="trailing" secondItem="080-Tu-rdj" secondAttribute="trailing" constant="35" id="D9c-PE-i29"/>
-                                    <constraint firstItem="Dke-11-vHW" firstAttribute="top" secondItem="0cy-yi-XC8" secondAttribute="top" constant="60" id="DTn-He-piz"/>
-                                    <constraint firstItem="Bzg-md-DDn" firstAttribute="top" secondItem="080-Tu-rdj" secondAttribute="bottom" constant="8" id="DpX-y6-9hO"/>
-                                    <constraint firstItem="Bzg-md-DDn" firstAttribute="top" secondItem="080-Tu-rdj" secondAttribute="bottom" constant="8" id="GG0-rr-eUr"/>
-                                    <constraint firstItem="OTN-VK-VUM" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="250" id="RdE-yu-vg4"/>
-                                    <constraint firstAttribute="trailing" secondItem="Dke-11-vHW" secondAttribute="trailing" constant="3" id="c9r-Zq-YB5"/>
-                                    <constraint firstItem="080-Tu-rdj" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="35" id="fb4-oT-UYB"/>
-                                    <constraint firstAttribute="bottom" secondItem="Bzg-md-DDn" secondAttribute="bottom" constant="37" id="ipc-dQ-wbO"/>
-                                    <constraint firstItem="OTN-VK-VUM" firstAttribute="top" secondItem="Dke-11-vHW" secondAttribute="bottom" constant="18" id="o7u-Nt-bix"/>
-                                    <constraint firstItem="Bzg-md-DDn" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="35" id="qjr-BS-bRL"/>
-                                    <constraint firstAttribute="trailing" secondItem="Qnn-Hv-rfm" secondAttribute="trailing" constant="250" id="vZ3-62-0Hp"/>
-                                    <constraint firstAttribute="trailing" secondItem="Bzg-md-DDn" secondAttribute="trailing" constant="35" id="wxh-zE-m4X"/>
-                                    <constraint firstItem="Qnn-Hv-rfm" firstAttribute="leading" secondItem="0cy-yi-XC8" secondAttribute="leading" constant="35" id="yNt-tX-Kr4"/>
+                                    <constraint firstAttribute="bottom" secondItem="qgB-Pj-pfU" secondAttribute="bottom" constant="115" id="DLU-yy-n3Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="qgB-Pj-pfU" secondAttribute="trailing" constant="35" id="Idj-Ly-bbj"/>
+                                    <constraint firstItem="qgB-Pj-pfU" firstAttribute="leading" secondItem="4E1-gH-uxQ" secondAttribute="leading" constant="35" id="QWH-Qc-P1D"/>
+                                    <constraint firstItem="bZa-TV-SG9" firstAttribute="leading" secondItem="4E1-gH-uxQ" secondAttribute="leading" constant="35" id="WHF-OF-thf"/>
+                                    <constraint firstAttribute="trailing" secondItem="5rv-2o-YXM" secondAttribute="trailing" constant="3" id="Yjw-tV-M5L"/>
+                                    <constraint firstAttribute="trailing" secondItem="bZa-TV-SG9" secondAttribute="trailing" constant="250" id="Z5R-2J-R96"/>
+                                    <constraint firstItem="5rv-2o-YXM" firstAttribute="top" secondItem="4E1-gH-uxQ" secondAttribute="top" constant="120" id="c0Q-et-om0"/>
+                                    <constraint firstItem="yFV-Co-Wr1" firstAttribute="top" secondItem="5rv-2o-YXM" secondAttribute="bottom" constant="120" id="cRI-Sc-xll"/>
+                                    <constraint firstItem="5rv-2o-YXM" firstAttribute="leading" secondItem="4E1-gH-uxQ" secondAttribute="leading" constant="3" id="kB3-JS-8kq"/>
+                                    <constraint firstItem="bZa-TV-SG9" firstAttribute="top" secondItem="5rv-2o-YXM" secondAttribute="bottom" constant="120" id="khl-jf-aOt"/>
+                                    <constraint firstAttribute="trailing" secondItem="yFV-Co-Wr1" secondAttribute="trailing" constant="35" id="lbX-ge-Isz"/>
+                                    <constraint firstItem="yFV-Co-Wr1" firstAttribute="leading" secondItem="4E1-gH-uxQ" secondAttribute="leading" constant="250" id="ywe-F9-fzi"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="0cy-yi-XC8" firstAttribute="trailing" secondItem="d60-G2-F0p" secondAttribute="trailing" id="TBr-dl-C3o"/>
-                            <constraint firstItem="0cy-yi-XC8" firstAttribute="leading" secondItem="d60-G2-F0p" secondAttribute="leading" id="lgr-LZ-Iv3"/>
-                            <constraint firstItem="0cy-yi-XC8" firstAttribute="top" secondItem="d60-G2-F0p" secondAttribute="top" constant="83" id="v32-0X-gFl"/>
-                            <constraint firstItem="d60-G2-F0p" firstAttribute="bottom" secondItem="0cy-yi-XC8" secondAttribute="bottom" constant="93" id="xqr-gf-PNb"/>
+                            <constraint firstItem="4E1-gH-uxQ" firstAttribute="top" secondItem="063-AK-dtQ" secondAttribute="top" constant="-44" id="A3u-Ud-dFr"/>
+                            <constraint firstItem="4E1-gH-uxQ" firstAttribute="trailing" secondItem="063-AK-dtQ" secondAttribute="trailing" id="MQH-Zv-bxq"/>
+                            <constraint firstItem="4E1-gH-uxQ" firstAttribute="leading" secondItem="063-AK-dtQ" secondAttribute="leading" id="XFf-aC-Gct"/>
+                            <constraint firstItem="4E1-gH-uxQ" firstAttribute="bottom" secondItem="063-AK-dtQ" secondAttribute="bottom" constant="34" id="v6f-Fz-vRH"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="d60-G2-F0p"/>
+                        <viewLayoutGuide key="safeArea" id="063-AK-dtQ"/>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="896"/>
                     <connections>
-                        <outlet property="exploreButton" destination="Bzg-md-DDn" id="ch8-QD-69m"/>
-                        <outlet property="factor1Button" destination="x48-Ss-put" id="AXn-4x-3Qf"/>
-                        <outlet property="factor2Button" destination="baS-23-YjY" id="bGi-At-gnO"/>
-                        <outlet property="factor3Button" destination="c8J-YZ-3S8" id="1Vn-Ai-drf"/>
-                        <outlet property="factor4Button" destination="FUW-eK-iNx" id="lfw-0f-DKz"/>
-                        <outlet property="factor5Button" destination="IlF-mG-CMZ" id="ic1-py-Kyt"/>
-                        <outlet property="savePreferencesButton" destination="080-Tu-rdj" id="Olp-iY-GPu"/>
+                        <outlet property="exploreButton" destination="qgB-Pj-pfU" id="cLH-yd-Zzn"/>
+                        <outlet property="factor1Button" destination="J9L-Yv-1vg" id="iX8-GT-QyZ"/>
+                        <outlet property="factor2Button" destination="SVn-bM-SpI" id="Ukz-ww-Ogx"/>
+                        <outlet property="factor3Button" destination="ox6-EK-cdV" id="4HK-W1-1Zg"/>
+                        <outlet property="factor4Button" destination="WKl-EV-P5H" id="YTI-12-x2i"/>
+                        <outlet property="factor5Button" destination="irQ-GX-ceE" id="tqg-1b-2W8"/>
+                        <outlet property="factor6Button" destination="23p-uI-cfL" id="VfN-Sx-Hy3"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="87S-R2-1Xn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="deZ-2F-qvJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="-330"/>
+            <point key="canvasLocation" x="1259" y="-196"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+    </resources>
 </document>

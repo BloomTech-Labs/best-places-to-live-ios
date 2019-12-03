@@ -29,9 +29,13 @@ class ExploreViewController: UIViewController {
         setupButton()
         loadTopTen()
         setupViews()
-
-        // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         self.navigationController?.isNavigationBarHidden = true
+    }
+    
     private func setupViews() {
         popularCollectionView.delegate = self
         popularCollectionView.dataSource = self
@@ -45,6 +49,7 @@ class ExploreViewController: UIViewController {
         searchBarButton.layer.shadowRadius = 5
         searchBarButton.layer.masksToBounds = false
     }
+    
     
     private func loadTopTen() {
         apiController.getTopTenBreakdown { (result) in
@@ -96,11 +101,14 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopTenCell", for: indexPath) as? PopularCollectionViewCell else { fatalError("cannot make TopTenCell") }
             let city = topTenCities[indexPath.item]
             cell.cityNameLabel.text = city.name
-//            let imageURL = URL(string: city.photo)!
-//            print(imageURL)
-//            if let imageData = try? Data(contentsOf: imageURL) {
-//                cell.imageView.image = UIImage(data: imageData)
-//            }
+            if let imageURL = URL(string: city.secureURL ?? "") {
+                if let imageData = try? Data(contentsOf: imageURL) {
+                    cell.imageView.image = UIImage(data: imageData)
+                    cell.collectionViewHeight = collectionView.bounds.height
+                    print(collectionView.bounds.height)
+                }
+            }
+            
             
             
             return cell
@@ -109,7 +117,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: popularCollectionView.bounds.height)
+        return CGSize(width: 200, height: popularCollectionView.bounds.height)
     }
     
     

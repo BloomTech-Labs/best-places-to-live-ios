@@ -14,6 +14,7 @@ class CityDetailsViewController: UIViewController {
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet var shareCityButton: UIButton!
     @IBOutlet weak var cityPhotoImageView: UIImageView!
     
     
@@ -25,12 +26,38 @@ class CityDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         likeButton.isUserInteractionEnabled = false
         updateViews()
         checkIfCityIsSaved()
-        
-        // Do any additional setup after loading the view.
     }
+    @IBAction func shareCityTapped(_ sender: UIButton) {
+        let sharedText = "Check out \(cityNameLabel.text!)!"
+        let items = [cityPhotoImageView.image!,sharedText ] as [Any]
+        let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(ac, animated: true)
+    }
+    
+    func imageResize (image:UIImage, sizeChange:CGSize)-> UIImage{
+        let hasAlpha = true
+        let scale: CGFloat = 0.0
+
+        UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
+        image.draw(in: CGRect(origin: .zero, size: sizeChange))
+
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
+        return scaledImage
+    }
+    
+    private func setupUI() {
+           shareCityButton.backgroundColor = .white
+           shareCityButton.layer.cornerRadius = 10.0
+           shareCityButton.layer.borderWidth = 2
+           shareCityButton.layer.shadowRadius = 5
+           shareCityButton.layer.shadowOffset = CGSize(width: 5, height: 5)
+           shareCityButton.layer.shadowColor = UIColor.black.cgColor
+           shareCityButton.layer.shadowOpacity = 1.0
+       }
     
     private func updateViews() {
         if let city = city {

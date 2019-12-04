@@ -40,9 +40,9 @@ class CityDetailsViewController: UIViewController {
     }
     @IBAction func getDirectionsTapped(_ sender: UIButton) {
         guard let city = city, let location = city.location else {return}
-        let query = "?daddr=\(location[1]),\(location[0])"
-        let urlString = "http://maps.apple.com/".appending(query)
-        if let url = URL(string: urlString) {
+        let appleQuery = "?daddr=\(location[1]),\(location[0])"
+        let appleUrlString = "http://maps.apple.com/".appending(appleQuery)
+        if let url = URL(string:appleUrlString) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }

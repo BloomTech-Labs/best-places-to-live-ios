@@ -17,13 +17,14 @@ class LoginVC: UIViewController {
 	
 	// MARK: Properties
 	
+	let settingsController = SettingsController.shared
 	
 	// MARK: Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		
+		settingsController.isSaveCredentials = true
 	}
 	
 	// MARK: IBActions
@@ -37,16 +38,30 @@ class LoginVC: UIViewController {
 		UserAPIController.shared.login(email: email, password: password) { (result) in
 			switch result {
 			case .success(let user):
-				SettingsController.shared.loginProcedure(user)
+				self.settingsController.persistcredentials(email, password)
+				self.settingsController.loginProcedure(user)
+				DispatchQueue.main.async {
+					self.segueToProfileVC()
+				}
 			case .failure(let error):
 				print(error)
 			}			
 		}
-		
-		#warning("Navigate to proper screen when logging in")
 	}
 	
 	// MARK: Helpers
+	
+	private func segueToProfileVC() {
+		if SettingsController.shared.loggedInUser != nil {
+			let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+			
+			if let initialVC = storyboard.instantiateInitialViewController() as? UINavigationController {
+					guard let optionsVC = initialVC.viewControllers.first as? ProfileVC else { return }
+				
+				navigationController?.viewControllers = [optionsVC]
+			}
+		}
+	}
 	
 	
 }

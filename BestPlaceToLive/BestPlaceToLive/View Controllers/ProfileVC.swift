@@ -12,6 +12,9 @@ class ProfileVC: UIViewController {
 
 	// MARK: IBOutlets
 	
+	@IBOutlet weak var nameLabel: UILabel!
+	@IBOutlet weak var emailLabel: UILabel!
+	@IBOutlet weak var locationLabel: UILabel!
 	
 	// MARK: Properties
 	
@@ -21,13 +24,55 @@ class ProfileVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		
+		segueToLoginOptionsVC()
+		setupViews()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		segueToLoginOptionsVC()
 	}
 	
 	// MARK: IBActions
 	
+	@IBAction func changeEmailBtnTapped(_ sender: Any) {
+		
+	}
+	
+	@IBAction func changeLocationBtnTapped(_ sender: Any) {
+		
+	}
+	
+	@IBAction func changePasswordBtnTapped(_ sender: Any) {
+		
+	}
+	
+	@IBAction func logoutBtnTapped(_ sender: Any) {
+		
+	}
+	
+	@IBAction func deleteAccountBtnTapped(_ sender: Any) {
+		
+	}
 	
 	// MARK: Helpers
 	
+	private func setupViews() {
+		let user = SettingsController.shared.loggedInUser
+		
+		nameLabel.text = user?.name
+		emailLabel.text = user?.email
+		locationLabel.text = user?.location
+	}
 	
+	private func segueToLoginOptionsVC() {
+		if SettingsController.shared.loggedInUser == nil {
+			let storyboard = UIStoryboard(name: "Login", bundle: nil)
+			
+			if let initialVC = storyboard.instantiateInitialViewController() as? UINavigationController {
+					guard let optionsVC = initialVC.viewControllers.first as? LoginOptionsVC else { return }
+				
+				navigationController?.viewControllers = [optionsVC]
+			}
+		}
+	}
 }

@@ -11,10 +11,11 @@ import Foundation
 struct City: Decodable {
 	let id: String
 	let name: String
-	let photo: String?
+	let photoUrl: String?
 	
 	enum CodingKeys: String, CodingKey {
 		case id = "_id"
-		case name, photo
+		case name
+		case photoUrl = "secure_url"
 	}
 }

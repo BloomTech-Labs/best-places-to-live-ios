@@ -26,7 +26,7 @@ class NetworkingTests: XCTestCase {
 		cityController.getAllCities { (results) in
 			let cities = try? results.get()
 			
-			XCTAssertEqual(cities?[0].name, "Fresno, CA")
+			XCTAssertEqual(cities?[0].name, "Alief, TX")
 			didFinish.fulfill()
 		}
 		

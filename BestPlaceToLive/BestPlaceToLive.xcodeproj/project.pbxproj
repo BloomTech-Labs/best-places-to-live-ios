@@ -102,6 +102,8 @@
 		B5A49635237CBDBE00F0EE9C /* BestPlaceToLiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BestPlaceToLiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A49637237CBDBE00F0EE9C /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		B5A49639237CBDBE00F0EE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5A7F0F52395BCC700752314 /* BestPlaceToLive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BestPlaceToLive.entitlements; sourceTree = "<group>"; };
+		B5A7F0F62396C88B00752314 /* LoginRouterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRouterVC.swift; sourceTree = "<group>"; };
 		B5FDAEFE237DD5F400C18BFF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B5FDAF00237DDF2A00C18BFF /* RegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequest.swift; sourceTree = "<group>"; };
 		B5FDAF02237DF67400C18BFF /* SettingsControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsControllerTests.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				75963D7B23769566002F1D37 /* BestPlaceToLive */,
 				B5A49636237CBDBE00F0EE9C /* BestPlaceToLiveTests */,
 				75963D7A23769566002F1D37 /* Products */,
+				B5A7F0F82397336C00752314 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,6 +170,7 @@
 		75963D7B23769566002F1D37 /* BestPlaceToLive */ = {
 			isa = PBXGroup;
 			children = (
+				B5A7F0F52395BCC700752314 /* BestPlaceToLive.entitlements */,
 				B514CAFC2379C2A800146E13 /* Helpers */,
 				B514CAF92379C2A700146E13 /* Model Controllers */,
 				B514CAFA2379C2A700146E13 /* Models */,
@@ -288,6 +292,14 @@
 			path = BestPlaceToLiveTests;
 			sourceTree = "<group>";
 		};
+		B5A7F0F82397336C00752314 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				B5A7F0F62396C88B00752314 /* LoginRouterVC.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		B5FDAF13238359C400C18BFF /* Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,7 +362,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1110;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = bradleyyin;
 				TargetAttributes = {
 					75963D7823769566002F1D37 = {
@@ -441,13 +453,11 @@
 				B5FDAF11237F982200C18BFF /* CityBreakdownRequest.swift in Sources */,
 				B5A49630237CBC9000F0EE9C /* TestJson.swift in Sources */,
 				B514CB17237B696D00146E13 /* UserAPIController.swift in Sources */,
-				B514CB17237B696D00146E13 /* UserAPIController.swift in Sources */,
 				B5FDAF09237F1A8100C18BFF /* ProfileVC.swift in Sources */,
 				756A7D7A238340900084B4F2 /* CityDetailsViewController.swift in Sources */,
 				B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */,
 				B5FDAF1523835B3C00C18BFF /* Profile.swift in Sources */,
 				EF73E84F237F1AE9003FB17E /* NomadsLand.xcdatamodeld in Sources */,
-				B5FDAF0B237F1F6E00C18BFF /* LoginRouterVC.swift in Sources */,
 				B5FDAF1F2385AA3B00C18BFF /* FilteredCity.swift in Sources */,
 				B5FDAF0D237F425E00C18BFF /* LoginOptionsVC.swift in Sources */,
 				B5FDAF172383643500C18BFF /* ProfileRequest.swift in Sources */,
@@ -465,7 +475,6 @@
 				EF73E855237F35D0003FB17E /* CoreDataTests.swift in Sources */,
 				B5A49638237CBDBE00F0EE9C /* NetworkingTests.swift in Sources */,
 				B5FDAF03237DF67400C18BFF /* SettingsControllerTests.swift in Sources */,
-				B5A49638237CBDBE00F0EE9C /* NetworkingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +626,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BestPlaceToLive/BestPlaceToLive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = BestPlaceToLive/Info.plist;
@@ -635,6 +645,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BestPlaceToLive/BestPlaceToLive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = BestPlaceToLive/Info.plist;

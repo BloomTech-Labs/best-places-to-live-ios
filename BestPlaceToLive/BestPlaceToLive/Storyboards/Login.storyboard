@@ -123,6 +123,7 @@ to discover your next hometown.</string>
                     <connections>
                         <outlet property="emailTextField" destination="cDP-oO-VhX" id="et6-ig-ve0"/>
                         <outlet property="passwordTextField" destination="AXN-sa-9qV" id="wx0-c4-YVy"/>
+                        <segue destination="WZZ-t5-emK" kind="show" identifier="ProfileVCSegue" id="mei-TM-jEY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dbj-6g-ZPg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -264,6 +265,7 @@ to discover your next hometown.</string>
                         <outlet property="emailTextField" destination="4I3-KB-eY5" id="Bj6-iC-Lgh"/>
                         <outlet property="nameTextField" destination="Qkr-IX-MxF" id="h8l-VN-7JT"/>
                         <outlet property="passwordTextField" destination="YeQ-4o-fqe" id="ntQ-oL-VuZ"/>
+                        <segue destination="WZZ-t5-emK" kind="show" identifier="ProfileVCSegue" id="6bI-3i-aOT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bZ-3h-pqa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -287,36 +289,27 @@ to discover your next hometown.</string>
                                             <constraint firstAttribute="width" secondItem="acu-1K-Yiq" secondAttribute="height" multiplier="1:1" id="xvs-1P-BTs"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="h3t-83-mUN">
-                                        <rect key="frame" x="0.0" y="423.33333333333326" width="331.33333333333331" height="196"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="h3t-83-mUN">
+                                        <rect key="frame" x="0.0" y="491.33333333333337" width="331.33333333333331" height="128"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUB-bi-96i">
-                                                <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="60"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="a3l-Ut-rFp"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="Sign in with Google"/>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8R-dN-Lcq">
-                                                <rect key="frame" x="0.0" y="68.000000000000057" width="331.33333333333331" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="ZEc-Qp-iPF"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Sign in with Email"/>
                                                 <connections>
+                                                    <action selector="emailButtonTapped:" destination="sgb-hr-vWn" eventType="touchUpInside" id="5hT-ic-xOg"/>
                                                     <segue destination="ait-G3-eLP" kind="show" id="o3Z-LP-H1R"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bji-iS-zeK">
-                                                <rect key="frame" x="0.0" y="136.00000000000006" width="331.33333333333331" height="60"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="WHq-S4-mcL"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="68" width="331.33333333333331" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Sign up"/>
                                                 <connections>
+                                                    <action selector="signUpButtonTapped:" destination="sgb-hr-vWn" eventType="touchUpInside" id="5Zy-O9-IXW"/>
                                                     <segue destination="Z3B-TE-4zB" kind="show" id="wp6-Bo-Wox"/>
                                                 </connections>
                                             </button>
@@ -335,10 +328,24 @@ to discover your next hometown.</string>
                         <viewLayoutGuide key="safeArea" id="2Ct-B7-y3Z"/>
                     </view>
                     <navigationItem key="navigationItem" id="sJp-uk-crN"/>
+                    <connections>
+                        <outlet property="signInStack" destination="h3t-83-mUN" id="FTf-v0-Hb3"/>
+                        <segue destination="WZZ-t5-emK" kind="show" identifier="ProfileVCSegue" id="wQH-6c-pQH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9hQ-Qc-bh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-245" y="-979"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="w1e-Hs-rum">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="WZZ-t5-emK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jhB-b3-txZ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rxq-Ix-uub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-246" y="344"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OC0-lL-3BJ">
@@ -359,4 +366,7 @@ to discover your next hometown.</string>
             <point key="canvasLocation" x="-1155" y="-979"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="mei-TM-jEY"/>
+    </inferredMetricsTieBreakers>
 </document>

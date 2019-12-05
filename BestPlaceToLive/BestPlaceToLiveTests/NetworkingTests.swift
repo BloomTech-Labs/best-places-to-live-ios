@@ -156,6 +156,22 @@ class NetworkingTests: XCTestCase {
 		wait(for: [didFinish], timeout: 5)
 	}
 	
+	func testGetUserInfo() {
+		let didFinish = expectation(description: "BPTL_API")
+		mockLoader.data = userInfo
+		userController = UserAPIController(networkLoader: mockLoader)
+		SettingsController.shared.loginProcedure(user)
+		
+		userController.getProfile { (results) in
+			let profile = try? results.get()
+			
+			XCTAssertEqual(profile?.name, "Jack Ryan")
+			didFinish.fulfill()
+		}
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
 	func testSaveCity() {
 		let didFinish = expectation(description: "BPTL_API")
 		mockLoader.data = profile

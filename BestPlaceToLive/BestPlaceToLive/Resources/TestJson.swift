@@ -43,6 +43,40 @@ var profile = """
 }
 """.data(using: .utf8)
 
+// MARK: /info
+
+var userInfo = """
+{
+  "_id": "123",
+  "name": "Jack Ryan",
+  "email": "jryan@cia.com",
+  "cities": [
+    {
+      "_id": "5dc9f97b2a65b6af02025ded",
+      "name": "Chevy Chase Village, MD",
+      "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.christiesrealestate.com%2Fsales%2Fdetail%2F170-l-77837-1712071307495480%2Fchevy-chase-village-chevy-chase-md-20815&psig=AOvVaw3kh0smV2FeGYZXmukDSapt&ust=1573850441054000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJC4m_bH6uUCFQAAAAAdAAAAABAD"
+    }
+  ],
+  "likes": [
+    {
+      "_id": "5dc9f97b2a65b6af02024ae7",
+      "name": "Albuquerque, NM"
+    }
+  ],
+  "dislikes": [
+    {
+      "_id": "5dc9f97b2a65b6af02025d12",
+      "name": "Alexandria, VA"
+    }
+  ],
+  "factors": [
+    "Important",
+    "Ololo",
+    "Something not important"
+  ]
+}
+""".data(using: .utf8)
+
 // MARK: - CITY
 
 // MARK: /(by id)

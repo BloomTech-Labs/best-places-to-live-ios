@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+struct UserInfo: Decodable {
+	let id: String
+	let name: String
+	let email: String
+	let location: String
+	let cities: [City]
+	let likes: [City]
+	let dislikes: [City]
+	let factors: [String]
+	
+	enum CodingKeys: String, CodingKey {
+		case id = "_id"
+		case name, email, location, cities, likes, dislikes, factors
+	}
+}

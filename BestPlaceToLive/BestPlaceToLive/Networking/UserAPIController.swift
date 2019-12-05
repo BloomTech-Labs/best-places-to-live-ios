@@ -129,6 +129,141 @@ class UserAPIController {
 		}
 	}
 	
+	func likeCity(id: String, name: String, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("likes"),
+		let userToken = settingsController.userToken
+			else { return }
+		var requestURL = URLRequest(url: cityURL)
+		
+		requestURL.httpMethod = HTTPMethod.post.rawValue
+		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
+		
+		do {
+			let cityLike = CityLikeRequest(cityId: id, cityName: name)
+			let encoder = JSONEncoder()
+			encoder.keyEncodingStrategy = .convertToSnakeCase
+			
+			let data = try encoder.encode(cityLike)
+			
+			requestURL.httpBody = data
+		} catch  {
+			completion(.failure(.notEncoding))
+		}
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				
+				completion(.success(userInfo))
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
+	func dislikeCity(id: String, name: String, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("dislikes"),
+		let userToken = settingsController.userToken
+			else { return }
+		var requestURL = URLRequest(url: cityURL)
+		
+		requestURL.httpMethod = HTTPMethod.post.rawValue
+		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
+		
+		do {
+			let cityLike = CityLikeRequest(cityId: id, cityName: name)
+			let encoder = JSONEncoder()
+			encoder.keyEncodingStrategy = .convertToSnakeCase
+			
+			let data = try encoder.encode(cityLike)
+			
+			requestURL.httpBody = data
+		} catch  {
+			completion(.failure(.notEncoding))
+		}
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				
+				completion(.success(userInfo))
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
+	func addFactor(_ factor: Breakdown, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("factors"),
+		let userToken = settingsController.userToken
+			else { return }
+		var requestURL = URLRequest(url: cityURL)
+		
+		requestURL.httpMethod = HTTPMethod.post.rawValue
+		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
+		
+		do {
+			let encoder = JSONEncoder()
+			let data = try encoder.encode(["newFactor": factor.rawValue])
+			
+			requestURL.httpBody = data
+		} catch  {
+			completion(.failure(.notEncoding))
+		}
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				
+				completion(.success(userInfo))
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
 	// MARK: - Read
 	
 	func login(email: String, password: String, completion: @escaping (Result<Login, NetworkError>) -> Void) {
@@ -168,6 +303,42 @@ class UserAPIController {
 				let loginDetails = try decoder.decode(Login.self, from: data)
 				
 				completion(.success(loginDetails))
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
+	func getUserInfo(completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+		guard
+			let cityURL = URL(string: baseURLString)?.appendingPathComponent("info"),
+			let userToken = settingsController.userToken
+		else { return }
+		var requestURL = URLRequest(url: cityURL)
+		
+		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				decoder.keyDecodingStrategy = .convertFromSnakeCase
+				
+				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				
+				completion(.success(userInfo))
 			} catch {
 				completion(.failure(.notDecoding))
 			}
@@ -296,6 +467,138 @@ class UserAPIController {
 				let profile = try decoder.decode(Profile.self, from: data)
 				
 				completion(.success(profile))
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
+	func removeLikedCity(id: String, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+		guard
+			let cityURL = URL(string: baseURLString)?.appendingPathComponent("likes"),
+			let userToken = settingsController.userToken
+		else { return }
+		var requestURL = URLRequest(url: cityURL)
+		
+		requestURL.httpMethod = HTTPMethod.delete.rawValue
+		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
+		
+		do {
+			let encoder = JSONEncoder()
+			let data = try encoder.encode(["city_id": id])
+			
+			requestURL.httpBody = data
+		} catch  {
+			completion(.failure(.notEncoding))
+		}
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				
+				completion(.success(userInfo))
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
+	func removeDislikedCity(id: String, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+		guard
+			let cityURL = URL(string: baseURLString)?.appendingPathComponent("dislikes"),
+			let userToken = settingsController.userToken
+		else { return }
+		var requestURL = URLRequest(url: cityURL)
+		
+		requestURL.httpMethod = HTTPMethod.delete.rawValue
+		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
+		
+		do {
+			let encoder = JSONEncoder()
+			let data = try encoder.encode(["city_id": id])
+			
+			requestURL.httpBody = data
+		} catch  {
+			completion(.failure(.notEncoding))
+		}
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				
+				completion(.success(userInfo))
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
+	func removeFactor(_ factor: Breakdown, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+		guard
+			let cityURL = URL(string: baseURLString)?.appendingPathComponent("factors"),
+			let userToken = settingsController.userToken
+		else { return }
+		var requestURL = URLRequest(url: cityURL)
+		
+		requestURL.httpMethod = HTTPMethod.delete.rawValue
+		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
+		
+		do {
+			let encoder = JSONEncoder()
+			let data = try encoder.encode(["delFactor": factor.rawValue])
+			
+			requestURL.httpBody = data
+		} catch  {
+			completion(.failure(.notEncoding))
+		}
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				
+				completion(.success(userInfo))
 			} catch {
 				completion(.failure(.notDecoding))
 			}

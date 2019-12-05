@@ -24,6 +24,9 @@ class ExploreViewController: UIViewController {
     let apiController = CityAPIController()
     var topTenCities: [CityBreakdown] = []
     
+    var imageDataCache: [String: Data] = [:]
+    var workItemCache: [UICollectionViewCell: DispatchWorkItem] = [:]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,13 +106,33 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopTenCell", for: indexPath) as? PopularCollectionViewCell else { fatalError("cannot make TopTenCell") }
             let city = topTenCities[indexPath.item]
             cell.cityNameLabel.text = city.name
-            if let imageURL = URL(string: city.secureURL ?? "") {
-                if let imageData = try? Data(contentsOf: imageURL) {
-                    cell.imageView.image = UIImage(data: imageData)
-                    cell.collectionViewHeight = collectionView.bounds.height
-                    print(collectionView.bounds.height)
+            
+            let work = DispatchWorkItem { [weak self] in
+                if let imageData = self?.imageDataCache[city.name ?? ""] {
+                    DispatchQueue.main.async {
+                        cell.imageView.image = UIImage(data: imageData)
+                    }
+                } else {
+                    if let imageURL = URL(string: city.secureURL ?? "") {
+                        if let imageData = try? Data(contentsOf: imageURL) {
+                            DispatchQueue.main.async {
+                                cell.collectionViewHeight = collectionView.bounds.height
+                                cell.imageView.image = UIImage(data: imageData)
+                            }
+                        }
+                    }
                 }
             }
+            
+            DispatchQueue.global().async { [weak self] in
+                if let workItem = self?.workItemCache[cell] {
+                    workItem.cancel()
+                }
+                work.perform()
+            }
+            
+            
+            
             
             
             

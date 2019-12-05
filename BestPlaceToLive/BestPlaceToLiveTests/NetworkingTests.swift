@@ -14,7 +14,7 @@ class NetworkingTests: XCTestCase {
 	var userController: UserAPIController!
 	var cityController: CityAPIController!
 	let mockLoader = MockDataLoader()
-	let user = Login(id: "123", name: "Jack Ryan", email: "jryan@cia.com", location: "Washington, DC", token: "abc")
+	let user = Login(id: "123", name: "Jack Ryan", email: "jryan@cia.com", appleId: "123", location: "Washington, DC", token: "abc", likes: [], dislikes: [], factors: [])
 	
 	//MARK: - City Tests
 	
@@ -115,7 +115,7 @@ class NetworkingTests: XCTestCase {
 		mockLoader.data = login
 		userController = UserAPIController(networkLoader: mockLoader)
 		
-		userController.registerNewUser(name: "Jack Ryan", email: "jryan@cia.com", password: "123456") { (results) in
+		userController.registerNewUser(name: "Jack Ryan", email: "jryan@cia.com", password: "123456", appleId: nil) { (results) in
 			let user = try? results.get()
 			
 			XCTAssertEqual(user?.name, "Jack Ryan")
@@ -162,7 +162,7 @@ class NetworkingTests: XCTestCase {
 		userController = UserAPIController(networkLoader: mockLoader)
 		SettingsController.shared.loginProcedure(user)
 		
-		userController.saveCityBy(id: "123", name: "Brooklyn, NY", photo: "abc", completion: { (results) in
+		userController.saveCityBy(id: "123", name: "Brooklyn, NY", photoUrl: "abc", completion: { (results) in
 			let profile = try? results.get()
 			
 			XCTAssertEqual(profile?.name, "Jack Ryan")

@@ -39,7 +39,7 @@ class UserAPIController {
 	
 	// MARK: - Create
 	
-	func registerNewUser(name: String, email: String, password: String, completion: @escaping (Result<Login, NetworkError>) -> Void) {
+	func registerNewUser(name: String, email: String, password: String, appleId: String?, completion: @escaping (Result<Login, NetworkError>) -> Void) {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("register") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
@@ -47,7 +47,7 @@ class UserAPIController {
 		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		
 		do {
-			let newUser = RegistrationRequest(name: name, email: email, password: password, location: "Lambda, CA")
+			let newUser = RegistrationRequest(name: name, email: email, password: password, appleId: appleId, location: "Lambda, CA")
 			let encoder = JSONEncoder()
 			let data = try encoder.encode(newUser)
 			
@@ -82,7 +82,7 @@ class UserAPIController {
 		}
 	}
 	
-	func saveCityBy(id: String?, name: String?, photo: String?, completion: @escaping (Result<Profile, NetworkError>) -> Void) {
+	func saveCityBy(id: String?, name: String?, photoUrl: String?, completion: @escaping (Result<Profile, NetworkError>) -> Void) {
 		guard
 			let cityURL = URL(string: baseURLString)?.appendingPathComponent("profile/cities"),
 			let userToken = settingsController.userToken
@@ -94,7 +94,7 @@ class UserAPIController {
 		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
 		
 		do {
-			let savedCity = ProfileCityRequest(cityID: id, cityName: name, cityPhoto: photo)
+			let savedCity = ProfileCityRequest(cityID: id, cityName: name, cityPhoto: photoUrl)
 			let encoder = JSONEncoder()
 			
 			encoder.keyEncodingStrategy = .convertToSnakeCase

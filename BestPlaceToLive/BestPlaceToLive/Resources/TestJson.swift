@@ -17,8 +17,12 @@ var login = """
   "_id": "123",
   "name": "Jack Ryan",
   "email": "jryan@cia.com",
+  "appleId": "123",
   "location": "Washington, DC",
-  "token": "abc"
+  "token": "abc",
+  "likes": [],
+  "dislikes": [],
+  "factors": []
 }
 """.data(using: .utf8)
 

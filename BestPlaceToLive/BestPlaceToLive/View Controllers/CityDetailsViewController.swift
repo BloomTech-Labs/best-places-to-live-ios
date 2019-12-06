@@ -29,6 +29,7 @@ class CityDetailsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         likeButton.isUserInteractionEnabled = false
+        self.navigationController?.isNavigationBarHidden = false
         updateViews()
         checkIfCityIsSaved()
     }

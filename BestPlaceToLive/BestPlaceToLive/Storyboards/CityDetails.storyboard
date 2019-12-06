@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EHl-Q9-hqd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EHl-Q9-hqd">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,10 +22,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XcC-KM-dTs">
-                                <rect key="frame" x="38" y="165" width="338" height="316.5"/>
+                                <rect key="frame" x="38" y="165" width="338" height="248.5"/>
                             </mapView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aerial-architecture-blue-sky-buildings-466685 1" translatesAutoresizingMaskIntoConstraints="NO" id="DAq-Dg-M29">
-                                <rect key="frame" x="38" y="505.5" width="338" height="316.5"/>
+                                <rect key="frame" x="38" y="513.5" width="338" height="248.5"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itM-ja-243">
                                 <rect key="frame" x="193" y="120" width="28" height="25"/>
@@ -38,39 +38,70 @@
                                     <action selector="likeButtonTapped:" destination="EHl-Q9-hqd" eventType="touchUpInside" id="nvN-f0-n5L"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqk-cu-d7a">
+                                <rect key="frame" x="60" y="791" width="295" height="44"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                <state key="normal" title="Share City">
+                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareCityTapped:" destination="EHl-Q9-hqd" eventType="touchUpInside" id="NfD-9E-R1o"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3K1-cp-WL6">
+                                <rect key="frame" x="60" y="444" width="295" height="44"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                <state key="normal" title="Get Directions">
+                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="getDirectionsTapped:" destination="EHl-Q9-hqd" eventType="touchUpInside" id="kHE-NI-OXX"/>
+                                    <action selector="shareCityTapped:" destination="EHl-Q9-hqd" eventType="touchUpInside" id="ISY-C6-24C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Gqk-cu-d7a" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="60" id="6Ib-M8-JwV"/>
+                            <constraint firstItem="Gqk-cu-d7a" firstAttribute="top" secondItem="DAq-Dg-M29" secondAttribute="bottom" constant="29" id="6Oq-xA-EXj"/>
                             <constraint firstItem="FVJ-rw-pfk" firstAttribute="top" secondItem="XGC-BS-ZUU" secondAttribute="top" constant="20" id="8CS-7b-6r0"/>
                             <constraint firstItem="DAq-Dg-M29" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="38" id="9K4-6w-P14"/>
                             <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="DAq-Dg-M29" secondAttribute="trailing" constant="38" id="9pt-yd-SKT"/>
                             <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="XcC-KM-dTs" secondAttribute="trailing" constant="38" id="BO1-c0-SSQ"/>
                             <constraint firstItem="DAq-Dg-M29" firstAttribute="height" secondItem="XcC-KM-dTs" secondAttribute="height" id="BkJ-rk-wt5"/>
                             <constraint firstItem="XcC-KM-dTs" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="38" id="FVt-7s-EU3"/>
-                            <constraint firstItem="DAq-Dg-M29" firstAttribute="top" secondItem="XcC-KM-dTs" secondAttribute="bottom" constant="24" id="IP2-Nd-aRM"/>
+                            <constraint firstItem="DAq-Dg-M29" firstAttribute="top" secondItem="3K1-cp-WL6" secondAttribute="bottom" constant="25.5" id="Fxn-OJ-yij"/>
+                            <constraint firstItem="DAq-Dg-M29" firstAttribute="top" secondItem="XcC-KM-dTs" secondAttribute="bottom" constant="100" id="IP2-Nd-aRM"/>
                             <constraint firstItem="itM-ja-243" firstAttribute="centerX" secondItem="6oq-Ww-Ybs" secondAttribute="centerX" id="KMT-WO-Vwk"/>
                             <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="FVJ-rw-pfk" secondAttribute="trailing" constant="50" id="KYe-EZ-cGS"/>
                             <constraint firstItem="FVJ-rw-pfk" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="50" id="VVz-Cl-mAA"/>
-                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="bottom" secondItem="DAq-Dg-M29" secondAttribute="bottom" constant="40" id="cen-at-UHG"/>
+                            <constraint firstItem="3K1-cp-WL6" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="60" id="bvT-uQ-P8I"/>
+                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="bottom" secondItem="DAq-Dg-M29" secondAttribute="bottom" constant="100" id="cen-at-UHG"/>
                             <constraint firstItem="XcC-KM-dTs" firstAttribute="top" secondItem="itM-ja-243" secondAttribute="bottom" constant="20" id="khf-BT-SQC"/>
+                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="bottom" secondItem="Gqk-cu-d7a" secondAttribute="bottom" constant="27" id="mDt-ii-Uag"/>
+                            <constraint firstItem="3K1-cp-WL6" firstAttribute="top" secondItem="XcC-KM-dTs" secondAttribute="bottom" constant="30.5" id="nyT-dL-0zy"/>
+                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="3K1-cp-WL6" secondAttribute="trailing" constant="59" id="qrm-xX-4tn"/>
                             <constraint firstItem="itM-ja-243" firstAttribute="top" secondItem="FVJ-rw-pfk" secondAttribute="bottom" constant="8" id="s6w-b3-gkT"/>
+                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="Gqk-cu-d7a" secondAttribute="trailing" constant="59" id="ycz-T8-xvj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XGC-BS-ZUU"/>
                     </view>
                     <connections>
                         <outlet property="cityNameLabel" destination="FVJ-rw-pfk" id="gEV-ry-egB"/>
                         <outlet property="cityPhotoImageView" destination="DAq-Dg-M29" id="M3Q-B4-rec"/>
+                        <outlet property="getDirectionsButton" destination="3K1-cp-WL6" id="KtE-Op-bSq"/>
                         <outlet property="likeButton" destination="itM-ja-243" id="ytw-d3-5Tr"/>
                         <outlet property="mapView" destination="XcC-KM-dTs" id="a7y-EL-n8F"/>
+                        <outlet property="shareCityButton" destination="Gqk-cu-d7a" id="Wdd-wE-0dx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KEp-a5-OyK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="151" y="169"/>
+            <point key="canvasLocation" x="150.72463768115944" y="168.75"/>
         </scene>
     </scenes>
     <resources>
         <image name="aerial-architecture-blue-sky-buildings-466685 1" width="943" height="585"/>
-        <image name="suit.heart" catalog="system" width="64" height="54"/>
+        <image name="suit.heart" catalog="system" width="32" height="32"/>
     </resources>
 </document>

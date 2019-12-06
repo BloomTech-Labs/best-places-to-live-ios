@@ -14,8 +14,8 @@ struct UserInfo: Decodable {
 	let email: String
 	let location: String
 	let cities: [City]
-	let likes: [City]
-	let dislikes: [City]
+	let likes: [CityBreakdown]
+	let dislikes: [CityBreakdown]
 	let factors: [String]
 	
 	enum CodingKeys: String, CodingKey {

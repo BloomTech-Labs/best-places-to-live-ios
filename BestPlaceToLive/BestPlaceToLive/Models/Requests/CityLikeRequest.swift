@@ -10,5 +10,4 @@ import Foundation
 
 struct CityLikeRequest: Encodable {
 	let cityId: String
-	let cityName: String
 }

@@ -140,7 +140,7 @@ class UserAPIController {
 		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
 		
 		do {
-			let cityLike = CityLikeRequest(cityId: id, cityName: name)
+			let cityLike = CityLikeRequest(cityId: id)
 			let encoder = JSONEncoder()
 			encoder.keyEncodingStrategy = .convertToSnakeCase
 			
@@ -186,7 +186,7 @@ class UserAPIController {
 		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
 		
 		do {
-			let cityLike = CityLikeRequest(cityId: id, cityName: name)
+			let cityLike = CityLikeRequest(cityId: id)
 			let encoder = JSONEncoder()
 			encoder.keyEncodingStrategy = .convertToSnakeCase
 			
@@ -485,10 +485,11 @@ class UserAPIController {
 		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
 		
 		do {
+			let cityLike = CityLikeRequest(cityId: id)
 			let encoder = JSONEncoder()
-			let data = try encoder.encode(["city_id": id])
+			encoder.keyEncodingStrategy = .convertToSnakeCase
 			
-			requestURL.httpBody = data
+			let data = try encoder.encode(cityLike)
 		} catch  {
 			completion(.failure(.notEncoding))
 		}
@@ -529,10 +530,11 @@ class UserAPIController {
 		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
 		
 		do {
+			let cityLike = CityLikeRequest(cityId: id)
 			let encoder = JSONEncoder()
-			let data = try encoder.encode(["city_id": id])
+			encoder.keyEncodingStrategy = .convertToSnakeCase
 			
-			requestURL.httpBody = data
+			let data = try encoder.encode(cityLike)
 		} catch  {
 			completion(.failure(.notEncoding))
 		}

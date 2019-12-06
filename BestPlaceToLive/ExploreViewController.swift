@@ -17,21 +17,27 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var bestButton: UIButton!
     @IBOutlet weak var explreLabel: UILabel!
     @IBOutlet weak var popularCitiesLabel: UILabel!
-    @IBOutlet weak var exoloreCollectionView: UICollectionView!
+    @IBOutlet weak var exploreCollectionView: UICollectionView!
     @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet weak var liveInLabel: UILabel!
     
     let apiController = CityAPIController()
     var topTenCities: [CityBreakdown] = []
+    var categoryCities: [FilteredCity] = []
     
     var imageDataCache: [String: Data] = [:]
     var workItemCache: [UICollectionViewCell: DispatchWorkItem] = [:]
+    
+    var category: Breakdown = .gradeCommute
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
-        loadTopTen()
+        DispatchQueue.global().async { [weak self] in
+            self?.loadTopTen()
+        }
+        
         setupViews()
     }
     
@@ -70,6 +76,29 @@ class ExploreViewController: UIViewController {
                 } catch {
                     fatalError("cannot load top 10")
                 }
+                
+            default:
+                break
+            }
+        }
+    }
+    
+    private func getCityOnCategory() {
+        apiController.getFilteredCities(filters: [category]) { (result) in
+            switch result {
+            case .success:
+                do {
+                    self.categoryCities = try result.get()
+                    DispatchQueue.main.async {
+                        self.exploreCollectionView.reloadData()
+                        print("reload")
+                    }
+                    
+                } catch {
+                    fatalError("cannot load top 10")
+                }
+            case .failure(let error):
+                fatalError(error)
                 
             default:
                 break

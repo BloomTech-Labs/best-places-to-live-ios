@@ -21,24 +21,23 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet weak var liveInLabel: UILabel!
     
-    let apiController = CityAPIController()
     var topTenCities: [CityBreakdown] = []
     var categoryCities: [FilteredCity] = []
     
     var imageDataCache: [String: Data] = [:]
     var workItemCache: [UICollectionViewCell: DispatchWorkItem] = [:]
     
-    var category: Breakdown = .gradeCommute
+    var category: Breakdown = .scoreSafety
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
+        setupViews()
         DispatchQueue.global().async { [weak self] in
             self?.loadTopTen()
+            self?.getCityOnCategory()
         }
-        
-        setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +48,8 @@ class ExploreViewController: UIViewController {
     private func setupViews() {
         popularCollectionView.delegate = self
         popularCollectionView.dataSource = self
+        exploreCollectionView.dataSource = self
+        exploreCollectionView.delegate = self
         liveInLabel.textColor = .white
     }
     private func setupButton() {
@@ -63,7 +64,7 @@ class ExploreViewController: UIViewController {
     
     
     private func loadTopTen() {
-        apiController.getTopTenBreakdown { (result) in
+        CityAPIController.shared.getTopTenBreakdown { (result) in
             switch result {
             case .success:
                 do {
@@ -76,32 +77,24 @@ class ExploreViewController: UIViewController {
                 } catch {
                     fatalError("cannot load top 10")
                 }
-                
-            default:
-                break
+            case .failure(let error):
+                fatalError(error.localizedDescription)
             }
         }
     }
     
     private func getCityOnCategory() {
-        apiController.getFilteredCities(filters: [category]) { (result) in
+        CityAPIController.shared.getFilteredCities(filters: [category] ) { result in
             switch result {
-            case .success:
-                do {
-                    self.categoryCities = try result.get()
-                    DispatchQueue.main.async {
-                        self.exploreCollectionView.reloadData()
-                        print("reload")
-                    }
-                    
-                } catch {
-                    fatalError("cannot load top 10")
-                }
             case .failure(let error):
-                fatalError(error)
-                
-            default:
+                NSLog("Failed to return cities with filters: \(error)")
                 break
+            case .success(let cities):
+                self.categoryCities = cities
+                print(cities)
+                DispatchQueue.main.async {
+                    self.exploreCollectionView.reloadData()
+                }
             }
         }
     }
@@ -127,12 +120,18 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         if collectionView == self.popularCollectionView {
             return topTenCities.count
         }
+        if collectionView == self.exploreCollectionView {
+            print(categoryCities.count)
+            return categoryCities.count
+        }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if collectionView == self.popularCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopTenCell", for: indexPath) as? PopularCollectionViewCell else { fatalError("cannot make TopTenCell") }
+            
             let city = topTenCities[indexPath.item]
             cell.cityNameLabel.text = city.name
             
@@ -159,15 +158,40 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
                 }
                 work.perform()
             }
-            
-            
-            
-            
-            
-            
             return cell
         }
-        return UICollectionViewCell()
+        if collectionView == self.exploreCollectionView {
+            print("explore")
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreCell", for: indexPath) as? ExploreCollectionViewCell else { fatalError("cannot make ExploreCell") }
+            let city = categoryCities[indexPath.item]
+            cell.cityNameLabel.text = city.name
+
+//            let work = DispatchWorkItem { [weak self] in
+//                if let imageData = self?.imageDataCache[city.name] {
+//                    DispatchQueue.main.async {
+//                        cell.imageView.image = UIImage(data: imageData)
+//                    }
+//                } else {
+//                    if let imageURL = URL(string: city.photoMobile ?? "") {
+//                        if let imageData = try? Data(contentsOf: imageURL) {
+//                            DispatchQueue.main.async {
+//                                cell.collectionViewHeight = collectionView.bounds.height
+//                                cell.imageView.image = UIImage(data: imageData)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+
+//            DispatchQueue.global().async { [weak self] in
+//                if let workItem = self?.workItemCache[cell] {
+//                    workItem.cancel()
+//                }
+//                work.perform()
+//            }
+            return cell
+      }
+        fatalError("here")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

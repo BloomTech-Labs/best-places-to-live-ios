@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class LoginVC: UIViewController {
 
@@ -14,10 +15,12 @@ class LoginVC: UIViewController {
 	
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
+	@IBOutlet weak var buttonStackView: UIStackView!
 	
 	// MARK: Properties
 	
-	let settingsController = SettingsController.shared
+	private let settingsController = SettingsController.shared
+	private var signInWithAppleRequest = SignInWithAppleRequest()
 	
 	// MARK: Life Cycle
 	
@@ -25,6 +28,9 @@ class LoginVC: UIViewController {
 		super.viewDidLoad()
 		
 		settingsController.isSaveCredentials = true
+		
+		setUpSignInAppleButton()
+		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
 	}
 	
 	// MARK: IBActions
@@ -51,6 +57,22 @@ class LoginVC: UIViewController {
 	
 	// MARK: Helpers
 	
+	private func setUpSignInAppleButton() {
+		let authorizationButton = ASAuthorizationAppleIDButton()
+		
+		authorizationButton.addTarget(self, action: #selector(appleIDWrapper), for: .touchUpInside)
+		authorizationButton.cornerRadius = 10
+		
+		let newIndex = buttonStackView.arrangedSubviews.endIndex
+		buttonStackView.insertArrangedSubview(authorizationButton, at: newIndex)
+		
+		signInWithAppleRequest.delegate = self
+	}
+	
+	@objc private func appleIDWrapper() {
+		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: false)
+	}
+	
 	private func segueToProfileVC() {
 		if SettingsController.shared.loggedInUser != nil {
 			let storyboard = UIStoryboard(name: "Profile", bundle: nil)
@@ -61,5 +83,13 @@ class LoginVC: UIViewController {
 				navigationController?.viewControllers = [optionsVC]
 			}
 		}
+	}
+}
+
+// MARK: - Sign In With Apple Request Delegate
+
+extension LoginVC: SignInWithAppleRequestDelegate {
+	func navigate(to newVCStack: [UIViewController]) {
+		navigationController?.viewControllers = newVCStack
 	}
 }

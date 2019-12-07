@@ -1,56 +1,24 @@
 //
-//  LoginOptionsVC.swift
+//  SignInWithAppleRequest.swift
 //  BestPlaceToLive
 //
-//  Created by Jeffrey Santana on 11/15/19.
+//  Created by Jeffrey Santana on 12/6/19.
 //  Copyright © 2019 bradleyyin. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import AuthenticationServices
 
-class LoginOptionsVC: UIViewController {
+protocol SignInWithAppleRequestDelegate {
+	func navigate(to newVCStack: [UIViewController])
+}
 
-	// MARK: IBOutlets
-	
-	@IBOutlet weak var signInStack: UIStackView!
-	
-	// MARK: Properties
+class SignInWithAppleRequest: NSObject {
 	
 	let settingsController = SettingsController.shared
+	var delegate: SignInWithAppleRequestDelegate?
 	
-	// MARK: Life Cycle
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		
-		setUpSignInAppleButton()
-		handleAppleIdRequest(userHasLoggedIn: true)
-	}
-	
-	// MARK: IBActions
-	
-	@IBAction func emailButtonTapped(_ sender: Any) {
-	}
-	
-	@IBAction func signUpButtonTapped(_ sender: Any) {
-	}
-	
-	// MARK: Helpers
-	
-	private func setUpSignInAppleButton() {
-		let authorizationButton = ASAuthorizationAppleIDButton()
-		
-		authorizationButton.addTarget(self, action: #selector(appleIDWrapper), for: .touchUpInside)
-		authorizationButton.cornerRadius = 10
-		signInStack.insertArrangedSubview(authorizationButton, at: 0)
-	}
-	
-	@objc private func appleIDWrapper() {
-		handleAppleIdRequest(userHasLoggedIn: false)
-	}
-	
-	private func handleAppleIdRequest(userHasLoggedIn: Bool) {
+	func handleAppleIdRequest(userHasLoggedIn: Bool) {
 		var request: ASAuthorizationRequest
 		
 		if userHasLoggedIn {
@@ -62,35 +30,38 @@ class LoginOptionsVC: UIViewController {
 			request = authorizationAppleIDRequest
 		}
 		
-		// Create an authorization controller with the given requests.
 		let authorizationController = ASAuthorizationController(authorizationRequests: [request])
 		authorizationController.delegate = self
 		authorizationController.presentationContextProvider = self
 		authorizationController.performRequests()
 	}
 	
+	@objc func appleIDWrapper() {
+		handleAppleIdRequest(userHasLoggedIn: false)
+	}
+	
 	private func handle(appleIDCredential: ASAuthorizationAppleIDCredential) {
 		let userIdentifier = appleIDCredential.user
 		print("User ID: \(appleIDCredential.user)")
-
+		
 		if let userEmail = appleIDCredential.email {
-		  print("Email: \(userEmail)")
+			print("Email: \(userEmail)")
 		}
-
+		
 		if let userGivenName = appleIDCredential.fullName?.givenName,
-		  let userFamilyName = appleIDCredential.fullName?.familyName {
-		  print("Given Name: \(userGivenName)")
-		  print("Family Name: \(userFamilyName)")
+			let userFamilyName = appleIDCredential.fullName?.familyName {
+			print("Given Name: \(userGivenName)")
+			print("Family Name: \(userFamilyName)")
 		}
-
+		
 		if let authorizationCode = appleIDCredential.authorizationCode,
-		  let identifyToken = appleIDCredential.identityToken {
-		  print("Authorization Code: \(authorizationCode)")
-		  print("Identity Token: \(identifyToken)")
-		  //First time user, perform authentication with the backend
-		  //TODO: Submit authorization code and identity token to your backend for user validation and signIn
+			let identifyToken = appleIDCredential.identityToken {
+			print("Authorization Code: \(authorizationCode)")
+			print("Identity Token: \(identifyToken)")
+			//First time user, perform authentication with the backend
+			//TODO: Submit authorization code and identity token to your backend for user validation and signIn
 		}
-
+		
 		let appleIDProvider = ASAuthorizationAppleIDProvider()
 		appleIDProvider.getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
 			switch credentialState {
@@ -104,7 +75,7 @@ class LoginOptionsVC: UIViewController {
 							self.settingsController.persistcredentials(email, userIdentifier)
 							self.settingsController.loginProcedure(user)
 							DispatchQueue.main.async {
-								self.segueToProfileVC() 
+								self.segueToProfileVC()
 							}
 						case .failure(let error):
 							print(error)
@@ -127,10 +98,10 @@ class LoginOptionsVC: UIViewController {
 	}
 	
 	private func handle(passwordCredential: ASPasswordCredential) {
-	  print("User: \(passwordCredential.user)")
-	  print("Password: \(passwordCredential.password)")
-
-	  //TODO: Fill your email/password fields if you have it and submit credentials securely to your server for authentication
+		print("User: \(passwordCredential.user)")
+		print("Password: \(passwordCredential.password)")
+		
+		//TODO: Fill your email/password fields if you have it and submit credentials securely to your server for authentication
 	}
 	
 	private func segueToProfileVC() {
@@ -140,7 +111,7 @@ class LoginOptionsVC: UIViewController {
 			if let initialVC = storyboard.instantiateInitialViewController() as? UINavigationController {
 				guard let optionsVC = initialVC.viewControllers.first as? ProfileVC else { return }
 				
-				navigationController?.viewControllers = [optionsVC]
+				delegate?.navigate(to: [optionsVC])
 			}
 		}
 	}
@@ -148,14 +119,14 @@ class LoginOptionsVC: UIViewController {
 
 // MARK: - AS Authorization Controller Delegate
 
-extension LoginOptionsVC: ASAuthorizationControllerDelegate {
+extension SignInWithAppleRequest: ASAuthorizationControllerDelegate {
 	
 	func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
 		switch authorization.credential {
 		case let appleIDCredential as ASAuthorizationAppleIDCredential:
-		  handle(appleIDCredential: appleIDCredential)
+			handle(appleIDCredential: appleIDCredential)
 		case let passwordCredential as ASPasswordCredential:
-		  handle(passwordCredential: passwordCredential)
+			handle(passwordCredential: passwordCredential)
 		default: break
 		}
 	}
@@ -167,8 +138,12 @@ extension LoginOptionsVC: ASAuthorizationControllerDelegate {
 
 // MARK: - AS Authorization Controller Presentation Context Providing
 
-extension LoginOptionsVC: ASAuthorizationControllerPresentationContextProviding {
+extension SignInWithAppleRequest: ASAuthorizationControllerPresentationContextProviding {
 	func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-		return self.view.window!
+		if let window = UIApplication.shared.windows.first {
+			return window
+		}
+		return ASPresentationAnchor()
 	}
 }
+

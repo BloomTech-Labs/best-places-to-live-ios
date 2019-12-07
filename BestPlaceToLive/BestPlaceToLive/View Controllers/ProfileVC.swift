@@ -24,7 +24,6 @@ class ProfileVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		segueToLoginOptionsVC()
 		setupViews()
 	}
 	
@@ -69,9 +68,9 @@ class ProfileVC: UIViewController {
 			let storyboard = UIStoryboard(name: "Login", bundle: nil)
 			
 			if let initialVC = storyboard.instantiateInitialViewController() as? UINavigationController {
-					guard let optionsVC = initialVC.viewControllers.first as? LoginOptionsVC else { return }
+					guard let loginVC = initialVC.viewControllers.first as? LoginVC else { return }
 				
-				navigationController?.viewControllers = [optionsVC]
+				navigationController?.viewControllers = [loginVC]
 			}
 		}
 	}

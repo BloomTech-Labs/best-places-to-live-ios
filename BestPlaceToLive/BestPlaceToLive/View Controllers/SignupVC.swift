@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class SignupVC: UIViewController {
-
+	
 	// MARK: IBOutlets
 	
 	@IBOutlet weak var nameTextField: UITextField!
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
+	@IBOutlet weak var buttonStackView: UIStackView!
 	
 	// MARK: Properties
 	
 	let settingsController = SettingsController.shared
+	private var signInWithAppleRequest = SignInWithAppleRequest()
 	
 	// MARK: Life Cycle
 	
@@ -26,6 +29,9 @@ class SignupVC: UIViewController {
 		super.viewDidLoad()
 		
 		settingsController.isSaveCredentials = true
+		
+		setUpSignInAppleButton()
+		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
 	}
 	
 	// MARK: IBActions
@@ -35,7 +41,7 @@ class SignupVC: UIViewController {
 			let name = nameTextField.optionalText,
 			let email = emailTextField.optionalText,
 			let password = passwordTextField.optionalText
-		else { return }
+			else { return }
 		
 		UserAPIController.shared.registerNewUser(name: name, email: email, password: password) { (result) in
 			switch result {
@@ -46,10 +52,27 @@ class SignupVC: UIViewController {
 				print(error)
 			}	
 		}
-		
-		#warning("Navigate to proper screen when signing up")
 	}
 	
 	// MARK: Helpers
+	
+	private func setUpSignInAppleButton() {
+		let authorizationButton = ASAuthorizationAppleIDButton()
+		
+		authorizationButton.addTarget(self, action: #selector(signInWithAppleRequest.appleIDWrapper), for: .touchUpInside)
+		authorizationButton.cornerRadius = 10
+		
+		let newIndex = buttonStackView.arrangedSubviews.endIndex
+		buttonStackView.insertArrangedSubview(authorizationButton, at: newIndex)
+		
+		signInWithAppleRequest.delegate = self
+	}
+}
 
+// MARK: - Sign In With Apple Request Delegate
+
+extension SignupVC: SignInWithAppleRequestDelegate {
+	func navigate(to newVCStack: [UIViewController]) {
+		navigationController?.viewControllers = newVCStack
+	}
 }

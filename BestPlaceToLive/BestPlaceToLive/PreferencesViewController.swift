@@ -39,10 +39,10 @@ class PreferencesViewController: UIViewController {
         sender.isSelected = !sender.isSelected
         switch sender.isSelected {
         case true:
-            sender.backgroundColor = .yellow
+            sender.backgroundColor = #colorLiteral(red: 0.5450980392, green: 0.7098039216, blue: 0.9921568627, alpha: 1)
             selectedFilters.append(.costOfLiving)
         default:
-            sender.backgroundColor = .white
+            sender.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8941176471, blue: 0.9176470588, alpha: 1)
             selectedFilters.removeAll {$0 == .costOfLiving}
         }
     }
@@ -51,10 +51,11 @@ class PreferencesViewController: UIViewController {
         sender.isSelected = !sender.isSelected
         switch sender.isSelected {
         case true:
-            sender.backgroundColor = .yellow
+        
+            sender.backgroundColor = #colorLiteral(red: 0.5450980392, green: 0.7098039216, blue: 0.9921568627, alpha: 1)
             selectedFilters.append(.scoreSafety)
         default:
-            sender.backgroundColor = .white
+            sender.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8941176471, blue: 0.9176470588, alpha: 1)
             selectedFilters.removeAll {$0 == .scoreSafety}
         }
     }
@@ -63,10 +64,10 @@ class PreferencesViewController: UIViewController {
         sender.isSelected = !sender.isSelected
         switch sender.isSelected {
         case true:
-            sender.backgroundColor = .yellow
+            sender.backgroundColor = #colorLiteral(red: 0.5450980392, green: 0.7098039216, blue: 0.9921568627, alpha: 1)
             selectedFilters.append(.scoreEducation)
         default:
-            sender.backgroundColor = .white
+            sender.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8941176471, blue: 0.9176470588, alpha: 1)
             selectedFilters.removeAll {$0 == .scoreEducation}
         }
     }
@@ -74,10 +75,10 @@ class PreferencesViewController: UIViewController {
         sender.isSelected = !sender.isSelected
         switch sender.isSelected {
         case true:
-            sender.backgroundColor = .yellow
+            sender.backgroundColor = #colorLiteral(red: 0.5450980392, green: 0.7098039216, blue: 0.9921568627, alpha: 1)
             selectedFilters.append(.scoreLeisureAndCulture)
         default:
-            sender.backgroundColor = .white
+            sender.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8941176471, blue: 0.9176470588, alpha: 1)
             selectedFilters.removeAll {$0 == .scoreLeisureAndCulture}
         }
     }
@@ -86,10 +87,10 @@ class PreferencesViewController: UIViewController {
         sender.isSelected = !sender.isSelected
         switch sender.isSelected {
         case true:
-            sender.backgroundColor = .yellow
+            sender.backgroundColor = #colorLiteral(red: 0.5450980392, green: 0.7098039216, blue: 0.9921568627, alpha: 1)
             selectedFilters.append(.scoreOutdoors)
         default:
-            sender.backgroundColor = .white
+            sender.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8941176471, blue: 0.9176470588, alpha: 1)
             selectedFilters.removeAll {$0 == .scoreOutdoors}
         }
     }
@@ -98,36 +99,30 @@ class PreferencesViewController: UIViewController {
         sender.isSelected = !sender.isSelected
         switch sender.isSelected {
         case true:
-            sender.backgroundColor = .yellow
+            sender.backgroundColor = #colorLiteral(red: 0.5450980392, green: 0.7098039216, blue: 0.9921568627, alpha: 1)
             selectedFilters.append(.scoreCommute)
         default:
-            sender.backgroundColor = .white
+            sender.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8941176471, blue: 0.9176470588, alpha: 1)
             selectedFilters.removeAll {$0 == .scoreCommute}
         }
     }
     
     private func setupUI() {
+        
+        factor1Button.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8941176471, blue: 0.9176470588, alpha: 1)
+        factor2Button.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8941176471, blue: 0.9176470588, alpha: 1)
+        factor3Button.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8941176471, blue: 0.9176470588, alpha: 1)
+        factor4Button.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8941176471, blue: 0.9176470588, alpha: 1)
+        factor5Button.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8941176471, blue: 0.9176470588, alpha: 1)
+        factor6Button.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8941176471, blue: 0.9176470588, alpha: 1)
         factor1Button.layer.cornerRadius = 10
         factor2Button.layer.cornerRadius = 10
         factor3Button.layer.cornerRadius = 10
         factor4Button.layer.cornerRadius = 10
         factor5Button.layer.cornerRadius = 10
         factor6Button.layer.cornerRadius = 10
-        factor1Button.layer.borderWidth = 2
-        factor2Button.layer.borderWidth = 2
-        factor3Button.layer.borderWidth = 2
-        factor4Button.layer.borderWidth = 2
-        factor5Button.layer.borderWidth = 2
-        factor6Button.layer.borderWidth = 2
-        factor1Button.backgroundColor = .white
-        factor2Button.backgroundColor = .white
-        factor3Button.backgroundColor = .white
-        factor4Button.backgroundColor = .white
-        factor5Button.backgroundColor = .white
-        factor6Button.backgroundColor = .white
         exploreButton.layer.cornerRadius = 10
-        exploreButton.backgroundColor = .white
-        exploreButton.layer.borderWidth = 2
+        exploreButton.backgroundColor = #colorLiteral(red: 0.01568627451, green: 0.3568627451, blue: 0.9294117647, alpha: 1)
     }
     
 }

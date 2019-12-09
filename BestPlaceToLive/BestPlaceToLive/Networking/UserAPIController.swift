@@ -40,7 +40,7 @@ class UserAPIController {
 	// MARK: - Create
 	
 	func registerNewUser(name: String, email: String, password: String, appleId: String?, completion: @escaping (Result<Login, NetworkError>) -> Void) {
-		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("register") else { return }
+		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent(appleId == nil ? "register" : "signup") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
 		requestURL.httpMethod = HTTPMethod.post.rawValue

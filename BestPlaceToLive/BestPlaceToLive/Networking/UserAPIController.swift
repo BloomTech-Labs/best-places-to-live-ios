@@ -129,7 +129,7 @@ class UserAPIController {
 		}
 	}
 	
-	func likeCity(id: String, name: String, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+	func likeCity(id: String, name: String, completion: @escaping (Result<LikesAndFactors, NetworkError>) -> Void) {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("likes"),
 		let userToken = settingsController.userToken
 			else { return }
@@ -166,16 +166,16 @@ class UserAPIController {
 			
 			do {
 				let decoder = JSONDecoder()
-				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				let likesAndFactors = try decoder.decode(LikesAndFactors.self, from: data)
 				
-				completion(.success(userInfo))
+				completion(.success(likesAndFactors))
 			} catch {
 				completion(.failure(.notDecoding))
 			}
 		}
 	}
 	
-	func dislikeCity(id: String, name: String, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+	func dislikeCity(id: String, name: String, completion: @escaping (Result<LikesAndFactors, NetworkError>) -> Void) {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("dislikes"),
 		let userToken = settingsController.userToken
 			else { return }
@@ -212,16 +212,16 @@ class UserAPIController {
 			
 			do {
 				let decoder = JSONDecoder()
-				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				let likesAndFactors = try decoder.decode(LikesAndFactors.self, from: data)
 				
-				completion(.success(userInfo))
+				completion(.success(likesAndFactors))
 			} catch {
 				completion(.failure(.notDecoding))
 			}
 		}
 	}
 	
-	func addFactor(_ factor: Breakdown, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+	func addFactor(_ factor: Breakdown, completion: @escaping (Result<LikesAndFactors, NetworkError>) -> Void) {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("factors"),
 		let userToken = settingsController.userToken
 			else { return }
@@ -255,9 +255,9 @@ class UserAPIController {
 			
 			do {
 				let decoder = JSONDecoder()
-				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				let likesAndFactors = try decoder.decode(LikesAndFactors.self, from: data)
 				
-				completion(.success(userInfo))
+				completion(.success(likesAndFactors))
 			} catch {
 				completion(.failure(.notDecoding))
 			}
@@ -469,6 +469,51 @@ class UserAPIController {
 		}
 	}
 	
+	func updateFactors(_ factors: [Breakdown], completion: @escaping (Result<LikesAndFactors, NetworkError>) -> Void) {
+		guard
+			let cityURL = URL(string: baseURLString)?.appendingPathComponent("profile"),
+			let userToken = settingsController.userToken
+		else { return }
+		var requestURL = URLRequest(url: cityURL)
+		
+		requestURL.httpMethod = HTTPMethod.put.rawValue
+		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		requestURL.addValue(userToken, forHTTPHeaderField: "Authorization")
+		
+		do {
+			let factorStrings = factors.map({$0.rawValue})
+			let encoder = JSONEncoder()
+			let data = try encoder.encode(["putFactors": factorStrings])
+			
+			requestURL.httpBody = data
+		} catch  {
+			completion(.failure(.notEncoding))
+		}
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				let likesAndFactors = try decoder.decode(LikesAndFactors.self, from: data)
+				
+				completion(.success(likesAndFactors))
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
 	// MARK: - Delete
 	
 	func removeSavedCity(id: String, completion: @escaping (Result<Profile, NetworkError>) -> Void) {
@@ -516,7 +561,7 @@ class UserAPIController {
 		}
 	}
 	
-	func removeLikedCity(id: String, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+	func removeLikedCity(id: String, completion: @escaping (Result<LikesAndFactors, NetworkError>) -> Void) {
 		guard
 			let cityURL = URL(string: baseURLString)?.appendingPathComponent("likes"),
 			let userToken = settingsController.userToken
@@ -533,6 +578,7 @@ class UserAPIController {
 			encoder.keyEncodingStrategy = .convertToSnakeCase
 			
 			let data = try encoder.encode(cityLike)
+			requestURL.httpBody = data
 		} catch  {
 			completion(.failure(.notEncoding))
 		}
@@ -552,16 +598,16 @@ class UserAPIController {
 			
 			do {
 				let decoder = JSONDecoder()
-				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				let likesAndFactors = try decoder.decode(LikesAndFactors.self, from: data)
 				
-				completion(.success(userInfo))
+				completion(.success(likesAndFactors))
 			} catch {
 				completion(.failure(.notDecoding))
 			}
 		}
 	}
 	
-	func removeDislikedCity(id: String, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+	func removeDislikedCity(id: String, completion: @escaping (Result<LikesAndFactors, NetworkError>) -> Void) {
 		guard
 			let cityURL = URL(string: baseURLString)?.appendingPathComponent("dislikes"),
 			let userToken = settingsController.userToken
@@ -578,6 +624,7 @@ class UserAPIController {
 			encoder.keyEncodingStrategy = .convertToSnakeCase
 			
 			let data = try encoder.encode(cityLike)
+			requestURL.httpBody = data
 		} catch  {
 			completion(.failure(.notEncoding))
 		}
@@ -597,16 +644,16 @@ class UserAPIController {
 			
 			do {
 				let decoder = JSONDecoder()
-				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				let likesAndFactors = try decoder.decode(LikesAndFactors.self, from: data)
 				
-				completion(.success(userInfo))
+				completion(.success(likesAndFactors))
 			} catch {
 				completion(.failure(.notDecoding))
 			}
 		}
 	}
 	
-	func removeFactor(_ factor: Breakdown, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
+	func removeFactor(_ factor: Breakdown, completion: @escaping (Result<LikesAndFactors, NetworkError>) -> Void) {
 		guard
 			let cityURL = URL(string: baseURLString)?.appendingPathComponent("factors"),
 			let userToken = settingsController.userToken
@@ -641,9 +688,9 @@ class UserAPIController {
 			
 			do {
 				let decoder = JSONDecoder()
-				let userInfo = try decoder.decode(UserInfo.self, from: data)
+				let likesAndFactors = try decoder.decode(LikesAndFactors.self, from: data)
 				
-				completion(.success(userInfo))
+				completion(.success(likesAndFactors))
 			} catch {
 				completion(.failure(.notDecoding))
 			}

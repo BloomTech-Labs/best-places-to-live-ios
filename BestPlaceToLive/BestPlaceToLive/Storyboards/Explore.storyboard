@@ -247,30 +247,42 @@ Next Hometown</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="78.5" height="36"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name=".SFNS-Regular" family=".AppleSystemUIFont" pointSize="21"/>
-                                                <state key="normal" title="Safety">
+                                                <state key="normal" title="Housing">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="housingSelected:" destination="WaO-Co-dEX" eventType="touchUpInside" id="kWo-fc-y45"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5y-di-5Bf">
                                                 <rect key="frame" x="98.5" y="0.0" width="78.5" height="36"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Economy">
+                                                <state key="normal" title="Healthcare">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="healthcareSelected:" destination="WaO-Co-dEX" eventType="touchUpInside" id="bbi-dx-lzJ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWX-rx-ikv">
                                                 <rect key="frame" x="197" y="0.0" width="78.5" height="36"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Commute">
+                                                <state key="normal" title="Leisure">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="leisureSelected:" destination="WaO-Co-dEX" eventType="touchUpInside" id="rZX-fi-ed4"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKx-76-iQl">
                                                 <rect key="frame" x="295.5" y="0.0" width="78.5" height="36"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Education">
+                                                <state key="normal" title="Travel">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="travel:" destination="WaO-Co-dEX" eventType="touchUpInside" id="TEL-eK-Igi"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

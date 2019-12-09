@@ -26,6 +26,7 @@ class ExploreViewController: UIViewController {
     
     var imageDataCache: [String: Data] = [:]
     var workItemCache: [UICollectionViewCell: DispatchWorkItem] = [:]
+    var categoryCache: [Breakdown: [FilteredCity]] = [:]
     
     var category: Breakdown = .scoreSafety
     
@@ -84,19 +85,33 @@ class ExploreViewController: UIViewController {
     }
     
     private func getCityOnCategory() {
-        CityAPIController.shared.getFilteredCities(filters: [category] ) { result in
-            switch result {
-            case .failure(let error):
-                NSLog("Failed to return cities with filters: \(error)")
-                break
-            case .success(let cities):
-                self.categoryCities = cities
-                print(cities)
-                DispatchQueue.main.async {
-                    self.exploreCollectionView.reloadData()
+        if let cities = categoryCache[category] {
+            categoryCities = cities
+            DispatchQueue.main.async { [weak self] in
+                self?.exploreCollectionView.reloadData()
+                self?.exploreCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: true)
+            }
+        } else {
+            CityAPIController.shared.getFilteredCities(filters: [category] ) { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    NSLog("Failed to return cities with filters: \(error)")
+                    break
+                case .success(let cities):
+                    self?.categoryCities = cities
+                    if let category = self?.category {
+                        self?.categoryCache[category] = cities
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self?.exploreCollectionView.reloadData()
+                        self?.exploreCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: true)
+                    }
                 }
             }
         }
+        
+        
     }
     
     
@@ -137,6 +152,33 @@ class ExploreViewController: UIViewController {
             self?.getCityOnCategory()
         }
     }
+    @IBAction func housingSelected(_ sender: Any) {
+        category = .scoreHousing
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func healthcareSelected(_ sender: Any) {
+        category = .scoreHealthcare
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func leisureSelected(_ sender: Any) {
+        category = .scoreLeisureAndCulture
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func travel(_ sender: Any) {
+        category = .scoreTravelConnectivity
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    
+    
+    
     
     
 

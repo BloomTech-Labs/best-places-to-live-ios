@@ -249,6 +249,7 @@ class CityAPIController {
 			
 			do {
 				let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
 				let cities = try decoder.decode([FilteredCity].self, from: data)
 					
 				completion(.success(cities))

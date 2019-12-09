@@ -56,6 +56,9 @@
 		B5FDAF1D2385A92200C18BFF /* FilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF1C2385A92200C18BFF /* FilterRequest.swift */; };
 		B5FDAF1F2385AA3B00C18BFF /* FilteredCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDAF1E2385AA3B00C18BFF /* FilteredCity.swift */; };
 		EF577FBE237E0B15000C62B3 /* CityCellDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */; };
+		EF5F008F239AF3B6006EDFB7 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5F008E239AF3B6006EDFB7 /* Cache.swift */; };
+		EF5F0091239AF53B006EDFB7 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5F0090239AF53B006EDFB7 /* ConcurrentOperation.swift */; };
+		EF5F0093239AF56D006EDFB7 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5F0092239AF56D006EDFB7 /* FetchPhotoOperation.swift */; };
 		EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6D911F237B4C0500106211 /* PreferencesViewController.swift */; };
 		EF73E84C237F18D1003FB17E /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73E84B237F18D1003FB17E /* CoreDataController.swift */; };
 		EF73E84F237F1AE9003FB17E /* NomadsLand.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF73E84D237F1AE9003FB17E /* NomadsLand.xcdatamodeld */; };
@@ -129,6 +132,9 @@
 		B5FDAF1C2385A92200C18BFF /* FilterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRequest.swift; sourceTree = "<group>"; };
 		B5FDAF1E2385AA3B00C18BFF /* FilteredCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredCity.swift; sourceTree = "<group>"; };
 		EF577FBD237E0B15000C62B3 /* CityCellDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CityCellDetail.storyboard; sourceTree = "<group>"; };
+		EF5F008E239AF3B6006EDFB7 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		EF5F0090239AF53B006EDFB7 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		EF5F0092239AF56D006EDFB7 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		EF6D911F237B4C0500106211 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesViewController.swift; path = BestPlaceToLive/PreferencesViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF73E84B237F18D1003FB17E /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataController.swift; path = BestPlaceToLive/Storyboards/CoreDataController.swift; sourceTree = SOURCE_ROOT; };
 		EF73E84E237F1AE9003FB17E /* NomadsLand.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NomadsLand.xcdatamodel; sourceTree = "<group>"; };
@@ -240,6 +246,9 @@
 				B514CB10237B0A8600146E13 /* SettingsController.swift */,
 				EF73E850237F1C31003FB17E /* CoreDataStack.swift */,
 				B5FDAEFE237DD5F400C18BFF /* Extensions.swift */,
+				EF5F008E239AF3B6006EDFB7 /* Cache.swift */,
+				EF5F0092239AF56D006EDFB7 /* FetchPhotoOperation.swift */,
+				EF5F0090239AF53B006EDFB7 /* ConcurrentOperation.swift */,
 				B5A7F0FD239996B300752314 /* Enums.swift */,
 			);
 			path = Helpers;
@@ -463,6 +472,8 @@
 				B51A95C8239EA6CE006D18BF /* LoginWAppleRequest.swift in Sources */,
 				B514CB17237B696D00146E13 /* UserAPIController.swift in Sources */,
 				B5FDAF09237F1A8100C18BFF /* ProfileVC.swift in Sources */,
+				EF5F008F239AF3B6006EDFB7 /* Cache.swift in Sources */,
+				EF5F0093239AF56D006EDFB7 /* FetchPhotoOperation.swift in Sources */,
 				756A7D7A238340900084B4F2 /* CityDetailsViewController.swift in Sources */,
 				B5A7F0FC23997AB400752314 /* UserInfo.swift in Sources */,
 				B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */,
@@ -474,6 +485,7 @@
 				B5FDAF172383643500C18BFF /* ProfileRequest.swift in Sources */,
 				B5FDAF192383669100C18BFF /* ProfileCityRequest.swift in Sources */,
 				B514CB0A237A1B6A00146E13 /* LoginVC.swift in Sources */,
+				EF5F0091239AF53B006EDFB7 /* ConcurrentOperation.swift in Sources */,
 				B5FDAEFF237DD5F400C18BFF /* Extensions.swift in Sources */,
 				755E3352237E098E00FAF3D6 /* ExploreCollectionViewCell.swift in Sources */,
 				B51A95CA239ED0AD006D18BF /* LikesAndFactors.swift in Sources */,

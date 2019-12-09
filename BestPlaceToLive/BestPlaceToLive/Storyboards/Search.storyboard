@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dtu-Uv-YSY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,94 +16,84 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="ia7-B9-oHr">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="198"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <searchBar contentMode="redraw" verticalCompressionResistancePriority="751" placeholder="Search City" translatesAutoresizingMaskIntoConstraints="NO" id="dKl-mK-66e">
-                                    <rect key="frame" x="0.0" y="87.5" width="414" height="56"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
                                         <outlet property="delegate" destination="Dtu-Uv-YSY" id="wyH-eF-7nB"/>
                                     </connections>
                                 </searchBar>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o86-Ub-qy0">
-                                    <rect key="frame" x="10" y="153.5" width="394" height="34.5"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                    <state key="normal" title="Generate Cities Based on Preferences">
-                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <rect key="frame" x="282" y="67" width="112" height="37"/>
+                                    <color key="backgroundColor" red="0.16862745098039217" green="0.47450980392156861" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="18"/>
+                                    <state key="normal" title="Use Filters">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
                                         <action selector="setPreferencesTapped:" destination="Dtu-Uv-YSY" eventType="touchUpInside" id="I1Q-cx-mdh"/>
                                         <segue destination="Mz8-iw-0fd" kind="presentation" identifier="SelectFilters" id="9Vn-w3-3td"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Find Your Ideal City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNW-WA-r1m">
-                                    <rect key="frame" x="50" y="14" width="314" height="33.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                    <nil key="textColor"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Explore" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNW-WA-r1m">
+                                    <rect key="frame" x="17" y="78" width="247" height="21"/>
+                                    <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="24"/>
+                                    <color key="textColor" red="0.16470588235294117" green="0.15686274509803921" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="FNW-WA-r1m" secondAttribute="trailing" constant="50" id="DQa-vR-btD"/>
-                                <constraint firstItem="FNW-WA-r1m" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="50" id="E0B-W8-YTY"/>
+                                <constraint firstItem="FNW-WA-r1m" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="17" id="4Lv-CM-Rl4"/>
+                                <constraint firstAttribute="bottom" secondItem="o86-Ub-qy0" secondAttribute="bottom" constant="10" id="9nn-be-QkM"/>
+                                <constraint firstItem="dKl-mK-66e" firstAttribute="top" secondItem="ia7-B9-oHr" secondAttribute="top" id="LVE-lO-IKX"/>
+                                <constraint firstItem="o86-Ub-qy0" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="282" id="PIJ-jQ-VCk"/>
                                 <constraint firstAttribute="trailing" secondItem="dKl-mK-66e" secondAttribute="trailing" id="Pgc-Ar-UNG"/>
-                                <constraint firstItem="o86-Ub-qy0" firstAttribute="top" secondItem="dKl-mK-66e" secondAttribute="bottom" constant="10" id="VCu-4w-CQE"/>
-                                <constraint firstItem="o86-Ub-qy0" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" constant="10" id="X9N-9s-5U8"/>
-                                <constraint firstAttribute="bottom" secondItem="o86-Ub-qy0" secondAttribute="bottom" constant="10" id="Xr7-dT-eBm"/>
+                                <constraint firstAttribute="trailing" secondItem="dKl-mK-66e" secondAttribute="trailing" id="XLg-dp-NuP"/>
                                 <constraint firstItem="dKl-mK-66e" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" id="ds7-JK-lmK"/>
-                                <constraint firstAttribute="trailing" secondItem="o86-Ub-qy0" secondAttribute="trailing" constant="10" id="h8R-Dt-6UQ"/>
-                                <constraint firstItem="dKl-mK-66e" firstAttribute="top" secondItem="FNW-WA-r1m" secondAttribute="bottom" constant="40" id="hfo-9K-OLt"/>
-                                <constraint firstItem="FNW-WA-r1m" firstAttribute="top" secondItem="ia7-B9-oHr" secondAttribute="top" constant="14" id="noA-LB-PGC"/>
+                                <constraint firstItem="FNW-WA-r1m" firstAttribute="top" secondItem="dKl-mK-66e" secondAttribute="bottom" constant="22" id="fIs-3I-o5M"/>
+                                <constraint firstAttribute="bottom" secondItem="FNW-WA-r1m" secondAttribute="bottom" constant="15" id="kSC-bI-iKX"/>
+                                <constraint firstAttribute="trailing" secondItem="o86-Ub-qy0" secondAttribute="trailing" constant="20" id="mrO-lx-mau"/>
+                                <constraint firstAttribute="trailing" secondItem="FNW-WA-r1m" secondAttribute="trailing" constant="150" id="mtM-2v-NNM"/>
+                                <constraint firstItem="o86-Ub-qy0" firstAttribute="top" secondItem="dKl-mK-66e" secondAttribute="bottom" constant="11" id="r0G-t4-lUR"/>
+                                <constraint firstItem="dKl-mK-66e" firstAttribute="leading" secondItem="ia7-B9-oHr" secondAttribute="leading" id="yui-bN-CrV"/>
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="191" id="ZeB-Yw-NhS" customClass="CityTableViewCell" customModule="BestPlaceToLive" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="226" width="414" height="191"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="130" id="ZeB-Yw-NhS" customClass="CityTableViewCell" customModule="BestPlaceToLive" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="142" width="414" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZeB-Yw-NhS" id="GrW-Mz-kEN">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="191"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoV-m2-OcM">
-                                            <rect key="frame" x="31" y="18" width="352" height="155"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVF-Rb-MDE">
-                                                    <rect key="frame" x="8" y="8" width="224" height="145"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yWe-V2-DzU">
-                                                    <rect key="frame" x="194" y="42" width="151" height="107"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="yWe-V2-DzU" secondAttribute="bottom" constant="6" id="0Vx-Aj-Sz2"/>
-                                                <constraint firstItem="yWe-V2-DzU" firstAttribute="leading" secondItem="EoV-m2-OcM" secondAttribute="leading" constant="194" id="FkI-YY-SUL"/>
-                                                <constraint firstItem="nVF-Rb-MDE" firstAttribute="top" secondItem="EoV-m2-OcM" secondAttribute="top" constant="8" id="HXQ-Yl-lgw"/>
-                                                <constraint firstItem="nVF-Rb-MDE" firstAttribute="leading" secondItem="EoV-m2-OcM" secondAttribute="leading" constant="8" id="jMa-2H-429"/>
-                                                <constraint firstAttribute="bottom" secondItem="nVF-Rb-MDE" secondAttribute="bottom" constant="2" id="kG7-17-zoV"/>
-                                                <constraint firstAttribute="trailing" secondItem="yWe-V2-DzU" secondAttribute="trailing" constant="7" id="lMl-Em-5pr"/>
-                                                <constraint firstAttribute="trailing" secondItem="nVF-Rb-MDE" secondAttribute="trailing" constant="120" id="v3m-VT-daX"/>
-                                                <constraint firstItem="yWe-V2-DzU" firstAttribute="top" secondItem="EoV-m2-OcM" secondAttribute="top" constant="42" id="vKW-uC-liq"/>
-                                            </constraints>
-                                        </view>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0bM-Tg-mJU">
+                                            <rect key="frame" x="33" y="11" width="348" height="108"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ri2-Hq-YeE">
+                                            <rect key="frame" x="47" y="30" width="320" height="69"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="EoV-m2-OcM" secondAttribute="bottom" constant="7" id="745-2O-qak"/>
-                                        <constraint firstItem="EoV-m2-OcM" firstAttribute="leading" secondItem="GrW-Mz-kEN" secondAttribute="leadingMargin" constant="11" id="HPx-5N-QJU"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="EoV-m2-OcM" secondAttribute="trailing" constant="11" id="Mna-1G-Uri"/>
-                                        <constraint firstItem="EoV-m2-OcM" firstAttribute="top" secondItem="GrW-Mz-kEN" secondAttribute="topMargin" constant="7" id="cdl-3V-wTR"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ri2-Hq-YeE" secondAttribute="trailing" constant="27" id="5Bm-uU-scp"/>
+                                        <constraint firstItem="0bM-Tg-mJU" firstAttribute="bottom" secondItem="GrW-Mz-kEN" secondAttribute="bottomMargin" id="5WM-7Z-6gh"/>
+                                        <constraint firstItem="ri2-Hq-YeE" firstAttribute="leading" secondItem="GrW-Mz-kEN" secondAttribute="leadingMargin" constant="27" id="6MY-Kg-JmE"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="0bM-Tg-mJU" secondAttribute="trailing" constant="13" id="Pzf-Gn-lA6"/>
+                                        <constraint firstItem="ri2-Hq-YeE" firstAttribute="top" secondItem="GrW-Mz-kEN" secondAttribute="topMargin" constant="19" id="Q0h-d0-76e"/>
+                                        <constraint firstItem="0bM-Tg-mJU" firstAttribute="top" secondItem="GrW-Mz-kEN" secondAttribute="topMargin" id="ZEu-Aa-eZ1"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ri2-Hq-YeE" secondAttribute="bottom" constant="20" id="ZUH-7o-4cF"/>
+                                        <constraint firstItem="0bM-Tg-mJU" firstAttribute="leading" secondItem="GrW-Mz-kEN" secondAttribute="leadingMargin" constant="13" id="meB-TN-g7r"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cardView" destination="EoV-m2-OcM" id="2iP-qE-78e"/>
-                                    <outlet property="cityImageView" destination="yWe-V2-DzU" id="dbs-w6-7WK"/>
-                                    <outlet property="cityLabel" destination="nVF-Rb-MDE" id="nxB-WG-Yyh"/>
+                                    <outlet property="cityImageView" destination="0bM-Tg-mJU" id="8eM-Pb-efb"/>
+                                    <outlet property="cityLabel" destination="ri2-Hq-YeE" id="1FG-qd-h9w"/>
                                     <segue destination="BlO-O5-rNu" kind="show" identifier="ShowCity" id="1lb-eD-nQ2"/>
                                 </connections>
                             </tableViewCell>
@@ -147,12 +137,12 @@
                                 <rect key="frame" x="0.0" y="-44" width="414" height="886"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="yFV-Co-Wr1">
-                                        <rect key="frame" x="250" y="351" width="129" height="221"/>
+                                        <rect key="frame" x="250" y="453.5" width="129" height="272.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVn-bM-SpI">
-                                                <rect key="frame" x="0.0" y="0.0" width="129" height="39"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="129" height="56"/>
+                                                <color key="backgroundColor" red="0.90196078431372551" green="0.89411764705882346" blue="0.91764705882352937" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="17"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Safety">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -162,9 +152,9 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKl-EV-P5H">
-                                                <rect key="frame" x="0.0" y="91" width="129" height="39"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <rect key="frame" x="0.0" y="108" width="129" height="56.5"/>
+                                                <color key="backgroundColor" red="0.90196078431372551" green="0.89411764705882346" blue="0.91764705882352937" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="17"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Leisure">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -174,9 +164,9 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23p-uI-cfL">
-                                                <rect key="frame" x="0.0" y="182" width="129" height="39"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <rect key="frame" x="0.0" y="216.5" width="129" height="56"/>
+                                                <color key="backgroundColor" red="0.90196078431372551" green="0.89411764705882346" blue="0.91764705882352937" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="17"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Commute">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -188,12 +178,12 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="bZa-TV-SG9">
-                                        <rect key="frame" x="35" y="351" width="129" height="221"/>
+                                        <rect key="frame" x="35" y="453.5" width="129" height="272.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9L-Yv-1vg">
-                                                <rect key="frame" x="0.0" y="0.0" width="129" height="39"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="129" height="56"/>
+                                                <color key="backgroundColor" red="0.90196078431372551" green="0.89411764705882346" blue="0.91764705882352937" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="17"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Living Cost">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -203,9 +193,9 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ox6-EK-cdV">
-                                                <rect key="frame" x="0.0" y="91" width="129" height="39"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <rect key="frame" x="0.0" y="108" width="129" height="56.5"/>
+                                                <color key="backgroundColor" red="0.90196078431372551" green="0.89411764705882346" blue="0.91764705882352937" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="17"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Education">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -215,9 +205,9 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irQ-GX-ceE">
-                                                <rect key="frame" x="0.0" y="182" width="129" height="39"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <rect key="frame" x="0.0" y="216.5" width="129" height="56"/>
+                                                <color key="backgroundColor" red="0.90196078431372551" green="0.89411764705882346" blue="0.91764705882352937" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="17"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Outdoors">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -229,46 +219,63 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="5rv-2o-YXM">
-                                        <rect key="frame" x="3" y="120" width="408" height="111"/>
+                                        <rect key="frame" x="3" y="120" width="408" height="118"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refine Your Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbN-PF-DvF">
-                                                <rect key="frame" x="82.5" y="0.0" width="243.5" height="43"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <rect key="frame" x="68.5" y="0.0" width="271.5" height="46.5"/>
+                                                <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="33"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find the city tailored to your unique needs, personality, and lifestyle." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywv-hZ-MSa">
-                                                <rect key="frame" x="30" y="68" width="348.5" height="43"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <rect key="frame" x="8.5" y="71.5" width="391.5" height="46.5"/>
+                                                <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgB-Pj-pfU">
-                                        <rect key="frame" x="35" y="730" width="344" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <rect key="frame" x="35" y="761" width="344" height="45"/>
+                                        <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="24"/>
                                         <state key="normal" title="Explore">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="doneButtonTapped:" destination="Mz8-iw-0fd" eventType="touchUpInside" id="tZD-kb-imd"/>
                                         </connections>
                                     </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="GWt-nO-C34">
+                                        <rect key="frame" x="88" y="258" width="239" height="119"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the variables most improtant to you:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z65-TX-j4k">
+                                        <rect key="frame" x="12" y="407" width="392" height="28.5"/>
+                                        <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="qgB-Pj-pfU" secondAttribute="bottom" constant="115" id="DLU-yy-n3Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="Z65-TX-j4k" secondAttribute="trailing" constant="10" id="Als-hz-VLq"/>
+                                    <constraint firstItem="Z65-TX-j4k" firstAttribute="top" secondItem="GWt-nO-C34" secondAttribute="bottom" constant="30" id="CHJ-wz-6oU"/>
+                                    <constraint firstAttribute="bottom" secondItem="qgB-Pj-pfU" secondAttribute="bottom" constant="80" id="DLU-yy-n3Y"/>
+                                    <constraint firstItem="GWt-nO-C34" firstAttribute="leading" secondItem="4E1-gH-uxQ" secondAttribute="leading" constant="88" id="EuD-R0-cCs"/>
+                                    <constraint firstItem="bZa-TV-SG9" firstAttribute="top" secondItem="Z65-TX-j4k" secondAttribute="bottom" constant="18" id="FP8-XC-Tux"/>
                                     <constraint firstAttribute="trailing" secondItem="qgB-Pj-pfU" secondAttribute="trailing" constant="35" id="Idj-Ly-bbj"/>
+                                    <constraint firstItem="qgB-Pj-pfU" firstAttribute="top" secondItem="yFV-Co-Wr1" secondAttribute="bottom" constant="35" id="KBy-cg-Ovm"/>
+                                    <constraint firstAttribute="trailing" secondItem="GWt-nO-C34" secondAttribute="trailing" constant="87" id="MSg-Ga-YTT"/>
                                     <constraint firstItem="qgB-Pj-pfU" firstAttribute="leading" secondItem="4E1-gH-uxQ" secondAttribute="leading" constant="35" id="QWH-Qc-P1D"/>
                                     <constraint firstItem="bZa-TV-SG9" firstAttribute="leading" secondItem="4E1-gH-uxQ" secondAttribute="leading" constant="35" id="WHF-OF-thf"/>
+                                    <constraint firstItem="yFV-Co-Wr1" firstAttribute="top" secondItem="Z65-TX-j4k" secondAttribute="bottom" constant="18" id="WPI-3Q-PQ0"/>
                                     <constraint firstAttribute="trailing" secondItem="5rv-2o-YXM" secondAttribute="trailing" constant="3" id="Yjw-tV-M5L"/>
                                     <constraint firstAttribute="trailing" secondItem="bZa-TV-SG9" secondAttribute="trailing" constant="250" id="Z5R-2J-R96"/>
                                     <constraint firstItem="5rv-2o-YXM" firstAttribute="top" secondItem="4E1-gH-uxQ" secondAttribute="top" constant="120" id="c0Q-et-om0"/>
-                                    <constraint firstItem="yFV-Co-Wr1" firstAttribute="top" secondItem="5rv-2o-YXM" secondAttribute="bottom" constant="120" id="cRI-Sc-xll"/>
                                     <constraint firstItem="5rv-2o-YXM" firstAttribute="leading" secondItem="4E1-gH-uxQ" secondAttribute="leading" constant="3" id="kB3-JS-8kq"/>
-                                    <constraint firstItem="bZa-TV-SG9" firstAttribute="top" secondItem="5rv-2o-YXM" secondAttribute="bottom" constant="120" id="khl-jf-aOt"/>
                                     <constraint firstAttribute="trailing" secondItem="yFV-Co-Wr1" secondAttribute="trailing" constant="35" id="lbX-ge-Isz"/>
+                                    <constraint firstItem="GWt-nO-C34" firstAttribute="top" secondItem="5rv-2o-YXM" secondAttribute="bottom" constant="20" id="lfn-bq-FwC"/>
+                                    <constraint firstItem="qgB-Pj-pfU" firstAttribute="top" secondItem="bZa-TV-SG9" secondAttribute="bottom" constant="35" id="o46-Zp-cVZ"/>
+                                    <constraint firstItem="Z65-TX-j4k" firstAttribute="leading" secondItem="4E1-gH-uxQ" secondAttribute="leading" constant="12" id="vFm-n3-eez"/>
                                     <constraint firstItem="yFV-Co-Wr1" firstAttribute="leading" secondItem="4E1-gH-uxQ" secondAttribute="leading" constant="250" id="ywe-F9-fzi"/>
                                 </constraints>
                             </view>
@@ -294,10 +301,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="deZ-2F-qvJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1259" y="-196"/>
+            <point key="canvasLocation" x="1257.9710144927537" y="-196.20535714285714"/>
         </scene>
     </scenes>
     <resources>
+        <image name="logo" width="170" height="119"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
     </resources>
 </document>

@@ -8,43 +8,48 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController, SelectedFiltersDelegate {
+class SearchTableViewController: UITableViewController, SelectedFiltersDelegate, LoadImageForCellDelegate {
     //MARK: - Outlets
     @IBOutlet var searchTitle: UILabel!
     @IBOutlet var searchCityBar: UISearchBar!
     @IBOutlet var setPreferencesButton: UIButton!
-    var cities: [CityBreakdown]? = []
+    var searchedCities: [CityBreakdown]?
     var filteredCities: [FilteredCity]? 
     var selectedFilters: [Breakdown]?
     var delegate: SelectedFiltersDelegate?
+    var cache = Cache<String, UIImage>()
+    let photoFetcheQueue = OperationQueue()
+    var operations = [String: Operation]()
+    var indexPath = IndexPath()
+    
     
     override func viewDidLoad() {
         setupUI()
         self.navigationController?.isNavigationBarHidden = false
     }
-
+    
     func userEnteredFilters(filters: [Breakdown]) {
         print("\(filters)")
         CityAPIController.shared.getFilteredCities(filters: filters ) { result in
-                switch result {
-                case .failure(let error):
-                    NSLog("Failed to return cities with filters: \(error)")
-                    break
-                case .success(let cities):
-                    self.cities = nil
-                    self.filteredCities = cities
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+            switch result {
+            case .failure(let error):
+                NSLog("Failed to return cities with filters: \(error)")
+                break
+            case .success(let cities):
+                self.searchedCities = nil
+                self.filteredCities = cities
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
             }
+        }
     }
     
     //MARK: - Actions
     @IBAction func setPreferencesTapped(_ sender: Any) {
         self.searchCityBar.text = ""
         self.selectedFilters = nil
-        self.cities = nil
+        self.searchedCities = nil
     }
     
     // MARK: - Table view data source
@@ -56,7 +61,7 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
         if segue.identifier == "ShowCity" {
             guard let cityDetailsVC = segue.destination as? CityDetailsViewController, let indexPath = tableView.indexPathForSelectedRow else {return}
             let filteredCity = filteredCities?[indexPath.row]
-            let city = cities?[indexPath.row]
+            let city = searchedCities?[indexPath.row]
             cityDetailsVC.filteredCity = filteredCity
             cityDetailsVC.city = city
         }
@@ -65,23 +70,94 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let filteredCities = filteredCities {
             return filteredCities.count
-        } else {
-            return cities!.count
+        } else if let searchedCities = searchedCities {
+            return searchedCities.count
         }
-        
+        return 0
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityTableViewCell else {return UITableViewCell()}
-        cell.cardView.layer.cornerRadius = 1
+        self.indexPath = indexPath
+        print("\(self.indexPath)")
+        cell.loadImageDelegate = self
         if let filteredCities = filteredCities {
             let filteredCity = filteredCities[indexPath.row]
-            cell.cityLabel.text = filteredCity.name
+            cell.filteredCity = filteredCity
             return cell
+        }
+        if let cities = searchedCities {
+            let searchedCity = cities[indexPath.row]
+            cell.searchedCity = searchedCity
+            return cell
+        }
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
+    func loadImage(cell: CityTableViewCell, imageURLString: String, searchedCity: CityBreakdown?, filteredCity: FilteredCity?) {
+        guard let imageURL = URL(string: imageURLString) else {return}
+        if searchedCity == nil {
+            if let cachedImage = cache.value(for: filteredCity!.id){
+                cell.cityImageView.image = cachedImage
+            }
+            let fetchOp = FetchCityImageOperation(imageURL: imageURL)
+            let cacheOp = BlockOperation {
+                if let image = fetchOp.image {
+                    self.cache.cache(value: image, for: filteredCity!.id)
+                }
+            }
+            
+            let completionOp = BlockOperation {
+                defer {self.operations.removeValue(forKey: filteredCity!.id)}
+                if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != self.indexPath {
+                    return
+                }
+            }
+            
+            if let image = fetchOp.image {
+                cell.cityImageView.image = image
+            }
+            
+            cacheOp.addDependency(fetchOp)
+            completionOp.addDependency(fetchOp)
+            photoFetcheQueue.addOperation(fetchOp)
+            photoFetcheQueue.addOperation(cacheOp)
+            OperationQueue.main.addOperation(completionOp)
+            operations[filteredCity!.id] = fetchOp
+            
         } else {
-            guard let city = cities?[indexPath.row], let cityName = city.shortName, let state = city.state  else {return UITableViewCell()}
-            cell.cityLabel.text = "\(cityName), \(state)"
-            return cell
+            if let cachedImage = cache.value(for: (searchedCity?.id)!) {
+                cell.cityImageView.image = cachedImage
+            }
+            let fetchOp = FetchCityImageOperation(imageURL: imageURL)
+            let cacheOp = BlockOperation {
+                if let image = fetchOp.image {
+                    self.cache.cache(value: image, for: (searchedCity?.id)!)
+                }
+            }
+            
+            let completionOp = BlockOperation {
+                defer {self.operations.removeValue(forKey: (searchedCity?.id)!)}
+                if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != self.indexPath {
+                    return
+                }
+            }
+            
+            if let image = fetchOp.image {
+                cell.cityImageView.image = image
+            }
+            
+            cacheOp.addDependency(fetchOp)
+            completionOp.addDependency(fetchOp)
+            photoFetcheQueue.addOperation(fetchOp)
+            photoFetcheQueue.addOperation(cacheOp)
+            OperationQueue.main.addOperation(completionOp)
+            operations[(searchedCity?.id)!] = fetchOp
         }
     }
     
@@ -92,18 +168,17 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate 
         self.present(alert, animated: true, completion: nil)
     }
     
+    
+    
     private func setupUI() {
-        setPreferencesButton.backgroundColor = .white
         setPreferencesButton.layer.cornerRadius = 10.0
-        setPreferencesButton.layer.borderWidth = 2
-        setPreferencesButton.layer.shadowRadius = 5
-        setPreferencesButton.layer.shadowOffset = CGSize(width: 5, height: 5)
+        setPreferencesButton.layer.shadowRadius = 3
+        setPreferencesButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         setPreferencesButton.layer.shadowColor = UIColor.black.cgColor
         setPreferencesButton.layer.shadowOpacity = 1.0
     }
     
 }
-
 extension SearchTableViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -119,15 +194,15 @@ extension SearchTableViewController: UISearchBarDelegate {
             case .failure(let error):
                 DispatchQueue.main.async {
                     activityView.stopAnimating()
-                    self.searchTitle.text = "Find Your Ideal City"
+                    self.searchTitle.text = "Explore"
                     self.showAlertForInvalidSearchQuery()
                 }
             case .success(let city):
-                self.cities = nil
-                self.cities = (city)
+                self.searchedCities = nil
+                self.searchedCities = (city)
                 DispatchQueue.main.async {
                     activityView.stopAnimating()
-                    self.searchTitle.text = "Find Your Ideal City"
+                    self.searchTitle.text = "Explore"
                     self.tableView.reloadData()
                 }
             }

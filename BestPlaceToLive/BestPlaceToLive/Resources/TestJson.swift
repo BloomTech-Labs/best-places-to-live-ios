@@ -17,8 +17,12 @@ var login = """
   "_id": "123",
   "name": "Jack Ryan",
   "email": "jryan@cia.com",
+  "appleId": "123",
   "location": "Washington, DC",
-  "token": "abc"
+  "token": "abc",
+  "likes": [],
+  "dislikes": [],
+  "factors": []
 }
 """.data(using: .utf8)
 
@@ -35,6 +39,40 @@ var profile = """
       "name": "Chevy Chase Village, MD",
       "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.christiesrealestate.com%2Fsales%2Fdetail%2F170-l-77837-1712071307495480%2Fchevy-chase-village-chevy-chase-md-20815&psig=AOvVaw3kh0smV2FeGYZXmukDSapt&ust=1573850441054000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJC4m_bH6uUCFQAAAAAdAAAAABAD"
     }
+  ]
+}
+""".data(using: .utf8)
+
+// MARK: /info
+
+var userInfo = """
+{
+  "_id": "123",
+  "name": "Jack Ryan",
+  "email": "jryan@cia.com",
+  "cities": [
+    {
+      "_id": "5dc9f97b2a65b6af02025ded",
+      "name": "Chevy Chase Village, MD",
+      "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.christiesrealestate.com%2Fsales%2Fdetail%2F170-l-77837-1712071307495480%2Fchevy-chase-village-chevy-chase-md-20815&psig=AOvVaw3kh0smV2FeGYZXmukDSapt&ust=1573850441054000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJC4m_bH6uUCFQAAAAAdAAAAABAD"
+    }
+  ],
+  "likes": [
+    {
+      "_id": "5dc9f97b2a65b6af02024ae7",
+      "name": "Albuquerque, NM"
+    }
+  ],
+  "dislikes": [
+    {
+      "_id": "5dc9f97b2a65b6af02025d12",
+      "name": "Alexandria, VA"
+    }
+  ],
+  "factors": [
+    "Important",
+    "Ololo",
+    "Something not important"
   ]
 }
 """.data(using: .utf8)
@@ -962,24 +1000,29 @@ var cities = """
 {
 "cities": [
   {
-	"_id": "5dc9c0df301806a9e168ddc1",
-	"name": "Fresno, CA"
+	"secure_url": "https://res.cloudinary.com/bestplacepics/image/upload/v1574374139/newpics/Alief%20TX/jc552dvtkhe8qczinswt.jpg",
+	"_id": "5dc9f97b2a65b6af02025070",
+	"name": "Alief, TX"
   },
   {
-	"_id": "5dc9c0df301806a9e168ddc6",
-	"name": "Frederick, MD"
+	"secure_url": "https://res.cloudinary.com/bestplacepics/image/upload/v1574374026/newpics/Alexandria%20VA/xhxpirp2uydejg1gs8g0.jpg",
+	"_id": "5dc9f97b2a65b6af02025d12",
+	"name": "Alexandria, VA"
   },
   {
-	"_id": "5dc9c0df301806a9e168ca79",
+	"secure_url": "https://res.cloudinary.com/bestplacepics/image/upload/v1574374047/newpics/Albuquerque%20NM/bdy1xww82uyb0oj5ruak.png",
+	"_id": "5dc9f97b2a65b6af02024ae7",
 	"name": "Albuquerque, NM"
   },
   {
-	"_id": "5dc9c0df301806a9e168ca7a",
-	"name": "South Valley, NM"
+	"secure_url": "https://res.cloudinary.com/bestplacepics/image/upload/v1574374147/newpics/Allen%20TX/afqlxesehjtfor2kxm91.png",
+	"_id": "5dc9f97b2a65b6af02024f5e",
+	"name": "Allen, TX"
   },
   {
-	"_id": "5dc9c0df301806a9e168ca7b",
-	"name": "North Valley, NM"
+	"secure_url": "https://res.cloudinary.com/bestplacepics/image/upload/v1574374069/newpics/Amherst%20NY/jaxtqetllawtr9kwj6wn.jpg",
+	"_id": "5dc9f97b2a65b6af02024cf4",
+	"name": "Amherst, NY"
   }
 ]
 }

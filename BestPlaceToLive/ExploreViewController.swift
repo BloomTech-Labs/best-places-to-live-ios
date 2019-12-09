@@ -113,6 +113,32 @@ class ExploreViewController: UIViewController {
         }
     }
     
+    @IBAction func safetySelected(_ sender: Any) {
+        category = .scoreSafety
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func economySelected(_ sender: Any) {
+        category = .scoreEconomy
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func CommuteSelected(_ sender: Any) {
+        category = .scoreCommute
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func educationSelected(_ sender: Any) {
+        category = .scoreEducation
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    
+    
 
 }
 extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -166,29 +192,29 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
             let city = categoryCities[indexPath.item]
             cell.cityNameLabel.text = city.name
 
-//            let work = DispatchWorkItem { [weak self] in
-//                if let imageData = self?.imageDataCache[city.name] {
-//                    DispatchQueue.main.async {
-//                        cell.imageView.image = UIImage(data: imageData)
-//                    }
-//                } else {
-//                    if let imageURL = URL(string: city.photoMobile ?? "") {
-//                        if let imageData = try? Data(contentsOf: imageURL) {
-//                            DispatchQueue.main.async {
-//                                cell.collectionViewHeight = collectionView.bounds.height
-//                                cell.imageView.image = UIImage(data: imageData)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
+            let work = DispatchWorkItem { [weak self] in
+                if let imageData = self?.imageDataCache[city.name] {
+                    DispatchQueue.main.async {
+                        cell.imageView.image = UIImage(data: imageData)
+                    }
+                } else {
+                    if let imageURL = URL(string: city.secureUrl ?? "") {
+                        if let imageData = try? Data(contentsOf: imageURL) {
+                            DispatchQueue.main.async {
+                                cell.collectionViewHeight = collectionView.bounds.height
+                                cell.imageView.image = UIImage(data: imageData)
+                            }
+                        }
+                    }
+                }
+            }
 
-//            DispatchQueue.global().async { [weak self] in
-//                if let workItem = self?.workItemCache[cell] {
-//                    workItem.cancel()
-//                }
-//                work.perform()
-//            }
+            DispatchQueue.global().async { [weak self] in
+                if let workItem = self?.workItemCache[cell] {
+                    workItem.cancel()
+                }
+                work.perform()
+            }
             return cell
       }
         fatalError("here")

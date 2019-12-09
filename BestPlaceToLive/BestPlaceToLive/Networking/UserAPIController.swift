@@ -309,6 +309,49 @@ class UserAPIController {
 		}
 	}
 	
+	func login(appleId: String, password: String, completion: @escaping (Result<Login, NetworkError>) -> Void) {
+		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("signin") else { return }
+		var requestURL = URLRequest(url: cityURL)
+		
+		requestURL.httpMethod = HTTPMethod.post.rawValue
+		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		
+		do {
+			let credentials = LoginWAppleRequest(appleId: appleId, password: password)
+			let encoder = JSONEncoder()
+			let data = try encoder.encode(credentials)
+			
+			requestURL.httpBody = data
+		} catch  {
+			completion(.failure(.notEncoding))
+		}
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				decoder.keyDecodingStrategy = .convertFromSnakeCase
+				
+				let loginDetails = try decoder.decode(Login.self, from: data)
+				
+				completion(.success(loginDetails))
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
 	func getUserInfo(completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
 		guard
 			let cityURL = URL(string: baseURLString)?.appendingPathComponent("info"),

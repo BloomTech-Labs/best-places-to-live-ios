@@ -20,7 +20,10 @@ class LoginVC: UIViewController {
 	// MARK: Properties
 	
 	private let settingsController = SettingsController.shared
-	private var signInWithAppleRequest = SignInWithAppleRequest()
+	private lazy var signInWithAppleRequest: SignInWithAppleRequest = {
+		let request = SignInWithAppleRequest(delegateVC: self, buttonStackView: self.buttonStackView)
+		return request
+	}()
 	
 	// MARK: Life Cycle
 	
@@ -28,8 +31,6 @@ class LoginVC: UIViewController {
 		super.viewDidLoad()
 		
 		settingsController.isSaveCredentials = true
-		
-		setUpSignInAppleButton()
 		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
 	}
 	
@@ -57,21 +58,21 @@ class LoginVC: UIViewController {
 	
 	// MARK: Helpers
 	
-	private func setUpSignInAppleButton() {
-		let authorizationButton = ASAuthorizationAppleIDButton()
-		
-		authorizationButton.addTarget(self, action: #selector(appleIDWrapper), for: .touchUpInside)
-		authorizationButton.cornerRadius = 10
-		
-		let newIndex = buttonStackView.arrangedSubviews.endIndex
-		buttonStackView.insertArrangedSubview(authorizationButton, at: newIndex)
-		
-		signInWithAppleRequest.delegate = self
-	}
-	
-	@objc private func appleIDWrapper() {
-		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: false)
-	}
+//	private func setUpSignInAppleButton() {
+//		let authorizationButton = ASAuthorizationAppleIDButton()
+//
+//		authorizationButton.addTarget(self, action: #selector(appleIDWrapper), for: .touchUpInside)
+//		authorizationButton.cornerRadius = 10
+//
+//		let newIndex = buttonStackView.arrangedSubviews.endIndex
+//		buttonStackView.insertArrangedSubview(authorizationButton, at: newIndex)
+//
+//		signInWithAppleRequest.delegate = self
+//	}
+//
+//	@objc private func appleIDWrapper() {
+//		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: false)
+//	}
 	
 	private func segueToProfileVC() {
 		if SettingsController.shared.loggedInUser != nil {

@@ -21,7 +21,10 @@ class SignupVC: UIViewController {
 	// MARK: Properties
 	
 	let settingsController = SettingsController.shared
-	private var signInWithAppleRequest = SignInWithAppleRequest()
+	private lazy var signInWithAppleRequest: SignInWithAppleRequest = {
+		let request = SignInWithAppleRequest(delegateVC: self, buttonStackView: self.buttonStackView)
+		return request
+	}()
 	
 	// MARK: Life Cycle
 	
@@ -29,8 +32,6 @@ class SignupVC: UIViewController {
 		super.viewDidLoad()
 		
 		settingsController.isSaveCredentials = true
-		
-		setUpSignInAppleButton()
 		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
 	}
 	

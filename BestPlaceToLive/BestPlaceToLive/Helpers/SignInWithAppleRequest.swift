@@ -15,8 +15,36 @@ protocol SignInWithAppleRequestDelegate {
 
 class SignInWithAppleRequest: NSObject {
 	
+	
+	// MARK: IBOutlets
+	
+	
+	// MARK: Properties
+	
 	let settingsController = SettingsController.shared
 	var delegate: SignInWithAppleRequestDelegate?
+	
+	init(delegateVC: SignInWithAppleRequestDelegate, buttonStackView: UIStackView) {
+		super.init()
+		
+		delegate = delegateVC
+		setUpSignInAppleButton(in: buttonStackView)
+	}
+	
+	// MARK: IBActions
+	
+	
+	// MARK: Helpers
+	
+	func setUpSignInAppleButton(in buttonStackView: UIStackView) {
+		let authorizationButton = ASAuthorizationAppleIDButton()
+		
+		authorizationButton.addTarget(self, action: #selector(appleIDWrapper), for: .touchUpInside)
+		authorizationButton.cornerRadius = 10
+		
+		let newIndex = buttonStackView.arrangedSubviews.endIndex
+		buttonStackView.insertArrangedSubview(authorizationButton, at: newIndex)
+	}
 	
 	func handleAppleIdRequest(userHasLoggedIn: Bool) {
 		var request: ASAuthorizationRequest

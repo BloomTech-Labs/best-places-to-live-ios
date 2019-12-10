@@ -22,11 +22,13 @@ class SignInWithAppleRequest: NSObject {
 	// MARK: Properties
 	
 	let settingsController = SettingsController.shared
+	var buttonType: ASAuthorizationAppleIDButton.ButtonType?
 	var delegate: SignInWithAppleRequestDelegate?
 	
-	init(delegateVC: SignInWithAppleRequestDelegate, buttonStackView: UIStackView) {
+	init(delegateVC: SignInWithAppleRequestDelegate, appleButtonType: ASAuthorizationAppleIDButton.ButtonType, buttonStackView: UIStackView) {
 		super.init()
 		
+		buttonType = appleButtonType
 		delegate = delegateVC
 		setUpSignInAppleButton(in: buttonStackView)
 	}
@@ -37,7 +39,8 @@ class SignInWithAppleRequest: NSObject {
 	// MARK: Helpers
 	
 	func setUpSignInAppleButton(in buttonStackView: UIStackView) {
-		let authorizationButton = ASAuthorizationAppleIDButton()
+		guard let buttonType = buttonType else { return }
+		let authorizationButton = ASAuthorizationAppleIDButton(authorizationButtonType: buttonType, authorizationButtonStyle: .black)
 		
 		authorizationButton.addTarget(self, action: #selector(appleIDWrapper), for: .touchUpInside)
 		authorizationButton.cornerRadius = 10
@@ -47,18 +50,18 @@ class SignInWithAppleRequest: NSObject {
 	}
 	
 	func handleAppleIdRequest(userHasLoggedIn: Bool) {
-		var request: ASAuthorizationRequest
+		var request = [ASAuthorizationRequest]()
+		let authorizationAppleIDRequest = ASAuthorizationAppleIDProvider().createRequest()
 		
+		authorizationAppleIDRequest.requestedScopes = [.fullName, .email]
+		request.append(authorizationAppleIDRequest)
+
 		if userHasLoggedIn {
 			let authorizationPasswordRequest = ASAuthorizationPasswordProvider().createRequest()
-			request = authorizationPasswordRequest
-		} else {
-			let authorizationAppleIDRequest = ASAuthorizationAppleIDProvider().createRequest()
-			authorizationAppleIDRequest.requestedScopes = [.fullName, .email]
-			request = authorizationAppleIDRequest
+			request.append(authorizationPasswordRequest)
 		}
 		
-		let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+		let authorizationController = ASAuthorizationController(authorizationRequests: request)
 		authorizationController.delegate = self
 		authorizationController.presentationContextProvider = self
 		authorizationController.performRequests()
@@ -68,7 +71,7 @@ class SignInWithAppleRequest: NSObject {
 		handleAppleIdRequest(userHasLoggedIn: false)
 	}
 	
-	private func handle(appleIDCredential: ASAuthorizationAppleIDCredential) {
+	private func register(appleIDCredential: ASAuthorizationAppleIDCredential) {
 		let userIdentifier = appleIDCredential.user
 		print("User ID: \(appleIDCredential.user)")
 		
@@ -96,21 +99,23 @@ class SignInWithAppleRequest: NSObject {
 			case .authorized:
 				if let email = appleIDCredential.email, let nameComponents = appleIDCredential.fullName {
 					let fullName = PersonNameComponentsFormatter().string(from: nameComponents)
+					self.settingsController.persistcredentials(appleId: userIdentifier, email: nil, password: nil)
 					
-					UserAPIController.shared.registerNewUser(name: fullName, email: email, password: userIdentifier) { (result) in
+					UserAPIController.shared.registerNewUser(name: fullName, email: email, password: "123456", appleId: userIdentifier) { (result) in
 						switch result {
 						case .success(let user):
-							self.settingsController.persistcredentials(email, userIdentifier)
+						self.settingsController.persistcredentials(appleId: userIdentifier, email: nil, password: nil)
 							self.settingsController.loginProcedure(user)
 							DispatchQueue.main.async {
 								self.segueToProfileVC()
 							}
 						case .failure(let error):
-							print(error)
+							print("Error registering user: \(error)")
 						}
 					}
 				} else {
-					
+					print("Error, user has previously signed in with apple")
+//					self.handleAppleIdRequest(userHasLoggedIn: true)
 				}
 				break
 			case .revoked:
@@ -125,12 +130,39 @@ class SignInWithAppleRequest: NSObject {
 		}
 	}
 	
-	private func handle(passwordCredential: ASPasswordCredential) {
-		print("User: \(passwordCredential.user)")
-		print("Password: \(passwordCredential.password)")
+	private func login(passwordCredential: ASPasswordCredential) {
+		let userIdentifier = passwordCredential.user
+		let password = passwordCredential.password
 		
-		//TODO: Fill your email/password fields if you have it and submit credentials securely to your server for authentication
+		let appleIDProvider = ASAuthorizationAppleIDProvider()
+		appleIDProvider.getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
+			switch credentialState {
+			case .authorized:
+				
+				UserAPIController.shared.login(appleId: userIdentifier, password: "") { (result) in
+					switch result {
+					case .success(let user):
+						self.settingsController.persistcredentials(appleId: userIdentifier, email: nil, password: nil)
+						self.settingsController.loginProcedure(user)
+						DispatchQueue.main.async {
+							self.segueToProfileVC()
+						}
+					case .failure(let error):
+						print(error)
+					}
+				}
+				break
+			case .revoked:
+				// The Apple ID credential is revoked. Show SignIn UI Here.
+				break
+			case .notFound:
+				// No credential was found. Show SignIn UI Here.
+				break
+			default:
+				break
+			}
 	}
+}
 	
 	private func segueToProfileVC() {
 		if SettingsController.shared.loggedInUser != nil {
@@ -152,15 +184,15 @@ extension SignInWithAppleRequest: ASAuthorizationControllerDelegate {
 	func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
 		switch authorization.credential {
 		case let appleIDCredential as ASAuthorizationAppleIDCredential:
-			handle(appleIDCredential: appleIDCredential)
+			register(appleIDCredential: appleIDCredential)
 		case let passwordCredential as ASPasswordCredential:
-			handle(passwordCredential: passwordCredential)
+			login(passwordCredential: passwordCredential)
 		default: break
 		}
 	}
 	
 	func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-		print("Apple sign-in went wrong: \(error)")
+		print("Apple sign-in went wrong: \(error.localizedDescription)")
 	}
 }
 

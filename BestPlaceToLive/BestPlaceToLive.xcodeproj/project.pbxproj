@@ -113,11 +113,11 @@
 		B5A49635237CBDBE00F0EE9C /* BestPlaceToLiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BestPlaceToLiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A49637237CBDBE00F0EE9C /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		B5A49639237CBDBE00F0EE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5A7F0F52395BCC700752314 /* BestPlaceToLive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BestPlaceToLive.entitlements; sourceTree = "<group>"; };
+		B5A7F0F62396C88B00752314 /* LoginRouterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRouterVC.swift; sourceTree = "<group>"; };
 		B5A7F0F923996ADF00752314 /* CityLikeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityLikeRequest.swift; sourceTree = "<group>"; };
 		B5A7F0FB23997AB400752314 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		B5A7F0FD239996B300752314 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		B5A7F0F52395BCC700752314 /* BestPlaceToLive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BestPlaceToLive.entitlements; sourceTree = "<group>"; };
-		B5A7F0F62396C88B00752314 /* LoginRouterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRouterVC.swift; sourceTree = "<group>"; };
 		B5A7F0FF2399B31800752314 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		B5A7F103239AE94F00752314 /* SignInWithAppleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleRequest.swift; sourceTree = "<group>"; };
 		B5FDAEFE237DD5F400C18BFF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };

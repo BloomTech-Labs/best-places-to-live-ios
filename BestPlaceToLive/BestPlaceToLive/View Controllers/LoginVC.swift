@@ -21,7 +21,7 @@ class LoginVC: UIViewController {
 	
 	private let settingsController = SettingsController.shared
 	private lazy var signInWithAppleRequest: SignInWithAppleRequest = {
-		let request = SignInWithAppleRequest(delegateVC: self, buttonStackView: self.buttonStackView)
+		let request = SignInWithAppleRequest(delegateVC: self, appleButtonType: .continue, buttonStackView: self.buttonStackView)
 		return request
 	}()
 	
@@ -42,37 +42,10 @@ class LoginVC: UIViewController {
 			let password = passwordTextField.optionalText
 		else { return }
 		
-		UserAPIController.shared.login(email: email, password: password) { (result) in
-			switch result {
-			case .success(let user):
-				self.settingsController.persistcredentials(email, password)
-				self.settingsController.loginProcedure(user)
-				DispatchQueue.main.async {
-					self.segueToProfileVC()
-				}
-			case .failure(let error):
-				print(error)
-			}			
-		}
+		loginUser(email: email, password: password)
 	}
 	
 	// MARK: Helpers
-	
-//	private func setUpSignInAppleButton() {
-//		let authorizationButton = ASAuthorizationAppleIDButton()
-//
-//		authorizationButton.addTarget(self, action: #selector(appleIDWrapper), for: .touchUpInside)
-//		authorizationButton.cornerRadius = 10
-//
-//		let newIndex = buttonStackView.arrangedSubviews.endIndex
-//		buttonStackView.insertArrangedSubview(authorizationButton, at: newIndex)
-//
-//		signInWithAppleRequest.delegate = self
-//	}
-//
-//	@objc private func appleIDWrapper() {
-//		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: false)
-//	}
 	
 	private func segueToProfileVC() {
 		if SettingsController.shared.loggedInUser != nil {
@@ -82,6 +55,21 @@ class LoginVC: UIViewController {
 					guard let optionsVC = initialVC.viewControllers.first as? ProfileVC else { return }
 				
 				navigationController?.viewControllers = [optionsVC]
+			}
+		}
+	}
+	
+	private func loginUser(email: String, password: String) {
+		UserAPIController.shared.login(email: email, password: password) { (result) in
+			switch result {
+			case .success(let user):
+				self.settingsController.persistcredentials(appleId: nil, email: email, password: password)
+				self.settingsController.loginProcedure(user)
+				DispatchQueue.main.async {
+					self.segueToProfileVC()
+				}
+			case .failure(let error):
+				print(error)
 			}
 		}
 	}

@@ -16,6 +16,7 @@ class SettingsController {
 	private let keychain = Keychain(service: "com.lambda.BestPlaceToLive")
 	
 	private let tokenKey = "token_key"
+	private let appleIdKey = "appleId_key"
 	private let emailKey = "username_key"
 	private let userPasswordKey = "user_password_key"
 	private let userImgKey = "user_img_key"
@@ -58,6 +59,19 @@ class SettingsController {
 //
 //		}
 //	}
+	
+	private(set) var appleId: String? {
+		get {
+			return keychain[appleIdKey]
+		}
+		set {
+			guard let newAppleId = newValue else {
+				keychain[appleIdKey] = nil
+				return
+			}
+			keychain[appleIdKey] = newAppleId
+		}
+	}
 	
 	private(set) var userCredentials: LoginRequest? {
 		get {
@@ -105,8 +119,11 @@ class SettingsController {
 		}
 	}
 	
-	func persistcredentials(_ email: String, _ password: String) {
-		if isSaveCredentials {
+	func persistcredentials(appleId: String?, email: String?, password: String?) {
+		if let appleId = appleId {
+			self.appleId = appleId
+		}
+		if let email = email, let password = password, isSaveCredentials {
 			userCredentials = LoginRequest(email: email, password: password)
 		}
 	}
@@ -120,5 +137,6 @@ class SettingsController {
 		loggedInUser = nil
 		userToken = nil
 		isSaveCredentials = false
+		print("USER LOGGED OUT")
 	}
 }

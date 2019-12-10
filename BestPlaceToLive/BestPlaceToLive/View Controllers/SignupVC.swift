@@ -22,7 +22,7 @@ class SignupVC: UIViewController {
 	
 	let settingsController = SettingsController.shared
 	private lazy var signInWithAppleRequest: SignInWithAppleRequest = {
-		let request = SignInWithAppleRequest(delegateVC: self, buttonStackView: self.buttonStackView)
+		let request = SignInWithAppleRequest(delegateVC: self, appleButtonType: .default, buttonStackView: self.buttonStackView)
 		return request
 	}()
 	
@@ -47,7 +47,7 @@ class SignupVC: UIViewController {
 		UserAPIController.shared.registerNewUser(name: name, email: email, password: password, appleId: nil) { (result) in
 			switch result {
 			case .success(let user):
-				self.settingsController.persistcredentials(email, password)
+				self.settingsController.persistcredentials(appleId: nil, email: email, password: password)
 				self.settingsController.loginProcedure(user)
 			case .failure(let error):
 				print(error)

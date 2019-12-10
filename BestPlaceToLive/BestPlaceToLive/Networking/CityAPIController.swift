@@ -88,7 +88,7 @@ class CityAPIController {
 		}
 	}
 	
-	func getCitiesBreakdown(relatedTo searchTerm: String, completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
+	func searchforCities(relatedTo searchTerm: String, completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("search") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
@@ -133,6 +133,7 @@ class CityAPIController {
 	
 	func getCityBreakdownAt(lat: String, long: String, zoom: String, limit: String, rand: String, completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
 		var cityURLComponents = URLComponents(string: baseURLString)
+		cityURLComponents?.path = "/location"
 		cityURLComponents?.queryItems = [
 			URLQueryItem(name: "lat", value: lat),
 			URLQueryItem(name: "lng", value: long),

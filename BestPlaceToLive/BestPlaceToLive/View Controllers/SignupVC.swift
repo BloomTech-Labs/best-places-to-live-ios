@@ -44,7 +44,7 @@ class SignupVC: UIViewController {
 			let password = passwordTextField.optionalText
 			else { return }
 		
-		UserAPIController.shared.registerNewUser(name: name, email: email, password: password) { (result) in
+		UserAPIController.shared.registerNewUser(name: name, email: email, password: password, appleId: nil) { (result) in
 			switch result {
 			case .success(let user):
 				self.settingsController.persistcredentials(email, password)

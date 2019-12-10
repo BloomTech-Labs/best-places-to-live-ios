@@ -21,7 +21,74 @@ class CityAPIController {
 	
 	// MARK: - Create
 	
-	func getCitiesBreakdown(relatedTo searchTerm: String, completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
+	
+	// MARK: - Read
+	
+	func getAllCities(completion: @escaping (Result<[City], NetworkError>) -> Void) {
+		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("all") else { return }
+		var requestURL = URLRequest(url: cityURL)
+		
+		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		
+		networkLoader.loadData(from: requestURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				decoder.keyDecodingStrategy = .convertFromSnakeCase
+				
+				let citiesDict = try decoder.decode([String:[City]].self, from: data)
+				
+				if let cities = citiesDict.values.first {
+					completion(.success(cities))
+				}
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
+	func getTopTenBreakdown(completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
+		guard let topTenURL = URL(string: baseURLString)?.appendingPathComponent("topten-score_total") else { return }
+		
+		networkLoader.loadData(from: topTenURL) { (data, error) in
+			if let error = error {
+				NSLog("Error creating user: \(error)")
+				completion(.failure(.other(error)))
+				return
+			}
+			
+			guard let data = data else {
+				NSLog("No data was returned")
+				completion(.failure(.noData))
+				return
+			}
+			
+			do {
+				let decoder = JSONDecoder()
+				
+				let citiesDict = try decoder.decode([String:[CityBreakdown]].self, from: data)
+				
+				if let cities = citiesDict.values.first {
+					completion(.success(cities))
+				}
+			} catch {
+				completion(.failure(.notDecoding))
+			}
+		}
+	}
+	
+	func searchforCities(relatedTo searchTerm: String, completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("search") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
@@ -66,6 +133,7 @@ class CityAPIController {
 	
 	func getCityBreakdownAt(lat: String, long: String, zoom: String, limit: String, rand: String, completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
 		var cityURLComponents = URLComponents(string: baseURLString)
+		cityURLComponents?.path = "/location"
 		cityURLComponents?.queryItems = [
 			URLQueryItem(name: "lat", value: lat),
 			URLQueryItem(name: "lng", value: long),
@@ -149,72 +217,6 @@ class CityAPIController {
 		}
 	}
 	
-	// MARK: - Read
-	
-	func getAllCities(completion: @escaping (Result<[City], NetworkError>) -> Void) {
-		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("all") else { return }
-		var requestURL = URLRequest(url: cityURL)
-		
-		requestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
-		
-		networkLoader.loadData(from: requestURL) { (data, error) in
-			if let error = error {
-				NSLog("Error creating user: \(error)")
-				completion(.failure(.other(error)))
-				return
-			}
-			
-			guard let data = data else {
-				NSLog("No data was returned")
-				completion(.failure(.noData))
-				return
-			}
-			
-			do {
-				let decoder = JSONDecoder()
-				decoder.keyDecodingStrategy = .convertFromSnakeCase
-				
-				let citiesDict = try decoder.decode([String:[City]].self, from: data)
-				
-				if let cities = citiesDict.values.first {
-					completion(.success(cities))
-				}
-			} catch {
-				completion(.failure(.notDecoding))
-			}
-		}
-	}
-	
-	func getTopTenBreakdown(completion: @escaping (Result<[CityBreakdown], NetworkError>) -> Void) {
-		guard let topTenURL = URL(string: baseURLString)?.appendingPathComponent("topten-score_total") else { return }
-		
-		networkLoader.loadData(from: topTenURL) { (data, error) in
-			if let error = error {
-				NSLog("Error creating user: \(error)")
-				completion(.failure(.other(error)))
-				return
-			}
-			
-			guard let data = data else {
-				NSLog("No data was returned")
-				completion(.failure(.noData))
-				return
-			}
-			
-			do {
-				let decoder = JSONDecoder()
-				
-				let citiesDict = try decoder.decode([String:[CityBreakdown]].self, from: data)
-				
-				if let cities = citiesDict.values.first {
-					completion(.success(cities))
-				}
-			} catch {
-				completion(.failure(.notDecoding))
-			}
-		}
-	}
-	
 	func getFilteredCities(filters: [Breakdown], completion: @escaping (Result<[FilteredCity], NetworkError>) -> Void) {
 		guard
 			let filterSearchURL = URL(string: "https://best-places-api.herokuapp.com")?.appendingPathComponent("api")
@@ -248,6 +250,7 @@ class CityAPIController {
 			
 			do {
 				let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
 				let cities = try decoder.decode([FilteredCity].self, from: data)
 					
 				completion(.success(cities))

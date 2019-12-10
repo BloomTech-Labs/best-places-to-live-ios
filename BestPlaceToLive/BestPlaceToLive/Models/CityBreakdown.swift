@@ -10,6 +10,8 @@ import Foundation
 
 struct CityBreakdown: Codable {
 	
+	//Also update Enums.Breakdown with any changes made here
+	
 	let id: String?
 	let airPollutionTelescore: Double?
 	let airportHubIndexDetail: Double?
@@ -196,6 +198,7 @@ struct CityBreakdown: Codable {
 	let startupSalaries: Double?
 	let startupSalariesDetail: Double?
 	let state: String?
+	let summary: String?
 	let taxVat: Double?
 	let timeOverheadCompanyTaxes: Double?
 	let timeToOpenBusiness: Double?
@@ -405,6 +408,7 @@ struct CityBreakdown: Codable {
 		case startupJobsAvailableTelescore = "startup-jobs-available-telescore"
 		case startupSalaries = "startup-salaries"
 		case startupSalariesDetail = "startup-salaries-detail"
+		case summary = "Summary"
 		case state = "state"
 		case taxVat = "tax-vat"
 		case timeZone = "time_zone"

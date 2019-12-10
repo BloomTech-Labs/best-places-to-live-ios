@@ -189,7 +189,7 @@ extension SearchTableViewController: UISearchBarDelegate {
         activityView.startAnimating()
         guard let searchText = searchBar.text else {return}
         self.searchTitle.text = "Waiting for \(searchText)"
-        CityAPIController.shared.getCitiesBreakdown(relatedTo: searchText) { result in
+        CityAPIController.shared.searchforCities(relatedTo: searchText) { result in
             switch result {
             case .failure(let error):
                 DispatchQueue.main.async {

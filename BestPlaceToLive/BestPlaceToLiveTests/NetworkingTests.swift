@@ -83,7 +83,7 @@ class NetworkingTests: XCTestCase {
 		mockLoader.data = citiesBySearchTerm
 		cityController = CityAPIController(networkLoader: mockLoader)
 		
-		cityController.getCitiesBreakdown(relatedTo: "Hialeah", completion: { (results) in
+		cityController.searchforCities(relatedTo: "Hialeah", completion: { (results) in
 			let cities = try? results.get()
 			
 			XCTAssertEqual(cities?.compactMap({$0.state}), ["Florida","Florida"])

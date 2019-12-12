@@ -83,10 +83,10 @@ class NetworkingTests: XCTestCase {
 		mockLoader.data = citiesBySearchTerm
 		cityController = CityAPIController(networkLoader: mockLoader)
 		
-		cityController.getCitiesBreakdown(relatedTo: "Hialeah", completion: { (results) in
+		cityController.searchforCities(relatedTo: "Highland", completion: { (results) in
 			let cities = try? results.get()
 			
-			XCTAssertEqual(cities?.compactMap({$0.state}), ["Florida","Florida"])
+			XCTAssertEqual(cities?.compactMap({$0.state}), ["Colorado"])
 			didFinish.fulfill()
 		})
 		
@@ -131,6 +131,21 @@ class NetworkingTests: XCTestCase {
 		userController = UserAPIController(networkLoader: mockLoader)
 		
 		userController.login(email: "jryan@cia.com", password: "123456") { (results) in
+			let user = try? results.get()
+			
+			XCTAssertEqual(user?.name, "Jack Ryan")
+			didFinish.fulfill()
+		}
+		
+		wait(for: [didFinish], timeout: 5)
+	}
+	
+	func testLoginWApple() {
+		let didFinish = expectation(description: "BPTL_API")
+		mockLoader.data = login
+		userController = UserAPIController(networkLoader: mockLoader)
+		
+		userController.login(appleId: "123", password: "123456") { (results) in
 			let user = try? results.get()
 			
 			XCTAssertEqual(user?.name, "Jack Ryan")

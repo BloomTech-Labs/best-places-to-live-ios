@@ -16,9 +16,9 @@ struct Login: Decodable {
 	let appleId: String?
 	let location: String?
 	let token: String
-	let likes: [City]
-	let dislikes: [City]
-	let factors: [String]
+	let likes: [City]?
+	let dislikes: [City]?
+	let factors: [String]?
 	
 	enum CodingKeys: String, CodingKey {
 		case id = "_id"

@@ -26,6 +26,7 @@ class ExploreViewController: UIViewController {
     
     var imageDataCache: [String: Data] = [:]
     var workItemCache: [UICollectionViewCell: DispatchWorkItem] = [:]
+    var categoryCache: [Breakdown: [FilteredCity]] = [:]
     
     var category: Breakdown = .scoreSafety
     
@@ -71,7 +72,6 @@ class ExploreViewController: UIViewController {
                     self.topTenCities = try result.get()
                     DispatchQueue.main.async {
                         self.popularCollectionView.reloadData()
-                        print("reload")
                     }
                     
                 } catch {
@@ -84,19 +84,33 @@ class ExploreViewController: UIViewController {
     }
     
     private func getCityOnCategory() {
-        CityAPIController.shared.getFilteredCities(filters: [category] ) { result in
-            switch result {
-            case .failure(let error):
-                NSLog("Failed to return cities with filters: \(error)")
-                break
-            case .success(let cities):
-                self.categoryCities = cities
-                print(cities)
-                DispatchQueue.main.async {
-                    self.exploreCollectionView.reloadData()
+        if let cities = categoryCache[category] {
+            categoryCities = cities
+            DispatchQueue.main.async { [weak self] in
+                self?.exploreCollectionView.reloadData()
+                self?.exploreCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: true)
+            }
+        } else {
+            CityAPIController.shared.getFilteredCities(filters: [category] ) { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    NSLog("Failed to return cities with filters: \(error)")
+                    break
+                case .success(let cities):
+                    self?.categoryCities = cities
+                    if let category = self?.category {
+                        self?.categoryCache[category] = cities
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self?.exploreCollectionView.reloadData()
+                        self?.exploreCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: true)
+                    }
                 }
             }
         }
+        
+        
     }
     
     
@@ -113,6 +127,59 @@ class ExploreViewController: UIViewController {
         }
     }
     
+    @IBAction func safetySelected(_ sender: Any) {
+        category = .scoreSafety
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func economySelected(_ sender: Any) {
+        category = .scoreEconomy
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func CommuteSelected(_ sender: Any) {
+        category = .scoreCommute
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func educationSelected(_ sender: Any) {
+        category = .scoreEducation
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func housingSelected(_ sender: Any) {
+        category = .scoreHousing
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func healthcareSelected(_ sender: Any) {
+        category = .scoreHealthcare
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func leisureSelected(_ sender: Any) {
+        category = .scoreLeisureAndCulture
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    @IBAction func travel(_ sender: Any) {
+        category = .scoreTravelConnectivity
+        DispatchQueue.global().async { [weak self] in
+            self?.getCityOnCategory()
+        }
+    }
+    
+    
+    
+    
+    
 
 }
 extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -121,7 +188,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
             return topTenCities.count
         }
         if collectionView == self.exploreCollectionView {
-            print(categoryCities.count)
             return categoryCities.count
         }
         return 0
@@ -161,34 +227,33 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
             return cell
         }
         if collectionView == self.exploreCollectionView {
-            print("explore")
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreCell", for: indexPath) as? ExploreCollectionViewCell else { fatalError("cannot make ExploreCell") }
             let city = categoryCities[indexPath.item]
             cell.cityNameLabel.text = city.name
 
-//            let work = DispatchWorkItem { [weak self] in
-//                if let imageData = self?.imageDataCache[city.name] {
-//                    DispatchQueue.main.async {
-//                        cell.imageView.image = UIImage(data: imageData)
-//                    }
-//                } else {
-//                    if let imageURL = URL(string: city.photoMobile ?? "") {
-//                        if let imageData = try? Data(contentsOf: imageURL) {
-//                            DispatchQueue.main.async {
-//                                cell.collectionViewHeight = collectionView.bounds.height
-//                                cell.imageView.image = UIImage(data: imageData)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
+            let work = DispatchWorkItem { [weak self] in
+                if let imageData = self?.imageDataCache[city.name] {
+                    DispatchQueue.main.async {
+                        cell.imageView.image = UIImage(data: imageData)
+                    }
+                } else {
+                    if let imageURL = URL(string: city.secureUrl ?? "") {
+                        if let imageData = try? Data(contentsOf: imageURL) {
+                            DispatchQueue.main.async {
+                                cell.collectionViewHeight = collectionView.bounds.height
+                                cell.imageView.image = UIImage(data: imageData)
+                            }
+                        }
+                    }
+                }
+            }
 
-//            DispatchQueue.global().async { [weak self] in
-//                if let workItem = self?.workItemCache[cell] {
-//                    workItem.cancel()
-//                }
-//                work.perform()
-//            }
+            DispatchQueue.global().async { [weak self] in
+                if let workItem = self?.workItemCache[cell] {
+                    workItem.cancel()
+                }
+                work.perform()
+            }
             return cell
       }
         fatalError("here")

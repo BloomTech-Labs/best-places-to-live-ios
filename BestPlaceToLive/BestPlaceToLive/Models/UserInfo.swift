@@ -9,6 +9,7 @@
 import Foundation
 
 struct UserInfo: Decodable {
+	
 	let id: String
 	let name: String
 	let email: String

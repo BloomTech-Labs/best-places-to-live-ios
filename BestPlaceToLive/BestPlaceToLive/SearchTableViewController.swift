@@ -34,7 +34,6 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
     
     
     func userEnteredFilters(filters: [Breakdown]) {
-        print("\(filters)")
         CityAPIController.shared.getFilteredCities(filters: filters ) { result in
             switch result {
             case .failure(let error):
@@ -85,7 +84,6 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityTableViewCell else {return UITableViewCell()}
         self.indexPath = indexPath
-        print("\(self.indexPath)")
         cell.loadImageDelegate = self
         cell.clearCity()
         if let filteredCities = filteredCities {
@@ -216,7 +214,7 @@ extension SearchTableViewController: UISearchBarDelegate {
         activityView.startAnimating()
         guard let searchText = searchBar.text else {return}
         self.searchTitle.text = "Waiting for \(searchText)"
-        CityAPIController.shared.getCitiesBreakdown(relatedTo: searchText) { result in
+        CityAPIController.shared.searchforCities(relatedTo: searchText) { result in
             switch result {
             case .failure(let error):
                 DispatchQueue.main.async {

@@ -13,6 +13,7 @@ struct CityBreakdown: Codable {
 	//Also update Enums.Breakdown with any changes made here
 	
 	let id: String?
+	let addSecureUrl: [String]?
 	let airPollutionTelescore: Double?
 	let airportHubIndexDetail: Double?
 	let airportHubTelescore: Double?
@@ -224,6 +225,7 @@ struct CityBreakdown: Codable {
 	
 	enum CodingKeys: String, CodingKey {
 		case id = "_id"
+		case addSecureUrl = "add_secure_url"
 		case airPollutionTelescore = "air-pollution-telescore"
 		case airportHubIndexDetail = "airport-hub-index-detail"
 		case airportHubTelescore = "airport-hub-telescore"

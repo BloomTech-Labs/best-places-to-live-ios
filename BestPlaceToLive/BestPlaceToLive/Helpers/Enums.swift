@@ -14,6 +14,7 @@ enum Breakdown: String {
 	//Also update CityBreakdown with any changes made here
 	
 	case id = "_id"
+	case addSecureUrl = "add_secure_url"
 	case airPollutionTelescore = "air-pollution-telescore"
 	case airportHubIndexDetail = "airport-hub-index-detail"
 	case airportHubTelescore = "airport-hub-telescore"

@@ -13,7 +13,7 @@ class SettingsControllerTests: XCTestCase {
 	
 	let user = Login(id: "123", name: "Jack Ryan", email: "jryan@cia.com", appleId: "123", location: "Washington, DC", token: "abc", likes: [], dislikes: [], factors: [])
 	
-	let login = LoginRequest(email: "Jack Ryan", password: "123456")
+	let login = LoginRequest(email: "jryan@cia.com", password: "123456")
 
     override func setUp() {
 		
@@ -36,7 +36,7 @@ class SettingsControllerTests: XCTestCase {
 	
 	func test3PersistCredentials() {
 		SettingsController.shared.isSaveCredentials = true
-		SettingsController.shared.persist(credentials: login)
+		SettingsController.shared.persistcredentials(appleId: user.appleId, email: user.email, password: "123456")
 		
 		XCTAssertEqual(SettingsController.shared.userCredentials?.email, login.email)
 	}

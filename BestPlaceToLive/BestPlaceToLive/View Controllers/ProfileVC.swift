@@ -18,6 +18,7 @@ class ProfileVC: UIViewController {
 	
 	// MARK: Properties
 	
+	let settingsController = SettingsController.shared
 	
 	// MARK: Life Cycle
 	
@@ -46,7 +47,15 @@ class ProfileVC: UIViewController {
 	}
 	
 	@IBAction func logoutBtnTapped(_ sender: Any) {
+		settingsController.logoutProcedure()
 		
+		let storyboard = UIStoryboard(name: "Login", bundle: nil)
+		
+		if let initialVC = storyboard.instantiateInitialViewController() as? UINavigationController {
+				guard let optionsVC = initialVC.viewControllers.first as? LoginVC else { return }
+			
+			navigationController?.viewControllers = [optionsVC]
+		}
 	}
 	
 	@IBAction func deleteAccountBtnTapped(_ sender: Any) {

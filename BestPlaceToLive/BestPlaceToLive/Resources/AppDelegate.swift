@@ -13,8 +13,9 @@ import AuthenticationServices
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		let settingsController = SettingsController.shared
 		
-		if let userIdentifier = SettingsController.shared.appleId {
+		if let userIdentifier = settingsController.appleId {
 			let appleIDProvider = ASAuthorizationAppleIDProvider()
 			
 			appleIDProvider.getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
@@ -25,9 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 						switch result {
 						case .success(let user):
 							SettingsController.shared.loginProcedure(user)
-							//							DispatchQueue.main.async {
-							//								self.segueToProfileVC()
-						//							}
 						case .failure(let error):
 							print(error)
 						}
@@ -41,6 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 					break
 				default:
 					break
+				}
+			}
+		} else if let credentials = settingsController.userCredentials {
+			UserAPIController.shared.login(email: credentials.email, password: credentials.password) { (result) in
+				switch result {
+				case .success(let user):
+					SettingsController.shared.loginProcedure(user)
+				case .failure(let error):
+					print(error)
 				}
 			}
 		}

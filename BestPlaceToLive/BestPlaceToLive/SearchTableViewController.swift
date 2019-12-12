@@ -29,7 +29,6 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
     }
     
     func userEnteredFilters(filters: [Breakdown]) {
-        print("\(filters)")
         CityAPIController.shared.getFilteredCities(filters: filters ) { result in
             switch result {
             case .failure(let error):
@@ -80,7 +79,6 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityTableViewCell else {return UITableViewCell()}
         self.indexPath = indexPath
-        print("\(self.indexPath)")
         cell.loadImageDelegate = self
         if let filteredCities = filteredCities {
             let filteredCity = filteredCities[indexPath.row]

@@ -73,28 +73,8 @@ class SignInWithAppleRequest: NSObject {
 	
 	private func register(appleIDCredential: ASAuthorizationAppleIDCredential) {
 		let userIdentifier = appleIDCredential.user
-		print("User ID: \(appleIDCredential.user)")
-		
-		if let userEmail = appleIDCredential.email {
-			print("Email: \(userEmail)")
-		}
-		
-		if let userGivenName = appleIDCredential.fullName?.givenName,
-			let userFamilyName = appleIDCredential.fullName?.familyName {
-			print("Given Name: \(userGivenName)")
-			print("Family Name: \(userFamilyName)")
-		}
-		
-		if let authorizationCode = appleIDCredential.authorizationCode,
-			let identifyToken = appleIDCredential.identityToken {
-			print("Authorization Code: \(authorizationCode)")
-			print("Identity Token: \(identifyToken)")
-			//First time user, perform authentication with the backend
-			//TODO: Submit authorization code and identity token to your backend for user validation and signIn
-		}
-		
-		let appleIDProvider = ASAuthorizationAppleIDProvider()
-		appleIDProvider.getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
+
+		ASAuthorizationAppleIDProvider().getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
 			switch credentialState {
 			case .authorized:
 				if let email = appleIDCredential.email, let nameComponents = appleIDCredential.fullName {
@@ -161,8 +141,8 @@ class SignInWithAppleRequest: NSObject {
 			default:
 				break
 			}
+		}
 	}
-}
 	
 	private func segueToProfileVC() {
 		if SettingsController.shared.loggedInUser != nil {

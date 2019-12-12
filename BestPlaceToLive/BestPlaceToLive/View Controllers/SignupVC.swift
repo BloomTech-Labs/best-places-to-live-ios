@@ -32,7 +32,7 @@ class SignupVC: UIViewController {
 		super.viewDidLoad()
 		
 		settingsController.isSaveCredentials = true
-		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
+//		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
 	}
 	
 	// MARK: IBActions
@@ -49,6 +49,10 @@ class SignupVC: UIViewController {
 			case .success(let user):
 				self.settingsController.persistcredentials(appleId: nil, email: email, password: password)
 				self.settingsController.loginProcedure(user)
+				
+				DispatchQueue.main.async {
+					self.segueToProfileVC()
+				}
 			case .failure(let error):
 				print(error)
 			}	
@@ -57,17 +61,18 @@ class SignupVC: UIViewController {
 	
 	// MARK: Helpers
 	
-	private func setUpSignInAppleButton() {
-		let authorizationButton = ASAuthorizationAppleIDButton()
-		
-		authorizationButton.addTarget(self, action: #selector(signInWithAppleRequest.appleIDWrapper), for: .touchUpInside)
-		authorizationButton.cornerRadius = 10
-		
-		let newIndex = buttonStackView.arrangedSubviews.endIndex
-		buttonStackView.insertArrangedSubview(authorizationButton, at: newIndex)
-		
-		signInWithAppleRequest.delegate = self
+	private func segueToProfileVC() {
+		if settingsController.loggedInUser != nil {
+			let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+			
+			if let initialVC = storyboard.instantiateInitialViewController() as? UINavigationController {
+				guard let profileVC = initialVC.viewControllers.first as? ProfileVC else { return }
+				
+				navigationController?.viewControllers = [profileVC]
+			}
+		}
 	}
+	
 }
 
 // MARK: - Sign In With Apple Request Delegate

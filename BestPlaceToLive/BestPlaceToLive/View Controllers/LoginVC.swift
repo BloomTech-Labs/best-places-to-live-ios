@@ -31,7 +31,7 @@ class LoginVC: UIViewController {
 		super.viewDidLoad()
 		
 		settingsController.isSaveCredentials = true
-		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
+//		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
 	}
 	
 	// MARK: IBActions
@@ -52,9 +52,9 @@ class LoginVC: UIViewController {
 			let storyboard = UIStoryboard(name: "Profile", bundle: nil)
 			
 			if let initialVC = storyboard.instantiateInitialViewController() as? UINavigationController {
-					guard let optionsVC = initialVC.viewControllers.first as? ProfileVC else { return }
+				guard let profileVC = initialVC.viewControllers.first as? ProfileVC else { return }
 				
-				navigationController?.viewControllers = [optionsVC]
+				navigationController?.viewControllers = [profileVC]
 			}
 		}
 	}
@@ -65,6 +65,7 @@ class LoginVC: UIViewController {
 			case .success(let user):
 				self.settingsController.persistcredentials(appleId: nil, email: email, password: password)
 				self.settingsController.loginProcedure(user)
+				
 				DispatchQueue.main.async {
 					self.segueToProfileVC()
 				}

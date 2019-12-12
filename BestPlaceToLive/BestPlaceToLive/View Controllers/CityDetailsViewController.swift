@@ -108,7 +108,6 @@ class CityDetailsViewController: UIViewController {
                     NSLog("Error fetching city with id: \(error)")
                     break
                 case .success(let cities):
-                    print("\(cities)")
                     if let city = cities.first {
                         DispatchQueue.main.async {
                             self.cityNameLabel.text = city.name

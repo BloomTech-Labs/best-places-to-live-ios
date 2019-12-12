@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,11 +23,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XcC-KM-dTs">
-                                <rect key="frame" x="38" y="165" width="338" height="248.5"/>
+                                <rect key="frame" x="38" y="165" width="338" height="254.5"/>
                             </mapView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aerial-architecture-blue-sky-buildings-466685 1" translatesAutoresizingMaskIntoConstraints="NO" id="DAq-Dg-M29">
-                                <rect key="frame" x="38" y="513.5" width="338" height="248.5"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itM-ja-243">
                                 <rect key="frame" x="193" y="120" width="28" height="25"/>
                                 <constraints>
@@ -39,7 +37,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqk-cu-d7a">
-                                <rect key="frame" x="60" y="791" width="295" height="44"/>
+                                <rect key="frame" x="60" y="797" width="295" height="38"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                 <state key="normal" title="Share City">
                                     <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -49,7 +47,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3K1-cp-WL6">
-                                <rect key="frame" x="60" y="444" width="295" height="44"/>
+                                <rect key="frame" x="60" y="450" width="295" height="38"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                 <state key="normal" title="Get Directions">
                                     <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -59,37 +57,99 @@
                                     <action selector="shareCityTapped:" destination="EHl-Q9-hqd" eventType="touchUpInside" id="ISY-C6-24C"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x2e-xt-or4">
+                                <rect key="frame" x="20" y="527" width="374" height="223"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="223" id="8cM-rr-ezi"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bmg-GK-Ioh">
+                                    <size key="itemSize" width="370" height="238"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="lme-td-xr3" customClass="ImageCell" customModule="BestPlaceToLive" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-7.5" width="370" height="238"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="anI-7g-KWO">
+                                            <rect key="frame" x="0.0" y="0.0" width="370" height="238"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ov4-48-IJH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="238"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eVJ-KJ-bAY">
+                                                            <rect key="frame" x="0.0" y="0.0" width="370" height="238"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="eVJ-KJ-bAY" secondAttribute="bottom" id="H9S-GP-0IX"/>
+                                                        <constraint firstAttribute="width" constant="370" id="TOu-Pe-CzU"/>
+                                                        <constraint firstAttribute="trailing" secondItem="eVJ-KJ-bAY" secondAttribute="trailing" id="Y2P-MS-xnv"/>
+                                                        <constraint firstItem="eVJ-KJ-bAY" firstAttribute="leading" secondItem="ov4-48-IJH" secondAttribute="leading" id="aBd-Gf-ugn"/>
+                                                        <constraint firstItem="eVJ-KJ-bAY" firstAttribute="top" secondItem="ov4-48-IJH" secondAttribute="top" id="dLI-QV-hhm"/>
+                                                        <constraint firstAttribute="height" constant="238" id="dMM-L0-GDK"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ov4-48-IJH" firstAttribute="top" secondItem="anI-7g-KWO" secondAttribute="top" id="366-kH-1lX"/>
+                                                <constraint firstItem="ov4-48-IJH" firstAttribute="leading" secondItem="anI-7g-KWO" secondAttribute="leading" id="SJX-kW-8Xx"/>
+                                                <constraint firstAttribute="bottom" secondItem="ov4-48-IJH" secondAttribute="bottom" id="YiL-SP-MUK"/>
+                                                <constraint firstAttribute="trailing" secondItem="ov4-48-IJH" secondAttribute="trailing" id="fOP-dJ-VIA"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="370" height="238"/>
+                                        <connections>
+                                            <outlet property="cityImage" destination="eVJ-KJ-bAY" id="iGe-LF-r9f"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="EHl-Q9-hqd" id="IYs-iw-pbT"/>
+                                    <outlet property="delegate" destination="EHl-Q9-hqd" id="3Tr-xA-9sc"/>
+                                </connections>
+                            </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="SpP-a9-u1M">
+                                <rect key="frame" x="159" y="752" width="96" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.1647058824" green="0.15686274510000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Gqk-cu-d7a" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="60" id="6Ib-M8-JwV"/>
-                            <constraint firstItem="Gqk-cu-d7a" firstAttribute="top" secondItem="DAq-Dg-M29" secondAttribute="bottom" constant="29" id="6Oq-xA-EXj"/>
+                            <constraint firstItem="SpP-a9-u1M" firstAttribute="top" secondItem="x2e-xt-or4" secondAttribute="bottom" constant="2" id="7qT-9n-5cX"/>
                             <constraint firstItem="FVJ-rw-pfk" firstAttribute="top" secondItem="XGC-BS-ZUU" secondAttribute="top" constant="20" id="8CS-7b-6r0"/>
-                            <constraint firstItem="DAq-Dg-M29" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="38" id="9K4-6w-P14"/>
-                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="DAq-Dg-M29" secondAttribute="trailing" constant="38" id="9pt-yd-SKT"/>
+                            <constraint firstItem="x2e-xt-or4" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="20" id="9R9-Df-O6l"/>
                             <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="XcC-KM-dTs" secondAttribute="trailing" constant="38" id="BO1-c0-SSQ"/>
-                            <constraint firstItem="DAq-Dg-M29" firstAttribute="height" secondItem="XcC-KM-dTs" secondAttribute="height" id="BkJ-rk-wt5"/>
                             <constraint firstItem="XcC-KM-dTs" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="38" id="FVt-7s-EU3"/>
-                            <constraint firstItem="DAq-Dg-M29" firstAttribute="top" secondItem="3K1-cp-WL6" secondAttribute="bottom" constant="25.5" id="Fxn-OJ-yij"/>
-                            <constraint firstItem="DAq-Dg-M29" firstAttribute="top" secondItem="XcC-KM-dTs" secondAttribute="bottom" constant="100" id="IP2-Nd-aRM"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="SpP-a9-u1M" secondAttribute="bottom" constant="73" id="IqX-tM-thl"/>
                             <constraint firstItem="itM-ja-243" firstAttribute="centerX" secondItem="6oq-Ww-Ybs" secondAttribute="centerX" id="KMT-WO-Vwk"/>
+                            <constraint firstItem="x2e-xt-or4" firstAttribute="top" secondItem="3K1-cp-WL6" secondAttribute="bottom" constant="39" id="KU9-zz-2Pn"/>
                             <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="FVJ-rw-pfk" secondAttribute="trailing" constant="50" id="KYe-EZ-cGS"/>
                             <constraint firstItem="FVJ-rw-pfk" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="50" id="VVz-Cl-mAA"/>
+                            <constraint firstItem="SpP-a9-u1M" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="159" id="aKM-FM-mqA"/>
                             <constraint firstItem="3K1-cp-WL6" firstAttribute="leading" secondItem="XGC-BS-ZUU" secondAttribute="leading" constant="60" id="bvT-uQ-P8I"/>
-                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="bottom" secondItem="DAq-Dg-M29" secondAttribute="bottom" constant="100" id="cen-at-UHG"/>
                             <constraint firstItem="XcC-KM-dTs" firstAttribute="top" secondItem="itM-ja-243" secondAttribute="bottom" constant="20" id="khf-BT-SQC"/>
                             <constraint firstItem="XGC-BS-ZUU" firstAttribute="bottom" secondItem="Gqk-cu-d7a" secondAttribute="bottom" constant="27" id="mDt-ii-Uag"/>
                             <constraint firstItem="3K1-cp-WL6" firstAttribute="top" secondItem="XcC-KM-dTs" secondAttribute="bottom" constant="30.5" id="nyT-dL-0zy"/>
                             <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="3K1-cp-WL6" secondAttribute="trailing" constant="59" id="qrm-xX-4tn"/>
                             <constraint firstItem="itM-ja-243" firstAttribute="top" secondItem="FVJ-rw-pfk" secondAttribute="bottom" constant="8" id="s6w-b3-gkT"/>
+                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="SpP-a9-u1M" secondAttribute="trailing" constant="159" id="tSx-OO-9Q4"/>
+                            <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="x2e-xt-or4" secondAttribute="trailing" constant="20" id="yGJ-GT-qhn"/>
                             <constraint firstItem="XGC-BS-ZUU" firstAttribute="trailing" secondItem="Gqk-cu-d7a" secondAttribute="trailing" constant="59" id="ycz-T8-xvj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XGC-BS-ZUU"/>
                     </view>
                     <connections>
                         <outlet property="cityNameLabel" destination="FVJ-rw-pfk" id="gEV-ry-egB"/>
-                        <outlet property="cityPhotoImageView" destination="DAq-Dg-M29" id="M3Q-B4-rec"/>
                         <outlet property="getDirectionsButton" destination="3K1-cp-WL6" id="KtE-Op-bSq"/>
+                        <outlet property="imageCollectionView" destination="x2e-xt-or4" id="pqN-hK-6LZ"/>
+                        <outlet property="imagePageControl" destination="SpP-a9-u1M" id="jtW-0M-t8U"/>
                         <outlet property="likeButton" destination="itM-ja-243" id="ytw-d3-5Tr"/>
                         <outlet property="mapView" destination="XcC-KM-dTs" id="a7y-EL-n8F"/>
                         <outlet property="shareCityButton" destination="Gqk-cu-d7a" id="Wdd-wE-0dx"/>
@@ -101,7 +161,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aerial-architecture-blue-sky-buildings-466685 1" width="943" height="585"/>
         <image name="suit.heart" catalog="system" width="32" height="32"/>
     </resources>
 </document>

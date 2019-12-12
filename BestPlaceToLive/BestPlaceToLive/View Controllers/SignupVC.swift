@@ -7,18 +7,24 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class SignupVC: UIViewController {
-
+	
 	// MARK: IBOutlets
 	
 	@IBOutlet weak var nameTextField: UITextField!
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
+	@IBOutlet weak var buttonStackView: UIStackView!
 	
 	// MARK: Properties
 	
 	let settingsController = SettingsController.shared
+	private lazy var signInWithAppleRequest: SignInWithAppleRequest = {
+		let request = SignInWithAppleRequest(delegateVC: self, appleButtonType: .default, buttonStackView: self.buttonStackView)
+		return request
+	}()
 	
 	// MARK: Life Cycle
 	
@@ -26,6 +32,7 @@ class SignupVC: UIViewController {
 		super.viewDidLoad()
 		
 		settingsController.isSaveCredentials = true
+//		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
 	}
 	
 	// MARK: IBActions
@@ -35,21 +42,43 @@ class SignupVC: UIViewController {
 			let name = nameTextField.optionalText,
 			let email = emailTextField.optionalText,
 			let password = passwordTextField.optionalText
-		else { return }
+			else { return }
 		
-		UserAPIController.shared.registerNewUser(name: name, email: email, password: password) { (result) in
+		UserAPIController.shared.registerNewUser(name: name, email: email, password: password, appleId: nil) { (result) in
 			switch result {
 			case .success(let user):
-				self.settingsController.persistcredentials(email, password)
+				self.settingsController.persistcredentials(appleId: nil, email: email, password: password)
 				self.settingsController.loginProcedure(user)
+				
+				DispatchQueue.main.async {
+					self.segueToProfileVC()
+				}
 			case .failure(let error):
 				print(error)
 			}	
 		}
-		
-		#warning("Navigate to proper screen when signing up")
 	}
 	
 	// MARK: Helpers
+	
+	private func segueToProfileVC() {
+		if settingsController.loggedInUser != nil {
+			let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+			
+			if let initialVC = storyboard.instantiateInitialViewController() as? UINavigationController {
+				guard let profileVC = initialVC.viewControllers.first as? ProfileVC else { return }
+				
+				navigationController?.viewControllers = [profileVC]
+			}
+		}
+	}
+	
+}
 
+// MARK: - Sign In With Apple Request Delegate
+
+extension SignupVC: SignInWithAppleRequestDelegate {
+	func navigate(to newVCStack: [UIViewController]) {
+		navigationController?.viewControllers = newVCStack
+	}
 }

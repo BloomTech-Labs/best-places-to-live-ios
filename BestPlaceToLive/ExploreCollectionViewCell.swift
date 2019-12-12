@@ -10,7 +10,16 @@ import UIKit
 
 class ExploreCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    
+    var collectionViewHeight: CGFloat = 0.0 {
+        didSet {
+            adjustImageViewHeight()
+        }
+    }
+    private func adjustImageViewHeight() {
+        imageViewHeightConstraint.constant = collectionViewHeight
+    }
     
 }

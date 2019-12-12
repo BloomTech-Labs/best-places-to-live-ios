@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class LoginVC: UIViewController {
 
@@ -14,10 +15,15 @@ class LoginVC: UIViewController {
 	
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
+	@IBOutlet weak var buttonStackView: UIStackView!
 	
 	// MARK: Properties
 	
-	let settingsController = SettingsController.shared
+	private let settingsController = SettingsController.shared
+	private lazy var signInWithAppleRequest: SignInWithAppleRequest = {
+		let request = SignInWithAppleRequest(delegateVC: self, appleButtonType: .continue, buttonStackView: self.buttonStackView)
+		return request
+	}()
 	
 	// MARK: Life Cycle
 	
@@ -25,6 +31,7 @@ class LoginVC: UIViewController {
 		super.viewDidLoad()
 		
 		settingsController.isSaveCredentials = true
+//		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
 	}
 	
 	// MARK: IBActions
@@ -35,18 +42,7 @@ class LoginVC: UIViewController {
 			let password = passwordTextField.optionalText
 		else { return }
 		
-		UserAPIController.shared.login(email: email, password: password) { (result) in
-			switch result {
-			case .success(let user):
-				self.settingsController.persistcredentials(email, password)
-				self.settingsController.loginProcedure(user)
-				DispatchQueue.main.async {
-					self.segueToProfileVC()
-				}
-			case .failure(let error):
-				print(error)
-			}			
-		}
+		loginUser(email: email, password: password)
 	}
 	
 	// MARK: Helpers
@@ -56,12 +52,34 @@ class LoginVC: UIViewController {
 			let storyboard = UIStoryboard(name: "Profile", bundle: nil)
 			
 			if let initialVC = storyboard.instantiateInitialViewController() as? UINavigationController {
-					guard let optionsVC = initialVC.viewControllers.first as? ProfileVC else { return }
+				guard let profileVC = initialVC.viewControllers.first as? ProfileVC else { return }
 				
-				navigationController?.viewControllers = [optionsVC]
+				navigationController?.viewControllers = [profileVC]
 			}
 		}
 	}
 	
-	
+	private func loginUser(email: String, password: String) {
+		UserAPIController.shared.login(email: email, password: password) { (result) in
+			switch result {
+			case .success(let user):
+				self.settingsController.persistcredentials(appleId: nil, email: email, password: password)
+				self.settingsController.loginProcedure(user)
+				
+				DispatchQueue.main.async {
+					self.segueToProfileVC()
+				}
+			case .failure(let error):
+				print(error)
+			}
+		}
+	}
+}
+
+// MARK: - Sign In With Apple Request Delegate
+
+extension LoginVC: SignInWithAppleRequestDelegate {
+	func navigate(to newVCStack: [UIViewController]) {
+		navigationController?.viewControllers = newVCStack
+	}
 }

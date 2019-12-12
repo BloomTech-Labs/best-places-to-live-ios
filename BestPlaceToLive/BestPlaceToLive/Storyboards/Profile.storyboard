@@ -83,6 +83,9 @@
                                             <constraint firstAttribute="width" constant="150" id="RGD-VF-soe"/>
                                         </constraints>
                                         <state key="normal" title="Log Out"/>
+                                        <connections>
+                                            <action selector="logoutBtnTapped:" destination="Htu-Kh-Vvm" eventType="touchUpInside" id="H2e-jg-hnk"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okp-x7-DQy">
                                         <rect key="frame" x="132" y="602.5" width="150" height="50"/>

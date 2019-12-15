@@ -59,6 +59,7 @@
 		EF5F008F239AF3B6006EDFB7 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5F008E239AF3B6006EDFB7 /* Cache.swift */; };
 		EF5F0091239AF53B006EDFB7 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5F0090239AF53B006EDFB7 /* ConcurrentOperation.swift */; };
 		EF5F0093239AF56D006EDFB7 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5F0092239AF56D006EDFB7 /* FetchPhotoOperation.swift */; };
+		EF5F009723A2DE64006EDFB7 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5F009623A2DE64006EDFB7 /* ImageCell.swift */; };
 		EF6D9120237B4C0500106211 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6D911F237B4C0500106211 /* PreferencesViewController.swift */; };
 		EF73E84C237F18D1003FB17E /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73E84B237F18D1003FB17E /* CoreDataController.swift */; };
 		EF73E84F237F1AE9003FB17E /* NomadsLand.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF73E84D237F1AE9003FB17E /* NomadsLand.xcdatamodeld */; };
@@ -137,6 +138,7 @@
 		EF5F008E239AF3B6006EDFB7 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		EF5F0090239AF53B006EDFB7 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		EF5F0092239AF56D006EDFB7 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
+		EF5F009623A2DE64006EDFB7 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		EF6D911F237B4C0500106211 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesViewController.swift; path = BestPlaceToLive/PreferencesViewController.swift; sourceTree = SOURCE_ROOT; };
 		EF73E84B237F18D1003FB17E /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataController.swift; path = BestPlaceToLive/Storyboards/CoreDataController.swift; sourceTree = SOURCE_ROOT; };
 		EF73E84E237F1AE9003FB17E /* NomadsLand.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NomadsLand.xcdatamodel; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			children = (
 				EF9198D32379FE7200133535 /* CityTableViewCell.swift */,
 				755E3351237E098E00FAF3D6 /* ExploreCollectionViewCell.swift */,
+				EF5F009623A2DE64006EDFB7 /* ImageCell.swift */,
 				755E3353237E09A500FAF3D6 /* PopularCollectionViewCell.swift */,
 				B5A7F0FF2399B31800752314 /* RoundedButton.swift */,
 			);
@@ -491,6 +494,7 @@
 				756A7D7A238340900084B4F2 /* CityDetailsViewController.swift in Sources */,
 				B5A7F0FC23997AB400752314 /* UserInfo.swift in Sources */,
 				B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */,
+				EF5F009723A2DE64006EDFB7 /* ImageCell.swift in Sources */,
 				B5FDAF1523835B3C00C18BFF /* Profile.swift in Sources */,
 				EF73E84F237F1AE9003FB17E /* NomadsLand.xcdatamodeld in Sources */,
 				B5FDAF1F2385AA3B00C18BFF /* FilteredCity.swift in Sources */,

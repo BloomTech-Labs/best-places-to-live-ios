@@ -207,7 +207,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
                         cell.imageView.image = UIImage(data: imageData)
                     }
                 } else {
-                    if let imageURL = URL(string: city.secureURL ?? "") {
+                    if let imageURL = URL(string: city.secureUrl ?? "") {
                         if let imageData = try? Data(contentsOf: imageURL) {
                             DispatchQueue.main.async {
                                 cell.collectionViewHeight = collectionView.bounds.height

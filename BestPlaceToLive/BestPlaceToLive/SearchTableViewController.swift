@@ -25,11 +25,15 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
     
     override func viewDidLoad() {
         setupUI()
+        if self.searchedCities == nil && self.filteredCities == nil {
+            EmptyMessage(message: "Search a city in the search bar above or generate cities based on your preferences.", viewController: self)
+            
+        }
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    
     func userEnteredFilters(filters: [Breakdown]) {
-        print("\(filters)")
         CityAPIController.shared.getFilteredCities(filters: filters ) { result in
             switch result {
             case .failure(let error):
@@ -80,8 +84,8 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityTableViewCell else {return UITableViewCell()}
         self.indexPath = indexPath
-        print("\(self.indexPath)")
         cell.loadImageDelegate = self
+        cell.clearCity()
         if let filteredCities = filteredCities {
             let filteredCity = filteredCities[indexPath.row]
             cell.filteredCity = filteredCity
@@ -92,13 +96,19 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
             cell.searchedCity = searchedCity
             return cell
         }
-        return cell
+        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if self.searchedCities == nil && self.filteredCities == nil {
+            EmptyMessage(message: "Search a city in the search bar above or generate cities based on your preferences by tapping the 'Use Filters' Button", viewController: self)
+            return 0
+        }
+        return 1
+    }
     func loadImage(cell: CityTableViewCell, imageURLString: String, searchedCity: CityBreakdown?, filteredCity: FilteredCity?) {
         guard let imageURL = URL(string: imageURLString) else {return}
         if searchedCity == nil {
@@ -109,6 +119,9 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
             let cacheOp = BlockOperation {
                 if let image = fetchOp.image {
                     self.cache.cache(value: image, for: filteredCity!.id)
+                    DispatchQueue.main.async {
+                        cell.cityImageView.image = image
+                    }
                 }
             }
             
@@ -119,9 +132,6 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
                 }
             }
             
-            if let image = fetchOp.image {
-                cell.cityImageView.image = image
-            }
             
             cacheOp.addDependency(fetchOp)
             completionOp.addDependency(fetchOp)
@@ -138,6 +148,9 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
             let cacheOp = BlockOperation {
                 if let image = fetchOp.image {
                     self.cache.cache(value: image, for: (searchedCity?.id)!)
+                    DispatchQueue.main.async {
+                        cell.cityImageView.image = image
+                    }
                 }
             }
             
@@ -148,9 +161,6 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
                 }
             }
             
-            if let image = fetchOp.image {
-                cell.cityImageView.image = image
-            }
             
             cacheOp.addDependency(fetchOp)
             completionOp.addDependency(fetchOp)
@@ -176,6 +186,21 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
         setPreferencesButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         setPreferencesButton.layer.shadowColor = UIColor.black.cgColor
         setPreferencesButton.layer.shadowOpacity = 1.0
+        
+    }
+    
+    func EmptyMessage(message:String, viewController:UITableViewController) {
+        let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+        let messageLabel = UILabel(frame: rect)
+        messageLabel.text = message
+        messageLabel.textColor = UIColor.black
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.sizeToFit()
+        
+        viewController.tableView.backgroundView = messageLabel;
+        viewController.tableView.separatorStyle = .none;
     }
     
 }
@@ -189,7 +214,7 @@ extension SearchTableViewController: UISearchBarDelegate {
         activityView.startAnimating()
         guard let searchText = searchBar.text else {return}
         self.searchTitle.text = "Waiting for \(searchText)"
-        CityAPIController.shared.getCitiesBreakdown(relatedTo: searchText) { result in
+        CityAPIController.shared.searchforCities(relatedTo: searchText) { result in
             switch result {
             case .failure(let error):
                 DispatchQueue.main.async {

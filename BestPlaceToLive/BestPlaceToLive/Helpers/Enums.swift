@@ -10,7 +10,11 @@ import Foundation
 
 // Leave for last to avoid massive scrolling ☠️
 enum Breakdown: String {
+	
+	//Also update CityBreakdown with any changes made here
+	
 	case id = "_id"
+	case addSecureUrl = "add_secure_url"
 	case airPollutionTelescore = "air-pollution-telescore"
 	case airportHubIndexDetail = "airport-hub-index-detail"
 	case airportHubTelescore = "airport-hub-telescore"
@@ -195,6 +199,7 @@ enum Breakdown: String {
 	case startupSalaries = "startup-salaries"
 	case startupSalariesDetail = "startup-salaries-detail"
 	case state = "state"
+	case summary = "Summary"
 	case taxVat = "tax-vat"
 	case timeZone = "time_zone"
 	case timeOverheadCompanyTaxes = "time-overhead-company-taxes"

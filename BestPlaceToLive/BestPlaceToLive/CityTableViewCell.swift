@@ -32,6 +32,12 @@ class CityTableViewCell: UITableViewCell {
         }
     }
     
+    func clearCity() {
+        cityImageView.image = nil
+        self.filteredCity = nil
+        self.searchedCity = nil
+    }
+    
     func updateViews() {
         let cellContentView = self.contentView.bounds
         cityImageView.layer.cornerRadius = 20

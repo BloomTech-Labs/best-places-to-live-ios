@@ -16,14 +16,16 @@ class CityDetailsViewController: UIViewController {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var shareCityButton: UIButton!
-    @IBOutlet weak var cityPhotoImageView: UIImageView!
+    @IBOutlet var imageCollectionView: UICollectionView!
     
-    
+    @IBOutlet var imagePageControl: UIPageControl!
     var city: CityBreakdown?
     var filteredCity: FilteredCity?
     let coreDataController = CoreDataController()
     var cityIsSaved = false
     var citySearch: CitySearch?
+    var fetchedCityImages: [UIImage] = []
+    var currentPageIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +33,12 @@ class CityDetailsViewController: UIViewController {
         likeButton.isUserInteractionEnabled = false
         self.navigationController?.isNavigationBarHidden = false
         updateViews()
+        imagePageControl.numberOfPages = fetchedCityImages.count
         checkIfCityIsSaved()
     }
     @IBAction func shareCityTapped(_ sender: UIButton) {
         let sharedText = "Check out \(cityNameLabel.text!)!"
-        let items = [cityPhotoImageView.image!,sharedText ] as [Any]
+        let items = [fetchedCityImages.first!,sharedText ] as [Any]
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(ac, animated: true)
     }
@@ -94,11 +97,16 @@ class CityDetailsViewController: UIViewController {
                 self.mapView.setRegion(region, animated: true)
                 mapView.addAnnotation(annotaton)
             }
-            if let imageURL = URL(string: city.secureURL ?? "") {
-                if let imageData = try? Data(contentsOf: imageURL) {
-                    cityPhotoImageView.image = UIImage(data: imageData)
+            var cityImages: [UIImage] = []
+            for imageURLString in city.addSecureUrl ?? [""] {
+                if let imageURL = URL(string: imageURLString) {
+                    if let imageData = try? Data(contentsOf: imageURL) {
+                        cityImages.append(UIImage(data: imageData)!)
+                    }
                 }
+                
             }
+            self.fetchedCityImages = cityImages
             
         }
         if let filteredCity = filteredCity {
@@ -108,7 +116,6 @@ class CityDetailsViewController: UIViewController {
                     NSLog("Error fetching city with id: \(error)")
                     break
                 case .success(let cities):
-                    print("\(cities)")
                     if let city = cities.first {
                         DispatchQueue.main.async {
                             self.cityNameLabel.text = city.name
@@ -120,11 +127,16 @@ class CityDetailsViewController: UIViewController {
                                 self.mapView.setRegion(region, animated: true)
                                 self.mapView.addAnnotation(annotaton)
                             }
-                            if let imageURL = URL(string: city.secureURL ?? "") {
-                                if let imageData = try? Data(contentsOf: imageURL) {
-                                    self.cityPhotoImageView.image = UIImage(data: imageData)
+                            var cityImages: [UIImage] = []
+                            for imageURLString in city.addSecureUrl ?? [""] {
+                                if let imageURL = URL(string: imageURLString) {
+                                    if let imageData = try? Data(contentsOf: imageURL) {
+                                        cityImages.append(UIImage(data: imageData)!)
+                                    }
                                 }
+                                
                             }
+                            self.fetchedCityImages = cityImages
                         }
                     }
                 }
@@ -160,16 +172,34 @@ class CityDetailsViewController: UIViewController {
         }
     }
     
+}
+
+extension CityDetailsViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: imageCollectionView.frame.width, height: imageCollectionView.frame.height)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        currentPageIndex = Int(scrollView.contentOffset.x / imageCollectionView.frame.size.width)
+        imagePageControl.currentPage = currentPageIndex
+    }
+    
+}
+
+extension CityDetailsViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return fetchedCityImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCell else {return UICollectionViewCell()}
+        let image = fetchedCityImages[indexPath.item]
+        cell.cityImage.contentMode = .scaleAspectFill
+        cell.image = image
+        return cell
+    }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

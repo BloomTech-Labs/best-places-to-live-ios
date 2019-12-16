@@ -72,7 +72,6 @@ class ExploreViewController: UIViewController {
                     self.topTenCities = try result.get()
                     DispatchQueue.main.async {
                         self.popularCollectionView.reloadData()
-                        print("reload")
                     }
                     
                 } catch {
@@ -189,7 +188,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
             return topTenCities.count
         }
         if collectionView == self.exploreCollectionView {
-            print(categoryCities.count)
             return categoryCities.count
         }
         return 0
@@ -229,7 +227,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
             return cell
         }
         if collectionView == self.exploreCollectionView {
-            print("explore")
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreCell", for: indexPath) as? ExploreCollectionViewCell else { fatalError("cannot make ExploreCell") }
             let city = categoryCities[indexPath.item]
             cell.cityNameLabel.text = city.name

@@ -36,7 +36,7 @@ class SettingsController {
 		}
 	}
 	
-	private(set) var loggedInUser: Login?
+	private(set) var loggedInUser: UserInfo?
 	
 //	var userProfileImg: UIImage? {
 //		get {
@@ -128,15 +128,16 @@ class SettingsController {
 		}
 	}
 	
-	func loginProcedure(_ user: Login) {
+	func loginProcedure(_ user: UserInfo) {
 		loggedInUser = user
 		userToken = user.token
 	}
 	
-	func logoutProcedure() {
+	func logoutProcedure(completion: @escaping () -> Void) {
 		loggedInUser = nil
 		userToken = nil
 		isSaveCredentials = false
 		print("USER LOGGED OUT")
+		completion()
 	}
 }

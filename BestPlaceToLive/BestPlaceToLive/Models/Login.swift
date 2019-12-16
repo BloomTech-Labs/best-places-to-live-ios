@@ -15,13 +15,14 @@ struct Login: Decodable {
 	let email: String
 	let appleId: String?
 	let location: String?
+	let cities: [City]?
 	let token: String
-	let likes: [City]?
-	let dislikes: [City]?
+	let likes: [CityBreakdown]?
+	let dislikes: [CityBreakdown]?
 	let factors: [String]?
 	
 	enum CodingKeys: String, CodingKey {
 		case id = "_id"
-		case name, email, appleId, location, token, likes, dislikes, factors
+		case name, email, appleId, location, cities, token, likes, dislikes, factors
 	}
 }

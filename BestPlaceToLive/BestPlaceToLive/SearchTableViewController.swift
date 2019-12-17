@@ -80,28 +80,23 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
         return 0
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityTableViewCell else {return UITableViewCell()}
         self.indexPath = indexPath
         cell.loadImageDelegate = self
-        cell.clearCity()
-        if let filteredCities = filteredCities {
-            let filteredCity = filteredCities[indexPath.row]
-            cell.filteredCity = filteredCity
+		if let city = filteredCities?[indexPath.row] {
+			cell.updateViews(cityId: city.id, cityName: city.shortName, stateName: city.state, imageUrl: city.secureUrl)
+        } else if let city = searchedCities?[indexPath.row] {
+			cell.updateViews(cityId: city.id, cityName: city.shortName, stateName: city.state, imageUrl: city.secureUrl)
             return cell
         }
-        if let cities = searchedCities {
-            let searchedCity = cities[indexPath.row]
-            cell.searchedCity = searchedCity
-            return cell
-        }
-        return UITableViewCell()
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+	
     override func numberOfSections(in tableView: UITableView) -> Int {
         if self.searchedCities == nil && self.filteredCities == nil {
             EmptyMessage(message: "Search a city in the search bar above or generate cities based on your preferences by tapping the 'Use Filters' Button", viewController: self)
@@ -109,66 +104,37 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
         }
         return 1
     }
-    func loadImage(cell: CityTableViewCell, imageURLString: String, searchedCity: CityBreakdown?, filteredCity: FilteredCity?) {
+	
+	func loadImage(cell: CityTableViewCell, imageURLString: String, cityId: String) {
         guard let imageURL = URL(string: imageURLString) else {return}
-        if searchedCity == nil {
-            if let cachedImage = cache.value(for: filteredCity!.id){
-                cell.cityImageView.image = cachedImage
-            }
-            let fetchOp = FetchCityImageOperation(imageURL: imageURL)
-            let cacheOp = BlockOperation {
-                if let image = fetchOp.image {
-                    self.cache.cache(value: image, for: filteredCity!.id)
-                    DispatchQueue.main.async {
-                        cell.cityImageView.image = image
-                    }
-                }
-            }
-            
-            let completionOp = BlockOperation {
-                defer {self.operations.removeValue(forKey: filteredCity!.id)}
-                if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != self.indexPath {
-                    return
-                }
-            }
-            
-            
-            cacheOp.addDependency(fetchOp)
-            completionOp.addDependency(fetchOp)
-            photoFetcheQueue.addOperation(fetchOp)
-            photoFetcheQueue.addOperation(cacheOp)
-            OperationQueue.main.addOperation(completionOp)
-            operations[filteredCity!.id] = fetchOp
-            
-        } else {
-            if let cachedImage = cache.value(for: (searchedCity?.id)!) {
-                cell.cityImageView.image = cachedImage
-            }
-            let fetchOp = FetchCityImageOperation(imageURL: imageURL)
-            let cacheOp = BlockOperation {
-                if let image = fetchOp.image {
-                    self.cache.cache(value: image, for: (searchedCity?.id)!)
-                    DispatchQueue.main.async {
-                        cell.cityImageView.image = image
-                    }
-                }
-            }
-            
-            let completionOp = BlockOperation {
-                defer {self.operations.removeValue(forKey: (searchedCity?.id)!)}
-                if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != self.indexPath {
-                    return
-                }
-            }
-            
-            
-            cacheOp.addDependency(fetchOp)
-            completionOp.addDependency(fetchOp)
-            photoFetcheQueue.addOperation(fetchOp)
-            photoFetcheQueue.addOperation(cacheOp)
-            OperationQueue.main.addOperation(completionOp)
-            operations[(searchedCity?.id)!] = fetchOp
-        }
+		
+		if let cachedImage = cache.value(for: cityId){
+			cell.cityImageView.image = cachedImage
+		}
+		let fetchOp = FetchCityImageOperation(imageURL: imageURL)
+		let cacheOp = BlockOperation {
+			if let image = fetchOp.image {
+				self.cache.cache(value: image, for: cityId)
+				DispatchQueue.main.async {
+					cell.cityImageView.image = image
+				}
+			}
+		}
+		
+		let completionOp = BlockOperation {
+			defer {self.operations.removeValue(forKey: cityId)}
+			if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != self.indexPath {
+				return
+			}
+		}
+		
+		
+		cacheOp.addDependency(fetchOp)
+		completionOp.addDependency(fetchOp)
+		photoFetcheQueue.addOperation(fetchOp)
+		photoFetcheQueue.addOperation(cacheOp)
+		OperationQueue.main.addOperation(completionOp)
+		operations[cityId] = fetchOp
     }
     
     private func showAlertForInvalidSearchQuery() {

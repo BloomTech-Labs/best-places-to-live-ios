@@ -8,55 +8,78 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController, SelectedFiltersDelegate, LoadImageForCellDelegate {
-    //MARK: - Outlets
+class SearchTableViewController: UITableViewController {
+	
+	// MARK: IBOutlets
+	
     @IBOutlet var searchTitle: UILabel!
     @IBOutlet var searchCityBar: UISearchBar!
     @IBOutlet var setPreferencesButton: UIButton!
-    var searchedCities: [CityBreakdown]?
-    var filteredCities: [FilteredCity]? 
-    var selectedFilters: [Breakdown]?
-    var delegate: SelectedFiltersDelegate?
-    var cache = Cache<String, UIImage>()
-    let photoFetcheQueue = OperationQueue()
-    var operations = [String: Operation]()
-    var indexPath = IndexPath()
-    
+	
+	// MARK: Properties
+	
+    private var searchedCities: [CityBreakdown]?
+    private var filteredCities: [FilteredCity]?
+    private var selectedFilters: [Breakdown]?
+    private var delegate: SelectedFiltersDelegate?
+    private var cache = Cache<String, UIImage>()
+    private let photoFetcheQueue = OperationQueue()
+    private var operations = [String: Operation]()
+    private var indexPath = IndexPath()
+	
+	// MARK: Life Cycle
     
     override func viewDidLoad() {
-        setupUI()
-        if self.searchedCities == nil && self.filteredCities == nil {
-            EmptyMessage(message: "Search a city in the search bar above or generate cities based on your preferences.", viewController: self)
-            
-        }
-        self.navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
+		tableView.keyboardDismissMode = .onDrag
+		
+		setupUI()
     }
-    
-    
-    func userEnteredFilters(filters: [Breakdown]) {
-        CityAPIController.shared.getFilteredCities(filters: filters ) { result in
-            switch result {
-            case .failure(let error):
-                NSLog("Failed to return cities with filters: \(error)")
-                break
-            case .success(let cities):
-                self.searchedCities = nil
-                self.filteredCities = cities
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
-        }
-    }
-    
-    //MARK: - Actions
+	
+	// MARK: IBActions
+	
     @IBAction func setPreferencesTapped(_ sender: Any) {
         self.searchCityBar.text = ""
         self.selectedFilters = nil
         self.searchedCities = nil
     }
+	
+	// MARK: Helpers
+    
+    private func showAlertForInvalidSearchQuery() {
+        let alert = UIAlertController(title: "Please Try Again", message: "Your search criteria is invalid", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel , handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func setupUI() {
+        setPreferencesButton.layer.cornerRadius = 10.0
+        setPreferencesButton.layer.shadowRadius = 3
+        setPreferencesButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+        setPreferencesButton.layer.shadowColor = UIColor.black.cgColor
+        setPreferencesButton.layer.shadowOpacity = 1.0
+		
+		EmptyMessage(message: "Search a city in the search bar above or generate cities based on your preferences.", viewController: self)
+    }
+    
+    private func EmptyMessage(message:String, viewController:UITableViewController) {
+		let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.view.bounds.size.width / 1.1, height: self.view.bounds.size.height))
+        let messageLabel = UILabel(frame: rect)
+		
+        messageLabel.text = message
+        messageLabel.textColor = UIColor.black
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.sizeToFit()
+        
+        viewController.tableView.backgroundView = messageLabel;
+        viewController.tableView.separatorStyle = .none;
+    }
     
     // MARK: - Table view data source
+	
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectFilters" {
             guard let destVC = segue.destination as? PreferencesViewController else {return}
@@ -96,15 +119,12 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-	
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        if self.searchedCities == nil && self.filteredCities == nil {
-            EmptyMessage(message: "Search a city in the search bar above or generate cities based on your preferences by tapping the 'Use Filters' Button", viewController: self)
-            return 0
-        }
-        return 1
-    }
-	
+    
+}
+
+// MARK: - Load Image Cell
+
+extension SearchTableViewController: LoadImageForCellDelegate {
 	func loadImage(cell: CityTableViewCell, imageURLString: String, cityId: String) {
         guard let imageURL = URL(string: imageURLString) else {return}
 		
@@ -136,53 +156,47 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
 		OperationQueue.main.addOperation(completionOp)
 		operations[cityId] = fetchOp
     }
-    
-    private func showAlertForInvalidSearchQuery() {
-        let alert = UIAlertController(title: "Please Try Again", message: "Your search criteria is invalid", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .cancel , handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    
-    
-    private func setupUI() {
-        setPreferencesButton.layer.cornerRadius = 10.0
-        setPreferencesButton.layer.shadowRadius = 3
-        setPreferencesButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-        setPreferencesButton.layer.shadowColor = UIColor.black.cgColor
-        setPreferencesButton.layer.shadowOpacity = 1.0
-        
-    }
-    
-    func EmptyMessage(message:String, viewController:UITableViewController) {
-        let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height))
-        let messageLabel = UILabel(frame: rect)
-        messageLabel.text = message
-        messageLabel.textColor = UIColor.black
-        messageLabel.numberOfLines = 0;
-        messageLabel.textAlignment = .center;
-        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
-        messageLabel.sizeToFit()
-        
-        viewController.tableView.backgroundView = messageLabel;
-        viewController.tableView.separatorStyle = .none;
-    }
-    
 }
+
+// MARK: - Apply Selected Filters
+
+extension SearchTableViewController: SelectedFiltersDelegate {
+    func userEnteredFilters(filters: [Breakdown]) {
+        CityAPIController.shared.getFilteredCities(filters: filters ) { result in
+            switch result {
+            case .failure(let error):
+                NSLog("Failed to return cities with filters: \(error)")
+                break
+            case .success(let cities):
+                self.searchedCities = nil
+                self.filteredCities = cities
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+}
+
+// MARK: - SearchBar Delegate
+
 extension SearchTableViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.filteredCities = nil
+		guard let searchText = searchBar.text, searchText != "" else {return}
+		
+		view.endEditing(true)
+        filteredCities = nil
+		
         let activityView = UIActivityIndicatorView(style: .large)
         activityView.center = self.view.center
-        self.view.addSubview(activityView)
+        view.addSubview(activityView)
         activityView.startAnimating()
-        guard let searchText = searchBar.text else {return}
+		
         self.searchTitle.text = "Waiting for \(searchText)"
         CityAPIController.shared.searchforCities(relatedTo: searchText) { result in
             switch result {
-            case .failure(let error):
+			case .failure(_):
                 DispatchQueue.main.async {
                     activityView.stopAnimating()
                     self.searchTitle.text = "Explore"

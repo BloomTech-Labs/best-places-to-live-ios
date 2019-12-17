@@ -35,6 +35,11 @@ class SignupVC: UIViewController {
 //		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
 	}
 	
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		super.touchesBegan(touches, with: event)
+		view.endEditing(true)
+	}
+	
 	// MARK: IBActions
 	
 	@IBAction func signupBtnTapped(_ sender: Any) {

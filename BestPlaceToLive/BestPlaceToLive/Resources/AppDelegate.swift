@@ -31,11 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 						}
 					}
 					break
-				case .revoked:
-					SettingsController.shared.logoutProcedure()
-					break
-				case .notFound:
-					SettingsController.shared.logoutProcedure()
+				case .revoked,
+					 .notFound:
+					SettingsController.shared.logoutProcedure {
+						
+					}
 					break
 				default:
 					break

@@ -39,7 +39,7 @@ class UserAPIController {
 	
 	// MARK: - Create
 	
-	func registerNewUser(name: String, email: String, password: String, appleId: String?, completion: @escaping (Result<Login, NetworkError>) -> Void) {
+	func registerNewUser(name: String, email: String, password: String, appleId: String?, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent(appleId == nil ? "register" : "signup") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
@@ -73,7 +73,7 @@ class UserAPIController {
 				let decoder = JSONDecoder()
 				decoder.keyDecodingStrategy = .convertFromSnakeCase
 				
-				let loginDetails = try decoder.decode(Login.self, from: data)
+				let loginDetails = try decoder.decode(UserInfo.self, from: data)
 				
 				completion(.success(loginDetails))
 			} catch {
@@ -266,7 +266,7 @@ class UserAPIController {
 	
 	// MARK: - Read
 	
-	func login(email: String, password: String, completion: @escaping (Result<Login, NetworkError>) -> Void) {
+	func login(email: String, password: String, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("login") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
@@ -300,7 +300,7 @@ class UserAPIController {
 				let decoder = JSONDecoder()
 				decoder.keyDecodingStrategy = .convertFromSnakeCase
 				
-				let loginDetails = try decoder.decode(Login.self, from: data)
+				let loginDetails = try decoder.decode(UserInfo.self, from: data)
 				
 				completion(.success(loginDetails))
 			} catch {
@@ -309,7 +309,7 @@ class UserAPIController {
 		}
 	}
 	
-	func login(appleId: String, password: String, completion: @escaping (Result<Login, NetworkError>) -> Void) {
+	func login(appleId: String, password: String, completion: @escaping (Result<UserInfo, NetworkError>) -> Void) {
 		guard let cityURL = URL(string: baseURLString)?.appendingPathComponent("signin") else { return }
 		var requestURL = URLRequest(url: cityURL)
 		
@@ -343,7 +343,7 @@ class UserAPIController {
 				let decoder = JSONDecoder()
 				decoder.keyDecodingStrategy = .convertFromSnakeCase
 				
-				let loginDetails = try decoder.decode(Login.self, from: data)
+				let loginDetails = try decoder.decode(UserInfo.self, from: data)
 				
 				completion(.success(loginDetails))
 			} catch {

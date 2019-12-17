@@ -11,6 +11,8 @@ import Foundation
 struct FilteredCity: Decodable {
 	let id: String
 	let name: String
+	let shortName: String
+	let state: String
 	let secureUrl: String?
 	let population: Double
 }

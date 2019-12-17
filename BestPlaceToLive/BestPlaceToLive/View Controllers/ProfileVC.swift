@@ -12,64 +12,46 @@ class ProfileVC: UIViewController {
 
 	// MARK: IBOutlets
 	
+	@IBOutlet weak var userImageView: UIImageView!
 	@IBOutlet weak var nameLabel: UILabel!
-	@IBOutlet weak var emailLabel: UILabel!
 	@IBOutlet weak var locationLabel: UILabel!
+	@IBOutlet weak var tableView: UITableView!
 	
 	// MARK: Properties
 	
-	let settingsController = SettingsController.shared
+	private let settingsController = SettingsController.shared
+	private var user: UserInfo? {
+		SettingsController.shared.loggedInUser
+	}
+	private var cellIndexPath: IndexPath?
+    private var cache = Cache<String, UIImage>()
+    private var operations = [String: Operation]()
+    private let photoFetcheQueue = OperationQueue()
 	
 	// MARK: Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		setupViews()
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
+		tableView.dataSource = self
+		tableView.delegate = self
+		
 		segueToLoginOptionsVC()
+		setupViews()
 	}
 	
 	// MARK: IBActions
 	
-	@IBAction func changeEmailBtnTapped(_ sender: Any) {
-		
-	}
-	
-	@IBAction func changeLocationBtnTapped(_ sender: Any) {
-		
-	}
-	
-	@IBAction func changePasswordBtnTapped(_ sender: Any) {
-		
-	}
-	
-	@IBAction func logoutBtnTapped(_ sender: Any) {
-		settingsController.logoutProcedure()
-		
-		let storyboard = UIStoryboard(name: "Login", bundle: nil)
-		
-		if let initialVC = storyboard.instantiateInitialViewController() as? UINavigationController {
-				guard let optionsVC = initialVC.viewControllers.first as? LoginVC else { return }
-			
-			navigationController?.viewControllers = [optionsVC]
-		}
-	}
-	
-	@IBAction func deleteAccountBtnTapped(_ sender: Any) {
-		
-	}
 	
 	// MARK: Helpers
 	
 	private func setupViews() {
-		let user = SettingsController.shared.loggedInUser
+		guard let user = settingsController.loggedInUser else { return }
 		
-		nameLabel.text = user?.name
-		emailLabel.text = user?.email
-		locationLabel.text = user?.location
+		nameLabel.text = user.name
+		locationLabel.text = user.location
+		
+		userImageView.layer.cornerRadius = userImageView.frame.width / 2
 	}
 	
 	private func segueToLoginOptionsVC() {
@@ -82,5 +64,67 @@ class ProfileVC: UIViewController {
 				navigationController?.viewControllers = [loginVC]
 			}
 		}
+	}
+}
+
+// MARK: TableView DataSource
+
+extension ProfileVC: UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return user?.likes?.count ?? 0
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		guard let city = settingsController.loggedInUser?.likes?[indexPath.row],
+			let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityTableViewCell else { return UITableViewCell() }
+		
+        cellIndexPath = indexPath
+        cell.loadImageDelegate = self
+		cell.updateViews(cityId: city.id, cityName: city.shortName, stateName: city.state, imageUrl: city.secureUrl)
+		
+        return cell
+	}
+}
+
+extension ProfileVC: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+}
+
+//MARK: Load Image Delegate
+
+extension ProfileVC: LoadImageForCellDelegate {
+	func loadImage(cell: CityTableViewCell, imageURLString: String, cityId: String) {
+        guard let imageURL = URL(string: imageURLString) else {return}
+		
+		if let cachedImage = cache.value(for: cityId){
+			cell.cityImageView.image = cachedImage
+		}
+		let fetchOp = FetchCityImageOperation(imageURL: imageURL)
+		let cacheOp = BlockOperation {
+			if let image = fetchOp.image {
+				self.cache.cache(value: image, for: cityId)
+				DispatchQueue.main.async {
+					cell.cityImageView.image = image
+				}
+			}
+		}
+		
+		let completionOp = BlockOperation {
+			defer {self.operations.removeValue(forKey: cityId)}
+			if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != self.cellIndexPath {
+				return
+			}
+		}
+		
+		
+		cacheOp.addDependency(fetchOp)
+		completionOp.addDependency(fetchOp)
+		photoFetcheQueue.addOperation(fetchOp)
+		photoFetcheQueue.addOperation(cacheOp)
+		OperationQueue.main.addOperation(completionOp)
+		operations[cityId] = fetchOp
+		
 	}
 }

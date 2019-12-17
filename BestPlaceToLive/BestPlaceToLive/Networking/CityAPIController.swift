@@ -76,6 +76,7 @@ class CityAPIController {
 			
 			do {
 				let decoder = JSONDecoder()
+				decoder.keyDecodingStrategy = .convertFromSnakeCase
 				
 				let citiesDict = try decoder.decode([String:[CityBreakdown]].self, from: data)
 				
@@ -120,6 +121,8 @@ class CityAPIController {
 			
 			do {
 				let decoder = JSONDecoder()
+				decoder.keyDecodingStrategy = .convertFromSnakeCase
+				
 				let citiesDict = try decoder.decode([String:[CityBreakdown]].self, from: data)
 				
 				if let cities = citiesDict.values.first {
@@ -163,6 +166,8 @@ class CityAPIController {
 			
 			do {
 				let decoder = JSONDecoder()
+				decoder.keyDecodingStrategy = .convertFromSnakeCase
+				
 				let citiesDict = try decoder.decode([String:[CityBreakdown]].self, from: data)
 				
 				if let cities = citiesDict.values.first {
@@ -206,6 +211,8 @@ class CityAPIController {
 			
 			do {
 				let decoder = JSONDecoder()
+				decoder.keyDecodingStrategy = .convertFromSnakeCase
+				
 				let citiesDict = try decoder.decode([String:[CityBreakdown]].self, from: data)
 				
 				if let cities = citiesDict.values.first {

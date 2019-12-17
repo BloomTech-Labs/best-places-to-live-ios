@@ -11,7 +11,7 @@ import XCTest
 
 class SettingsControllerTests: XCTestCase {
 	
-	let user = Login(id: "123", name: "Jack Ryan", email: "jryan@cia.com", appleId: "123", location: "Washington, DC", token: "abc", likes: [], dislikes: [], factors: [])
+	let user = UserInfo(id: "123", name: "Jack Ryan", email: "jryan@cia.com", appleId: "123", token: "abc", location: "Washington, DC", cities: nil, likes: nil, dislikes: nil, factors: nil)
 	
 	let login = LoginRequest(email: "jryan@cia.com", password: "123456")
 

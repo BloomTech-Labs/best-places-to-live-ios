@@ -33,6 +33,7 @@
 		B514CB1B237B73EC00146E13 /* CityBreakdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B514CB1A237B73EC00146E13 /* CityBreakdown.swift */; };
 		B51A95C8239EA6CE006D18BF /* LoginWAppleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51A95C7239EA6CE006D18BF /* LoginWAppleRequest.swift */; };
 		B51A95CA239ED0AD006D18BF /* LikesAndFactors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51A95C9239ED0AD006D18BF /* LikesAndFactors.swift */; };
+		B51A95CC23A3F319006D18BF /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51A95CB23A3F319006D18BF /* SettingsVC.swift */; };
 		B5A4962C237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962B237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift */; };
 		B5A4962E237CBC5A00F0EE9C /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962D237CBC5A00F0EE9C /* MockDataLoader.swift */; };
 		B5A49630237CBC9000F0EE9C /* TestJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962F237CBC9000F0EE9C /* TestJson.swift */; };
@@ -108,6 +109,7 @@
 		B514CB1A237B73EC00146E13 /* CityBreakdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CityBreakdown.swift; path = BestPlaceToLive/Models/CityBreakdown.swift; sourceTree = SOURCE_ROOT; };
 		B51A95C7239EA6CE006D18BF /* LoginWAppleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWAppleRequest.swift; sourceTree = "<group>"; };
 		B51A95C9239ED0AD006D18BF /* LikesAndFactors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesAndFactors.swift; sourceTree = "<group>"; };
+		B51A95CB23A3F319006D18BF /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		B5A4962B237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkDataLoader.swift"; sourceTree = "<group>"; };
 		B5A4962D237CBC5A00F0EE9C /* MockDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataLoader.swift; sourceTree = "<group>"; };
 		B5A4962F237CBC9000F0EE9C /* TestJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestJson.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				EF6D911F237B4C0500106211 /* PreferencesViewController.swift */,
 				755E334F2379EA1B00FAF3D6 /* ExploreViewController.swift */,
 				756A7D79238340900084B4F2 /* CityDetailsViewController.swift */,
+				B51A95CB23A3F319006D18BF /* SettingsVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				EF5F009723A2DE64006EDFB7 /* ImageCell.swift in Sources */,
 				B5FDAF1523835B3C00C18BFF /* Profile.swift in Sources */,
 				EF73E84F237F1AE9003FB17E /* NomadsLand.xcdatamodeld in Sources */,
+				B51A95CC23A3F319006D18BF /* SettingsVC.swift in Sources */,
 				B5FDAF1F2385AA3B00C18BFF /* FilteredCity.swift in Sources */,
 				B5FDAF172383643500C18BFF /* ProfileRequest.swift in Sources */,
 				B5FDAF192383669100C18BFF /* ProfileCityRequest.swift in Sources */,

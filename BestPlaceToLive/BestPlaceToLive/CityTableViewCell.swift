@@ -9,57 +9,34 @@
 import UIKit
 
 protocol LoadImageForCellDelegate {
-    func loadImage(cell: CityTableViewCell, imageURLString: String, searchedCity: CityBreakdown?, filteredCity: FilteredCity?)
+	func loadImage(cell: CityTableViewCell, imageURLString: String, cityId: String)
 }
 
 class CityTableViewCell: UITableViewCell {
-
    
     @IBOutlet var cityLabel: UILabel!
+    @IBOutlet var stateLabel: UILabel!
     @IBOutlet var cityImageView: UIImageView!
     
     var loadImageDelegate: LoadImageForCellDelegate?
-    
-    var filteredCity: FilteredCity? {
-        didSet {
-            updateViews()
-        }
-    }
-    
-    var searchedCity: CityBreakdown? {
-        didSet {
-            updateViews()
-        }
-    }
-    
-    func clearCity() {
-        cityImageView.image = nil
-        self.filteredCity = nil
-        self.searchedCity = nil
-    }
-    
-    func updateViews() {
-        let cellContentView = self.contentView.bounds
+	
+	override func awakeFromNib() {
         cityImageView.layer.cornerRadius = 20
-        cityImageView.bounds = cellContentView
-        cityImageView.contentMode = .scaleAspectFill
-        imageView?.center = self.contentView.center
-        imageView?.clipsToBounds = true
         cityLabel.layer.shadowRadius = 5
         cityLabel.layer.shadowOffset = CGSize(width: 5, height: 5)
         cityLabel.layer.shadowColor = UIColor.black.cgColor
         cityLabel.layer.shadowOpacity = 1.0
-        
-        if let filteredCity = filteredCity, searchedCity == nil {
-            cityLabel.text = "\(filteredCity.name)".capitalized
-            loadImageDelegate?.loadImage(cell: self, imageURLString: filteredCity.secureUrl!, searchedCity: nil, filteredCity: filteredCity)
-        } else {
-            guard let city = searchedCity, let cityName = city.shortName, let state = city.state else {return}
-            cityLabel.text = "\(cityName), \(state)".capitalized
-            loadImageDelegate?.loadImage(cell: self, imageURLString: (city.secureURL)!, searchedCity: city, filteredCity: nil)
-        }
-        
-        
+	}
+    
+	func updateViews(cityId: String?, cityName: String?, stateName: String?, imageUrl: String?) {
+        cityImageView.image = nil
+		
+		guard let cityName = cityName, let stateName = stateName else { return }
+		cityLabel.text = cityName.capitalized
+		stateLabel.text = stateName.capitalized
+		
+		guard let id = cityId, let url = imageUrl else { return }
+		loadImageDelegate?.loadImage(cell: self, imageURLString: url, cityId: id)
     }
 
 }

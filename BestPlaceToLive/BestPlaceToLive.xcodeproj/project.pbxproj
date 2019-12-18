@@ -34,6 +34,7 @@
 		B51A95C8239EA6CE006D18BF /* LoginWAppleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51A95C7239EA6CE006D18BF /* LoginWAppleRequest.swift */; };
 		B51A95CA239ED0AD006D18BF /* LikesAndFactors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51A95C9239ED0AD006D18BF /* LikesAndFactors.swift */; };
 		B51A95CC23A3F319006D18BF /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51A95CB23A3F319006D18BF /* SettingsVC.swift */; };
+		B570A76523A97F54003D1770 /* EditProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B570A76423A97F54003D1770 /* EditProfileButton.swift */; };
 		B5A4962C237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962B237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift */; };
 		B5A4962E237CBC5A00F0EE9C /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962D237CBC5A00F0EE9C /* MockDataLoader.swift */; };
 		B5A49630237CBC9000F0EE9C /* TestJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4962F237CBC9000F0EE9C /* TestJson.swift */; };
@@ -110,6 +111,7 @@
 		B51A95C7239EA6CE006D18BF /* LoginWAppleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWAppleRequest.swift; sourceTree = "<group>"; };
 		B51A95C9239ED0AD006D18BF /* LikesAndFactors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesAndFactors.swift; sourceTree = "<group>"; };
 		B51A95CB23A3F319006D18BF /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		B570A76423A97F54003D1770 /* EditProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileButton.swift; sourceTree = "<group>"; };
 		B5A4962B237CBC3A00F0EE9C /* URLSession+NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkDataLoader.swift"; sourceTree = "<group>"; };
 		B5A4962D237CBC5A00F0EE9C /* MockDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataLoader.swift; sourceTree = "<group>"; };
 		B5A4962F237CBC9000F0EE9C /* TestJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestJson.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				EF5F009623A2DE64006EDFB7 /* ImageCell.swift */,
 				755E3353237E09A500FAF3D6 /* PopularCollectionViewCell.swift */,
 				B5A7F0FF2399B31800752314 /* RoundedButton.swift */,
+				B570A76423A97F54003D1770 /* EditProfileButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				B51A95C8239EA6CE006D18BF /* LoginWAppleRequest.swift in Sources */,
 				B514CB17237B696D00146E13 /* UserAPIController.swift in Sources */,
 				B5FDAF09237F1A8100C18BFF /* ProfileVC.swift in Sources */,
+				B570A76523A97F54003D1770 /* EditProfileButton.swift in Sources */,
 				EF5F008F239AF3B6006EDFB7 /* Cache.swift in Sources */,
 				EF5F0093239AF56D006EDFB7 /* FetchPhotoOperation.swift in Sources */,
 				756A7D7A238340900084B4F2 /* CityDetailsViewController.swift in Sources */,

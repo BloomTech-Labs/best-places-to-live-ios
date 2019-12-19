@@ -30,7 +30,7 @@
         <!--Profile-->
         <scene sceneID="C7U-T7-DDY">
             <objects>
-                <viewController id="ylT-RV-7RD" sceneMemberID="viewController">
+                <viewController id="ylT-RV-7RD" customClass="ProfileVC" customModule="BestPlaceToLive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sk9-Ub-hNK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,7 +101,7 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="symbolImage" value="at" catalog="system"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="symbolColor">
-                                                        <color key="value" red="0.0" green="0.22324822829999999" blue="0.46284105330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" red="0.34438401460647583" green="0.5024755597114563" blue="0.59974265098571777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="taskLabel" value="Edit Email"/>
                                                 </userDefinedRuntimeAttributes>
@@ -112,7 +112,7 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="symbolImage" value="lock.fill" catalog="system"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="symbolColor">
-                                                        <color key="value" red="0.0" green="0.22324822829999999" blue="0.46284105330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" red="0.34438401460647583" green="0.5024755597114563" blue="0.59974265098571777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="taskLabel" value="Change Password"/>
                                                 </userDefinedRuntimeAttributes>
@@ -123,7 +123,7 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="symbolImage" value="house.fill" catalog="system"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="symbolColor">
-                                                        <color key="value" red="0.0" green="0.22324822829999999" blue="0.46284105330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" red="0.34438401460647583" green="0.5024755597114563" blue="0.59974265098571777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="taskLabel" value="Switch Location"/>
                                                 </userDefinedRuntimeAttributes>
@@ -134,7 +134,7 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="symbolImage" value="globe" catalog="system"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="symbolColor">
-                                                        <color key="value" red="0.0" green="0.22324822829999999" blue="0.46284105330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" red="0.34438401460647583" green="0.5024755597114563" blue="0.59974265098571777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="taskLabel" value="Removed Cities"/>
                                                 </userDefinedRuntimeAttributes>
@@ -161,7 +161,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="l1A-Oi-Z72"/>
                     <connections>
-                        <segue destination="LxO-ab-BIp" kind="show" id="IdD-Mi-0Eb"/>
+                        <outlet property="editEmailBtn" destination="1jp-Ma-VJM" id="av3-0Z-Y2F"/>
+                        <outlet property="locationLabel" destination="YHt-WW-ucb" id="G1C-Hc-vTa"/>
+                        <outlet property="nameLabel" destination="otv-jS-kAN" id="yz3-cG-y9O"/>
+                        <outlet property="removedCitiesBtn" destination="dDm-hm-oYw" id="s0c-s5-0Yw"/>
+                        <outlet property="userImageView" destination="Q2Q-Qb-XhX" id="UOO-xA-PI2"/>
+                        <segue destination="LxO-ab-BIp" kind="show" identifier="RemovedCitiesVCSegue" id="IdD-Mi-0Eb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3Z-Ie-WWF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -171,17 +176,17 @@
         <!--Removed Cities-->
         <scene sceneID="tAB-zL-MZB">
             <objects>
-                <tableViewController id="LxO-ab-BIp" sceneMemberID="viewController">
+                <tableViewController id="LxO-ab-BIp" customClass="RemovedCitiesVC" customModule="BestPlaceToLive" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g7a-vn-X6p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ywU-qB-hbT">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="127" id="ywU-qB-hbT" customClass="CityTableViewCell" customModule="BestPlaceToLive" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="127"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ywU-qB-hbT" id="mjj-1v-emD">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ywU-qB-hbT" id="mjj-1v-emD" customClass="CityTableViewCell" customModule="BestPlaceToLive" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="127"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -195,7 +200,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7aq-AF-XSj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1230" y="421"/>
+            <point key="canvasLocation" x="1228.985507246377" y="420.53571428571428"/>
         </scene>
     </scenes>
     <resources>

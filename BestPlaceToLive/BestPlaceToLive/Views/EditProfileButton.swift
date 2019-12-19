@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol EditProfileButtonDelegate {
+	func viewTapped(for buttonType: ProfileButton)
+}
+
 @IBDesignable
 class EditProfileButton: UIView {
 	
@@ -31,6 +35,13 @@ class EditProfileButton: UIView {
 		imgView.translatesAutoresizingMaskIntoConstraints = false
 		return imgView
 	}()
+	private lazy var overViewButton: UIButton = {
+		let button = UIButton()
+		button.backgroundColor = .clear
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+		return button
+	}()
 	private lazy var stackView: UIStackView = {
 		let stack = UIStackView()
 		stack.axis = .horizontal
@@ -39,6 +50,9 @@ class EditProfileButton: UIView {
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		return stack
 	}()
+	
+	private var delegate: EditProfileButtonDelegate?
+	private var buttonType: ProfileButton?
 	
 	// MARK: Properties
 	
@@ -58,7 +72,7 @@ class EditProfileButton: UIView {
 	
 	@IBInspectable
 	var taskLabel: String? {
-		get { taskLbl.text ?? "Task" }
+		get { taskLbl.text }
 		set { taskLbl.text = newValue }
 	}
 	
@@ -75,17 +89,24 @@ class EditProfileButton: UIView {
 	
 	// MARK: IBActions
 	
-	@IBAction func buttonTapped(_ sender: Any) {
-		
+	@objc private func buttonTapped(_ sender: Any) {
+		guard let buttonType = buttonType else { return }
+		delegate?.viewTapped(for: buttonType)
 	}
 	
 	// MARK: Helpers
+	
+	func passInInfo(delegate: EditProfileButtonDelegate, button type: ProfileButton) {
+		self.delegate = delegate
+		buttonType = type
+	}
 	
 	private func setupViews() {
 		stackView.addArrangedSubview(taskImgView)
 		stackView.addArrangedSubview(taskLbl)
 		stackView.addArrangedSubview(moreImgView)
 		addSubview(stackView)
+		addSubview(overViewButton)
 		
 		NSLayoutConstraint.activate([
 			stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -98,6 +119,11 @@ class EditProfileButton: UIView {
 			
 			moreImgView.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.4),
 			moreImgView.widthAnchor.constraint(equalTo: moreImgView.heightAnchor, multiplier: 0.9),
+			
+			overViewButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+			overViewButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+			overViewButton.heightAnchor.constraint(equalTo: heightAnchor),
+			overViewButton.widthAnchor.constraint(equalTo: widthAnchor)
 		])
 	}
 

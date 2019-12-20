@@ -21,8 +21,7 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
     let photoFetcheQueue = OperationQueue()
     var operations = [String: Operation]()
     var indexPath = IndexPath()
-    
-    
+    var likedCities: [CityBreakdown] = []
     override func viewDidLoad() {
         setupUI()
         if self.searchedCities == nil && self.filteredCities == nil {
@@ -86,13 +85,25 @@ class SearchTableViewController: UITableViewController, SelectedFiltersDelegate,
         self.indexPath = indexPath
         cell.loadImageDelegate = self
         cell.clearCity()
+        
         if let filteredCities = filteredCities {
             let filteredCity = filteredCities[indexPath.row]
+            if likedCities.contains(where: {"\($0.shortName ?? ""), \($0.state ?? "")" == filteredCity.name}) {
+                cell.heartImageView.image = UIImage(named: "heartIcon")
+            }
             cell.filteredCity = filteredCity
             return cell
         }
         if let cities = searchedCities {
             let searchedCity = cities[indexPath.row]
+            for city in likedCities {
+                if let cityName = city.shortName {
+                    if cityName == searchedCity.shortName {
+                        cell.heartImageView.image = UIImage(named: "heartIcon")
+                    }
+                }
+            }
+            
             cell.searchedCity = searchedCity
             return cell
         }
@@ -225,6 +236,15 @@ extension SearchTableViewController: UISearchBarDelegate {
             case .success(let city):
                 self.searchedCities = nil
                 self.searchedCities = (city)
+                UserAPIController.shared.getUserInfo { result in
+                    switch result {
+                    case .failure(let error):
+                        NSLog("Error getting user info: \(error)")
+                    case .success(let cities):
+                        self.likedCities = cities.likes
+                        
+                    }
+                }
                 DispatchQueue.main.async {
                     activityView.stopAnimating()
                     self.searchTitle.text = "Explore"

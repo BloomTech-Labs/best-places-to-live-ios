@@ -13,8 +13,9 @@ protocol LoadImageForCellDelegate {
 }
 
 class CityTableViewCell: UITableViewCell {
-
-   
+    
+    @IBOutlet var heartImageView: UIImageView!
+    
     @IBOutlet var cityLabel: UILabel!
     @IBOutlet var cityImageView: UIImageView!
     
@@ -51,6 +52,7 @@ class CityTableViewCell: UITableViewCell {
         cityLabel.layer.shadowOpacity = 1.0
         
         if let filteredCity = filteredCity, searchedCity == nil {
+            
             cityLabel.text = "\(filteredCity.name)".capitalized
             loadImageDelegate?.loadImage(cell: self, imageURLString: filteredCity.secureUrl!, searchedCity: nil, filteredCity: filteredCity)
         } else {
@@ -59,7 +61,6 @@ class CityTableViewCell: UITableViewCell {
             loadImageDelegate?.loadImage(cell: self, imageURLString: (city.secureURL)!, searchedCity: city, filteredCity: nil)
         }
         
-        
     }
-
+    
 }

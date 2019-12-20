@@ -185,7 +185,7 @@ struct CityBreakdown: Codable {
 	let scoreTravelConnectivity: Double?
 	let scoreVentureCapital: Double?
 	let seasideAccessTelescore: Double?
-    let secureURL: String?
+    let secureUrl: String?
 	let seasideSeaside: Double?
 	let shortName: String?
 	let spokenLanguages: String?
@@ -225,15 +225,15 @@ struct CityBreakdown: Codable {
 	
 	enum CodingKeys: String, CodingKey {
 		case id = "_id"
-		case addSecureUrl = "add_secure_url"
+		case addSecureUrl
 		case airPollutionTelescore = "air-pollution-telescore"
 		case airportHubIndexDetail = "airport-hub-index-detail"
 		case airportHubTelescore = "airport-hub-telescore"
 		case apartmentRentLarge = "apartment-rent-large"
 		case apartmentRentMedium = "apartment-rent-medium"
 		case apartmentRentSmall = "apartment-rent-small"
-		case avgCommuteTime = "avg_commute_time"
-		case avgCommuteTimeScore = "avg_commute_time_score"
+		case avgCommuteTime
+		case avgCommuteTimeScore
 		case businessFreedom = "business-freedom"
 		case businessFreedomTelescore = "business-freedom-telescore"
 		case cleanlinessTelescore = "cleanliness-telescore"
@@ -248,7 +248,7 @@ struct CityBreakdown: Codable {
 		case costCinema = "cost-cinema"
 		case costFitnessClub = "cost-fitness-club"
 		case costImportBeer = "cost-import-beer"
-		case costOfLiving = "cost_of_living"
+		case costOfLiving
 		case costPublicTransport = "cost-public-transport"
 		case costRestaurantMeal = "cost-restaurant-meal"
 		case costTaxi = "cost-taxi"
@@ -290,7 +290,7 @@ struct CityBreakdown: Codable {
 		case eventsCount = "events-count"
 		case eventsLast12Months = "events-last-12-months"
 		case eventsTelescore = "events-telescore"
-		case fullName = "full_name"
+		case fullName
 		case funderbeamTotalStartups = "funderbeam-total-startups"
 		case funderbeamVentureCapitalTelescore = "funderbeam-venture-capital-telescore"
 		case fundingAcceleratorNames = "funding-accelerator-names"
@@ -299,25 +299,25 @@ struct CityBreakdown: Codable {
 		case gdpGrowthRateTelescore = "gdp-growth-rate-telescore"
 		case gdpPerCapita = "gdp-per-capita"
 		case gdpPerCapitaTelescore = "gdp-per-capita-telescore"
-		case geonameId = "geoname_id"
-		case gradeBusinessFreedom = "grade_business_freedom"
-		case gradeCommute = "grade_commute"
-		case gradeCostOfLiving = "grade_cost_of_living"
-		case gradeEconomy = "grade_economy"
-		case gradeEducation = "grade_education"
-		case gradeEnvironmentalQuality = "grade_environmental_quality"
-		case gradeHealthcare = "grade_healthcare"
-		case gradeHousing = "grade_housing"
-		case gradeInternetAccess = "grade_internet_access"
-		case gradeLeisureAndCulture = "grade_leisure_&_culture"
-		case gradeOutdoors = "grade_outdoors"
-		case gradeSafety = "grade_safety"
-		case gradeStartups = "grade_startups"
-		case gradeTaxation = "grade_taxation"
-		case gradeTolerance = "grade_tolerance"
-		case gradeTotal = "grade_total"
-		case gradeTravelConnectivity = "grade_travel_connectivity"
-		case gradeVentureCapital = "grade_venture_capital"
+		case geonameId
+		case gradeBusinessFreedom
+		case gradeCommute
+		case gradeCostOfLiving
+		case gradeEconomy
+		case gradeEducation
+		case gradeEnvironmentalQuality
+		case gradeHealthcare
+		case gradeHousing
+		case gradeInternetAccess
+		case gradeLeisureAndCulture
+		case gradeOutdoors
+		case gradeSafety
+		case gradeStartups
+		case gradeTaxation
+		case gradeTolerance
+		case gradeTotal
+		case gradeTravelConnectivity
+		case gradeVentureCapital
 		case gunDeathRate = "gun-death-rate"
 		case gunDeathScoreTelescore = "gun-death-score-telescore"
 		case gunOwnership = "gun-ownership"
@@ -378,28 +378,28 @@ struct CityBreakdown: Codable {
 		case qualityOfUniversitiesTelescore = "quality-of-universities-telescore"
 		case rentIndexTelescore = "rent-index-telescore"
 		case restaurantPriceIndex = "restaurant-price-index"
-		case scoreBusinessFreedom = "score_business_freedom"
-		case scoreCommute = "score_commute"
-		case scoreCostOfLiving = "score_cost_of_living"
-		case scoreEconomy = "score_economy"
-		case scoreEducation = "score_education"
-		case scoreEnvironmentalQuality = "score_environmental_quality"
-		case scoreHealthcare = "score_healthcare"
-		case scoreHousing = "score_housing"
-		case scoreInternetAccess = "score_internet_access"
-		case scoreLeisureAndCulture = "score_leisure_&_culture"
-		case scoreOutdoors = "score_outdoors"
-		case scoreSafety = "score_safety"
-		case scoreStartups = "score_startups"
-		case scoreTaxation = "score_taxation"
-		case scoreTolerance = "score_tolerance"
-		case scoreTotal = "score_total"
-		case scoreTravelConnectivity = "score_travel_connectivity"
-		case scoreVentureCapital = "score_venture_capital"
+		case scoreBusinessFreedom
+		case scoreCommute
+		case scoreCostOfLiving
+		case scoreEconomy
+		case scoreEducation
+		case scoreEnvironmentalQuality
+		case scoreHealthcare
+		case scoreHousing
+		case scoreInternetAccess
+		case scoreLeisureAndCulture
+		case scoreOutdoors
+		case scoreSafety
+		case scoreStartups
+		case scoreTaxation
+		case scoreTolerance
+		case scoreTotal
+		case scoreTravelConnectivity
+		case scoreVentureCapital
 		case seasideAccessTelescore = "seaside-access-telescore"
-        case secureURL = "secure_url"
+        case secureUrl
 		case seasideSeaside = "seaside-seaside"
-		case shortName = "short_name"
+		case shortName
 		case spokenLanguages = "spoken-languages"
 		case startupClimateInvestors = "startup-climate-investors"
 		case startupClimateNewStartups = "startup-climate-new-startups"
@@ -413,7 +413,7 @@ struct CityBreakdown: Codable {
 		case summary = "Summary"
 		case state = "state"
 		case taxVat = "tax-vat"
-		case timeZone = "time_zone"
+		case timeZone
 		case timeOverheadCompanyTaxes = "time-overhead-company-taxes"
 		case timeToOpenBusiness = "time-to-open-business"
 		case timeToOpenBusinessTelescore = "time-to-open-business-telescore"

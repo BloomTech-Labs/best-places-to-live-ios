@@ -13,7 +13,8 @@ class SignupVC: UIViewController {
 	
 	// MARK: IBOutlets
 	
-	@IBOutlet weak var nameTextField: UITextField!
+	@IBOutlet weak var firstNameTextField: UITextField!
+	@IBOutlet weak var lastNameTextField: UITextField!
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	@IBOutlet weak var buttonStackView: UIStackView!
@@ -30,21 +31,33 @@ class SignupVC: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		firstNameTextField.delegate = self
+		lastNameTextField.delegate = self
+		emailTextField.delegate = self
+		passwordTextField.delegate = self
 		
 		settingsController.isSaveCredentials = true
 //		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
+	}
+	
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		super.touchesBegan(touches, with: event)
+		view.endEditing(true)
 	}
 	
 	// MARK: IBActions
 	
 	@IBAction func signupBtnTapped(_ sender: Any) {
 		guard
-			let name = nameTextField.optionalText,
+			let firstName = firstNameTextField.optionalText,
+			let lastName = lastNameTextField.optionalText,
 			let email = emailTextField.optionalText,
 			let password = passwordTextField.optionalText
 			else { return }
+		let fullName = "\(firstName) \(lastName)"
 		
-		UserAPIController.shared.registerNewUser(name: name, email: email, password: password, appleId: nil) { (result) in
+		UserAPIController.shared.registerNewUser(name: fullName, email: email, password: password, appleId: nil) { (result) in
 			switch result {
 			case .success(let user):
 				self.settingsController.persistcredentials(appleId: nil, email: email, password: password)
@@ -80,5 +93,23 @@ class SignupVC: UIViewController {
 extension SignupVC: SignInWithAppleRequestDelegate {
 	func navigate(to newVCStack: [UIViewController]) {
 		navigationController?.viewControllers = newVCStack
+	}
+}
+
+// MARK: - TextField Delegate
+
+extension SignupVC: UITextFieldDelegate {
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		switch textField {
+		case firstNameTextField:
+			lastNameTextField.becomeFirstResponder()
+		case lastNameTextField:
+			emailTextField.becomeFirstResponder()
+		case emailTextField:
+			passwordTextField.becomeFirstResponder()
+		default:
+			textField.resignFirstResponder()
+		}
+		return true
 	}
 }

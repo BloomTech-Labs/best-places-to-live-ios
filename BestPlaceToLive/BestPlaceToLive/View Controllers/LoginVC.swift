@@ -30,6 +30,9 @@ class LoginVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		emailTextField.delegate = self
+		passwordTextField.delegate = self
+		
 		settingsController.isSaveCredentials = true
 //		signInWithAppleRequest.handleAppleIdRequest(userHasLoggedIn: true)
 	}
@@ -43,6 +46,11 @@ class LoginVC: UIViewController {
 		else { return }
 		
 		loginUser(email: email, password: password)
+	}
+	
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		super.touchesBegan(touches, with: event)
+		view.endEditing(true)
 	}
 	
 	// MARK: Helpers
@@ -81,5 +89,19 @@ class LoginVC: UIViewController {
 extension LoginVC: SignInWithAppleRequestDelegate {
 	func navigate(to newVCStack: [UIViewController]) {
 		navigationController?.viewControllers = newVCStack
+	}
+}
+
+// MARK: - TextField Delegate
+
+extension LoginVC: UITextFieldDelegate {
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		switch textField {
+		case emailTextField:
+			passwordTextField.becomeFirstResponder()
+		default:
+			textField.resignFirstResponder()
+		}
+		return true
 	}
 }

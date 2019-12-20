@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AW0-Yh-oOd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AW0-Yh-oOd">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -179,7 +179,7 @@ to discover your next hometown.</string>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="300" verticalCompressionResistancePriority="800" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hz7-8b-Yop">
-                                        <rect key="frame" x="0.0" y="234" width="372.66666666666669" height="222"/>
+                                        <rect key="frame" x="0.0" y="234" width="372.66666666666669" height="164"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dsa-hj-xwO">
                                                 <rect key="frame" x="0.0" y="0.0" width="372.66666666666669" height="48"/>
@@ -204,23 +204,18 @@ to discover your next hometown.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B1k-Ms-2BK">
-                                                <rect key="frame" x="0.0" y="116" width="372.66666666666669" height="48"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YeQ-4o-fqe">
-                                                <rect key="frame" x="0.0" y="174" width="372.66666666666669" height="48"/>
+                                                <rect key="frame" x="0.0" y="116" width="372.66666666666669" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDA-w9-qCc">
-                                        <rect key="frame" x="0.0" y="476.00000000000011" width="372.66666666666669" height="301.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="418" width="372.66666666666669" height="359.33333333333326"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Jsh-2K-HqE">
-                                                <rect key="frame" x="0.0" y="125.66666666666663" width="372.66666666666669" height="50"/>
+                                                <rect key="frame" x="0.0" y="154.66666666666669" width="372.66666666666669" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vi6-BC-vNJ" customClass="RoundedButton" customModule="BestPlaceToLive" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="372.66666666666669" height="50"/>
@@ -267,8 +262,9 @@ to discover your next hometown.</string>
                     <connections>
                         <outlet property="buttonStackView" destination="Jsh-2K-HqE" id="Nuq-Nz-QVA"/>
                         <outlet property="emailTextField" destination="4I3-KB-eY5" id="Bj6-iC-Lgh"/>
-                        <outlet property="nameTextField" destination="Qkr-IX-MxF" id="h8l-VN-7JT"/>
-                        <outlet property="passwordTextField" destination="YeQ-4o-fqe" id="ntQ-oL-VuZ"/>
+                        <outlet property="firstNameTextField" destination="Qkr-IX-MxF" id="h8l-VN-7JT"/>
+                        <outlet property="lastNameTextField" destination="MyW-Pi-p0g" id="xmL-HQ-u9c"/>
+                        <outlet property="passwordTextField" destination="YeQ-4o-fqe" id="xlO-ZB-jvd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bZ-3h-pqa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum ProfileButton: String {
+	case email, password, location, cities
+}
+
 // Leave for last to avoid massive scrolling ☠️
 enum Breakdown: String {
 	

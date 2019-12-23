@@ -23,7 +23,8 @@ class SearchTableViewController: UITableViewController {
     let photoFetcheQueue = OperationQueue()
     var operations = [String: Operation]()
     var indexPath = IndexPath()
-    var likedCities: [CityBreakdown] = []
+    
+    
     override func viewDidLoad() {
         navigationController?.isNavigationBarHidden = false
 		tableView.keyboardDismissMode = .onDrag
@@ -200,15 +201,6 @@ extension SearchTableViewController: UISearchBarDelegate {
             case .success(let city):
                 self.searchedCities = nil
                 self.searchedCities = (city)
-                UserAPIController.shared.getUserInfo { result in
-                    switch result {
-                    case .failure(let error):
-                        NSLog("Error getting user info: \(error)")
-                    case .success(let cities):
-                        self.likedCities = cities.likes
-                        
-                    }
-                }
                 DispatchQueue.main.async {
                     activityView.stopAnimating()
                     self.searchTitle.text = "Explore"

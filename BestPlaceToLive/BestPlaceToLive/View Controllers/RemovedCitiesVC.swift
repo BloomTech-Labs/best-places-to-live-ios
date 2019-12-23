@@ -53,6 +53,30 @@ class RemovedCitiesVC: UITableViewController {
 		
         return cell
 	}
+	
+	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		let delete = UIContextualAction(style: .destructive, title: "Undo") { (action, view, handler) in
+			guard let cityId = self.user?.dislikes?[indexPath.row].id else { return }
+			UserAPIController.shared.removeDislikedCity(id: cityId) { (result) in
+				switch result {
+				case .success(let likesAndFactors):
+					SettingsController.shared.updateUser(email: nil, location: nil, likesAndFactors: likesAndFactors)
+					DispatchQueue.main.async {
+						tableView.deleteRows(at: [indexPath], with: .automatic)
+					}
+				case .failure(_):
+					print("Removing disliked city failed")
+				}
+			}
+			handler(true)
+		}
+		
+		return UISwipeActionsConfiguration(actions: [delete])
+	}
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
 }
 
 //MARK: Load Image Delegate

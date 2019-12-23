@@ -13,7 +13,9 @@ protocol LoadImageForCellDelegate {
 }
 
 class CityTableViewCell: UITableViewCell {
-   
+    
+    @IBOutlet var heartImageView: UIImageView!
+    
     @IBOutlet var cityLabel: UILabel!
     @IBOutlet var stateLabel: UILabel!
     @IBOutlet var cityImageView: UIImageView!
@@ -38,5 +40,5 @@ class CityTableViewCell: UITableViewCell {
 		guard let id = cityId, let url = imageUrl else { return }
 		loadImageDelegate?.loadImage(cell: self, imageURLString: url, cityId: id)
     }
-
+    
 }

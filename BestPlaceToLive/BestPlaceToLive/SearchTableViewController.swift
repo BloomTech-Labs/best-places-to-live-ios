@@ -15,19 +15,15 @@ class SearchTableViewController: UITableViewController {
     @IBOutlet var searchTitle: UILabel!
     @IBOutlet var searchCityBar: UISearchBar!
     @IBOutlet var setPreferencesButton: UIButton!
-	
-	// MARK: Properties
-	
-    private var searchedCities: [CityBreakdown]?
-    private var filteredCities: [FilteredCity]?
-    private var selectedFilters: [Breakdown]?
-    private var delegate: SelectedFiltersDelegate?
-    private var cache = Cache<String, UIImage>()
-    private let photoFetcheQueue = OperationQueue()
-    private var operations = [String: Operation]()
-    private var indexPath = IndexPath()
-	
-	// MARK: Life Cycle
+    var searchedCities: [CityBreakdown]?
+    var filteredCities: [FilteredCity]? 
+    var selectedFilters: [Breakdown]?
+    var delegate: SelectedFiltersDelegate?
+    var cache = Cache<String, UIImage>()
+    let photoFetcheQueue = OperationQueue()
+    var operations = [String: Operation]()
+    var indexPath = IndexPath()
+    
     
     override func viewDidLoad() {
         navigationController?.isNavigationBarHidden = false

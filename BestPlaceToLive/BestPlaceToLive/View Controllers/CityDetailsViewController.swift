@@ -160,15 +160,16 @@ class CityDetailsViewController: UIViewController {
     
     @IBAction func likeButtonTapped(_ sender: Any) {
         guard let city = city, let id = city.id, let name = city.name else { return }
-        if let citySearch = citySearch {
-            coreDataController.deleteCitySearch(citySearch: citySearch)
-            self.citySearch = nil
-            likeButton.setImage(UIImage(systemName: "suit.heart"), for: .normal)
-            //cityIsSaved.toggle()
-        } else {
-            citySearch = coreDataController.addCitySearch(id: id, cityName: name, cityPhoto: city.photo, group: Group(name: "test"))
-            likeButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
-            //cityIsSaved.toggle()
+        
+        UserAPIController.shared.likeCity(id: id, name: name) { result in
+            switch result {
+            case .failure(let error):
+                NSLog("Error liking city: \(error)")
+            case .success:
+                DispatchQueue.main.async {
+                    self.likeButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+                }
+            }
         }
     }
     

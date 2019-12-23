@@ -161,10 +161,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="l1A-Oi-Z72"/>
                     <connections>
+                        <outlet property="changePasswordBtn" destination="nts-yZ-NTM" id="ho2-6f-vWg"/>
                         <outlet property="editEmailBtn" destination="1jp-Ma-VJM" id="av3-0Z-Y2F"/>
                         <outlet property="locationLabel" destination="YHt-WW-ucb" id="G1C-Hc-vTa"/>
                         <outlet property="nameLabel" destination="otv-jS-kAN" id="yz3-cG-y9O"/>
                         <outlet property="removedCitiesBtn" destination="dDm-hm-oYw" id="s0c-s5-0Yw"/>
+                        <outlet property="switchLocationBtn" destination="woS-zQ-VfQ" id="Umx-sA-KlU"/>
                         <outlet property="userImageView" destination="Q2Q-Qb-XhX" id="UOO-xA-PI2"/>
                         <segue destination="LxO-ab-BIp" kind="show" identifier="RemovedCitiesVCSegue" id="IdD-Mi-0Eb"/>
                     </connections>
@@ -177,18 +179,60 @@
         <scene sceneID="tAB-zL-MZB">
             <objects>
                 <tableViewController id="LxO-ab-BIp" customClass="RemovedCitiesVC" customModule="BestPlaceToLive" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g7a-vn-X6p">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g7a-vn-X6p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe left to unhide a city" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yfo-c2-kwd">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="127" id="ywU-qB-hbT" customClass="CityTableViewCell" customModule="BestPlaceToLive" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="127"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="130" id="8bh-wa-Tgk" customClass="CityTableViewCell" customModule="BestPlaceToLive" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ywU-qB-hbT" id="mjj-1v-emD" customClass="CityTableViewCell" customModule="BestPlaceToLive" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="127"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8bh-wa-Tgk" id="1YT-oS-EFf">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ex6-kE-loV">
+                                            <rect key="frame" x="20" y="11" width="374" height="108"/>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qx6-aH-nMO">
+                                            <rect key="frame" x="174" y="38" width="66" height="54.333333333333343"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Miami" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Yh-q6-Z9O">
+                                                    <rect key="frame" x="0.0" y="0.0" width="66" height="28.666666666666668"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Florida" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yg7-Np-ZuA">
+                                                    <rect key="frame" x="5.6666666666666572" y="32.666666666666671" width="55" height="21.666666666666671"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ex6-kE-loV" firstAttribute="bottom" secondItem="1YT-oS-EFf" secondAttribute="bottomMargin" id="03X-KV-Qpm"/>
+                                        <constraint firstItem="qx6-aH-nMO" firstAttribute="centerX" secondItem="1YT-oS-EFf" secondAttribute="centerX" id="9B8-cD-PsS"/>
+                                        <constraint firstItem="Ex6-kE-loV" firstAttribute="top" secondItem="1YT-oS-EFf" secondAttribute="topMargin" id="K0T-Gj-FFh"/>
+                                        <constraint firstItem="Ex6-kE-loV" firstAttribute="leading" secondItem="1YT-oS-EFf" secondAttribute="leadingMargin" id="htU-MJ-1PT"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ex6-kE-loV" secondAttribute="trailing" id="vzu-t8-JxN"/>
+                                        <constraint firstItem="qx6-aH-nMO" firstAttribute="centerY" secondItem="1YT-oS-EFf" secondAttribute="centerY" id="zGS-OK-V4P"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cityImageView" destination="Ex6-kE-loV" id="zeU-y2-eEm"/>
+                                    <outlet property="cityLabel" destination="8Yh-q6-Z9O" id="rti-Lu-bgR"/>
+                                    <outlet property="stateLabel" destination="yg7-Np-ZuA" id="8kw-zK-Cig"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -200,7 +244,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7aq-AF-XSj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1228.985507246377" y="420.53571428571428"/>
+            <point key="canvasLocation" x="400" y="1152"/>
         </scene>
     </scenes>
     <resources>

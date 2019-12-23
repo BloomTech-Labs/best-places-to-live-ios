@@ -69,6 +69,64 @@ class ProfileVC: UIViewController {
 			}
 		}
 	}
+	
+	private func updateProfile(newEmail: String?, newPassword: String?, newLocation: String?) {
+		UserAPIController.shared.updateProfile(name: nil, email: newEmail, password: newPassword) { (result) in
+			switch result {
+			case .success(_): SettingsController.shared.updateUser(email: newEmail, location: newLocation, likesAndFactors: nil)
+			case .failure(_):
+				print("Profile update failed")
+			}
+		}
+	}
+	
+	private func updateEmail() {
+		let alert = UIAlertController(title: "Update Email", message: nil, preferredStyle: .alert)
+
+		alert.addTextField { (textField) in
+			textField.placeholder = "New email"
+		}
+		alert.addTextField { (textField) in
+			textField.placeholder = "Password"
+			textField.isSecureTextEntry = true
+		}
+
+		alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
+			guard let newEmail = alert.textFields![0].optionalText else { return }
+			self.updateProfile(newEmail: newEmail, newPassword: nil, newLocation: nil)
+		}))
+
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+		self.present(alert, animated:true, completion: nil)
+	}
+	
+	private func updatePassword() {
+		let alert = UIAlertController(title: "Update Password", message: nil, preferredStyle: .alert)
+		
+		alert.addTextField { (textField) in
+			textField.placeholder = "Old password"
+		}
+		alert.addTextField { (textField) in
+			textField.placeholder = "New password"
+		}
+		alert.addTextField { (textField) in
+			textField.placeholder = "Verify password"
+		}
+		alert.textFields?.forEach({$0.isSecureTextEntry = true})
+
+		alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
+			guard let oldPass = alert.textFields![0].optionalText,
+				let newPass = alert.textFields![1].optionalText, let verPass = alert.textFields![2].optionalText,
+				oldPass == SettingsController.shared.userCredentials?.password && newPass == verPass
+				else { return }
+			self.updateProfile(newEmail: nil, newPassword: newPass, newLocation: nil)
+		}))
+
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+		self.present(alert, animated:true, completion: nil)
+	}
 }
 
 //MARK: - Edit Profile Button
@@ -79,11 +137,11 @@ extension ProfileVC: EditProfileButtonDelegate {
 		case .cities:
 			performSegue(withIdentifier: "RemovedCitiesVCSegue", sender: nil)
 		case .email:
-			performSegue(withIdentifier: "RemovedCitiesVCSegue", sender: nil)
+			updateEmail()
 		case .location:
-			performSegue(withIdentifier: "RemovedCitiesVCSegue", sender: nil)
+			break
 		case .password:
-			performSegue(withIdentifier: "RemovedCitiesVCSegue", sender: nil)
+			updatePassword()
 		}
 	}
 }

@@ -119,6 +119,29 @@ class SettingsController {
 		}
 	}
 	
+	func updateUser(email: String?, location: String?, likesAndFactors: LikesAndFactors?) {
+		if let email = email {
+			loggedInUser?.email = email
+		}
+		if let location = location {
+			loggedInUser?.location = location
+		}
+		if let likesAndFactors = likesAndFactors {
+			loggedInUser?.likes = likesAndFactors.likes
+			loggedInUser?.dislikes = likesAndFactors.dislikes
+			loggedInUser?.factors = likesAndFactors.factors
+		}
+	}
+	
+	func updateCredentials(email: String?, password: String?) {
+		if let email = email {
+			userCredentials?.email = email
+		}
+		if let password = password {
+			userCredentials?.password = password
+		}
+	}
+	
 	func persistcredentials(appleId: String?, email: String?, password: String?) {
 		if let appleId = appleId {
 			self.appleId = appleId

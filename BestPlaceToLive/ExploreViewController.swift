@@ -113,12 +113,6 @@ class ExploreViewController: UIViewController {
         
     }
     
-    
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TopTenToDetailSegue" {
             guard let detailVC = segue.destination as? CityDetailsViewController, let indexPath = popularCollectionView.indexPathsForSelectedItems?.first else { return }
@@ -175,11 +169,6 @@ class ExploreViewController: UIViewController {
             self?.getCityOnCategory()
         }
     }
-    
-    
-    
-    
-    
 
 }
 extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

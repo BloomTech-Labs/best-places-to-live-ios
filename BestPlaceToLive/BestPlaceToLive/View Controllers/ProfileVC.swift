@@ -30,6 +30,15 @@ class ProfileVC: UIViewController {
     private var operations = [String: Operation]()
     private let photoFetcheQueue = OperationQueue()
 	
+	private lazy var loadingImgView: UIActivityIndicatorView = {
+		let loadingView = UIActivityIndicatorView(style: .large)
+		loadingView.backgroundColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 0.5)
+		loadingView.translatesAutoresizingMaskIntoConstraints = false
+		loadingView.layer.cornerRadius = 10
+		loadingView.layer.masksToBounds = true
+		return loadingView
+	}()
+	
 	// MARK: Life Cycle
 	
 	override func viewDidLoad() {
@@ -70,12 +79,65 @@ class ProfileVC: UIViewController {
 		}
 	}
 	
+	private func showLoadingView() {
+		view.addSubview(loadingImgView)
+		
+		NSLayoutConstraint.activate([
+			loadingImgView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			loadingImgView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+			loadingImgView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
+			loadingImgView.heightAnchor.constraint(equalTo: loadingImgView.widthAnchor)
+		])
+		
+		loadingImgView.startAnimating()
+	}
+	
+	private func hideLoadingView() {
+		loadingImgView.stopAnimating()
+		loadingImgView.removeFromSuperview()
+	}
+	
+	private func showConfirmationView(didPass: Bool) {
+		let symbolString = didPass ? "checkmark.circle" : "xmark.circle"
+		let imgView = UIImageView()
+		imgView.image = UIImage(systemName: symbolString, withConfiguration: UIImage.SymbolConfiguration(weight: .medium))
+		imgView.tintColor = didPass ? .systemGreen : .systemRed
+		imgView.backgroundColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 0.5)
+		imgView.translatesAutoresizingMaskIntoConstraints = false
+		imgView.layer.cornerRadius = 10
+		imgView.layer.masksToBounds = true
+		
+		hideLoadingView()
+		view.addSubview(imgView)
+		NSLayoutConstraint.activate([
+			imgView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+			imgView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+			imgView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.3),
+			imgView.heightAnchor.constraint(equalTo: imgView.widthAnchor)
+		])
+		
+		UIView.animate(withDuration: 1.5, delay: 0.5, options: .curveLinear, animations: {
+			imgView.alpha = 0.0
+		}) { (_) in
+			imgView.removeFromSuperview()
+		}
+	}
+	
 	private func updateProfile(newEmail: String?, newPassword: String?, newLocation: String?) {
+		showLoadingView()
 		UserAPIController.shared.updateProfile(name: nil, email: newEmail, password: newPassword) { (result) in
 			switch result {
-			case .success(_): SettingsController.shared.updateUser(email: newEmail, location: newLocation, likesAndFactors: nil)
+			case .success(_):
+				SettingsController.shared.updateUser(email: newEmail, location: newLocation, likesAndFactors: nil)
+				
+				DispatchQueue.main.async {
+					self.showConfirmationView(didPass: true)
+				}
 			case .failure(_):
 				print("Profile update failed")
+				DispatchQueue.main.async {
+					self.showConfirmationView(didPass: false)
+				}
 			}
 		}
 	}
@@ -92,7 +154,10 @@ class ProfileVC: UIViewController {
 		}
 
 		alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
-			guard let newEmail = alert.textFields![0].optionalText else { return }
+			guard let newEmail = alert.textFields![0].optionalText else {
+				self.showConfirmationView(didPass: false)
+				return
+			}
 			self.updateProfile(newEmail: newEmail, newPassword: nil, newLocation: nil)
 		}))
 
@@ -119,7 +184,10 @@ class ProfileVC: UIViewController {
 			guard let oldPass = alert.textFields![0].optionalText,
 				let newPass = alert.textFields![1].optionalText, let verPass = alert.textFields![2].optionalText,
 				oldPass == SettingsController.shared.userCredentials?.password && newPass == verPass
-				else { return }
+				else {
+					self.showConfirmationView(didPass: false)
+					return
+			}
 			self.updateProfile(newEmail: nil, newPassword: newPass, newLocation: nil)
 		}))
 

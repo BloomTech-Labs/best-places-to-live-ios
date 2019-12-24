@@ -38,28 +38,6 @@ class SettingsController {
 	
 	private(set) var loggedInUser: UserInfo?
 	
-//	var userProfileImg: UIImage? {
-//		get {
-//			if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
-//				return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent("profilePic.png").path)
-//			}
-//			print("No profile image data found.")
-//			return UIImage(named: "Profile_Pic")
-//		}
-//		set {
-//			if let newImage = newValue, let data = newImage.jpegData(compressionQuality: 1) ?? newImage.pngData() {
-//				if let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL {
-//					do {
-//						try data.write(to: directory.appendingPathComponent("profilePic.png")!)
-//					} catch {
-//						print(error.localizedDescription)
-//					}
-//				}
-//			}
-//
-//		}
-//	}
-	
 	private(set) var appleId: String? {
 		get {
 			return keychain[appleIdKey]
@@ -146,7 +124,7 @@ class SettingsController {
 		if let appleId = appleId {
 			self.appleId = appleId
 		}
-		if let email = email, let password = password, isSaveCredentials {
+		if let email = email, let password = password/*, isSaveCredentials*/ {
 			userCredentials = LoginRequest(email: email, password: password)
 		}
 	}
@@ -159,8 +137,7 @@ class SettingsController {
 	func logoutProcedure(completion: @escaping () -> Void) {
 		loggedInUser = nil
 		userToken = nil
-		isSaveCredentials = false
-		print("USER LOGGED OUT")
+//		isSaveCredentials = false
 		completion()
 	}
 }
